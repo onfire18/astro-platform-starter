@@ -3,90 +3,97 @@ import Layout from '../layouts/Layout.astro';
 import ContextAlert from '../components/ContextAlert.astro';
 
 const softwareSkills = [
-    {
-        name: 'Adobe Premiere Pro',
-        level: 95,
-        description: 'Professioneller Videoschnitt, Multicam-Editing, Farbkorrektur'
-    },
-    {
-        name: 'DaVinci Resolve',
-        level: 90,
-        description: 'Professionelles Color Grading, Fusion VFX, Fairlight Audio'
-    },
-    {
-        name: 'Adobe After Effects',
-        level: 85,
-        description: 'Motion Graphics, Visual Effects, Compositing'
-    },
-    {
-        name: 'Final Cut Pro',
-        level: 80,
-        description: 'Schneller Schnitt, Magnetic Timeline, Optimierte macOS-Performance'
-    },
-    {
-        name: 'Adobe Audition',
-        level: 75,
-        description: 'Audio-Restaurierung, Mixing, Noise Reduction'
-    },
-    {
-        name: 'CapCut / VN',
-        level: 88,
-        description: 'Social-Media-Content, Reels, TikTok-Videos'
-    }
+    { name: 'Adobe Premiere Pro', level: 95, description: 'Multicam-Editing, Sequenzen, Proxies, Auto-Reframe' },
+    { name: 'DaVinci Resolve', level: 90, description: 'Color Grading, Fusion VFX, Fairlight Audio, Cut-Page' },
+    { name: 'Adobe After Effects', level: 85, description: 'Motion Graphics, Expressions, Puppet Tool, Compositing' },
+    { name: 'Final Cut Pro', level: 80, description: 'Magnetic Timeline, Compound Clips, ProRes-Workflow' },
+    { name: 'Adobe Audition', level: 78, description: 'Multitrack-Mixing, Spectral Repair, Noise Reduction' },
+    { name: 'Adobe Media Encoder', level: 88, description: 'Batch-Export, Watch Folders, Presets' },
+    { name: 'CapCut / VN', level: 90, description: 'Reels, TikTok, Auto-Captions, Template-Editing' },
+    { name: 'Blackmagic Fusion', level: 72, description: 'Node-basiertes Compositing, 3D-Compositing' },
+    { name: 'Topaz Video AI', level: 70, description: 'Upscaling, Frame-Interpolation, Stabilisierung' },
+    { name: 'HandBrake', level: 82, description: 'Komprimierung, Format-Konvertierung, Batch-Processing' }
 ];
 
-const techniques = [
-    {
-        icon: '🎨',
-        title: 'Color Grading',
-        description: 'Professionelle Farbkorrektur und kreatives Color Grading für cineastischen Look mit LUTs und manuellen Anpassungen.'
-    },
-    {
-        icon: '✂️',
-        title: 'Schnitt & Pacing',
-        description: 'Rhythmischer Schnitt, J-Cuts, L-Cuts und dynamisches Pacing für maximale Zuschauerbindung.'
-    },
-    {
-        icon: '🎵',
-        title: 'Audio Design',
-        description: 'Sound Design, Musik-Sync, Voice-Over-Integration und professionelle Audiomischung.'
-    },
-    {
-        icon: '✨',
-        title: 'Motion Graphics',
-        description: 'Animierte Titel, Lower Thirds, Infografiken und Logo-Animationen mit After Effects.'
-    },
-    {
-        icon: '🎬',
-        title: 'Visual Effects',
-        description: 'Green Screen, Compositing, Tracking und kreative VFX-Effekte.'
-    },
-    {
-        icon: '📱',
-        title: 'Social Media',
-        description: 'Optimierte Formate für YouTube, Instagram Reels, TikTok und LinkedIn.'
-    },
-    {
-        icon: '🏎️',
-        title: 'Speed Ramping',
-        description: 'Dynamische Geschwindigkeitsänderungen, Zeitlupe und Zeitraffer für dramatische Effekte.'
-    },
-    {
-        icon: '🎭',
-        title: 'Storytelling',
-        description: 'Narrative Struktur, emotionaler Aufbau und wirkungsvolles Storytelling durch Schnitt.'
-    }
+const colorSkills = [
+    { name: 'Primary Color Correction', desc: 'Belichtung, Kontrast, Sättigung, Weißabgleich' },
+    { name: 'Secondary Color Grading', desc: 'HSL-Qualifizierer, Power Windows, Keying' },
+    { name: 'LUT-Erstellung & Anwendung', desc: 'Custom LUTs, Film-Emulation, Brand-Farben' },
+    { name: 'Skin Tone Matching', desc: 'Konsistente Hauttöne über Shots hinweg' },
+    { name: 'Log-Footage-Workflow', desc: 'S-Log, Log-C, BRAW – korrekte Farbtransformation' },
+    { name: 'HDR Grading', desc: 'Dolby Vision, HDR10 – Highlights und Schatten' },
+    { name: 'Cinematic Look', desc: 'Film-Grain, Vignette, Orange-Teal-Look' },
+    { name: 'Scope-Arbeit', desc: 'Parade, Vectorscope, Waveform – datengestützt graden' }
 ];
 
-const videoTypes = [
-    { type: 'YouTube Videos', icon: '▶️' },
-    { type: 'Werbefilme', icon: '📺' },
-    { type: 'Musikvideos', icon: '🎶' },
-    { type: 'Dokumentationen', icon: '🎥' },
-    { type: 'Event-Videos', icon: '🎉' },
-    { type: 'Reels & Shorts', icon: '📱' },
-    { type: 'Corporate Videos', icon: '💼' },
-    { type: 'Tutorial-Videos', icon: '📚' }
+const audioSkills = [
+    { name: 'Dialog-Cleaning', desc: 'Raumklang entfernen, Hintergrundgeräusche eliminieren' },
+    { name: 'Music Sync', desc: 'Beat-genaues Schneiden, Energie-Matching' },
+    { name: 'Sound Design', desc: 'Foley, SFX-Layering, atmosphärische Sounds' },
+    { name: 'Voice-Over', desc: 'EQ, Kompression, De-Esser für professionellen Klang' },
+    { name: 'Loudness-Normalisierung', desc: 'LUFS-Standards (YouTube -14, Broadcast -23)' },
+    { name: 'Audio-Mixing', desc: 'Automation, Panning, Bus-Routing' },
+    { name: 'Music Licensing', desc: 'Epidemic Sound, Artlist, Musicbed – lizenzfrei' },
+    { name: 'AI Audio Tools', desc: 'Adobe Enhance, Auphonic, Descript' }
+];
+
+const editingTechniques = [
+    { icon: '✂️', name: 'J-Cut & L-Cut', desc: 'Audio führt den Bildschnitt ein oder nach' },
+    { icon: '⚡', name: 'Jump Cut', desc: 'Dynamische Kürzung bei Dialogen und Vlogs' },
+    { icon: '🔄', name: 'Match Cut', desc: 'Visuell oder thematisch verbundene Übergänge' },
+    { icon: '📷', name: 'Cutaway', desc: 'B-Roll zur Unterstützung der Handlung' },
+    { icon: '🎞️', name: 'Cross Cut', desc: 'Parallele Handlungen simultan zeigen' },
+    { icon: '🌀', name: 'Smash Cut', desc: 'Abrupter Schnitt für Überraschungseffekte' },
+    { icon: '🎵', name: 'Montage', desc: 'Rhythmische Bildfolge für Zeitraffer oder Stimmung' },
+    { icon: '🔁', name: 'Invisible Cut', desc: 'Nahtlose Übergänge durch Bewegung oder Farbe' },
+    { icon: '🌊', name: 'Whip Pan', desc: 'Schwenkschnitt als Übergang zwischen Szenen' },
+    { icon: '🎭', name: 'Shot Reverse Shot', desc: 'Dialog-Schnitt zwischen zwei Charakteren' }
+];
+
+const motionSkills = [
+    { name: 'Kinetic Typography', desc: 'Animierte Texte, Beat-Sync, Schrift als Bewegungselement' },
+    { name: 'Lower Thirds', desc: 'Namenseinblendungen, Titel-Grafiken, Infobars' },
+    { name: 'Logo Animation', desc: 'Reveal-Animationen, Intro/Outro, Brand-Idents' },
+    { name: 'Icon & Illustration Animation', desc: 'SVG-Animationen, erklärendes Motion Design' },
+    { name: 'Particle Systems', desc: 'Staub, Schnee, Bokeh, Feuer-Effekte' },
+    { name: 'Expressions (After Effects)', desc: 'JavaScript-basierte Automatisierung in AE' },
+    { name: 'Daten-Visualisierung', desc: 'Animierte Diagramme, Infografiken, Statistiken' },
+    { name: '3D-Integration', desc: 'Cinema 4D Lite, Element 3D, Lottie' }
+];
+
+const vfxSkills = [
+    { name: 'Green Screen / Chroma Key', desc: 'Professionelles Keying mit Spill-Unterdrückung' },
+    { name: 'Motion Tracking', desc: '2D- und 3D-Tracking für Titel und VFX' },
+    { name: 'Rotoscoping', desc: 'Manuelle Masken für Objekte und Personen' },
+    { name: 'Speed Ramping', desc: 'Twixtor, Optical Flow – flüssige Zeitlupe' },
+    { name: 'Color Keying', desc: 'Luminanz- und Farbbereich-Masken' },
+    { name: 'Object Removal', desc: 'Content-Aware-Techniken, Frame-Blending' },
+    { name: 'Lens Flares & Glows', desc: 'Optische Effekte für cinematischen Look' },
+    { name: 'Stabilisierung', desc: 'Warp Stabilizer, SteadyShot, Gyroflow' }
+];
+
+const deliveryFormats = [
+    { platform: 'YouTube', specs: '4K/1080p, H.264/AV1, 16:9, -14 LUFS' },
+    { platform: 'Instagram Reels', specs: '1080×1920, H.264, 9:16, max. 90 Sek.' },
+    { platform: 'TikTok', specs: '1080×1920, H.264, 9:16, max. 10 Min.' },
+    { platform: 'LinkedIn', specs: '1080p, H.264, 16:9 / 1:1, max. 10 Min.' },
+    { platform: 'Broadcast / TV', specs: '1080i/4K, ProRes, -23 LUFS, OP-47 Untertitel' },
+    { platform: 'Kino / DCP', specs: '2K/4K, JPEG2000, Dolby-Surround, 24fps' },
+    { platform: 'Web / Streaming', specs: 'H.265/HEVC, adaptives Bitrate-Streaming' },
+    { platform: 'Social Stories', specs: '1080×1920, 15 Sek., MP4, H.264' }
+];
+
+const workflow = [
+    { step: '01', label: 'Briefing', desc: 'Ziele, Zielgruppe, Tonalität, Deadline klären' },
+    { step: '02', label: 'Material sichten', desc: 'Footage bewerten, Selects markieren, Proxies erstellen' },
+    { step: '03', label: 'Rough Cut', desc: 'Grobe Struktur, Story-Bogen, Timing' },
+    { step: '04', label: 'Fine Cut', desc: 'Detailschnitt, Pacing, Übergänge, B-Roll' },
+    { step: '05', label: 'Audio', desc: 'Dialog-Mix, Musik, SFX, Voice-Over' },
+    { step: '06', label: 'Color', desc: 'Primary Correction, Creative Grade, LUT-Anwendung' },
+    { step: '07', label: 'VFX & Motion', desc: 'Grafiken, Titel, Effekte, Compositing' },
+    { step: '08', label: 'Review', desc: 'Feedback-Runden, Korrekturen, Feinabstimmung' },
+    { step: '09', label: 'Mastering', desc: 'Qualitätskontrolle, Loudness, Farb-Check' },
+    { step: '10', label: 'Delivery', desc: 'Plattform-optimierter Export, Übergabe' }
 ];
 ---
 
@@ -95,82 +102,153 @@ const videoTypes = [
     <h1 class="mb-4">Video Editing Skills</h1>
     <p class="text-lg text-white/80 mb-12 max-w-2xl">
         Professionelle Videobearbeitung von der Rohaufnahme zum fertigen Produkt –
-        mit modernsten Tools und jahrelanger Erfahrung.
+        mit modernsten Tools, tiefem Fachwissen und jahrelanger Erfahrung.
     </p>
 
-    <!-- Software Skills -->
+    <!-- Software -->
     <section class="mb-16">
-        <h2 class="text-2xl font-bold mb-8">Software & Tools</h2>
+        <h2 class="text-2xl font-bold mb-2">Software & Tools</h2>
+        <p class="text-white/60 mb-6 text-sm">10 professionelle Anwendungen im täglichen Einsatz</p>
         <div class="grid gap-4 sm:grid-cols-2">
             {softwareSkills.map((skill) => (
-                <div class="bg-white/10 rounded-xl p-5 backdrop-blur-sm border border-white/20">
+                <div class="bg-white/10 rounded-xl p-5 border border-white/20">
                     <div class="flex justify-between items-center mb-2">
                         <span class="font-semibold text-white">{skill.name}</span>
                         <span class="text-white/70 text-sm font-mono">{skill.level}%</span>
                     </div>
                     <div class="w-full bg-white/20 rounded-full h-2 mb-3">
-                        <div
-                            class="bg-white rounded-full h-2 transition-all"
-                            style={`width: ${skill.level}%`}
-                        />
+                        <div class="bg-white rounded-full h-2" style={`width: ${skill.level}%`} />
                     </div>
-                    <p class="text-white/70 text-sm">{skill.description}</p>
+                    <p class="text-white/60 text-sm">{skill.description}</p>
                 </div>
             ))}
         </div>
     </section>
 
-    <!-- Techniques -->
+    <!-- Schnitt-Techniken -->
     <section class="mb-16">
-        <h2 class="text-2xl font-bold mb-8">Techniken & Fähigkeiten</h2>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {techniques.map((tech) => (
-                <div class="bg-white/10 rounded-xl p-5 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
-                    <div class="text-3xl mb-3">{tech.icon}</div>
-                    <h3 class="font-semibold text-white mb-2">{tech.title}</h3>
-                    <p class="text-white/70 text-sm leading-relaxed">{tech.description}</p>
+        <h2 class="text-2xl font-bold mb-2">Schnitt-Techniken</h2>
+        <p class="text-white/60 mb-6 text-sm">10 essenzielle Editing-Methoden für professionellen Flow</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {editingTechniques.map((t) => (
+                <div class="bg-white/10 rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-2xl mb-2">{t.icon}</div>
+                    <h3 class="font-semibold text-white text-sm mb-1">{t.name}</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">{t.desc}</p>
                 </div>
             ))}
         </div>
     </section>
 
-    <!-- Video Types -->
+    <!-- Color Grading -->
     <section class="mb-16">
-        <h2 class="text-2xl font-bold mb-8">Video-Formate</h2>
-        <div class="flex flex-wrap gap-3">
-            {videoTypes.map((v) => (
-                <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium hover:bg-white/20 transition-colors">
-                    <span>{v.icon}</span>
-                    <span>{v.type}</span>
-                </span>
+        <h2 class="text-2xl font-bold mb-2">Color Grading</h2>
+        <p class="text-white/60 mb-6 text-sm">Von der technischen Korrektur bis zum kreativen Look</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {colorSkills.map((s) => (
+                <div class="bg-white/10 rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-colors">
+                    <h3 class="font-semibold text-white text-sm mb-1">{s.name}</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">{s.desc}</p>
+                </div>
             ))}
+        </div>
+    </section>
+
+    <!-- Audio -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-2">Audio & Sound</h2>
+        <p class="text-white/60 mb-6 text-sm">Professioneller Ton als zweite Hälfte des Erlebnisses</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {audioSkills.map((s) => (
+                <div class="bg-white/10 rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-colors">
+                    <h3 class="font-semibold text-white text-sm mb-1">{s.name}</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">{s.desc}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <!-- Motion Graphics -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-2">Motion Graphics</h2>
+        <p class="text-white/60 mb-6 text-sm">Animierte Grafiken, Titel und visuelles Storytelling</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {motionSkills.map((s) => (
+                <div class="bg-white/10 rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-colors">
+                    <h3 class="font-semibold text-white text-sm mb-1">{s.name}</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">{s.desc}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <!-- VFX -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-2">Visual Effects</h2>
+        <p class="text-white/60 mb-6 text-sm">Von Green Screen bis Compositing und Stabilisierung</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {vfxSkills.map((s) => (
+                <div class="bg-white/10 rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-colors">
+                    <h3 class="font-semibold text-white text-sm mb-1">{s.name}</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">{s.desc}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <!-- Delivery Formate -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-2">Export & Delivery</h2>
+        <p class="text-white/60 mb-6 text-sm">Plattform-optimierte Exports nach Industriestandard</p>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-white/20">
+                        <th class="text-left py-3 px-4 text-white font-semibold">Plattform</th>
+                        <th class="text-left py-3 px-4 text-white font-semibold">Spezifikationen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {deliveryFormats.map((f, i) => (
+                        <tr class={`border-b border-white/10 ${i % 2 === 0 ? 'bg-white/5' : ''}`}>
+                            <td class="py-3 px-4 font-medium text-white">{f.platform}</td>
+                            <td class="py-3 px-4 text-white/70">{f.specs}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     </section>
 
     <!-- Workflow -->
     <section class="mb-16">
-        <h2 class="text-2xl font-bold mb-8">Workflow</h2>
-        <div class="grid gap-0 sm:grid-cols-5">
+        <h2 class="text-2xl font-bold mb-2">Workflow – 10 Schritte</h2>
+        <p class="text-white/60 mb-6 text-sm">Vom ersten Briefing bis zum finalen Delivery</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {workflow.map((item) => (
+                <div class="bg-white/10 rounded-xl p-4 border border-white/20">
+                    <div class="bg-white text-[#355C7D] rounded-full w-8 h-8 flex items-center justify-center font-bold text-xs mb-3">
+                        {item.step}
+                    </div>
+                    <h3 class="font-semibold text-white text-sm mb-1">{item.label}</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="mb-16">
+        <div class="grid gap-4 sm:grid-cols-4">
             {[
-                { step: '01', label: 'Material sichten', desc: 'Footage-Analyse & Auswahl' },
-                { step: '02', label: 'Rough Cut', desc: 'Grobe Struktur & Timing' },
-                { step: '03', label: 'Fine Cut', desc: 'Detailschnitt & Übergänge' },
-                { step: '04', label: 'Post-Production', desc: 'Color, Audio & VFX' },
-                { step: '05', label: 'Export', desc: 'Plattform-optimierter Output' }
-            ].map((item, index) => (
-                <div class="flex sm:flex-col items-center gap-4 sm:gap-2">
-                    <div class="flex items-center sm:flex-col gap-2 sm:gap-0 flex-1">
-                        <div class="bg-white text-[#355C7D] rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm shrink-0 z-10">
-                            {item.step}
-                        </div>
-                        {index < 4 && (
-                            <div class="hidden sm:block h-0.5 w-full bg-white/30 -mt-5 mx-2" />
-                        )}
-                    </div>
-                    <div class="sm:text-center min-w-0">
-                        <p class="font-semibold text-white text-sm">{item.label}</p>
-                        <p class="text-white/60 text-xs">{item.desc}</p>
-                    </div>
+                { value: '10+', label: 'Software-Tools' },
+                { value: '40+', label: 'Einzelne Skills' },
+                { value: '8', label: 'Delivery-Formate' },
+                { value: '10', label: 'Workflow-Schritte' }
+            ].map((stat) => (
+                <div class="bg-white/10 rounded-xl p-6 border border-white/20 text-center">
+                    <div class="text-4xl font-bold text-white mb-1">{stat.value}</div>
+                    <div class="text-white/60 text-sm">{stat.label}</div>
                 </div>
             ))}
         </div>
