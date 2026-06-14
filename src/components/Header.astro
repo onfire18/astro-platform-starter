@@ -1,4 +1,6 @@
 ---
+import AuthWidget from './AuthWidget';
+
 const navItems = [
     { linkText: 'Rechnung', href: '/invoice' },
     { linkText: 'Instagram', href: '/instagram' },
@@ -32,11 +34,7 @@ const currentPath = Astro.url.pathname;
                 {item.linkText}
             </a>
         ))}
-        <a
-            href="/invoice"
-            class="no-underline ml-1 px-4 py-1.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold rounded-lg transition shadow-lg shadow-brand-700/30"
-        >
-            Starten →
-        </a>
+        <span class="hidden sm:block w-px h-5 bg-white/10 mx-1"></span>
+        <AuthWidget client:load />
     </div>
 </nav>

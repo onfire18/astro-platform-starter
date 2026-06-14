@@ -1,4 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAuth } from '../lib/useAuth';
+import { loadProfile, saveProfile } from '../lib/profile';
+import type { CompanyProfile } from '../lib/supabase';
+
+const PROFILE_KEYS: (keyof CompanyProfile)[] = [
+    'senderName',
+    'senderStreet',
+    'senderCity',
+    'senderEmail',
+    'senderPhone',
+    'senderTaxId',
+    'senderWebsite',
+    'senderBank',
+    'senderIban',
+    'senderBic',
+];
 
 interface LineItem {
     id: string;
@@ -80,6 +96,44 @@ export default function InvoiceGenerator() {
 
     const [section, setSection] = useState<Section>('sender');
     const [generating, setGenerating] = useState(false);
+
+    // ── Profile (enter sender data once, reuse everywhere) ──
+    const { user, configured } = useAuth();
+    const [savingProfile, setSavingProfile] = useState(false);
+    const [profileMsg, setProfileMsg] = useState('');
+
+    // Auto-fill sender fields from the saved profile (cloud or device).
+    useEffect(() => {
+        let active = true;
+        loadProfile(user?.id ?? null).then((profile) => {
+            if (active && profile) {
+                setForm((p) => ({ ...p, ...profile }));
+            }
+        });
+        return () => {
+            active = false;
+        };
+    }, [user?.id]);
+
+    const handleSaveProfile = async () => {
+        setSavingProfile(true);
+        setProfileMsg('');
+        const profile = Object.fromEntries(
+            PROFILE_KEYS.map((k) => [k, form[k]])
+        ) as unknown as CompanyProfile;
+        const res = await saveProfile(user?.id ?? null, profile);
+        setSavingProfile(false);
+        if (res.ok) {
+            setProfileMsg(
+                user
+                    ? '✓ In deinem Konto gespeichert'
+                    : '✓ Auf diesem Gerät gespeichert'
+            );
+        } else {
+            setProfileMsg('Fehler: ' + (res.error ?? 'unbekannt'));
+        }
+        setTimeout(() => setProfileMsg(''), 4000);
+    };
 
     const set = <K extends keyof FormData>(k: K, v: FormData[K]) =>
         setForm((p) => ({ ...p, [k]: v }));
@@ -365,7 +419,32 @@ export default function InvoiceGenerator() {
             {/* === SECTION: VON (Sender) === */}
             {section === 'sender' && (
                 <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-5 sm:p-6 space-y-5">
-                    <h2 className="text-base font-semibold text-white">Deine Informationen</h2>
+                    <div className="flex items-start justify-between gap-3 flex-wrap">
+                        <h2 className="text-base font-semibold text-white">Deine Informationen</h2>
+                        {user ? (
+                            <span className="text-xs text-brand-300 bg-brand-600/15 border border-brand-500/30 px-2.5 py-1 rounded-lg">
+                                Angemeldet – wird in deinem Konto gespeichert
+                            </span>
+                        ) : (
+                            <span className="text-xs text-neutral-500">
+                                {configured ? (
+                                    <>
+                                        <a href="/account" className="text-brand-300 hover:underline">
+                                            Anmelden
+                                        </a>{' '}
+                                        für geräteübergreifende Speicherung
+                                    </>
+                                ) : (
+                                    'Wird auf diesem Gerät gespeichert'
+                                )}
+                            </span>
+                        )}
+                    </div>
+
+                    <div className="bg-brand-600/10 border border-brand-500/20 rounded-xl px-4 py-3 text-sm text-brand-200/90">
+                        💡 Diese Daten musst du nur <strong>einmal</strong> eingeben. Speichere sie als
+                        Profil – ab dann werden sie automatisch in jede neue Rechnung übernommen.
+                    </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
@@ -431,7 +510,13 @@ export default function InvoiceGenerator() {
                     </div>
 
                     <div className="pt-1 border-t border-white/10">
-                        <h3 className="text-sm font-medium text-neutral-300 mb-4">Bankverbindung</h3>
+                        <h3 className="text-sm font-medium text-neutral-300 mb-1">
+                            Bankverbindung{' '}
+                            <span className="text-neutral-500 font-normal">(freiwillig)</span>
+                        </h3>
+                        <p className="text-xs text-neutral-500 mb-4">
+                            Erscheint nur auf der Rechnung, wenn du sie angibst.
+                        </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label className={lbl}>Bankname</label>
@@ -466,10 +551,29 @@ export default function InvoiceGenerator() {
                         </div>
                     </div>
 
-                    <div className="flex justify-end">
+                    <div className="flex items-center justify-between gap-3 flex-wrap pt-1 border-t border-white/10">
+                        <button
+                            onClick={handleSaveProfile}
+                            disabled={savingProfile}
+                            className="flex items-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium rounded-lg transition disabled:opacity-50"
+                        >
+                            {savingProfile ? (
+                                <span className="loading loading-spinner loading-xs" />
+                            ) : (
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                    <polyline points="17 21 17 13 7 13 7 21" />
+                                    <polyline points="7 3 7 8 15 8" />
+                                </svg>
+                            )}
+                            Als Profil speichern
+                        </button>
+                        {profileMsg && (
+                            <span className="text-xs text-neutral-300">{profileMsg}</span>
+                        )}
                         <button
                             onClick={() => setSection('recipient')}
-                            className="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold rounded-lg transition"
+                            className="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold rounded-lg transition ml-auto"
                         >
                             Weiter →
                         </button>
