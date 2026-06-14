@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram-Toolkit | AutoFlow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0F0B1E;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.inp{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:white;padding:10px 12px;width:100%;font-size:0.875rem;outline:none;font-family:'Inter',sans-serif;transition:border-color 0.2s}
+.inp::placeholder{color:#4B5563}
+.inp:focus{border-color:#7C3AED}
+label{display:block;font-size:0.75rem;font-weight:500;color:#9CA3AF;margin-bottom:6px}
+.card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px}
+.tag{display:inline-block;padding:4px 10px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:8px;font-size:0.75rem;color:#A78BFA;margin:3px}
+.copy-btn{padding:6px 14px;border-radius:8px;font-size:0.75rem;font-weight:500;border:1px solid rgba(124,58,237,0.4);background:rgba(124,58,237,0.15);color:#A78BFA;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+.copy-btn:hover{background:rgba(124,58,237,0.3)}
+.copy-btn.copied{border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.15);color:#6EE7B7}
+.niche-btn{padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.02);cursor:pointer;text-align:left;font-family:'Inter',sans-serif;color:#9CA3AF;transition:all 0.2s;width:100%}
+.niche-btn.active{border-color:rgba(124,58,237,0.5);background:rgba(124,58,237,0.15);color:white}
+.tmpl-btn{padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.02);cursor:pointer;text-align:left;font-family:'Inter',sans-serif;color:#9CA3AF;transition:all 0.2s;width:100%}
+.tmpl-btn:hover{border-color:rgba(124,58,237,0.4);background:rgba(124,58,237,0.08);color:white}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav style="max-width:1024px;margin:0 auto;padding:20px;display:flex;align-items:center;justify-content:space-between">
+  <a href="index.html" style="display:flex;align-items:center;gap:10px">
+    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#A78BFA,#6D28D9);display:flex;align-items:center;justify-content:center">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z"/></svg>
+    </div>
+    <span style="font-size:1.125rem;font-weight:700">AutoFlow</span>
+  </a>
+  <div style="display:flex;gap:8px">
+    <a href="invoice.html" style="padding:6px 12px;font-size:0.875rem;color:#9CA3AF;border-radius:8px">Rechnung</a>
+    <a href="instagram.html" style="padding:6px 12px;font-size:0.875rem;color:#F9A8D4;background:rgba(236,72,153,0.15);border-radius:8px">Instagram</a>
+    <a href="crm.html" style="padding:6px 12px;font-size:0.875rem;color:#9CA3AF;border-radius:8px">CRM</a>
+  </div>
+</nav>
+
+<div style="max-width:720px;margin:0 auto;padding:20px 20px 60px">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:#6B7280;font-size:0.875rem;margin-bottom:24px">← Zurück</a>
+
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px">
+    <div style="width:36px;height:36px;border-radius:8px;background:rgba(236,72,153,0.2);border:1px solid rgba(236,72,153,0.3);display:flex;align-items:center;justify-content:center;font-size:1.25rem">📸</div>
+    <div>
+      <h1 style="font-size:1.75rem;font-weight:700">Instagram-Toolkit</h1>
+      <p style="color:#6B7280;font-size:0.875rem;margin-top:4px">Captions, Hashtags und Bio generieren.</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:4px;border-radius:12px;margin-bottom:16px">
+    <button id="tab-caption" onclick="showTab('caption')" style="padding:10px;border-radius:8px;font-size:0.875rem;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;background:#7C3AED;color:white">✍️ Caption</button>
+    <button id="tab-hashtags" onclick="showTab('hashtags')" style="padding:10px;border-radius:8px;font-size:0.875rem;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;background:transparent;color:#9CA3AF">#️⃣ Hashtags</button>
+    <button id="tab-bio" onclick="showTab('bio')" style="padding:10px;border-radius:8px;font-size:0.875rem;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;background:transparent;color:#9CA3AF">👤 Bio</button>
+  </div>
+
+  <!-- CAPTION TAB -->
+  <div id="sec-caption">
+    <!-- Template selector -->
+    <div id="tmpl-grid" class="card">
+      <p style="font-size:0.875rem;font-weight:500;color:#D1D5DB;margin-bottom:16px">Wähle einen Template-Typ:</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px" id="tmpl-buttons"></div>
+    </div>
+    <!-- Form + Preview (hidden until template chosen) -->
+    <div id="tmpl-form" style="display:none">
+      <div class="card">
+        <button onclick="resetTemplate()" style="background:none;border:none;color:#6B7280;font-size:0.875rem;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px">← Zurück zu Templates</button>
+        <h3 id="tmpl-title" style="font-size:0.875rem;font-weight:600;color:white;margin-bottom:16px"></h3>
+        <div id="tmpl-fields" style="display:grid;gap:12px"></div>
+        <div style="margin-top:16px">
+          <label>Hashtag-Themen (optional)</label>
+          <div style="display:flex;flex-wrap:wrap;gap:6px" id="caption-niche-btns"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <p style="font-size:0.875rem;font-weight:600;color:#D1D5DB">Vorschau</p>
+          <button class="copy-btn" id="copy-caption-btn" onclick="copyCaption()">📋 Kopieren</button>
+        </div>
+        <pre id="caption-preview" style="font-size:0.875rem;color:#D1D5DB;white-space:pre-wrap;font-family:'Inter',sans-serif;line-height:1.7;min-height:120px"></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- HASHTAGS TAB -->
+  <div id="sec-hashtags" style="display:none">
+    <div class="card">
+      <p style="font-size:0.875rem;font-weight:500;color:#D1D5DB;margin-bottom:16px">Wähle deine Themen-Bereiche:</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px" id="niche-grid"></div>
+    </div>
+    <div id="hashtag-result" style="display:none" class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div>
+          <p style="font-size:0.875rem;font-weight:600;color:#D1D5DB">Deine Hashtags</p>
+          <p id="tag-count" style="font-size:0.75rem;color:#6B7280;margin-top:2px">0 / 30</p>
+        </div>
+        <button class="copy-btn" id="copy-tags-btn" onclick="copyHashtags()">📋 Alle kopieren</button>
+      </div>
+      <div id="tag-display" style="margin-bottom:16px"></div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px">
+        <p id="tag-text" style="font-size:0.75rem;color:#4B5563;font-family:monospace;line-height:1.8;word-break:break-all"></p>
+      </div>
+    </div>
+    <div style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.2);border-radius:12px;padding:14px;font-size:0.8125rem;color:#FDE68A;margin-top:8px">
+      💡 Tipp: Bis zu 30 Hashtags pro Post. Mische große (#fitness) und kleine Hashtags (#freelancerdeutschland) für beste Reichweite.
+    </div>
+  </div>
+
+  <!-- BIO TAB -->
+  <div id="sec-bio" style="display:none">
+    <div class="card">
+      <p style="font-size:0.875rem;font-weight:600;color:#D1D5DB;margin-bottom:16px">Deine Instagram Bio</p>
+      <div style="display:grid;gap:12px">
+        <div><label>Deine Rolle / Berufsbezeichnung</label><input class="inp" id="bio-role" type="text" placeholder="z.B. Social Media Managerin" oninput="updateBio()"></div>
+        <div><label>Deine Spezialität</label><input class="inp" id="bio-spec" type="text" placeholder="z.B. Helfe Unternehmen bei ihrer Online-Präsenz" oninput="updateBio()"></div>
+        <div><label>Mehrwert für Follower</label><input class="inp" id="bio-value" type="text" placeholder="z.B. Tägliche Tipps für mehr Reichweite" oninput="updateBio()"></div>
+        <div><label>Fun Fact (optional)</label><input class="inp" id="bio-fact" type="text" placeholder="z.B. Kaffee-Süchtig ☕" oninput="updateBio()"></div>
+        <div><label>Call to Action</label><input class="inp" id="bio-cta" type="text" placeholder="z.B. Gratis Erstgespräch buchen" oninput="updateBio()"></div>
+        <div><label>Link-Beschreibung</label><input class="inp" id="bio-link" type="text" placeholder="z.B. autoflow.app" oninput="updateBio()"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <p style="font-size:0.875rem;font-weight:600;color:#D1D5DB">Vorschau</p>
+        <button class="copy-btn" id="copy-bio-btn" onclick="copyBio()">📋 Kopieren</button>
+      </div>
+      <!-- Mockup -->
+      <div style="background:white;border-radius:12px;padding:16px;color:#111">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#ec4899)"></div>
+          <div><div style="font-size:0.75rem;font-weight:600">dein_account</div><div style="font-size:0.7rem;color:#6B7280">Instagram</div></div>
+        </div>
+        <pre id="bio-preview" style="font-size:0.8125rem;white-space:pre-wrap;font-family:'Inter',sans-serif;line-height:1.7;color:#1f2937;min-height:80px;color:#111">Fülle die Felder aus…</pre>
+      </div>
+      <p id="bio-count" style="font-size:0.75rem;color:#4B5563;margin-top:8px">0 / 150 Zeichen</p>
+    </div>
+  </div>
+</div>
+
+<footer style="border-top:1px solid rgba(255,255,255,0.1);padding:24px;text-align:center;color:#4B5563;font-size:0.875rem">
+  © 2025 AutoFlow
+</footer>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────
+const TEMPLATES = [
+  { id:'product', icon:'✨', label:'Produktvorstellung',
+    fields:['Produkt / Dienstleistung','Kurzbeschreibung','Vorteil 1','Vorteil 2','Vorteil 3','Call to Action'],
+    gen:function(v){return '✨ '+v[0]+'\n\n'+v[1]+'\n\nDas bekommst du:\n✅ '+v[2]+'\n✅ '+v[3]+'\n✅ '+v[4]+'\n\n👉 '+v[5]+' – Link in Bio!\n\n';} },
+  { id:'motivation', icon:'💪', label:'Motivationspost',
+    fields:['Motivations-Quote','Erklärung / Story','Learning 1','Learning 2','Learning 3'],
+    gen:function(v){return '💪 "'+v[0]+'"\n\n'+v[1]+'\n\nMeine 3 wichtigsten Learnings:\n1️⃣ '+v[2]+'\n2️⃣ '+v[3]+'\n3️⃣ '+v[4]+'\n\nTeile das mit jemandem, der das gerade braucht! 🙌\n\n';} },
+  { id:'sale', icon:'🔥', label:'Angebot / Sale',
+    fields:['Angebotsname','Was wird angeboten?','Vorteil 1','Vorteil 2','Gültig bis','Normalpreis (€)','Aktionspreis (€)'],
+    gen:function(v){return '🚨 NICHT VERPASSEN: '+v[0]+'! 🚨\n\n'+v[1]+'\n\n✅ '+v[2]+'\n✅ '+v[3]+'\n\n⏰ Nur bis '+v[4]+'!\n💰 Statt '+v[5]+'€ – jetzt nur '+v[6]+'€\n\n👉 Jetzt sichern → Link in Bio!\n\n';} },
+  { id:'bts', icon:'🎬', label:'Behind the Scenes',
+    fields:['Thema','Einblick / Story','Interessanter Fakt','Frage an die Community'],
+    gen:function(v){return '🎬 Behind the Scenes: '+v[0]+'\n\n'+v[1]+'\n\nSpannend: '+v[2]+'\n\n'+v[3]+' Schreib\'s in die Kommentare! 👇\n\n';} },
+  { id:'testimonial', icon:'⭐', label:'Kundenstimme',
+    fields:['Zitat des Kunden','Name / Beschreibung','Dein Kommentar','Call to Action'],
+    gen:function(v){return '⭐⭐⭐⭐⭐ Kundenstimme\n\n"'+v[0]+'"\n– '+v[1]+'\n\n'+v[2]+'\n\n👉 '+v[3]+' – schreib mir eine DM!\n\n';} },
+  { id:'tips', icon:'💡', label:'Tipps-Post',
+    fields:['Thema','Intro-Satz','Tipp 1','Tipp 2','Tipp 3','Tipp 4','Abschlussfrage'],
+    gen:function(v){return '💡 '+v[0]+'\n\n'+v[1]+'\n\n🔑 '+v[2]+'\n⚡ '+v[3]+'\n🎯 '+v[4]+'\n💪 '+v[5]+'\n\n'+v[6]+' 👇\n\nSpeichere diesen Post! 📌\n\n';} },
+  { id:'launch', icon:'🚀', label:'Launch / Ankündigung',
+    fields:['Was wird gelauncht?','Das ist NEU daran','Für wen?','Vorteil 1','Vorteil 2','Ab wann verfügbar?'],
+    gen:function(v){return '🚀 ES IST DA!\n\n'+v[0]+' – '+v[1]+'\n\nFür wen? '+v[2]+'\n\n✨ '+v[3]+'\n✨ '+v[4]+'\n\n📅 Ab '+v[5]+' verfügbar!\n\n👉 Trag dich ein → Link in Bio!\n\n';} },
+  { id:'personal', icon:'🙋', label:'Persönlicher Post',
+    fields:['Headline','Persönliche Story','Was hast du gelernt?','Frage an Follower'],
+    gen:function(v){return '🙋 '+v[0]+'\n\n'+v[1]+'\n\nMein größtes Learning: '+v[2]+'\n\n'+v[3]+'\n\nSchreib\'s in die Kommentare! 👇❤️\n\n';} },
+];
+
+const NICHES = [
+  { id:'business', icon:'💼', label:'Business', tags:['freelancer','selbstständig','unternehmertum','entrepreneur','startup','business','unternehmer','onlinebusiness','passiveseinkommen','digitalnomad','solopreneur','businesstipps','erfolgreich','businesscoach','finanziellfreiheit','nebeneinkommen','selbstständigkeit','unternehmerin','businesswomen','smallbusiness','businessowner','mindset','erfolg','motivation','wachstum','produktivität','remote','remotework','workfromanywhere','erfolgsstory'] },
+  { id:'marketing', icon:'📣', label:'Marketing', tags:['socialmedia','digitalmarketing','contentmarketing','socialmediatipps','instagram','instagramtipps','marketing','onlinemarketing','contentcreator','contentcreation','socialmediamanager','wachstum','reichweite','engagement','algorithm','reels','instagramreels','storys','community','communitybuilding','influencer','branding','markenaufbau','marketingstrategie','seo','ads','werbung','funnelmarketing','emailmarketing','copywriting'] },
+  { id:'ecommerce', icon:'🛒', label:'E-Commerce', tags:['onlineshop','ecommerce','shopify','handmade','etsy','sale','rabatt','angebot','neuheit','produkt','qualität','versandkostenfrei','deutschland','österreich','schweiz','premium','exklusiv','limitiert','bestseller','trendy','musthave','empfehlung','shopping','onlineshopping','gutschein','deal','shoppingaddict','handgemacht','boutique','neuware'] },
+  { id:'fitness', icon:'💪', label:'Fitness', tags:['fitness','workout','training','sport','gesundheit','fitnessmotivation','gym','bodybuilding','abnehmen','muskelaufbau','gesundeleben','ernährung','healthy','healthylifestyle','fitlife','personaltraining','homeworkout','crossfit','yoga','laufen','running','marathon','calisthenics','supplement','protein','mealprep','diät','challenge','fitnessblogger','sportleben'] },
+  { id:'motivation', icon:'🧠', label:'Motivation', tags:['motivation','mindset','erfolg','ziele','träume','persönlichkeitsentwicklung','wachstum','positivevibes','positivdenken','glück','inspiration','quote','zitat','dailymotivation','morgenroutine','habits','gewohnheiten','produktivität','zeitmanagement','selbstdisziplin','fokus','kraft','leben','lebensfreude','dankbarkeit','manifest','vision','mentalhealth','selfcare','positivity'] },
+  { id:'food', icon:'🍽️', label:'Food', tags:['food','foodie','kochen','rezepte','essen','foodphotography','homecooking','hausmannskost','vegetarisch','vegan','veganfood','glutenfrei','laktosefrei','cleaneating','gesundessen','mealprep','backen','kuchen','dessert','snack','brunch','lunch','dinner','instafood','foodblogger','deutsch','hausgemacht','chefathome','foodlover','cookingathome'] },
+  { id:'lifestyle', icon:'✈️', label:'Lifestyle', tags:['lifestyle','travel','reisen','urlaub','wanderlust','travelphotography','instatravel','traveler','backpacker','adventure','explore','natur','outdoor','berg','meer','strand','city','citytrip','europa','deutschland','österreich','schweiz','fernweh','reiseblogger','reisefotos','luxurytravel','roadtrip','camping','vanlife','minimalism'] },
+  { id:'tech', icon:'⚙️', label:'Tech & Auto', tags:['automatisierung','automation','tech','software','app','ki','ai','chatgpt','digitalisierung','produktivität','tools','workflow','nocode','lowcode','programmieren','webdesign','developer','startup','innovation','futureofwork','saas','freelancertool','zeitsparen','effizienz','prozesse','business','entrepreneur','digital','systemdesign','businesstools'] },
+];
+
+// ── State ─────────────────────────────────────────────────────────
+let selectedTemplate = null;
+let fieldValues = [];
+let captionNiches = [];
+let hashtagNiches = [];
+
+// ── Init ──────────────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  // Template buttons
+  const tg = document.getElementById('tmpl-buttons');
+  TEMPLATES.forEach(function(t) {
+    const btn = document.createElement('button');
+    btn.className = 'tmpl-btn';
+    btn.innerHTML = '<div style="font-size:1.5rem;margin-bottom:6px">'+t.icon+'</div><div style="font-size:0.8125rem;font-weight:500">'+t.label+'</div>';
+    btn.onclick = function() { selectTemplate(t); };
+    tg.appendChild(btn);
+  });
+
+  // Caption niche buttons
+  const cnb = document.getElementById('caption-niche-btns');
+  NICHES.forEach(function(n) {
+    const btn = document.createElement('button');
+    btn.id = 'cn-'+n.id;
+    btn.style.cssText = 'padding:5px 10px;border-radius:8px;font-size:0.75rem;font-weight:500;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#6B7280;cursor:pointer;font-family:Inter;transition:all 0.2s;margin:2px';
+    btn.textContent = n.icon+' '+n.label;
+    btn.onclick = function() { toggleCaptionNiche(n.id); };
+    cnb.appendChild(btn);
+  });
+
+  // Hashtag niche grid
+  const ng = document.getElementById('niche-grid');
+  NICHES.forEach(function(n) {
+    const btn = document.createElement('button');
+    btn.id = 'hn-'+n.id;
+    btn.className = 'niche-btn';
+    btn.innerHTML = '<div style="font-size:1.25rem;margin-bottom:4px">'+n.icon+'</div><div style="font-size:0.8125rem;font-weight:500">'+n.label+'</div>';
+    btn.onclick = function() { toggleHashtagNiche(n.id); };
+    ng.appendChild(btn);
+  });
+});
+
+// ── Tab navigation ────────────────────────────────────────────────
+function showTab(tab) {
+  ['caption','hashtags','bio'].forEach(function(t) {
+    document.getElementById('sec-'+t).style.display = t === tab ? 'block' : 'none';
+    const btn = document.getElementById('tab-'+t);
+    if (t === tab) { btn.style.background = '#7C3AED'; btn.style.color = 'white'; }
+    else { btn.style.background = 'transparent'; btn.style.color = '#9CA3AF'; }
+  });
+}
+
+// ── Templates ─────────────────────────────────────────────────────
+function selectTemplate(t) {
+  selectedTemplate = t;
+  fieldValues = new Array(t.fields.length).fill('');
+  document.getElementById('tmpl-grid').style.display = 'none';
+  document.getElementById('tmpl-form').style.display = 'block';
+  document.getElementById('tmpl-title').textContent = t.icon + ' ' + t.label;
+  const fc = document.getElementById('tmpl-fields');
+  fc.innerHTML = '';
+  t.fields.forEach(function(f, i) {
+    const div = document.createElement('div');
+    div.innerHTML = '<label>'+f+'</label><input class="inp" type="text" placeholder="'+f+'…">';
+    div.querySelector('input').oninput = function(e) { fieldValues[i] = e.target.value; updateCaption(); };
+    fc.appendChild(div);
+  });
+  updateCaption();
+}
+
+function resetTemplate() {
+  selectedTemplate = null;
+  document.getElementById('tmpl-grid').style.display = 'block';
+  document.getElementById('tmpl-form').style.display = 'none';
+}
+
+function toggleCaptionNiche(id) {
+  const idx = captionNiches.indexOf(id);
+  if (idx >= 0) captionNiches.splice(idx,1); else captionNiches.push(id);
+  const btn = document.getElementById('cn-'+id);
+  if (captionNiches.includes(id)) { btn.style.background='rgba(124,58,237,0.2)'; btn.style.color='#A78BFA'; btn.style.borderColor='rgba(124,58,237,0.4)'; }
+  else { btn.style.background='transparent'; btn.style.color='#6B7280'; btn.style.borderColor='rgba(255,255,255,0.1)'; }
+  updateCaption();
+}
+
+function updateCaption() {
+  if (!selectedTemplate) return;
+  const tags = NICHES.filter(function(n){return captionNiches.includes(n.id);}).flatMap(function(n){return n.tags;}).slice(0,30).map(function(t){return '#'+t;}).join(' ');
+  const text = selectedTemplate.gen(fieldValues) + (tags || '');
+  document.getElementById('caption-preview').textContent = text || '(Felder ausfüllen…)';
+}
+
+async function copyCaption() {
+  const text = document.getElementById('caption-preview').textContent;
+  if (!text || text === '(Felder ausfüllen…)') return;
+  await navigator.clipboard.writeText(text);
+  const btn = document.getElementById('copy-caption-btn');
+  btn.textContent = '✓ Kopiert!'; btn.classList.add('copied');
+  setTimeout(function(){btn.textContent='📋 Kopieren';btn.classList.remove('copied');},2000);
+}
+
+// ── Hashtags ──────────────────────────────────────────────────────
+function toggleHashtagNiche(id) {
+  const idx = hashtagNiches.indexOf(id);
+  if (idx >= 0) hashtagNiches.splice(idx,1); else hashtagNiches.push(id);
+  const btn = document.getElementById('hn-'+id);
+  if (hashtagNiches.includes(id)) btn.classList.add('active'); else btn.classList.remove('active');
+  updateHashtags();
+}
+
+function updateHashtags() {
+  const tags = NICHES.filter(function(n){return hashtagNiches.includes(n.id);}).flatMap(function(n){return n.tags;}).slice(0,30);
+  const res = document.getElementById('hashtag-result');
+  if (tags.length === 0) { res.style.display='none'; return; }
+  res.style.display = 'block';
+  document.getElementById('tag-count').textContent = tags.length + ' / 30';
+  document.getElementById('tag-display').innerHTML = tags.map(function(t){return '<span class="tag">#'+t+'</span>';}).join('');
+  document.getElementById('tag-text').textContent = tags.map(function(t){return '#'+t;}).join(' ');
+}
+
+async function copyHashtags() {
+  const text = document.getElementById('tag-text').textContent;
+  await navigator.clipboard.writeText(text);
+  const btn = document.getElementById('copy-tags-btn');
+  btn.textContent = '✓ Kopiert!'; btn.classList.add('copied');
+  setTimeout(function(){btn.textContent='📋 Alle kopieren';btn.classList.remove('copied');},2000);
+}
+
+// ── Bio ───────────────────────────────────────────────────────────
+function updateBio() {
+  const role = document.getElementById('bio-role').value;
+  const spec = document.getElementById('bio-spec').value;
+  const value = document.getElementById('bio-value').value;
+  const fact = document.getElementById('bio-fact').value;
+  const cta = document.getElementById('bio-cta').value;
+  const link = document.getElementById('bio-link').value;
+  const lines = [
+    role ? '🎯 '+role : '',
+    spec ? '✨ '+spec : '',
+    value ? '💡 '+value : '',
+    fact ? '⚡ '+fact : '',
+    cta ? '👇 '+cta : '',
+    link ? '🔗 '+link : '',
+  ].filter(Boolean).join('\n');
+  const prev = document.getElementById('bio-preview');
+  prev.style.color = lines ? '#111' : '#6B7280';
+  prev.textContent = lines || 'Fülle die Felder aus…';
+  document.getElementById('bio-count').textContent = lines.length + ' / 150 Zeichen' + (lines.length > 150 ? ' – zu lang!' : '');
+}
+
+async function copyBio() {
+  const text = document.getElementById('bio-preview').textContent;
+  if (!text || text === 'Fülle die Felder aus…') return;
+  await navigator.clipboard.writeText(text);
+  const btn = document.getElementById('copy-bio-btn');
+  btn.textContent = '✓ Kopiert!'; btn.classList.add('copied');
+  setTimeout(function(){btn.textContent='📋 Kopieren';btn.classList.remove('copied');},2000);
+}
+</script>
+</body>
+</html>
