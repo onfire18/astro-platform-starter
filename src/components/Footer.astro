@@ -1,9 +1,21 @@
 ---
-
+const year = new Date().getFullYear();
 ---
 
-<footer class="pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <p class="text-sm">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="decoration-dashed text-primary underline-offset-8"> Astro on Netlify </a>
-    </p>
+<footer class="py-8 mt-16 border-t border-white/10">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <div class="w-5 h-5 rounded bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z"/>
+                </svg>
+            </div>
+            <span class="text-sm font-semibold text-white">AutoFlow</span>
+        </div>
+        <p class="text-neutral-600 text-sm">© {year} AutoFlow. Alle Rechte vorbehalten.</p>
+        <div class="flex gap-5 text-sm text-neutral-500">
+            <a href="#" class="hover:text-white transition no-underline">Datenschutz</a>
+            <a href="#" class="hover:text-white transition no-underline">Impressum</a>
+        </div>
+    </div>
 </footer>
