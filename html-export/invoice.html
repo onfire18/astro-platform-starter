@@ -6,7 +6,7 @@
 <title>Rechnung erstellen | AutoFlow</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="jspdf.umd.min.js"></script>
 <style>
 body{font-family:'Inter',sans-serif}
 a{text-decoration:none}
@@ -284,7 +284,7 @@ async function downloadPDF() {
     R('RECHNUNG',ty,26); ty+=12;
     [['Rechnungsnummer:',g('inv-num')],['Rechnungsdatum:',g('inv-date')],['Fälligkeitsdatum:',g('due-date')]].concat(g('period')?[['Leistungszeitraum:',g('period')]]:[]).forEach(function(d){
       doc.setFontSize(8.5); doc.setFont('helvetica','bold'); doc.setTextColor(60,60,60);
-      doc.text(d[0], W-mr-37, ty);
+      doc.text(d[0], W-mr-55, ty);
       doc.setFont('helvetica','normal'); doc.setTextColor(20,20,20); R(d[1],ty,8.5); ty+=5;
     });
 

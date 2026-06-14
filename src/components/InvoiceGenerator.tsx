@@ -192,7 +192,7 @@ export default function InvoiceGenerator() {
                 doc.setFontSize(8.5);
                 doc.setFont('helvetica', 'bold');
                 doc.setTextColor(60, 60, 60);
-                doc.text(label, W - mr - 37, ty);
+                doc.text(label, W - mr - 55, ty);
                 doc.setFont('helvetica', 'normal');
                 doc.setTextColor(20, 20, 20);
                 rightText(val, ty, 8.5);
