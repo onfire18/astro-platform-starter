@@ -11,29 +11,59 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                'grid-pattern': `linear-gradient(to bottom, theme('colors.neutral.950 / 0%'), theme('colors.neutral.950 / 100%')), url('${noiseDataUri}')`
+                'grid-pattern': `linear-gradient(to bottom, theme('colors.neutral.950 / 0%'), theme('colors.neutral.950 / 100%')), url('${noiseDataUri}')`,
+                'hero-gradient': 'linear-gradient(135deg, #0F0B1E 0%, #1a0533 50%, #0F0B1E 100%)',
+                'brand-gradient': 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
             },
             colors: {
-                neutral: colors.neutral
+                neutral: colors.neutral,
+                brand: {
+                    50: '#F5F3FF',
+                    100: '#EDE9FE',
+                    200: '#DDD6FE',
+                    300: '#C4B5FD',
+                    400: '#A78BFA',
+                    500: '#8B5CF6',
+                    600: '#7C3AED',
+                    700: '#6D28D9',
+                    800: '#5B21B6',
+                    900: '#4C1D95',
+                    950: '#2E1065',
+                },
             },
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans]
-            }
-        }
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
     daisyui: {
         themes: [
             {
-                lofi: {
-                    ...require('daisyui/src/theming/themes')['lofi'],
-                    primary: '#F67280',
-                    'primary-content': '#1f1f1f',
-                    secondary: '#C06C84',
-                    info: '#F67280',
-                    'info-content': '#1f1f1f'
-                }
-            }
-        ]
+                autoflow: {
+                    'color-scheme': 'dark',
+                    primary: '#8B5CF6',
+                    'primary-content': '#ffffff',
+                    secondary: '#6D28D9',
+                    'secondary-content': '#ffffff',
+                    accent: '#10B981',
+                    'accent-content': '#ffffff',
+                    neutral: '#1f2937',
+                    'neutral-content': '#9ca3af',
+                    'base-100': '#0F0B1E',
+                    'base-200': '#1a1130',
+                    'base-300': '#251842',
+                    'base-content': '#ffffff',
+                    info: '#3b82f6',
+                    'info-content': '#ffffff',
+                    success: '#10B981',
+                    'success-content': '#ffffff',
+                    warning: '#f59e0b',
+                    'warning-content': '#1f1f1f',
+                    error: '#ef4444',
+                    'error-content': '#ffffff',
+                },
+            },
+        ],
     },
-    plugins: [require('daisyui')]
+    plugins: [require('daisyui')],
 };
