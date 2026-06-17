@@ -7,153 +7,273 @@ const waSales = whatsappUrl('sales');
 
 <MDLayout
   title="Für Vertriebspartner"
-  description="Werden Sie Vertriebspartner von MediaDrift und verdienen Sie Provisionen für erfolgreich vermittelte Webdesign-Projekte."
+  description="Du kannst verkaufen? Werde Vertriebspartner von MediaDrift und verdiene erfolgsabhängige Provision für gewonnene Website-Kunden."
 >
-  <!-- Hero -->
-  <section class="vertrieb-hero md-section">
+
+  <!-- HERO -->
+  <section class="v-hero" aria-labelledby="v-hero-h1">
     <div class="md-container">
-      <div class="vertrieb-badge md-badge">Für Vermittler & Vertriebspartner</div>
-      <h1 class="vertrieb-headline">
-        Empfehlen Sie uns weiter.<br />
-        <span class="text-cta">Verdienen Sie mit.</span>
+      <span class="md-badge v-badge">Für Vertriebspartner</span>
+      <h1 id="v-hero-h1" class="v-h1">
+        Du kannst verkaufen?<br />
+        <span class="v-cta-text">Dann verdiene mit jedem gewonnenen Kunden.</span>
       </h1>
-      <p class="vertrieb-subline">
-        Sie kennen Unternehmen, die eine bessere Website brauchen?
-        Vermitteln Sie uns als Partner und erhalten Sie eine attraktive Provision
-        für jeden erfolgreichen Projektabschluss – ohne eigenes Risiko.
+      <p class="v-subline">
+        Gewinne Unternehmen für professionelle Websites und erhalte für erfolgreiche
+        Abschlüsse eine vereinbarte Provision.
       </p>
-      <p class="vertrieb-disclaimer">
-        <strong>Hinweis:</strong> Dieses Programm richtet sich an selbstständige Vermittler.
-        Es handelt sich nicht um ein Anstellungsverhältnis. Eine Provision wird
-        nur bei tatsächlichem Vertragsabschluss fällig.
+      <p class="v-disclaimer" role="note">
+        <strong>Wichtiger Hinweis:</strong> Es handelt sich um eine selbstständige Vertriebspartnerschaft,
+        keine Festanstellung. Die Vergütung ist erfolgsabhängig – eine Provision wird
+        ausschließlich bei tatsächlichem Vertragsabschluss fällig.
       </p>
+      <div class="v-hero-actions">
+        <a href="#bewerbung" class="md-btn md-btn-primary">Kennenlerngespräch vereinbaren</a>
+        <a href={waSales} class="md-btn md-btn-outline v-wa-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Über WhatsApp bewerben
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Wie es funktioniert -->
+  <!-- 1. WAS DICH ERWARTET -->
   <section class="md-section">
     <div class="md-container">
-      <p class="md-label">So funktioniert's</p>
-      <h2 class="section-headline">In 3 Schritten zum Partnerprovision</h2>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-number">1</div>
-          <h3>Kontakt herstellen</h3>
-          <p>Sie kennen jemanden, der eine neue oder bessere Website benötigt? Stellen Sie uns vor – persönlich, per WhatsApp oder per E-Mail.</p>
+      <p class="md-label">Was dich erwartet</p>
+      <h2 class="v-h2">Dein Alltag als Vertriebspartner</h2>
+      <div class="v-expect-grid">
+        <div class="v-expect-card">
+          <div class="v-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 12a19.79 19.79 0 01-3.07-8.67A2 2 0 011.72 1h3.09a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L5.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Kaltakquise & Erstgespräche</h3>
+          <p>Du nimmst Kontakt zu Unternehmen auf, stellst MediaDrift vor und vereinbarst Erstgespräche. Deine Kernaufgabe ist das Öffnen von Türen.</p>
         </div>
-        <div class="step-card">
-          <div class="step-number">2</div>
-          <h3>Wir übernehmen</h3>
-          <p>MediaDrift führt das Erstgespräch, erstellt ein Angebot und begleitet den Kunden durch den gesamten Prozess. Sie müssen nichts weiter tun.</p>
+        <div class="v-expect-card">
+          <div class="v-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Übergabe an MediaDrift</h3>
+          <p>Sobald ein Interesse besteht, übernehmen wir den Prozess: Angebot, Konzept, Projektabwicklung. Du musst kein Webdesign-Experte sein.</p>
         </div>
-        <div class="step-card">
-          <div class="step-number">3</div>
-          <h3>Provision erhalten</h3>
-          <p>Sobald der Vertrag unterzeichnet und die Anzahlung eingegangen ist, erhalten Sie Ihre vereinbarte Provision. <span class="placeholder">[PROVISIONSMODELL EINFÜGEN]</span></p>
+        <div class="v-expect-card">
+          <div class="v-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3>Provision bei Abschluss</h3>
+          <p>Wird aus deinem Kontakt ein Kunde und kommt ein Vertrag zustande, erhältst du deine vereinbarte Provision. <span class="v-placeholder">[PROVISIONSMODELL EINFÜGEN]</span></p>
+        </div>
+        <div class="v-expect-card">
+          <div class="v-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Flexible Zeiteinteilung</h3>
+          <p>Du bestimmst selbst, wann und wie viel du arbeitest. Es gibt keine Mindestanforderungen und keine fixen Arbeitszeiten.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Vorteile -->
-  <section class="vorteile-section md-section">
+  <!-- 2. FÜR WEN -->
+  <section class="md-section v-forwhom-section">
     <div class="md-container">
-      <p class="md-label">Ihre Vorteile</p>
-      <h2 class="section-headline">Warum Partner von MediaDrift werden?</h2>
-      <div class="vorteile-grid">
-        <div class="vorteil-item">
-          <div class="vorteil-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div>
-            <h3>Attraktive Provision</h3>
-            <p>Faire Vergütung für Ihre Empfehlung – ohne versteckte Abzüge oder komplizierte Abrechnungsmodelle.</p>
-          </div>
+      <p class="md-label">Für wen ist das geeignet?</p>
+      <h2 class="v-h2">Ideal für diese Personen</h2>
+      <div class="v-forwhom-grid">
+        <div class="v-forwhom-card v-check">
+          <h3>Das bringst du idealerweise mit</h3>
+          <ul class="v-list v-list-check">
+            <li>Erfahrung in Verkauf, Kaltakquise oder Kundenberatung</li>
+            <li>Eigeninitiative und Ausdauer beim Erstkontakt</li>
+            <li>Kommunikationsstärke und sicheres Auftreten</li>
+            <li>Netzwerk in einer oder mehreren Branchen</li>
+            <li>Bereitschaft, auf eigene Rechnung tätig zu sein</li>
+          </ul>
         </div>
-        <div class="vorteil-item">
-          <div class="vorteil-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          </div>
-          <div>
-            <h3>Kein Zeitaufwand</h3>
-            <p>Sie empfehlen, wir erledigen den Rest. Kein eigener Verkaufsprozess, kein Projektmanagement, keine technischen Kenntnisse nötig.</p>
-          </div>
-        </div>
-        <div class="vorteil-item">
-          <div class="vorteil-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <h3>Direkter Ansprechpartner</h3>
-            <p>Persönliche Zusammenarbeit mit Paul Dunker, kein anonymes Vermittlungsportal, schnelle und direkte Kommunikation.</p>
-          </div>
-        </div>
-        <div class="vorteil-item">
-          <div class="vorteil-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-          </div>
-          <div>
-            <h3>Qualität, die überzeugt</h3>
-            <p>Sie empfehlen ein Produkt, hinter dem Sie stehen können – individuelle, hochwertige Websites, die wirklich Ergebnisse bringen.</p>
-          </div>
-        </div>
-        <div class="vorteil-item">
-          <div class="vorteil-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <div>
-            <h3>Verkaufsmaterialien</h3>
-            <p>Wir stellen Ihnen auf Wunsch Informationsmaterialien zur Verfügung, die Sie bei der Empfehlung unterstützen.</p>
-          </div>
-        </div>
-        <div class="vorteil-item">
-          <div class="vorteil-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div>
-            <h3>Kein Risiko</h3>
-            <p>Keine Vorabkosten, keine Mindestanzahl an Vermittlungen, keine Laufzeit-Verpflichtungen. Provision nur bei Erfolg.</p>
-          </div>
+        <div class="v-forwhom-card v-cross">
+          <h3>Weniger geeignet, wenn du</h3>
+          <ul class="v-list v-list-cross">
+            <li>Feste Vergütung unabhängig vom Ergebnis erwartest</li>
+            <li>Keine Erfahrung mit Kundenkontakt hast</li>
+            <li>Ein Angestelltenverhältnis suchst</li>
+            <li>Keine Zeit für aktive Akquise aufbringen kannst</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Zielgruppen -->
+  <!-- 3. ABLAUF -->
   <section class="md-section">
     <div class="md-container">
-      <p class="md-label">Wer passt als Partner?</p>
-      <h2 class="section-headline">Ideal für diese Berufsgruppen</h2>
-      <div class="partner-types">
-        <div class="partner-type-card">
-          <h3>Unternehmensberater</h3>
-          <p>Sie kennen Ihre Klienten und deren Schwachstellen. Empfehlen Sie MediaDrift wenn eine bessere Online-Präsenz fehlt.</p>
+      <p class="md-label">Ablauf</p>
+      <h2 class="v-h2">In 4 Schritten zum ersten Abschluss</h2>
+      <ol class="v-steps" aria-label="Ablauf der Vertriebspartnerschaft">
+        <li class="v-step">
+          <span class="v-step-num" aria-hidden="true">01</span>
+          <div>
+            <h3>Kennenlerngespräch</h3>
+            <p>Wir besprechen deine Erfahrungen, Ziele und ob die Zusammenarbeit zu beiden Seiten passt. Kein Druck, keine Verpflichtung.</p>
+          </div>
+        </li>
+        <li class="v-step">
+          <span class="v-step-num" aria-hidden="true">02</span>
+          <div>
+            <h3>Einführung & Materialien</h3>
+            <p>Du erhältst Informationsunterlagen, Gesprächsleitfäden und einen Überblick über Zielgruppen und typische Einwände.</p>
+          </div>
+        </li>
+        <li class="v-step">
+          <span class="v-step-num" aria-hidden="true">03</span>
+          <div>
+            <h3>Akquise & Vermittlung</h3>
+            <p>Du nimmst Kontakt auf und vermittelst interessierte Unternehmen an MediaDrift. Wir übernehmen ab dem ersten qualifizierten Gespräch.</p>
+          </div>
+        </li>
+        <li class="v-step">
+          <span class="v-step-num" aria-hidden="true">04</span>
+          <div>
+            <h3>Provision nach Abschluss</h3>
+            <p>Nach erfolgreichem Vertragsabschluss und Anzahlung des Kunden wird deine Provision ausbezahlt. <span class="v-placeholder">[PROVISIONSMODELL EINFÜGEN]</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. UNTERSTÜTZUNG -->
+  <section class="md-section v-support-section">
+    <div class="md-container">
+      <p class="md-label">Unterstützung</p>
+      <h2 class="v-h2">Was du von uns bekommst</h2>
+      <div class="v-support-grid">
+        <div class="v-support-item">
+          <span class="v-support-icon">📋</span>
+          <div>
+            <h3>Zielgruppenprofile</h3>
+            <p>Klare Übersichten, welche Branchen und Unternehmenstypen für MediaDrift besonders geeignet sind.</p>
+          </div>
         </div>
-        <div class="partner-type-card">
-          <h3>Marketing-Freelancer</h3>
-          <p>Sie betreuen Social Media, SEO oder Ads – aber keine Websites? Kooperieren Sie mit uns für ein vollständiges Angebot.</p>
+        <div class="v-support-item">
+          <span class="v-support-icon">💬</span>
+          <div>
+            <h3>Gesprächsleitfäden</h3>
+            <p>Bewährte Skripte für Erstgespräche, Einwandbehandlung und die Übergabe an MediaDrift.</p>
+          </div>
         </div>
-        <div class="partner-type-card">
-          <h3>Grafiker & Designer</h3>
-          <p>Sie erstellen Logos und Print-Materialien, aber keine Websites? Wir kümmern uns um die digitale Umsetzung für Ihre Kunden.</p>
+        <div class="v-support-item">
+          <span class="v-support-icon">🖥️</span>
+          <div>
+            <h3>Beispiel-Websites</h3>
+            <p>Konzeptbeispiele nach Branche, die du im Gespräch einsetzen kannst, um das Produkt zu veranschaulichen.</p>
+          </div>
         </div>
-        <div class="partner-type-card">
-          <h3>Branchennetworker</h3>
-          <p>Sie sind gut vernetzt in Ihrer Branche und kennen viele Unternehmen, die digitalen Aufholbedarf haben.</p>
+        <div class="v-support-item">
+          <span class="v-support-icon">🎥</span>
+          <div>
+            <h3>Schulungsmaterialien</h3>
+            <p>Kurze Loom-Videos und Dokumente zu Produkten, Prozessen und häufigen Fragen von Interessenten.</p>
+          </div>
+        </div>
+        <div class="v-support-item">
+          <span class="v-support-icon">📊</span>
+          <div>
+            <h3>CRM-Struktur</h3>
+            <p>Einfache Struktur zur Nachverfolgung deiner Kontakte und Aktivitäten – ohne komplizierte Systeme.</p>
+          </div>
+        </div>
+        <div class="v-support-item">
+          <span class="v-support-icon">🤝</span>
+          <div>
+            <h3>Direktes Feedback</h3>
+            <p>Regelmäßiger Austausch mit Paul, um deinen Ansatz zu verbessern und offene Fragen zu klären.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Bewerbungsformular -->
-  <section class="md-section" id="bewerbung">
+  <!-- 5. VERGÜTUNGSMODELL -->
+  <section class="md-section">
     <div class="md-container">
-      <div class="form-wrapper">
-        <p class="md-label">Interesse geweckt?</p>
-        <h2 class="section-headline">Jetzt als Vertriebspartner bewerben</h2>
-        <p class="form-intro">
-          Füllen Sie das Formular aus und wir melden uns innerhalb von 2 Werktagen bei Ihnen.
-          Wir besprechen dann gemeinsam, ob eine Zusammenarbeit Sinn ergibt.
+      <p class="md-label">Vergütung</p>
+      <h2 class="v-h2">Wie die Provision funktioniert</h2>
+      <div class="v-vergütung-box">
+        <div class="v-vergütung-placeholder">
+          <span class="v-placeholder-icon">ℹ️</span>
+          <div>
+            <h3>Provisionsmodell wird individuell vereinbart</h3>
+            <p>
+              Das konkrete Vergütungsmodell wird im Kennenlerngespräch gemeinsam festgelegt und vertraglich geregelt.
+              <span class="v-placeholder">[PROVISIONSMODELL EINFÜGEN]</span>
+            </p>
+            <p>
+              <strong>Grundsätzlich gilt:</strong> Die Provision ist erfolgsabhängig und wird nach
+              Vertragsabschluss und Anzahlung des Kunden ausgezahlt.
+              Es gibt keine garantierte Vergütung und keine Vorabzahlung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. VORAUSSETZUNGEN -->
+  <section class="md-section v-req-section">
+    <div class="md-container">
+      <p class="md-label">Voraussetzungen</p>
+      <h2 class="v-h2">Was du mitbringen solltest</h2>
+      <div class="v-req-grid">
+        <div class="v-req-item">
+          <span class="v-req-num">01</span>
+          <h3>Eigenständige Tätigkeit</h3>
+          <p>Du bist selbstständig oder bereit, auf eigene Rechnung tätig zu sein. Die Zusammenarbeit erfolgt als freier Handelsvertreter oder ähnliche Form. <span class="v-placeholder">[RECHTLICH PRÜFEN]</span></p>
+        </div>
+        <div class="v-req-item">
+          <span class="v-req-num">02</span>
+          <h3>Vertriebliche Erfahrung</h3>
+          <p>Grundkenntnisse in Kaltakquise, Telefonverkauf oder Netzwerkarbeit sind von Vorteil. Quereinsteiger mit nachweisbarem Talent sind willkommen.</p>
+        </div>
+        <div class="v-req-item">
+          <span class="v-req-num">03</span>
+          <h3>Zeitliche Verfügbarkeit</h3>
+          <p>Mindestens einige Stunden pro Woche für aktive Akquise. Je mehr du investierst, desto mehr kannst du verdienen.</p>
+        </div>
+        <div class="v-req-item">
+          <span class="v-req-num">04</span>
+          <h3>Professionelles Auftreten</h3>
+          <p>Du repräsentierst MediaDrift im Erstkontakt. Zuverlässigkeit, Seriosität und respektvoller Umgang mit Gesprächspartnern sind Pflicht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="md-section">
+    <div class="md-container v-faq-container">
+      <p class="md-label">FAQ</p>
+      <h2 class="v-h2">Häufige Fragen zum Partnerprogramm</h2>
+      <div class="md-faq">
+        {faqSales.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer">{item.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. BEWERBUNGSFORMULAR -->
+  <section class="md-section v-form-section" id="bewerbung">
+    <div class="md-container">
+      <div class="v-form-wrapper">
+        <p class="md-label">Bewerbung</p>
+        <h2 class="v-h2">Jetzt als Vertriebspartner bewerben</h2>
+        <p class="v-form-intro">
+          Schick uns deine Bewerbung – wir melden uns innerhalb von 2 Werktagen.
+          Kein Lebenslauf nötig, nur ein paar ehrliche Antworten.
         </p>
 
         <form
@@ -161,112 +281,145 @@ const waSales = whatsappUrl('sales');
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          class="partner-form"
           id="partner-form"
+          class="v-form"
+          novalidate
+          aria-label="Bewerbungsformular Vertriebspartner"
         >
           <input type="hidden" name="form-name" value="vertriebspartner" />
           <p hidden><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="partner-name">Ihr Name <span aria-hidden="true">*</span></label>
-              <input type="text" id="partner-name" name="name" required autocomplete="name" placeholder="Max Mustermann" />
+          <div class="v-form-row">
+            <div class="v-form-group">
+              <label for="vp-vorname" class="v-label">Vorname <span aria-label="Pflichtfeld">*</span></label>
+              <input type="text" id="vp-vorname" name="vorname" required autocomplete="given-name" placeholder="Dein Vorname" class="v-input" aria-required="true" />
             </div>
-            <div class="form-group">
-              <label for="partner-beruf">Beruf / Tätigkeit <span aria-hidden="true">*</span></label>
-              <input type="text" id="partner-beruf" name="beruf" required placeholder="z.B. Unternehmensberater" />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="partner-email">E-Mail <span aria-hidden="true">*</span></label>
-              <input type="email" id="partner-email" name="email" required autocomplete="email" placeholder="max@beispiel.de" />
-            </div>
-            <div class="form-group">
-              <label for="partner-telefon">Telefon</label>
-              <input type="tel" id="partner-telefon" name="telefon" autocomplete="tel" placeholder="+49 ..." />
+            <div class="v-form-group">
+              <label for="vp-nachname" class="v-label">Nachname <span aria-label="Pflichtfeld">*</span></label>
+              <input type="text" id="vp-nachname" name="nachname" required autocomplete="family-name" placeholder="Dein Nachname" class="v-input" aria-required="true" />
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="partner-netzwerk">Wie sieht Ihr Netzwerk aus? Welche Branchen?</label>
-            <textarea id="partner-netzwerk" name="netzwerk" rows="4" placeholder="Beschreiben Sie kurz, wen Sie kennen und vermitteln könnten..."></textarea>
+          <div class="v-form-row">
+            <div class="v-form-group">
+              <label for="vp-alter" class="v-label">Alter</label>
+              <input type="number" id="vp-alter" name="alter" min="18" max="80" placeholder="z.B. 28" class="v-input" />
+            </div>
+            <div class="v-form-group">
+              <label for="vp-email" class="v-label">E-Mail <span aria-label="Pflichtfeld">*</span></label>
+              <input type="email" id="vp-email" name="email" required autocomplete="email" placeholder="deine@email.de" class="v-input" aria-required="true" />
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="partner-nachricht">Weitere Anmerkungen</label>
-            <textarea id="partner-nachricht" name="nachricht" rows="3" placeholder="Haben Sie Fragen oder besondere Wünsche?"></textarea>
+          <div class="v-form-row">
+            <div class="v-form-group">
+              <label for="vp-whatsapp" class="v-label">WhatsApp-Nummer <span aria-label="Pflichtfeld">*</span></label>
+              <input type="tel" id="vp-whatsapp" name="whatsapp" required autocomplete="tel" placeholder="+49 ..." class="v-input" aria-required="true" />
+            </div>
+            <div class="v-form-group">
+              <label for="vp-verfügbarkeit" class="v-label">Zeitliche Verfügbarkeit <span aria-label="Pflichtfeld">*</span></label>
+              <select id="vp-verfügbarkeit" name="verfügbarkeit" required class="v-input" aria-required="true">
+                <option value="">Bitte wählen</option>
+                <option>Nebenbei (bis 10 Std./Woche)</option>
+                <option>Teilzeit (10–25 Std./Woche)</option>
+                <option>Vollzeit (25+ Std./Woche)</option>
+              </select>
+            </div>
           </div>
 
-          <div class="form-actions">
-            <button type="submit" class="md-btn md-btn-primary" id="partner-submit">
-              Bewerbung absenden
-            </button>
+          <div class="v-form-group">
+            <label for="vp-erfahrung" class="v-label">Vertriebserfahrung <span aria-label="Pflichtfeld">*</span></label>
+            <textarea id="vp-erfahrung" name="erfahrung" required rows="3" class="v-input" placeholder="Hast du schon Erfahrung in Kaltakquise, Verkauf oder Kundengewinnung? Beschreibe kurz deinen Hintergrund." aria-required="true"></textarea>
+          </div>
+
+          <div class="v-form-group">
+            <label for="vp-motivation" class="v-label">Warum passt du gut in den Vertrieb? <span aria-label="Pflichtfeld">*</span></label>
+            <textarea id="vp-motivation" name="motivation" required rows="3" class="v-input" placeholder="Was macht dich zu einem guten Vertriebspartner? Was motiviert dich?" aria-required="true"></textarea>
+          </div>
+
+          <div class="v-form-group v-consent-group">
+            <label class="v-consent-label">
+              <input type="checkbox" name="datenschutz" required id="vp-datenschutz" aria-required="true" />
+              <span>Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Bewerbung zu. <span aria-label="Pflichtfeld">*</span></span>
+            </label>
+          </div>
+
+          <div class="v-form-actions">
+            <button type="submit" class="md-btn md-btn-primary" id="vp-submit">Bewerbung absenden</button>
             <a href={waSales} target="_blank" rel="noopener noreferrer" class="md-btn md-btn-outline">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003A9.997 9.997 0 0 0 2 12c0 1.763.463 3.448 1.27 4.91L2 22l5.234-1.244A9.97 9.97 0 0 0 12.004 22C17.523 22 22 17.523 22 12S17.523 2.003 12.004 2.003zm0 18.247a8.219 8.219 0 0 1-4.195-1.15l-.3-.178-3.107.737.78-2.997-.197-.307A8.242 8.242 0 0 1 3.752 12c0-4.556 3.706-8.262 8.252-8.262 4.548 0 8.252 3.706 8.252 8.262 0 4.557-3.704 8.25-8.252 8.25z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Direkt per WhatsApp
             </a>
           </div>
 
-          <div id="partner-success" class="form-success" hidden>
-            <strong>Bewerbung erhalten!</strong> Wir melden uns innerhalb von 2 Werktagen bei Ihnen.
+          <div id="vp-success" class="v-form-success" hidden aria-live="polite">
+            <strong>Bewerbung erhalten!</strong> Wir melden uns innerhalb von 2 Werktagen bei dir. Danke!
           </div>
-          <div id="partner-error" class="form-error" hidden>
-            Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per WhatsApp.
+          <div id="vp-error" class="v-form-error" hidden aria-live="polite">
+            Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe uns direkt per WhatsApp.
           </div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="md-section">
-    <div class="md-container faq-container">
-      <p class="md-label">Häufige Fragen</p>
-      <h2 class="section-headline">Fragen zum Partnerprogramm</h2>
-      <div class="md-faq">
-        {faqSales.map((item) => (
-          <details class="faq-item">
-            <summary class="faq-question">{item.q}</summary>
-            <div class="faq-answer">{item.a}</div>
-          </details>
-        ))}
+  <!-- 9. WHATSAPP & TERMINBUCHUNG -->
+  <section class="md-section v-contact-section">
+    <div class="md-container v-contact-inner">
+      <p class="md-label">Direkter Kontakt</p>
+      <h2 class="v-h2">Lieber persönlich besprechen?</h2>
+      <p class="v-contact-sub">Kein Formular nötig – schreib uns einfach direkt oder buch einen Termin.</p>
+      <div class="v-contact-cards">
+        <a href={waSales} target="_blank" rel="noopener noreferrer" class="v-contact-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="v-contact-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <strong>WhatsApp schreiben</strong>
+            <span>Schnelle Antwort innerhalb von 24 Stunden</span>
+          </div>
+        </a>
+        <a href={SITE.booking} class="v-contact-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="v-contact-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div>
+            <strong>Termin buchen</strong>
+            <span>Kennenlerngespräch direkt im Kalender</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
+
 </MDLayout>
 
 <script>
-  const form = document.getElementById('partner-form') as HTMLFormElement;
-  const submitBtn = document.getElementById('partner-submit') as HTMLButtonElement;
-  const successMsg = document.getElementById('partner-success') as HTMLElement;
-  const errorMsg = document.getElementById('partner-error') as HTMLElement;
+  const form = document.getElementById('partner-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('vp-submit') as HTMLButtonElement | null;
+  const successMsg = document.getElementById('vp-success') as HTMLElement | null;
+  const errorMsg = document.getElementById('vp-error') as HTMLElement | null;
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (!submitBtn || !successMsg || !errorMsg) return;
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet…';
     successMsg.hidden = true;
     errorMsg.hidden = true;
 
     try {
-      const data = new FormData(form);
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),
       });
-
       if (res.ok) {
         form.reset();
-        successMsg.removeAttribute('hidden');
+        successMsg.hidden = false;
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } else {
-        errorMsg.removeAttribute('hidden');
+        errorMsg.hidden = false;
       }
     } catch {
-      errorMsg.removeAttribute('hidden');
+      errorMsg.hidden = false;
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Bewerbung absenden';
@@ -275,129 +428,61 @@ const waSales = whatsappUrl('sales');
 </script>
 
 <style>
-  .vertrieb-hero {
+  /* Hero */
+  .v-hero {
     background: linear-gradient(135deg, var(--md-primary) 0%, #1E3A5F 100%);
-    color: #F1F5F9;
     padding-top: 7rem;
     padding-bottom: 5rem;
     text-align: center;
   }
-
-  .vertrieb-badge {
-    background: rgba(3, 105, 161, 0.4);
-    color: #93C5FD;
-    border: 1px solid rgba(147, 197, 253, 0.3);
-    display: inline-block;
-    margin-bottom: 1.5rem;
-  }
-
-  .vertrieb-headline {
+  .v-badge { background: rgba(3,105,161,0.35); color: #93C5FD; border: 1px solid rgba(147,197,253,0.3); display: inline-block; margin-bottom: 1.5rem; }
+  .v-h1 {
     font-family: 'DM Serif Display', Georgia, serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #F1F5F9;
     font-weight: 400;
     line-height: 1.2;
-    color: #F1F5F9;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
-
-  .text-cta { color: #60A5FA; }
-
-  .vertrieb-subline {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #94A3B8;
-    max-width: 640px;
-    margin: 0 auto 1.5rem;
-    line-height: 1.7;
-  }
-
-  .vertrieb-disclaimer {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(251, 191, 36, 0.1);
-    border: 1px solid rgba(251, 191, 36, 0.3);
+  .v-cta-text { color: #60A5FA; }
+  .v-subline { color: #94A3B8; font-size: clamp(1rem, 2vw, 1.15rem); max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.7; }
+  .v-disclaimer {
+    max-width: 580px;
+    margin: 0 auto 2rem;
+    background: rgba(251,191,36,0.1);
+    border: 1px solid rgba(251,191,36,0.3);
     border-radius: 8px;
     padding: 1rem 1.25rem;
     font-size: 0.88rem;
     color: #FCD34D;
     line-height: 1.6;
+    text-align: left;
   }
+  .v-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .v-wa-btn { display: flex; align-items: center; gap: 0.5rem; }
 
-  .section-headline {
+  /* Section headline */
+  .v-h2 {
     font-family: 'DM Serif Display', Georgia, serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
     color: var(--md-primary);
-    margin-bottom: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
     line-height: 1.3;
   }
 
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .step-card {
+  /* Expect grid */
+  .v-expect-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .v-expect-card {
     background: var(--md-surface);
     border: 1px solid var(--md-border);
     border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .step-number {
-    width: 48px;
-    height: 48px;
-    background: var(--md-cta);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 1.4rem;
-    margin: 0 auto 1rem;
-  }
-
-  .step-card h3 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 1.1rem;
-    color: var(--md-primary);
-    margin-bottom: 0.75rem;
-  }
-
-  .step-card p {
-    color: var(--md-muted);
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .placeholder {
-    color: var(--md-cta);
-    font-weight: 500;
-  }
-
-  .vorteile-section {
-    background: var(--md-bg);
-  }
-
-  .vorteile-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .vorteil-item {
+    padding: 1.5rem;
     display: flex;
     gap: 1rem;
-    background: var(--md-surface);
-    border: 1px solid var(--md-border);
-    border-radius: 10px;
-    padding: 1.5rem;
     align-items: flex-start;
   }
-
-  .vorteil-icon {
+  .v-icon {
     width: 44px;
     height: 44px;
     background: var(--md-accent);
@@ -408,85 +493,76 @@ const waSales = whatsappUrl('sales');
     justify-content: center;
     flex-shrink: 0;
   }
+  .v-expect-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1rem; color: var(--md-primary); margin-bottom: 0.35rem; }
+  .v-expect-card p { color: var(--md-muted); font-size: 0.88rem; line-height: 1.6; }
 
-  .vorteil-item h3 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 1rem;
-    color: var(--md-primary);
-    margin-bottom: 0.35rem;
-  }
+  /* For whom */
+  .v-forwhom-section { background: var(--md-bg); }
+  .v-forwhom-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .v-forwhom-card { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 12px; padding: 1.75rem; }
+  .v-forwhom-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.05rem; color: var(--md-primary); margin-bottom: 1rem; }
+  .v-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .v-list li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--md-muted); font-size: 0.9rem; line-height: 1.5; }
+  .v-list-check li::before { content: '✓'; color: #16A34A; font-weight: 700; flex-shrink: 0; }
+  .v-list-cross li::before { content: '✕'; color: #DC2626; font-weight: 700; flex-shrink: 0; }
 
-  .vorteil-item p {
-    color: var(--md-muted);
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-
-  .partner-types {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .partner-type-card {
-    background: var(--md-surface);
-    border: 1px solid var(--md-border);
-    border-radius: 10px;
-    padding: 1.5rem;
-  }
-
-  .partner-type-card h3 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 1.05rem;
-    color: var(--md-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  .partner-type-card p {
-    color: var(--md-muted);
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-
-  .form-wrapper {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .form-intro {
-    color: var(--md-muted);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-  }
-
-  .partner-form {
-    background: var(--md-surface);
-    border: 1px solid var(--md-border);
-    border-radius: 14px;
-    padding: 2.5rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .form-group {
+  /* Steps */
+  .v-steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
+  .v-step {
     display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1.25rem;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--md-border);
   }
+  .v-step:last-child { border-bottom: none; }
+  .v-step-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.5rem; color: var(--md-border); font-weight: 400; line-height: 1; min-width: 3.5rem; }
+  .v-step h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; color: var(--md-primary); margin-bottom: 0.4rem; }
+  .v-step p { color: var(--md-muted); font-size: 0.9rem; line-height: 1.6; }
 
-  .form-group label {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--md-secondary);
+  /* Support */
+  .v-support-section { background: var(--md-bg); }
+  .v-support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .v-support-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 10px; padding: 1.25rem; }
+  .v-support-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .v-support-item h3 { font-size: 0.95rem; font-weight: 600; color: var(--md-primary); margin-bottom: 0.25rem; }
+  .v-support-item p { color: var(--md-muted); font-size: 0.85rem; line-height: 1.6; }
+
+  /* Vergütung */
+  .v-vergütung-box { max-width: 680px; }
+  .v-vergütung-placeholder {
+    display: flex;
+    gap: 1.25rem;
+    background: #FEF3C7;
+    border: 1px solid #FCD34D;
+    border-radius: 12px;
+    padding: 1.75rem;
+    align-items: flex-start;
   }
+  .v-placeholder-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .v-vergütung-placeholder h3 { font-size: 1.05rem; color: #78350F; margin-bottom: 0.5rem; font-weight: 600; }
+  .v-vergütung-placeholder p { color: #92400E; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.5rem; }
 
-  .form-group input,
-  .form-group textarea {
+  /* Req */
+  .v-req-section { background: var(--md-bg); }
+  .v-req-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .v-req-item { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 10px; padding: 1.5rem; }
+  .v-req-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; color: var(--md-border); display: block; margin-bottom: 0.5rem; }
+  .v-req-item h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1rem; color: var(--md-primary); margin-bottom: 0.4rem; }
+  .v-req-item p { color: var(--md-muted); font-size: 0.88rem; line-height: 1.6; }
+
+  /* FAQ */
+  .v-faq-container { max-width: 720px; margin-inline: auto; }
+
+  /* Form */
+  .v-form-section { background: var(--md-bg); }
+  .v-form-wrapper { max-width: 720px; margin-inline: auto; }
+  .v-form-intro { color: var(--md-muted); margin-bottom: 2rem; line-height: 1.6; }
+  .v-form { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 14px; padding: 2.5rem; }
+  .v-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .v-form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .v-label { font-size: 0.88rem; font-weight: 500; color: var(--md-secondary); }
+  .v-input {
     border: 1px solid var(--md-border);
     border-radius: 8px;
     padding: 0.65rem 0.9rem;
@@ -494,55 +570,62 @@ const waSales = whatsappUrl('sales');
     font-family: 'Jost', system-ui, sans-serif;
     color: var(--md-text);
     background: var(--md-bg);
-    transition: border-color 150ms;
     resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 150ms;
   }
+  .v-input:focus { outline: none; border-color: var(--md-cta); box-shadow: 0 0 0 3px rgba(3,105,161,0.1); }
+  .v-input::placeholder { color: var(--md-muted); opacity: 0.7; }
+  select.v-input { cursor: pointer; }
+  .v-consent-group { margin-top: 0.25rem; }
+  .v-consent-label { display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-size: 0.88rem; color: var(--md-muted); line-height: 1.5; }
+  .v-consent-label input[type="checkbox"] { margin-top: 0.15rem; flex-shrink: 0; accent-color: var(--md-cta); width: 16px; height: 16px; }
+  .v-consent-label a { color: var(--md-cta); text-decoration: underline; }
+  .v-form-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 0.5rem; }
+  .v-form-success { margin-top: 1rem; padding: 1rem 1.25rem; background: #DCFCE7; border: 1px solid #86EFAC; border-radius: 8px; color: #14532D; font-size: 0.9rem; }
+  .v-form-error { margin-top: 1rem; padding: 1rem 1.25rem; background: #FEE2E2; border: 1px solid #FCA5A5; border-radius: 8px; color: #7F1D1D; font-size: 0.9rem; }
 
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--md-cta);
-    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.1);
-  }
-
-  .form-actions {
+  /* Contact cards */
+  .v-contact-section { background: var(--md-primary); text-align: center; }
+  .v-contact-inner { max-width: 700px; margin-inline: auto; }
+  .v-contact-section .v-h2 { color: #F1F5F9; }
+  .v-contact-sub { color: #94A3B8; margin-bottom: 2.5rem; }
+  .v-contact-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .v-contact-card {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
     align-items: center;
-    margin-top: 0.5rem;
+    gap: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem;
+    text-decoration: none;
+    color: #F1F5F9;
+    transition: background 150ms, border-color 150ms;
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
   }
+  .v-contact-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+  .v-contact-icon { color: #60A5FA; flex-shrink: 0; }
+  .v-contact-card strong { display: block; font-weight: 600; margin-bottom: 0.2rem; }
+  .v-contact-card span { font-size: 0.82rem; color: #94A3B8; }
 
-  .form-success {
-    margin-top: 1.25rem;
-    padding: 1rem 1.25rem;
-    background: #DCFCE7;
-    border: 1px solid #86EFAC;
-    border-radius: 8px;
-    color: #14532D;
-    font-size: 0.9rem;
+  /* Placeholder styling */
+  .v-placeholder { background: #FEF9C3; color: #78350F; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.85rem; font-family: monospace; }
+
+  @media (max-width: 900px) {
+    .v-expect-grid { grid-template-columns: 1fr; }
+    .v-forwhom-grid { grid-template-columns: 1fr; }
+    .v-support-grid { grid-template-columns: 1fr 1fr; }
+    .v-req-grid { grid-template-columns: 1fr; }
   }
-
-  .form-error {
-    margin-top: 1.25rem;
-    padding: 1rem 1.25rem;
-    background: #FEE2E2;
-    border: 1px solid #FCA5A5;
-    border-radius: 8px;
-    color: #7F1D1D;
-    font-size: 0.9rem;
-  }
-
-  .faq-container {
-    max-width: 720px;
-    margin-inline: auto;
-  }
-
-  @media (max-width: 768px) {
-    .steps-grid { grid-template-columns: 1fr; }
-    .vorteile-grid { grid-template-columns: 1fr; }
-    .partner-types { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .partner-form { padding: 1.5rem; }
+  @media (max-width: 640px) {
+    .v-support-grid { grid-template-columns: 1fr; }
+    .v-form-row { grid-template-columns: 1fr; }
+    .v-form { padding: 1.5rem; }
+    .v-hero-actions { flex-direction: column; align-items: center; }
+    .v-contact-cards { flex-direction: column; align-items: center; }
   }
 </style>
