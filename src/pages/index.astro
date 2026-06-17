@@ -16,18 +16,25 @@ const waSales = whatsappUrl('sales');
   <!-- =========================================================
        1. HERO
   ========================================================== -->
-  <section class="hero md-section" aria-label="Einleitung">
+  <section class="hero" aria-label="Einleitung">
     <div class="md-container hero-inner">
-      <div class="hero-text">
-        <span class="md-label">Webdesign &amp; Entwicklung · München</span>
-        <h1>Websites, die nicht nur gut aussehen.<br />Sondern Kunden gewinnen.</h1>
+
+      <!-- Left: Text -->
+      <div class="hero-text animate-fadeinup">
+        <span class="hero-label">Webdesign &amp; Entwicklung · München</span>
+        <h1 class="hero-h1">
+          Websites, die nicht<br />nur gut aussehen.<br />
+          <span class="hero-highlight">Sondern Kunden<br />gewinnen.</span>
+        </h1>
         <p class="hero-sub">
-          Individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten,
-          mehr Vertrauen schaffen und online neue Kunden gewinnen möchten – ohne Baukästen,
-          ohne Mittelsmänner, direkt mit Paul.
+          Wir entwickeln digitale Auftritte für Unternehmen, die professioneller auftreten,
+          mehr Vertrauen schaffen und online neue Kunden gewinnen möchten.
         </p>
         <div class="hero-actions">
-          <a href="#kontakt" class="md-btn md-btn-primary">Entwurf erstellen lassen</a>
+          <a href="#kontakt" class="md-btn md-btn-primary hero-btn-primary">
+            Entwurf erstellen lassen
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
           <a href="#referenzen" class="md-btn md-btn-outline">Projekte ansehen</a>
         </div>
         <p class="hero-sales-hint">
@@ -36,50 +43,109 @@ const waSales = whatsappUrl('sales');
         </p>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <!-- Decorative browser frame SVG mockup -->
-        <svg class="browser-mockup" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Website-Mockup">
-          <!-- Browser chrome -->
-          <rect x="0" y="0" width="480" height="320" rx="12" fill="#1E293B"/>
-          <!-- Title bar -->
-          <rect x="0" y="0" width="480" height="40" rx="12" fill="#0F172A"/>
-          <rect x="0" y="28" width="480" height="12" fill="#0F172A"/>
-          <!-- Traffic lights -->
-          <circle cx="22" cy="20" r="6" fill="#EF4444" opacity="0.8"/>
-          <circle cx="42" cy="20" r="6" fill="#F59E0B" opacity="0.8"/>
-          <circle cx="62" cy="20" r="6" fill="#22C55E" opacity="0.8"/>
-          <!-- URL bar -->
-          <rect x="80" y="11" width="320" height="18" rx="9" fill="#334155"/>
-          <rect x="92" y="16" width="80" height="8" rx="4" fill="#64748B"/>
-          <!-- Page content area -->
-          <!-- Hero block -->
-          <rect x="20" y="56" width="440" height="80" rx="6" fill="#1E3A5F" opacity="0.6"/>
-          <rect x="40" y="70" width="200" height="12" rx="3" fill="#93C5FD" opacity="0.7"/>
-          <rect x="40" y="90" width="160" height="8" rx="3" fill="#CBD5E1" opacity="0.4"/>
-          <rect x="40" y="106" width="80" height="18" rx="5" fill="#0369A1"/>
-          <rect x="132" y="106" width="80" height="18" rx="5" fill="#334155"/>
-          <!-- Card row -->
-          <rect x="20" y="150" width="130" height="70" rx="6" fill="#FFFFFF" opacity="0.07"/>
-          <rect x="34" y="163" width="60" height="8" rx="3" fill="#93C5FD" opacity="0.6"/>
-          <rect x="34" y="178" width="100" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
-          <rect x="34" y="190" width="80" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
-          <rect x="165" y="150" width="130" height="70" rx="6" fill="#FFFFFF" opacity="0.07"/>
-          <rect x="179" y="163" width="60" height="8" rx="3" fill="#93C5FD" opacity="0.6"/>
-          <rect x="179" y="178" width="100" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
-          <rect x="179" y="190" width="80" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
-          <rect x="310" y="150" width="130" height="70" rx="6" fill="#FFFFFF" opacity="0.07"/>
-          <rect x="324" y="163" width="60" height="8" rx="3" fill="#93C5FD" opacity="0.6"/>
-          <rect x="324" y="178" width="100" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
-          <rect x="324" y="190" width="80" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
-          <!-- Text rows -->
-          <rect x="20" y="236" width="440" height="8" rx="3" fill="#CBD5E1" opacity="0.15"/>
-          <rect x="20" y="250" width="380" height="8" rx="3" fill="#CBD5E1" opacity="0.15"/>
-          <rect x="20" y="264" width="300" height="8" rx="3" fill="#CBD5E1" opacity="0.15"/>
-          <!-- Bottom bar -->
-          <rect x="20" y="284" width="440" height="24" rx="6" fill="#0369A1" opacity="0.3"/>
-          <rect x="180" y="290" width="120" height="12" rx="3" fill="#93C5FD" opacity="0.5"/>
-        </svg>
+      <!-- Right: Browser mockup + floating cards -->
+      <div class="hero-visual animate-fadeinup animate-delay-2" aria-hidden="true">
+        <div class="hero-mockup-wrap">
+
+          <!-- Browser frame -->
+          <div class="mock-browser">
+            <div class="mock-chrome">
+              <div class="mock-dots">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
+              </div>
+              <div class="mock-url">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                ihr-unternehmen.de
+              </div>
+            </div>
+            <div class="mock-body">
+              <!-- Fake inner nav -->
+              <div class="mock-inner-nav">
+                <div class="mock-inner-logo">
+                  <div class="mock-inner-logo-mark"></div>
+                  <div class="mock-inner-logo-text"></div>
+                </div>
+                <div class="mock-inner-links">
+                  <span>Lösungen</span>
+                  <span>Über uns</span>
+                  <span>Referenzen</span>
+                  <span>Kontakt</span>
+                </div>
+                <div class="mock-inner-cta">Beratung anfragen</div>
+              </div>
+              <!-- Fake hero content -->
+              <div class="mock-hero-content">
+                <div class="mock-hero-left">
+                  <div class="mock-headline-lines">
+                    <div class="mock-hl mock-hl-1"></div>
+                    <div class="mock-hl mock-hl-2"></div>
+                    <div class="mock-hl mock-hl-3"></div>
+                  </div>
+                  <div class="mock-sub-lines">
+                    <div class="mock-sl mock-sl-1"></div>
+                    <div class="mock-sl mock-sl-2"></div>
+                  </div>
+                  <div class="mock-cta-btn">Jetzt beraten lassen →</div>
+                </div>
+                <div class="mock-hero-right">
+                  <div class="mock-img-placeholder">
+                    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="120" height="100" rx="8" fill="#E2E8F0"/>
+                      <rect x="15" y="20" width="90" height="60" rx="6" fill="#CBD5E1"/>
+                      <rect x="30" y="35" width="60" height="8" rx="2" fill="#94A3B8"/>
+                      <rect x="40" y="50" width="40" height="6" rx="2" fill="#94A3B8"/>
+                      <circle cx="60" cy="72" r="8" fill="#0369A1" opacity="0.3"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <!-- Trust logos -->
+              <div class="mock-trust-row">
+                <span>Über 50 Unternehmen vertrauen uns</span>
+                <div class="mock-logos">
+                  <span class="mock-logo-name">NOVUM</span>
+                  <span class="mock-logo-name">werkraum</span>
+                  <span class="mock-logo-name">CALDERA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating stat card 1 – top left -->
+          <div class="float-card float-card-1 animate-floatup">
+            <div class="float-card-icon fc-green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="float-card-body">
+              <span class="float-card-label">Anfragen</span>
+              <strong class="float-card-value fc-value-green">+127%</strong>
+              <span class="float-card-sub">im Vergleich zum Vormonat</span>
+            </div>
+          </div>
+
+          <!-- Floating stat card 2 – bottom left -->
+          <div class="float-card float-card-2 animate-floatup animate-delay-1">
+            <div class="float-card-body">
+              <span class="float-card-label">Ladezeit</span>
+              <strong class="float-card-value">0,8s</strong>
+              <span class="float-card-badge">✓ Sehr gut</span>
+            </div>
+          </div>
+
+          <!-- Floating stat card 3 – right -->
+          <div class="float-card float-card-3 animate-floatup animate-delay-2">
+            <div class="float-card-body">
+              <span class="float-card-label">Conversion-Rate</span>
+              <strong class="float-card-value fc-value-blue">+64%</strong>
+              <span class="float-card-sub">Mehr Anfragen durch neues Design</span>
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -668,38 +734,229 @@ const waSales = whatsappUrl('sales');
      STYLES
 ========================================================== -->
 <style>
+  /* ---- Animations ---- */
+  @keyframes fadeinup {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatbob {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+  @keyframes floatcard {
+    0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    50%       { transform: translateY(-6px) rotate(var(--rot, 0deg)); }
+  }
+  .animate-fadeinup {
+    opacity: 0;
+    animation: fadeinup 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .animate-delay-1 { animation-delay: 0.15s; }
+  .animate-delay-2 { animation-delay: 0.3s; }
+  .animate-floatup {
+    opacity: 0;
+    animation: fadeinup 0.6s cubic-bezier(0.22,1,0.36,1) forwards, floatcard 4s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fadeinup, .animate-floatup { animation: none; opacity: 1; }
+  }
+
   /* ---- Hero ---- */
-  .hero { background: var(--md-surface); border-bottom: 1px solid var(--md-border); }
+  .hero {
+    background: linear-gradient(160deg, #F8FAFC 60%, #EFF6FF 100%);
+    padding-top: calc(var(--nav-h) + 3rem);
+    padding-bottom: 4rem;
+    overflow: hidden;
+  }
   .hero-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
     align-items: center;
   }
-  .hero-text h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-block: 0.5rem 1.25rem;
+  .hero-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--md-cta);
+    background: var(--md-accent);
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    margin-bottom: 1.25rem;
   }
+  .hero-h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--md-primary);
+    margin-bottom: 1.5rem;
+  }
+  .hero-highlight { color: var(--md-cta); }
   .hero-sub {
     font-size: 1.05rem;
     color: var(--md-secondary);
-    max-width: 44ch;
-    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 42ch;
+    margin-bottom: 2.25rem;
   }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-sales-hint { font-size: 0.88rem; color: var(--md-muted); margin-top: 1rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .hero-btn-primary { display: flex; align-items: center; gap: 0.5rem; }
+  .hero-sales-hint { font-size: 0.88rem; color: var(--md-muted); }
   .hero-sales-hint a { color: var(--md-cta); text-decoration: underline; font-weight: 500; }
+
+  /* ---- Mockup ---- */
   .hero-visual { position: relative; }
-  .browser-mockup {
-    width: 100%;
-    max-width: 480px;
-    border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(15,23,42,0.18);
-    display: block;
-    margin-inline: auto;
+  .hero-mockup-wrap {
+    position: relative;
+    animation: floatbob 5s ease-in-out infinite;
   }
-  @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-mockup-wrap { animation: none; }
+  }
+
+  .mock-browser {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 24px 80px rgba(15,23,42,0.15), 0 4px 16px rgba(15,23,42,0.08);
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+  }
+  .mock-chrome {
+    background: #F1F5F9;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .mock-dots { display: flex; gap: 5px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #EF4444; }
+  .dot-y { background: #F59E0B; }
+  .dot-g { background: #22C55E; }
+  .mock-url {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .mock-body { padding: 0; }
+
+  /* Inner nav */
+  .mock-inner-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.6rem 1.25rem;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .mock-inner-logo { display: flex; align-items: center; gap: 0.4rem; }
+  .mock-inner-logo-mark { width: 16px; height: 16px; background: #0369A1; border-radius: 3px; }
+  .mock-inner-logo-text { width: 50px; height: 7px; background: #0F172A; border-radius: 2px; }
+  .mock-inner-links { display: flex; gap: 0.75rem; flex: 1; }
+  .mock-inner-links span { font-size: 0.62rem; color: #64748B; }
+  .mock-inner-cta {
+    background: #0369A1;
+    color: #fff;
+    font-size: 0.6rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* Mock hero content */
+  .mock-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem 0.75rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+  }
+  .mock-hl { height: 10px; background: #0F172A; border-radius: 3px; margin-bottom: 6px; }
+  .mock-hl-1 { width: 90%; }
+  .mock-hl-2 { width: 75%; }
+  .mock-hl-3 { width: 60%; background: #0369A1; }
+  .mock-sl { height: 6px; background: #CBD5E1; border-radius: 2px; margin-bottom: 5px; }
+  .mock-sl-1 { width: 100%; }
+  .mock-sl-2 { width: 80%; }
+  .mock-cta-btn {
+    display: inline-block;
+    background: #0369A1;
+    color: #fff;
+    font-size: 0.62rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+  }
+  .mock-headline-lines { margin-bottom: 0.5rem; }
+  .mock-sub-lines { margin-bottom: 0.5rem; }
+  .mock-img-placeholder { border-radius: 6px; overflow: hidden; }
+  .mock-img-placeholder svg { width: 100%; display: block; }
+  .mock-trust-row {
+    padding: 0.6rem 1.25rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #F1F5F9;
+  }
+  .mock-trust-row > span { font-size: 0.58rem; color: #94A3B8; white-space: nowrap; }
+  .mock-logos { display: flex; gap: 0.75rem; }
+  .mock-logo-name { font-size: 0.6rem; font-weight: 700; color: #CBD5E1; letter-spacing: 0.05em; }
+
+  /* Floating stat cards */
+  .float-card {
+    position: absolute;
+    background: #fff;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 8px 32px rgba(15,23,42,0.12), 0 2px 8px rgba(15,23,42,0.06);
+    border: 1px solid #F1F5F9;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 150px;
+    z-index: 10;
+    animation-delay: 0.5s !important;
+  }
+  .float-card-1 { top: -1rem; left: -2rem; --rot: -2deg; }
+  .float-card-2 { bottom: 2rem; left: -2.5rem; --rot: 1deg; animation-delay: 0.7s !important; }
+  .float-card-3 { bottom: -1rem; right: -1.5rem; --rot: 2deg; animation-delay: 0.9s !important; }
+
+  .float-card-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .fc-green { background: #DCFCE7; color: #16A34A; }
+  .float-card-label { display: block; font-size: 0.68rem; color: #94A3B8; margin-bottom: 1px; }
+  .float-card-value { display: block; font-size: 1.2rem; font-weight: 700; color: var(--md-primary); line-height: 1.1; }
+  .fc-value-green { color: #16A34A; }
+  .fc-value-blue { color: #0369A1; }
+  .float-card-sub { display: block; font-size: 0.65rem; color: #94A3B8; margin-top: 1px; max-width: 12ch; }
+  .float-card-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    background: #DCFCE7;
+    color: #16A34A;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
     .hero-visual { display: none; }
   }
 
