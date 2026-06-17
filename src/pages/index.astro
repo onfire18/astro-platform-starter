@@ -43,9 +43,9 @@ const waSales = whatsappUrl('sales');
         </p>
       </div>
 
-      <!-- Right: Browser mockup + floating cards -->
+      <!-- Right: Website mockup carousel -->
       <div class="hero-visual animate-fadeinup animate-delay-2" aria-hidden="true">
-        <div class="hero-mockup-wrap">
+        <div class="mockup-slider-wrap">
 
           <!-- Browser frame -->
           <div class="mock-browser">
@@ -56,95 +56,155 @@ const waSales = whatsappUrl('sales');
                 <span class="dot dot-g"></span>
               </div>
               <div class="mock-url">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                ihr-unternehmen.de
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <span id="mock-url-text">kanzlei-beispiel.de</span>
               </div>
             </div>
-            <div class="mock-body">
-              <!-- Fake inner nav -->
-              <div class="mock-inner-nav">
-                <div class="mock-inner-logo">
-                  <div class="mock-inner-logo-mark"></div>
-                  <div class="mock-inner-logo-text"></div>
-                </div>
-                <div class="mock-inner-links">
-                  <span>Lösungen</span>
-                  <span>Über uns</span>
-                  <span>Referenzen</span>
-                  <span>Kontakt</span>
-                </div>
-                <div class="mock-inner-cta">Beratung anfragen</div>
-              </div>
-              <!-- Fake hero content -->
-              <div class="mock-hero-content">
-                <div class="mock-hero-left">
-                  <div class="mock-headline-lines">
-                    <div class="mock-hl mock-hl-1"></div>
-                    <div class="mock-hl mock-hl-2"></div>
-                    <div class="mock-hl mock-hl-3"></div>
+
+            <!-- Slides -->
+            <div class="mock-slides">
+
+              <!-- SLIDE 1: Kanzlei / Anwalt -->
+              <div class="mock-slide active" data-url="kanzlei-beispiel.de">
+                <div class="ms-nav" style="background:#0F172A;">
+                  <div class="ms-logo">
+                    <div style="width:11px;height:11px;background:#3B82F6;border-radius:2px;flex-shrink:0;"></div>
+                    <div style="background:#fff;width:52px;height:5px;border-radius:2px;"></div>
                   </div>
-                  <div class="mock-sub-lines">
-                    <div class="mock-sl mock-sl-1"></div>
-                    <div class="mock-sl mock-sl-2"></div>
+                  <div class="ms-links" style="color:#94A3B8;">
+                    <span>Team</span><span>Leistungen</span><span>Kontakt</span>
                   </div>
-                  <div class="mock-cta-btn">Jetzt beraten lassen →</div>
+                  <div class="ms-cta" style="background:#3B82F6;">Erstberatung</div>
                 </div>
-                <div class="mock-hero-right">
-                  <div class="mock-img-placeholder">
-                    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="120" height="100" rx="8" fill="#E2E8F0"/>
-                      <rect x="15" y="20" width="90" height="60" rx="6" fill="#CBD5E1"/>
-                      <rect x="30" y="35" width="60" height="8" rx="2" fill="#94A3B8"/>
-                      <rect x="40" y="50" width="40" height="6" rx="2" fill="#94A3B8"/>
-                      <circle cx="60" cy="72" r="8" fill="#0369A1" opacity="0.3"/>
-                    </svg>
+                <div class="ms-body" style="background:linear-gradient(135deg,#F8FAFC 0%,#EFF6FF 100%);">
+                  <div class="ms-left">
+                    <div class="ms-eyebrow" style="color:#3B82F6;">Rechtsanwalt · München</div>
+                    <div class="ms-title-group">
+                      <div class="ms-title-bar" style="background:#0F172A;width:100%;"></div>
+                      <div class="ms-title-bar" style="background:#0F172A;width:82%;"></div>
+                      <div class="ms-title-bar" style="background:#3B82F6;width:58%;"></div>
+                    </div>
+                    <div class="ms-sub-group">
+                      <div class="ms-sub-bar" style="width:100%;"></div>
+                      <div class="ms-sub-bar" style="width:76%;"></div>
+                    </div>
+                    <div class="ms-btn" style="background:#3B82F6;">Erstberatung anfragen →</div>
+                  </div>
+                  <div class="ms-right">
+                    <div class="ms-card" style="background:#fff;border:1px solid #E2E8F0;">
+                      <div class="ms-avatar" style="background:#DBEAFE;"></div>
+                      <div style="background:#0F172A;height:5px;border-radius:2px;width:70%;margin:.25rem 0 .15rem;"></div>
+                      <div style="background:#CBD5E1;height:4px;border-radius:2px;width:50%;"></div>
+                      <div class="ms-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!-- Trust logos -->
-              <div class="mock-trust-row">
-                <span>Über 50 Unternehmen vertrauen uns</span>
-                <div class="mock-logos">
-                  <span class="mock-logo-name">NOVUM</span>
-                  <span class="mock-logo-name">werkraum</span>
-                  <span class="mock-logo-name">CALDERA</span>
+
+              <!-- SLIDE 2: Handwerk -->
+              <div class="mock-slide" data-url="baumeister-gmbh.de">
+                <div class="ms-nav" style="background:#fff;border-bottom:1px solid #F1F5F9;">
+                  <div class="ms-logo">
+                    <div style="width:11px;height:11px;background:#F97316;border-radius:2px;flex-shrink:0;"></div>
+                    <div style="background:#1C1917;width:58px;height:5px;border-radius:2px;"></div>
+                  </div>
+                  <div class="ms-links" style="color:#78716C;">
+                    <span>Leistungen</span><span>Projekte</span><span>Kontakt</span>
+                  </div>
+                  <div class="ms-cta" style="background:#F97316;">Angebot</div>
+                </div>
+                <div class="ms-body" style="background:linear-gradient(135deg,#FFFBF7 0%,#FEF3C7 100%);">
+                  <div class="ms-left">
+                    <div class="ms-eyebrow" style="color:#F97316;">Meisterbetrieb seit 1987</div>
+                    <div class="ms-title-group">
+                      <div class="ms-title-bar" style="background:#1C1917;width:100%;"></div>
+                      <div class="ms-title-bar" style="background:#1C1917;width:76%;"></div>
+                      <div class="ms-title-bar" style="background:#F97316;width:54%;"></div>
+                    </div>
+                    <div class="ms-sub-group">
+                      <div class="ms-sub-bar" style="width:100%;background:#A8A29E;"></div>
+                      <div class="ms-sub-bar" style="width:80%;background:#A8A29E;"></div>
+                    </div>
+                    <div class="ms-btn" style="background:#F97316;">Kostenloses Angebot →</div>
+                  </div>
+                  <div class="ms-right">
+                    <div style="display:flex;flex-direction:column;gap:.35rem;width:100%;">
+                      <div class="ms-service-chip" style="background:#fff;border:1px solid #FED7AA;">🔧 Heizung</div>
+                      <div class="ms-service-chip" style="background:#fff;border:1px solid #FED7AA;">🚿 Sanitär</div>
+                      <div class="ms-service-chip" style="background:#fff;border:1px solid #FED7AA;">⚡ Elektro</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <!-- SLIDE 3: Restaurant -->
+              <div class="mock-slide" data-url="la-piazza-muenchen.de">
+                <div class="ms-nav" style="background:#1C1917;">
+                  <div class="ms-logo">
+                    <div style="width:11px;height:11px;background:#10B981;border-radius:50%;flex-shrink:0;"></div>
+                    <div style="background:#D4D4D4;width:42px;height:5px;border-radius:2px;"></div>
+                  </div>
+                  <div class="ms-links" style="color:#D4D4D4;">
+                    <span>Speisekarte</span><span>Tisch</span><span>Story</span>
+                  </div>
+                  <div class="ms-cta" style="background:#10B981;">Reservieren</div>
+                </div>
+                <div class="ms-body" style="background:linear-gradient(135deg,#1C1917 0%,#292524 60%,#1C1917 100%);">
+                  <div class="ms-left">
+                    <div class="ms-eyebrow" style="color:#10B981;">Italiano Autentico</div>
+                    <div class="ms-title-group">
+                      <div class="ms-title-bar" style="background:#F5F5F4;width:100%;"></div>
+                      <div class="ms-title-bar" style="background:#F5F5F4;width:78%;"></div>
+                      <div class="ms-title-bar" style="background:#10B981;width:52%;"></div>
+                    </div>
+                    <div class="ms-sub-group">
+                      <div class="ms-sub-bar" style="width:100%;background:#57534E;"></div>
+                      <div class="ms-sub-bar" style="width:68%;background:#57534E;"></div>
+                    </div>
+                    <div class="ms-btn" style="background:#10B981;">Tisch reservieren →</div>
+                  </div>
+                  <div class="ms-right">
+                    <div style="background:#292524;border:1px solid #3F3F46;border-radius:8px;padding:.6rem;width:100%;">
+                      <div style="background:linear-gradient(135deg,#065F46,#10B981);border-radius:5px;height:38px;margin-bottom:.4rem;"></div>
+                      <div style="background:#F5F5F4;height:4px;border-radius:2px;width:80%;margin-bottom:.2rem;"></div>
+                      <div style="color:#10B981;font-size:0.58rem;font-weight:700;">€ 18,50</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /mock-slides -->
+          </div><!-- /mock-browser -->
+
+          <!-- Navigation dots -->
+          <div class="slider-dots-row">
+            <button class="sdot active" data-index="0" aria-label="Kanzlei-Website"></button>
+            <button class="sdot" data-index="1" aria-label="Handwerk-Website"></button>
+            <button class="sdot" data-index="2" aria-label="Restaurant-Website"></button>
           </div>
 
-          <!-- Floating stat card 1 – top left -->
-          <div class="float-card float-card-1 animate-floatup">
-            <div class="float-card-icon fc-green">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <div class="float-card-body">
-              <span class="float-card-label">Anfragen</span>
-              <strong class="float-card-value fc-value-green">+127%</strong>
-              <span class="float-card-sub">im Vergleich zum Vormonat</span>
-            </div>
-          </div>
+        </div><!-- /mockup-slider-wrap -->
 
-          <!-- Floating stat card 2 – bottom left -->
-          <div class="float-card float-card-2 animate-floatup animate-delay-1">
-            <div class="float-card-body">
-              <span class="float-card-label">Ladezeit</span>
-              <strong class="float-card-value">0,8s</strong>
-              <span class="float-card-badge">✓ Sehr gut</span>
-            </div>
+        <!-- Floating stat cards -->
+        <div class="float-card float-card-1 animate-floatup">
+          <div class="float-card-icon fc-green">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
-
-          <!-- Floating stat card 3 – right -->
-          <div class="float-card float-card-3 animate-floatup animate-delay-2">
-            <div class="float-card-body">
-              <span class="float-card-label">Conversion-Rate</span>
-              <strong class="float-card-value fc-value-blue">+64%</strong>
-              <span class="float-card-sub">Mehr Anfragen durch neues Design</span>
-            </div>
+          <div class="float-card-body">
+            <span class="float-card-label">Anfragen</span>
+            <strong class="float-card-value fc-value-green">+127%</strong>
           </div>
-
         </div>
-      </div>
+
+        <div class="float-card float-card-2 animate-floatup animate-delay-1">
+          <div class="float-card-body">
+            <span class="float-card-label">Ladezeit</span>
+            <strong class="float-card-value">0,8s</strong>
+            <span class="float-card-badge">✓ Sehr gut</span>
+          </div>
+        </div>
+
+      </div><!-- /hero-visual -->
 
     </div>
   </section>
@@ -807,33 +867,28 @@ const waSales = whatsappUrl('sales');
   .hero-sales-hint { font-size: 0.88rem; color: var(--md-muted); }
   .hero-sales-hint a { color: var(--md-cta); text-decoration: underline; font-weight: 500; }
 
-  /* ---- Mockup ---- */
+  /* ---- Mockup slider ---- */
   .hero-visual { position: relative; }
-  .hero-mockup-wrap {
-    position: relative;
-    animation: floatbob 5s ease-in-out infinite;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-mockup-wrap { animation: none; }
-  }
+
+  .mockup-slider-wrap { position: relative; }
 
   .mock-browser {
     background: #fff;
     border-radius: 14px;
-    box-shadow: 0 24px 80px rgba(15,23,42,0.15), 0 4px 16px rgba(15,23,42,0.08);
+    box-shadow: 0 24px 80px rgba(15,23,42,0.14), 0 4px 16px rgba(15,23,42,0.07);
     overflow: hidden;
     border: 1px solid #E2E8F0;
   }
   .mock-chrome {
     background: #F1F5F9;
     border-bottom: 1px solid #E2E8F0;
-    padding: 0.6rem 1rem;
+    padding: 0.55rem 0.9rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
-  .mock-dots { display: flex; gap: 5px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mock-dots { display: flex; gap: 5px; flex-shrink: 0; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; }
   .dot-r { background: #EF4444; }
   .dot-y { background: #F59E0B; }
   .dot-g { background: #22C55E; }
@@ -841,115 +896,172 @@ const waSales = whatsappUrl('sales');
     flex: 1;
     background: #fff;
     border: 1px solid #E2E8F0;
-    border-radius: 6px;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.72rem;
+    border-radius: 5px;
+    padding: 0.22rem 0.55rem;
+    font-size: 0.7rem;
     color: #64748B;
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.3rem;
+    transition: color 0.4s ease;
   }
-  .mock-body { padding: 0; }
+
+  /* Slides */
+  .mock-slides {
+    position: relative;
+    height: 248px;
+    overflow: hidden;
+  }
+  .mock-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.55s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .mock-slide.active { opacity: 1; }
+  .mock-slide.slide-out {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   /* Inner nav */
-  .mock-inner-nav {
+  .ms-nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding: 0.6rem 1.25rem;
-    border-bottom: 1px solid #F1F5F9;
+    gap: 0.9rem;
+    padding: 0.5rem 0.9rem;
   }
-  .mock-inner-logo { display: flex; align-items: center; gap: 0.4rem; }
-  .mock-inner-logo-mark { width: 16px; height: 16px; background: #0369A1; border-radius: 3px; }
-  .mock-inner-logo-text { width: 50px; height: 7px; background: #0F172A; border-radius: 2px; }
-  .mock-inner-links { display: flex; gap: 0.75rem; flex: 1; }
-  .mock-inner-links span { font-size: 0.62rem; color: #64748B; }
-  .mock-inner-cta {
-    background: #0369A1;
-    color: #fff;
-    font-size: 0.6rem;
-    padding: 0.3rem 0.65rem;
+  .ms-logo { display: flex; align-items: center; gap: 0.35rem; }
+  .ms-links { display: flex; gap: 0.7rem; flex: 1; }
+  .ms-links span { font-size: 0.58rem; }
+  .ms-cta {
+    font-size: 0.56rem;
+    padding: 0.26rem 0.58rem;
     border-radius: 4px;
+    color: #fff;
     white-space: nowrap;
   }
 
-  /* Mock hero content */
-  .mock-hero-content {
+  /* Body */
+  .ms-body {
     display: grid;
-    grid-template-columns: 1fr 0.85fr;
-    gap: 1rem;
-    padding: 1.25rem 1.25rem 0.75rem;
-    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+    grid-template-columns: 1fr 0.75fr;
+    gap: 0.85rem;
+    padding: 1rem 0.9rem 0.85rem;
+    flex: 1;
+    align-items: center;
   }
-  .mock-hl { height: 10px; background: #0F172A; border-radius: 3px; margin-bottom: 6px; }
-  .mock-hl-1 { width: 90%; }
-  .mock-hl-2 { width: 75%; }
-  .mock-hl-3 { width: 60%; background: #0369A1; }
-  .mock-sl { height: 6px; background: #CBD5E1; border-radius: 2px; margin-bottom: 5px; }
-  .mock-sl-1 { width: 100%; }
-  .mock-sl-2 { width: 80%; }
-  .mock-cta-btn {
+  .ms-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .ms-eyebrow {
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .ms-title-group { display: flex; flex-direction: column; gap: 5px; }
+  .ms-title-bar { height: 8px; border-radius: 2px; }
+  .ms-sub-group { display: flex; flex-direction: column; gap: 4px; margin-top: 0.15rem; }
+  .ms-sub-bar { height: 5px; background: #CBD5E1; border-radius: 2px; }
+  .ms-btn {
     display: inline-block;
-    background: #0369A1;
+    font-size: 0.58rem;
+    padding: 0.32rem 0.7rem;
+    border-radius: 4px;
     color: #fff;
-    font-size: 0.62rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 5px;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
+    align-self: flex-start;
+    white-space: nowrap;
   }
-  .mock-headline-lines { margin-bottom: 0.5rem; }
-  .mock-sub-lines { margin-bottom: 0.5rem; }
-  .mock-img-placeholder { border-radius: 6px; overflow: hidden; }
-  .mock-img-placeholder svg { width: 100%; display: block; }
-  .mock-trust-row {
-    padding: 0.6rem 1.25rem 0.85rem;
+  .ms-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    border-top: 1px solid #F1F5F9;
+    justify-content: center;
   }
-  .mock-trust-row > span { font-size: 0.58rem; color: #94A3B8; white-space: nowrap; }
-  .mock-logos { display: flex; gap: 0.75rem; }
-  .mock-logo-name { font-size: 0.6rem; font-weight: 700; color: #CBD5E1; letter-spacing: 0.05em; }
+  .ms-card {
+    padding: 0.65rem;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .ms-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-bottom: 0.2rem;
+  }
+  .ms-stars { font-size: 0.52rem; margin-top: 0.1rem; }
+  .ms-service-chip {
+    padding: 0.3rem 0.55rem;
+    border-radius: 5px;
+    font-size: 0.58rem;
+    font-weight: 500;
+  }
+
+  /* Slider dots */
+  .slider-dots-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+  }
+  .sdot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: none;
+    background: #CBD5E1;
+    cursor: pointer;
+    padding: 0;
+    transition: background 220ms, width 220ms, border-radius 220ms;
+  }
+  .sdot.active {
+    background: var(--md-cta);
+    width: 22px;
+    border-radius: 4px;
+  }
 
   /* Floating stat cards */
   .float-card {
     position: absolute;
     background: #fff;
     border-radius: 12px;
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 0.9rem;
     box-shadow: 0 8px 32px rgba(15,23,42,0.12), 0 2px 8px rgba(15,23,42,0.06);
     border: 1px solid #F1F5F9;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    min-width: 150px;
+    gap: 0.55rem;
+    min-width: 130px;
     z-index: 10;
     animation-delay: 0.5s !important;
   }
-  .float-card-1 { top: -1rem; left: -2rem; --rot: -2deg; }
-  .float-card-2 { bottom: 2rem; left: -2.5rem; --rot: 1deg; animation-delay: 0.7s !important; }
-  .float-card-3 { bottom: -1rem; right: -1.5rem; --rot: 2deg; animation-delay: 0.9s !important; }
+  .float-card-1 { top: -0.75rem; left: -2rem; --rot: -2deg; }
+  .float-card-2 { bottom: 2.5rem; left: -2rem; --rot: 1deg; animation-delay: 0.7s !important; }
 
   .float-card-icon {
-    width: 28px; height: 28px;
-    border-radius: 8px;
+    width: 26px; height: 26px;
+    border-radius: 7px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
   .fc-green { background: #DCFCE7; color: #16A34A; }
-  .float-card-label { display: block; font-size: 0.68rem; color: #94A3B8; margin-bottom: 1px; }
-  .float-card-value { display: block; font-size: 1.2rem; font-weight: 700; color: var(--md-primary); line-height: 1.1; }
+  .float-card-label { display: block; font-size: 0.64rem; color: #94A3B8; margin-bottom: 1px; }
+  .float-card-value { display: block; font-size: 1.15rem; font-weight: 700; color: var(--md-primary); line-height: 1.1; }
   .fc-value-green { color: #16A34A; }
-  .fc-value-blue { color: #0369A1; }
-  .float-card-sub { display: block; font-size: 0.65rem; color: #94A3B8; margin-top: 1px; max-width: 12ch; }
   .float-card-badge {
     display: inline-block;
-    font-size: 0.65rem;
+    font-size: 0.63rem;
     background: #DCFCE7;
     color: #16A34A;
-    padding: 0.15rem 0.45rem;
+    padding: 0.12rem 0.42rem;
     border-radius: 4px;
     margin-top: 2px;
     font-weight: 600;
@@ -1401,5 +1513,42 @@ const waSales = whatsappUrl('sales');
     form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('.form-input').forEach(field => {
       field.addEventListener('input', () => field.setCustomValidity(''));
     });
+  })();
+
+  // ---- Hero mockup slider ----
+  (function () {
+    const slides = document.querySelectorAll<HTMLElement>('.mock-slide');
+    const dots = document.querySelectorAll<HTMLButtonElement>('.sdot');
+    const urlEl = document.getElementById('mock-url-text');
+    if (!slides.length) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function goTo(n: number) {
+      slides[current].classList.remove('active');
+      dots[current]?.classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current]?.classList.add('active');
+      if (urlEl) urlEl.textContent = (slides[current] as HTMLElement).dataset.url ?? '';
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 3500);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goTo(i); startTimer(); });
+    });
+
+    const wrap = document.querySelector('.mockup-slider-wrap');
+    if (wrap) {
+      wrap.addEventListener('mouseenter', () => clearInterval(timer));
+      wrap.addEventListener('mouseleave', startTimer);
+    }
+
+    startTimer();
   })();
 </script>
