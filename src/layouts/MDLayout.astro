@@ -81,5 +81,60 @@ const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
     <MDFooter />
     <ConsentBanner />
     <Assistant />
+
+    <script>
+      // ---- Global scroll reveal (all MediaDrift pages) ----
+      (function () {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const selectors = [
+          '.md-section .md-label',
+          '.md-section > .md-container > h2',
+          '.md-card',
+          '[class*="-card"]',
+          '.md-section li',
+          '.process-step',
+          '.about-photo',
+          '.about-text',
+          '.md-faq details',
+          '.contact-form',
+          'form.v-form',
+          '.v-step',
+          '.v-req-item',
+          '.v-support-item',
+          '.v-expect-card',
+        ];
+
+        // Collect targets, but never anything inside a hero (those animate on load)
+        const all = document.querySelectorAll(selectors.join(','));
+        const targets = Array.from(all).filter(
+          (el) => !el.closest('.hero') && !el.closest('.v-hero')
+        ) as HTMLElement[];
+
+        if (reduce || !('IntersectionObserver' in window)) {
+          targets.forEach((el) => el.classList.add('reveal', 'reveal-in'));
+          return;
+        }
+
+        targets.forEach((el, i) => {
+          el.classList.add('reveal');
+          el.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
+        });
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-in');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+
+        targets.forEach((el) => io.observe(el));
+      })();
+    </script>
   </body>
 </html>
