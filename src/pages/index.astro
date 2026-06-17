@@ -564,14 +564,16 @@ const waSales = whatsappUrl('sales');
   ========================================================== -->
   <section class="md-section about-section" aria-labelledby="about-headline">
     <div class="md-container about-inner">
-      <div class="about-photo" aria-hidden="true">
-        <div class="photo-placeholder">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="26" r="14" stroke="#94A3B8" stroke-width="2"/>
-            <path d="M8 60c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <span>Paul Dunker</span>
-        </div>
+      <div class="about-photo">
+        <img
+          src="/images/profilbild.jpg"
+          alt="Paul Dunker, Gründer von MediaDrift"
+          class="about-photo-img"
+          width="420"
+          height="500"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <div class="about-text">
         <span class="md-label">Über MediaDrift</span>
@@ -1626,18 +1628,14 @@ const waSales = whatsappUrl('sales');
     gap: 3rem;
     align-items: start;
   }
-  .photo-placeholder {
+  .about-photo-img {
+    width: 100%;
     aspect-ratio: 3/4;
-    background: var(--md-bg);
-    border: 1px solid var(--md-border);
+    object-fit: cover;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    color: var(--md-muted);
-    font-size: 0.85rem;
+    border: 1px solid var(--md-border);
+    box-shadow: 0 12px 40px rgba(15,23,42,0.1);
+    display: block;
   }
   .about-text h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 1.25rem; }
   .about-text p { color: var(--md-muted); margin-bottom: 1rem; }
