@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
   <nav class="md-nav md-container" aria-label="Hauptnavigation">
     <!-- Logo -->
     <a href="/" class="md-nav-logo" aria-label="MediaDrift – Zur Startseite">
-      <span class="logo-mark">M</span>
+      <img src="/images/logo.jpeg" alt="MediaDrift Logo" class="logo-img" width="34" height="34" />
       <span class="logo-text">MediaDrift</span>
     </a>
 
@@ -114,6 +114,12 @@ const currentPath = Astro.url.pathname;
     gap: 0.6rem;
     text-decoration: none;
     flex-shrink: 0;
+  }
+  .logo-img {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    object-fit: cover;
   }
   .logo-mark {
     display: flex;

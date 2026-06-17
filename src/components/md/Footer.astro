@@ -8,7 +8,7 @@ import { SITE, whatsappUrl } from '../../config/site';
       <!-- Brand -->
       <div class="footer-brand">
         <div class="footer-logo">
-          <span class="logo-mark">M</span>
+          <img src="/images/logo.jpeg" alt="MediaDrift Logo" class="footer-logo-img" width="32" height="32" />
           <span class="logo-text">MediaDrift</span>
         </div>
         <p class="footer-tagline">Websites, die nicht nur gut aussehen.<br />Sondern Kunden gewinnen.</p>
@@ -110,6 +110,12 @@ import { SITE, whatsappUrl } from '../../config/site';
     align-items: center;
     gap: 0.6rem;
     margin-bottom: 1rem;
+  }
+  .footer-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    object-fit: cover;
   }
   .logo-mark {
     width: 32px;
