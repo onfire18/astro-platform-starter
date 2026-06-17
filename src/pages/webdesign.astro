@@ -1,0 +1,569 @@
+---
+import MDLayout from '../layouts/MDLayout.astro';
+import { SITE, whatsappUrl } from '../config/site';
+import { faqMain } from '../data/faq';
+
+const waUrl = whatsappUrl('customer');
+---
+
+<MDLayout
+  title="Webdesign"
+  description="Professionelles Webdesign für Unternehmen – individuelle Websites, die Ihre Zielgruppe ansprechen, Vertrauen schaffen und neue Kunden gewinnen."
+>
+
+  <!-- HERO -->
+  <section class="md-section hero-section" aria-labelledby="hero-heading">
+    <div class="md-container hero-inner">
+      <span class="md-label">Webdesign München</span>
+      <h1 id="hero-heading">Webdesign, das Kunden überzeugt</h1>
+      <p class="hero-sub">
+        Individuelle Websites, die Ihre Zielgruppe ansprechen und zur Kontaktaufnahme motivieren.
+      </p>
+      <div class="hero-actions">
+        <a href="/#kontakt" class="md-btn md-btn-primary">Kostenlos anfragen</a>
+        <a href={waUrl} class="md-btn md-btn-outline" target="_blank" rel="noopener noreferrer">
+          WhatsApp schreiben
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAUKASTEN VS. INDIVIDUAL -->
+  <section class="md-section compare-section" aria-labelledby="compare-heading">
+    <div class="md-container">
+      <span class="md-label">Warum individuell?</span>
+      <h2 id="compare-heading">Baukasten oder individuelle Website?</h2>
+      <p class="section-intro">
+        Baukästen wie Squarespace, Wix oder Jimdo versprechen schnelle Ergebnisse – aber zu welchem Preis?
+        Hier ist der ehrliche Vergleich.
+      </p>
+
+      <div class="compare-grid" role="list">
+        <div class="compare-col compare-col--bad md-card" role="listitem">
+          <h3 class="compare-col__title">Baukasten-Website</h3>
+          <ul class="compare-list" aria-label="Nachteile von Baukästen">
+            <li>
+              <span class="compare-icon" aria-hidden="true">✕</span>
+              <span><strong>Einheitslook:</strong> Tausende Unternehmen nutzen dasselbe Template</span>
+            </li>
+            <li>
+              <span class="compare-icon" aria-hidden="true">✕</span>
+              <span><strong>Monatliche Kosten für immer:</strong> Sie zahlen, solange Sie online sind – ohne die Website jemals zu besitzen</span>
+            </li>
+            <li>
+              <span class="compare-icon" aria-hidden="true">✕</span>
+              <span><strong>Eingeschränktes SEO:</strong> Viele Baukästen erschweren technisches SEO und verlangsamen Ladezeiten</span>
+            </li>
+            <li>
+              <span class="compare-icon" aria-hidden="true">✕</span>
+              <span><strong>Kein Eigentum:</strong> Anbieterwechsel bedeutet Neustart von null</span>
+            </li>
+            <li>
+              <span class="compare-icon" aria-hidden="true">✕</span>
+              <span><strong>Begrenzte Flexibilität:</strong> Design und Funktion sind durch das System eingeschränkt</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="compare-col compare-col--good md-card" role="listitem">
+          <h3 class="compare-col__title">Individuelle Website</h3>
+          <ul class="compare-list" aria-label="Vorteile einer individuellen Website">
+            <li>
+              <span class="compare-icon compare-icon--good" aria-hidden="true">✓</span>
+              <span><strong>Einzigartiges Design:</strong> Maßgeschneidert auf Ihre Marke und Zielgruppe</span>
+            </li>
+            <li>
+              <span class="compare-icon compare-icon--good" aria-hidden="true">✓</span>
+              <span><strong>Ihr Eigentum:</strong> Einmalige Investition – keine laufenden Lizenzkosten</span>
+            </li>
+            <li>
+              <span class="compare-icon compare-icon--good" aria-hidden="true">✓</span>
+              <span><strong>Bessere Performance:</strong> Sauber entwickelter Code, schnellere Ladezeiten, höhere Google-Bewertungen</span>
+            </li>
+            <li>
+              <span class="compare-icon compare-icon--good" aria-hidden="true">✓</span>
+              <span><strong>Vollständige SEO-Kontrolle:</strong> Technisches SEO ohne Kompromisse</span>
+            </li>
+            <li>
+              <span class="compare-icon compare-icon--good" aria-hidden="true">✓</span>
+              <span><strong>Unbegrenzte Möglichkeiten:</strong> Jede Funktion, die Ihr Unternehmen braucht</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN IM DETAIL -->
+  <section class="md-section services-section" aria-labelledby="services-heading">
+    <div class="md-container">
+      <span class="md-label">Leistungen</span>
+      <h2 id="services-heading">Was Sie erhalten</h2>
+      <p class="section-intro">
+        Jedes Projekt umfasst alle notwendigen Schritte – von der ersten Idee bis zum fertigen Launch.
+      </p>
+
+      <div class="services-grid" role="list">
+        <article class="md-card service-card" role="listitem">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          </div>
+          <h3>Konzept &amp; Strategie</h3>
+          <p>Analyse Ihrer Zielgruppe und Wettbewerber, klare Seitenstruktur und eine Conversion-Strategie, die Besucher zu Anfragen führt.</p>
+        </article>
+
+        <article class="md-card service-card" role="listitem">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>UI/UX Design</h3>
+          <p>Moderne, nutzerfreundliche Gestaltung, die Ihre Marke widerspiegelt und Besucher intuitiv durch die Seite führt.</p>
+        </article>
+
+        <article class="md-card service-card" role="listitem">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Technische Entwicklung</h3>
+          <p>Schnelle, sichere Websites mit modernen Technologien – sauberer Code, optimale Performance und langfristige Wartbarkeit.</p>
+        </article>
+
+        <article class="md-card service-card" role="listitem">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>SEO-Grundoptimierung</h3>
+          <p>Technisches SEO, aussagekräftige Meta-Tags, optimierte Seitenstruktur und lokale Auffindbarkeit für Ihren Standort.</p>
+        </article>
+
+        <article class="md-card service-card" role="listitem">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-1"/><path d="M6 14v-2"/><path d="M18 14v-4"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+          </div>
+          <h3>Performance</h3>
+          <p>Ladezeiten unter 2 Sekunden durch optimierte Bilder, schlanken Code und moderne Hosting-Infrastruktur.</p>
+        </article>
+
+        <article class="md-card service-card" role="listitem">
+          <div class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3>Betreuung nach dem Launch</h3>
+          <p>Persönliche Einweisung, Updates auf Anfrage und Anpassungen, damit Ihre Website dauerhaft aktuell bleibt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITÄTSMERKMALE -->
+  <section class="md-section quality-section" aria-labelledby="quality-heading">
+    <div class="md-container">
+      <span class="md-label">Qualität</span>
+      <h2 id="quality-heading">Jede Website erfüllt hohe Standards</h2>
+
+      <div class="quality-grid" role="list">
+        <div class="quality-item" role="listitem">
+          <div class="quality-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <h3>DSGVO-konform</h3>
+            <p>Selbst gehostete Schriften, kein Google Fonts-Tracking, datenschutzkonformes Einwilligungs-Management – von Anfang an rechtssicher.</p>
+          </div>
+        </div>
+
+        <div class="quality-item" role="listitem">
+          <div class="quality-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h3>Barrierefrei</h3>
+            <p>An WCAG 2.1 orientiert: kontrastreiche Farben, semantisches HTML, Tastaturbedienbarkeit und sinnvolle ARIA-Attribute.</p>
+          </div>
+        </div>
+
+        <div class="quality-item" role="listitem">
+          <div class="quality-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <h3>Mobiloptimiert</h3>
+            <p>Mobile-First-Ansatz: Ihre Website überzeugt auf Smartphone, Tablet und Desktop gleichermaßen.</p>
+          </div>
+        </div>
+
+        <div class="quality-item" role="listitem">
+          <div class="quality-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <h3>Wartbar</h3>
+            <p>Sie können Inhalte selbst anpassen – keine technischen Vorkenntnisse nötig. Und wenn Sie Hilfe brauchen, sind wir da.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZIELGRUPPEN -->
+  <section class="md-section audience-section" aria-labelledby="audience-heading">
+    <div class="md-container">
+      <span class="md-label">Für wen?</span>
+      <h2 id="audience-heading">MediaDrift arbeitet mit</h2>
+      <p class="section-intro">
+        Ob Einzelperson oder kleines Team – wer professionell auftreten und online Kunden gewinnen will, ist bei MediaDrift richtig.
+      </p>
+
+      <ul class="audience-grid" aria-label="Zielgruppen von MediaDrift">
+        <li class="md-badge audience-tag">Selbstständige</li>
+        <li class="md-badge audience-tag">Kleine Unternehmen (2–20 MA)</li>
+        <li class="md-badge audience-tag">Gründer &amp; Startups</li>
+        <li class="md-badge audience-tag">Dienstleister</li>
+        <li class="md-badge audience-tag">Handwerksbetriebe</li>
+        <li class="md-badge audience-tag">Kanzleien</li>
+        <li class="md-badge audience-tag">Immobilienmakler</li>
+        <li class="md-badge audience-tag">Gastronomie</li>
+        <li class="md-badge audience-tag">Berater &amp; Coaches</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="md-section faq-section" aria-labelledby="faq-heading">
+    <div class="md-container faq-inner">
+      <span class="md-label">Häufige Fragen</span>
+      <h2 id="faq-heading">Was Interessenten häufig fragen</h2>
+
+      <div class="md-faq" role="list">
+        {faqMain.map((item) => (
+          <details role="listitem">
+            <summary>{item.question}</summary>
+            <div class="faq-answer">{item.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="md-section cta-section" aria-labelledby="cta-heading">
+    <div class="md-container cta-inner">
+      <h2 id="cta-heading">Bereit für Ihre neue Website?</h2>
+      <p class="cta-sub">
+        Kein langes Hin und Her. Beschreiben Sie kurz, was Sie brauchen – und Sie erhalten innerhalb von 48 Stunden eine erste Einschätzung.
+      </p>
+      <div class="cta-actions">
+        <a href="/#kontakt" class="md-btn md-btn-primary">Jetzt Projekt anfragen</a>
+        <a href={waUrl} class="md-btn md-btn-outline" target="_blank" rel="noopener noreferrer">
+          Via WhatsApp anfragen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</MDLayout>
+
+<style>
+  /* Hero */
+  .hero-section {
+    background: linear-gradient(160deg, var(--md-surface) 0%, var(--md-accent) 100%);
+    border-bottom: 1px solid var(--md-border);
+  }
+
+  .hero-inner {
+    max-width: 720px;
+  }
+
+  .hero-inner h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-block: 0.5rem 1rem;
+    color: var(--md-primary);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--md-secondary);
+    margin-bottom: 2rem;
+    max-width: 560px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  /* Section intro text */
+  .section-intro {
+    color: var(--md-secondary);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Baukasten vs. Individual */
+  .compare-section {
+    background: var(--md-bg);
+  }
+
+  .compare-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 0.75rem;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .compare-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .compare-col__title {
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--md-border);
+    font-family: 'Jost', system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  .compare-col--bad .compare-col__title {
+    color: var(--md-muted);
+  }
+
+  .compare-col--good .compare-col__title {
+    color: var(--md-cta);
+  }
+
+  .compare-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .compare-list li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: var(--md-secondary);
+    line-height: 1.5;
+  }
+
+  .compare-icon {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--md-muted);
+    width: 1.1rem;
+  }
+
+  .compare-icon--good {
+    color: var(--md-cta);
+  }
+
+  /* Services */
+  .services-section {
+    background: var(--md-surface);
+    border-block: 1px solid var(--md-border);
+  }
+
+  .services-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 0.75rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--md-accent);
+    color: var(--md-cta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .service-card h3 {
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--md-primary);
+  }
+
+  .service-card p {
+    font-size: 0.93rem;
+    color: var(--md-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Quality */
+  .quality-section {
+    background: var(--md-bg);
+  }
+
+  .quality-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 2rem;
+  }
+
+  .quality-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 2.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .quality-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .quality-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .quality-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--md-accent);
+    color: var(--md-cta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+
+  .quality-item h3 {
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--md-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .quality-item p {
+    font-size: 0.93rem;
+    color: var(--md-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Audience */
+  .audience-section {
+    background: var(--md-surface);
+    border-block: 1px solid var(--md-border);
+  }
+
+  .audience-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 0.75rem;
+  }
+
+  .audience-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .audience-tag {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+
+  /* FAQ */
+  .faq-section {
+    background: var(--md-bg);
+  }
+
+  .faq-inner {
+    max-width: 760px;
+  }
+
+  .faq-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 1.5rem;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--md-primary);
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: #fff;
+    margin-block: 0 1rem;
+  }
+
+  .cta-sub {
+    color: #94A3B8;
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .cta-section .md-btn-outline {
+    color: #fff;
+    border-color: #475569;
+  }
+
+  .cta-section .md-btn-outline:hover {
+    border-color: var(--md-cta);
+    color: var(--md-cta);
+  }
+</style>

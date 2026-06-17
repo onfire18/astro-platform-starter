@@ -1,0 +1,170 @@
+---
+import MDLayout from '../layouts/MDLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<MDLayout
+  title="Impressum"
+  description="Impressum von MediaDrift – Angaben gemäß § 5 TMG"
+>
+  <div class="legal-page md-container">
+    <h1 class="legal-title">Impressum</h1>
+
+    <section class="legal-section">
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <address class="legal-address">
+        {SITE.contact.company}<br />
+        {SITE.contact.name}<br />
+        {SITE.contact.street}<br />
+        {SITE.contact.city}
+      </address>
+    </section>
+
+    <section class="legal-section">
+      <h2>Kontakt</h2>
+      <p>Telefon: <a href={`tel:${SITE.contact.phoneClean}`}>{SITE.contact.phone}</a></p>
+      <p>E-Mail: <span class="placeholder">[AKTUELLE E-MAIL EINFÜGEN]</span></p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Umsatzsteuer-Identifikationsnummer</h2>
+      <p class="placeholder-note">[RECHTLICH PRÜFEN] Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: <span class="placeholder">[UST-ID EINFÜGEN, sofern vorhanden]</span></p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <address>
+        {SITE.contact.name}<br />
+        {SITE.contact.street}<br />
+        {SITE.contact.city}
+      </address>
+    </section>
+
+    <section class="legal-section">
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+        allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+        zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+      </p>
+      <p>
+        Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+        Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+        Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+        Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+        Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+        verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+      </p>
+      <p>
+        Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+        Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche
+        Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
+        zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+        Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+        Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+        Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+      </p>
+    </section>
+
+    <div class="legal-notice">
+      <strong>Hinweis:</strong> [RECHTLICH PRÜFEN] – Bitte lassen Sie dieses Impressum rechtlich prüfen,
+      bevor Sie die Website live schalten. Die Angaben wurden nach bestem Wissen erstellt, ersetzen jedoch
+      keine Rechtsberatung.
+    </div>
+  </div>
+</MDLayout>
+
+<style>
+  .legal-page {
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+    max-width: 800px;
+  }
+
+  .legal-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--md-primary);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .legal-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--md-border);
+  }
+
+  .legal-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .legal-section h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.25rem;
+    color: var(--md-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+  }
+
+  .legal-section p {
+    color: var(--md-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section p:last-child { margin-bottom: 0; }
+
+  .legal-address {
+    font-style: normal;
+    color: var(--md-muted);
+    line-height: 1.8;
+  }
+
+  .legal-section a {
+    color: var(--md-cta);
+    text-decoration: underline;
+  }
+
+  .placeholder {
+    background: #FEF9C3;
+    color: #78350F;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.88rem;
+  }
+
+  .placeholder-note {
+    color: var(--md-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .legal-notice {
+    background: #FEF3C7;
+    border: 1px solid #FCD34D;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: #78350F;
+    line-height: 1.6;
+    margin-top: 2rem;
+  }
+</style>

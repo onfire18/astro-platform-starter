@@ -1,0 +1,252 @@
+---
+import { SITE } from '../../config/site';
+const navLinks = [
+  { href: '/', label: 'Startseite' },
+  { href: '/webdesign', label: 'Webdesign' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/vertrieb', label: 'Für Vertriebspartner' },
+  { href: '/#kontakt', label: 'Kontakt' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="md-nav-wrap" role="banner">
+  <nav class="md-nav md-container" aria-label="Hauptnavigation">
+    <!-- Logo -->
+    <a href="/" class="md-nav-logo" aria-label="MediaDrift – Zur Startseite">
+      <span class="logo-mark">M</span>
+      <span class="logo-text">MediaDrift</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="md-nav-links" role="list">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class={`md-nav-link ${(href === '/' ? currentPath === '/' : currentPath.startsWith(href)) ? 'active' : ''}`}
+            aria-current={(href === '/' ? currentPath === '/' : currentPath.startsWith(href)) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a href="/#kontakt" class="md-btn md-btn-primary md-nav-cta">
+      Entwurf anfragen
+    </a>
+
+    <!-- Hamburger (mobile) -->
+    <button
+      class="md-nav-burger"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      id="burger-btn"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md-mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobilmenü">
+    <ul role="list">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a href={href} class="md-mobile-link">{label}</a>
+        </li>
+      ))}
+    </ul>
+    <a href="/#kontakt" class="md-btn md-btn-primary" style="margin-top: 1.5rem; width: 100%; justify-content: center;">
+      Entwurf anfragen
+    </a>
+  </div>
+</header>
+
+<!-- Skip link -->
+<a href="#main-content" class="md-skip-link">Zum Inhalt springen</a>
+
+<style>
+  .md-skip-link {
+    position: fixed;
+    top: -100px;
+    left: 1rem;
+    background: var(--md-cta);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 0.9rem;
+    z-index: 9999;
+    transition: top 150ms ease;
+  }
+  .md-skip-link:focus { top: 1rem; }
+
+  .md-nav-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(248, 250, 252, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--md-border);
+    height: var(--nav-h);
+    transition: box-shadow 200ms ease;
+  }
+  .md-nav-wrap.scrolled {
+    box-shadow: 0 2px 20px rgba(15, 23, 42, 0.06);
+  }
+
+  .md-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: var(--nav-h);
+  }
+
+  .md-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: var(--md-cta);
+    color: #fff;
+    border-radius: 8px;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.1rem;
+  }
+  .logo-text {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--md-primary);
+    font-weight: 400;
+  }
+
+  .md-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .md-nav-link {
+    padding: 0.4rem 0.7rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--md-secondary);
+    text-decoration: none;
+    transition: color 150ms, background-color 150ms;
+  }
+  .md-nav-link:hover { color: var(--md-primary); background: var(--md-border); }
+  .md-nav-link.active { color: var(--md-cta); font-weight: 500; }
+
+  .md-nav-cta { flex-shrink: 0; font-size: 0.88rem; padding: 0.6rem 1.1rem; }
+
+  /* Hamburger */
+  .md-nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: auto;
+  }
+  .md-nav-burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--md-primary);
+    border-radius: 2px;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+  .md-nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .md-nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .md-nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile menu */
+  .md-mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: var(--md-surface);
+    border-bottom: 1px solid var(--md-border);
+    padding: 1.5rem clamp(1rem, 5vw, 3rem);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.1);
+  }
+  .md-mobile-menu.open { display: block; }
+  .md-mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+  .md-mobile-link {
+    display: block;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--md-border);
+    color: var(--md-primary);
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'Jost', system-ui, sans-serif;
+  }
+  .md-mobile-link:hover { color: var(--md-cta); }
+
+  @media (max-width: 900px) {
+    .md-nav-links, .md-nav-cta { display: none; }
+    .md-nav-burger { display: flex; }
+  }
+</style>
+
+<script>
+  const burger = document.getElementById('burger-btn') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu') as HTMLElement;
+  const header = document.querySelector('.md-nav-wrap') as HTMLElement;
+
+  burger?.addEventListener('click', () => {
+    const expanded = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!expanded));
+    menu.setAttribute('aria-hidden', String(expanded));
+    menu.classList.toggle('open');
+    burger.setAttribute('aria-label', expanded ? 'Menü öffnen' : 'Menü schließen');
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      burger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      menu.classList.remove('open');
+      burger.focus();
+    }
+  });
+
+  // Scroll shadow
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 10);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Close mobile menu on link click
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      menu.classList.remove('open');
+    });
+  });
+</script>

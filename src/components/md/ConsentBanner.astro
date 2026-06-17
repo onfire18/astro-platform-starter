@@ -1,0 +1,202 @@
+---
+import { SITE } from '../../config/site';
+---
+
+<!-- DSGVO Consent Banner -->
+<div
+  id="consent-banner"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="consent-title"
+  aria-describedby="consent-desc"
+  hidden
+>
+  <div class="consent-inner">
+    <h2 id="consent-title" class="consent-title">Cookie-Einstellungen</h2>
+    <p id="consent-desc" class="consent-desc">
+      Wir nutzen technisch notwendige Cookies für den Betrieb dieser Website.
+      Statistik-Cookies (Google Analytics) werden nur nach Ihrer ausdrücklichen Einwilligung gesetzt.
+      <a href="/datenschutz">Datenschutzerklärung</a>
+    </p>
+
+    <div class="consent-categories">
+      <label class="consent-category">
+        <div>
+          <input type="checkbox" checked disabled aria-disabled="true" />
+          <span class="consent-cat-name">Notwendig</span>
+        </div>
+        <span class="consent-cat-note">Immer aktiv</span>
+      </label>
+      <label class="consent-category" for="consent-analytics">
+        <div>
+          <input type="checkbox" id="consent-analytics" name="analytics" />
+          <span class="consent-cat-name">Statistik (Google Analytics)</span>
+        </div>
+        <span class="consent-cat-note">Optional</span>
+      </label>
+    </div>
+
+    <div class="consent-actions">
+      <button type="button" id="consent-reject" class="md-btn md-btn-outline">
+        Nur notwendige
+      </button>
+      <button type="button" id="consent-save" class="md-btn md-btn-outline">
+        Auswahl speichern
+      </button>
+      <button type="button" id="consent-accept-all" class="md-btn md-btn-primary">
+        Alle akzeptieren
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Google Analytics (loads only after consent) -->
+<script define:vars={{ ga4Id: SITE.ga4Id }}>
+  const STORAGE_KEY = 'md_consent';
+
+  function setGtag() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    return gtag;
+  }
+
+  function loadAnalytics() {
+    if (ga4Id.startsWith('[')) return; // Placeholder – not yet configured
+    const s = document.createElement('script');
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`;
+    s.async = true;
+    document.head.appendChild(s);
+    const gtag = setGtag();
+    gtag('config', ga4Id);
+  }
+
+  function denyAnalytics() {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+  }
+
+  function applyConsent(analytics) {
+    if (analytics) {
+      loadAnalytics();
+    } else {
+      denyAnalytics();
+    }
+    document.getElementById('consent-banner')?.setAttribute('hidden', '');
+    document.getElementById('consent-banner')?.setAttribute('aria-hidden', 'true');
+  }
+
+  function saveConsent(analytics) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ analytics, ts: Date.now() }));
+    applyConsent(analytics);
+  }
+
+  // Init Google Consent Mode (deny by default)
+  const _gtag = setGtag();
+  _gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+  });
+
+  // Check stored consent
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    try {
+      const { analytics } = JSON.parse(stored);
+      applyConsent(analytics);
+    } catch {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  } else {
+    // Show banner
+    const banner = document.getElementById('consent-banner');
+    if (banner) {
+      banner.removeAttribute('hidden');
+      banner.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  // Button handlers
+  document.getElementById('consent-accept-all')?.addEventListener('click', () => {
+    const cb = document.getElementById('consent-analytics');
+    if (cb) cb.checked = true;
+    saveConsent(true);
+  });
+
+  document.getElementById('consent-reject')?.addEventListener('click', () => saveConsent(false));
+
+  document.getElementById('consent-save')?.addEventListener('click', () => {
+    const analytics = (document.getElementById('consent-analytics')).checked;
+    saveConsent(analytics);
+  });
+</script>
+
+<style>
+  #consent-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: 640px;
+    margin-inline: auto;
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
+    padding: 1.5rem;
+    z-index: 9000;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .consent-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--md-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .consent-desc {
+    color: var(--md-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+  }
+  .consent-desc a { color: var(--md-cta); text-decoration: underline; }
+
+  .consent-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    background: var(--md-bg);
+    border-radius: 8px;
+  }
+
+  .consent-category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .consent-category > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .consent-cat-name { font-weight: 500; color: var(--md-primary); }
+  .consent-cat-note { font-size: 0.78rem; color: var(--md-subtle); }
+
+  .consent-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: flex-end;
+  }
+  .consent-actions .md-btn { font-size: 0.85rem; padding: 0.55rem 1rem; }
+</style>

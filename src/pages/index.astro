@@ -1,195 +1,1084 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MDLayout from '../layouts/MDLayout.astro';
+import { SITE, whatsappUrl } from '../config/site';
+import { industries } from '../data/industries';
+import { faqMain } from '../data/faq';
+import { references } from '../data/references';
+const waCustomer = whatsappUrl('customer');
+const waSales = whatsappUrl('sales');
 ---
 
-<Layout title="Automatisierungen für dein Business" description="AutoFlow – Erstelle professionelle Rechnungen, Angebote und mehr in Sekunden. Kostenlos und ohne Anmeldung.">
+<MDLayout
+  title="Individuelle Unternehmenswebsites"
+  description="MediaDrift entwickelt individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten, mehr Vertrauen schaffen und online neue Kunden gewinnen möchten."
+>
 
-    <!-- Hero -->
-    <section class="relative py-20 sm:py-28 text-center overflow-hidden">
-        <!-- Background glow -->
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-brand-600/20 blur-[120px]"></div>
+  <!-- =========================================================
+       1. HERO
+  ========================================================== -->
+  <section class="hero md-section" aria-label="Einleitung">
+    <div class="md-container hero-inner">
+      <div class="hero-text">
+        <span class="md-label">Webdesign &amp; Entwicklung · München</span>
+        <h1>Websites, die nicht nur gut aussehen.<br />Sondern Kunden gewinnen.</h1>
+        <p class="hero-sub">
+          Individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten,
+          mehr Vertrauen schaffen und online neue Kunden gewinnen möchten – ohne Baukästen,
+          ohne Mittelsmänner, direkt mit Paul.
+        </p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="md-btn md-btn-primary">Kostenlosen Entwurf anfragen</a>
+          <a href="#leistungen" class="md-btn md-btn-outline">Leistungen ansehen</a>
         </div>
+      </div>
 
-        <div class="relative">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-600/15 border border-brand-500/30 text-brand-300 text-xs font-medium mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
-                Jetzt kostenlos verfügbar
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Decorative browser frame SVG mockup -->
+        <svg class="browser-mockup" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Website-Mockup">
+          <!-- Browser chrome -->
+          <rect x="0" y="0" width="480" height="320" rx="12" fill="#1E293B"/>
+          <!-- Title bar -->
+          <rect x="0" y="0" width="480" height="40" rx="12" fill="#0F172A"/>
+          <rect x="0" y="28" width="480" height="12" fill="#0F172A"/>
+          <!-- Traffic lights -->
+          <circle cx="22" cy="20" r="6" fill="#EF4444" opacity="0.8"/>
+          <circle cx="42" cy="20" r="6" fill="#F59E0B" opacity="0.8"/>
+          <circle cx="62" cy="20" r="6" fill="#22C55E" opacity="0.8"/>
+          <!-- URL bar -->
+          <rect x="80" y="11" width="320" height="18" rx="9" fill="#334155"/>
+          <rect x="92" y="16" width="80" height="8" rx="4" fill="#64748B"/>
+          <!-- Page content area -->
+          <!-- Hero block -->
+          <rect x="20" y="56" width="440" height="80" rx="6" fill="#1E3A5F" opacity="0.6"/>
+          <rect x="40" y="70" width="200" height="12" rx="3" fill="#93C5FD" opacity="0.7"/>
+          <rect x="40" y="90" width="160" height="8" rx="3" fill="#CBD5E1" opacity="0.4"/>
+          <rect x="40" y="106" width="80" height="18" rx="5" fill="#0369A1"/>
+          <rect x="132" y="106" width="80" height="18" rx="5" fill="#334155"/>
+          <!-- Card row -->
+          <rect x="20" y="150" width="130" height="70" rx="6" fill="#FFFFFF" opacity="0.07"/>
+          <rect x="34" y="163" width="60" height="8" rx="3" fill="#93C5FD" opacity="0.6"/>
+          <rect x="34" y="178" width="100" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
+          <rect x="34" y="190" width="80" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
+          <rect x="165" y="150" width="130" height="70" rx="6" fill="#FFFFFF" opacity="0.07"/>
+          <rect x="179" y="163" width="60" height="8" rx="3" fill="#93C5FD" opacity="0.6"/>
+          <rect x="179" y="178" width="100" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
+          <rect x="179" y="190" width="80" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
+          <rect x="310" y="150" width="130" height="70" rx="6" fill="#FFFFFF" opacity="0.07"/>
+          <rect x="324" y="163" width="60" height="8" rx="3" fill="#93C5FD" opacity="0.6"/>
+          <rect x="324" y="178" width="100" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
+          <rect x="324" y="190" width="80" height="6" rx="3" fill="#CBD5E1" opacity="0.3"/>
+          <!-- Text rows -->
+          <rect x="20" y="236" width="440" height="8" rx="3" fill="#CBD5E1" opacity="0.15"/>
+          <rect x="20" y="250" width="380" height="8" rx="3" fill="#CBD5E1" opacity="0.15"/>
+          <rect x="20" y="264" width="300" height="8" rx="3" fill="#CBD5E1" opacity="0.15"/>
+          <!-- Bottom bar -->
+          <rect x="20" y="284" width="440" height="24" rx="6" fill="#0369A1" opacity="0.3"/>
+          <rect x="180" y="290" width="120" height="12" rx="3" fill="#93C5FD" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       2. TRUST SIGNALS
+  ========================================================== -->
+  <section class="trust-section" aria-label="Unsere Versprechen">
+    <div class="md-container">
+      <ul class="trust-grid" role="list">
+        <li class="md-card trust-card">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="3" y="6" width="26" height="20" rx="3" stroke="#0369A1" stroke-width="2"/>
+            <path d="M3 12h26" stroke="#0369A1" stroke-width="2"/>
+            <circle cx="8" cy="9" r="1.5" fill="#0369A1"/>
+            <circle cx="13" cy="9" r="1.5" fill="#0369A1"/>
+            <rect x="8" y="17" width="16" height="2" rx="1" fill="#0369A1"/>
+            <rect x="8" y="21" width="10" height="2" rx="1" fill="#0369A1"/>
+          </svg>
+          <h3>Individuelle Websites</h3>
+          <p>Kein einziges Template. Jede Website wird konzeptionell und gestalterisch neu entwickelt – auf Basis Ihres Unternehmens und Ihrer Zielgruppe.</p>
+        </li>
+        <li class="md-card trust-card">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 3L4 8v8c0 6.627 5.373 12 12 12s12-5.373 12-12V8L16 3z" stroke="#0369A1" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M11 16l3 3 7-7" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>DSGVO-konform</h3>
+          <p>Selbst gehostete Schriftarten, Consent-Management und keine externen Ressourcen ohne Einwilligung. Datenschutz ist kein Nachgedanke.</p>
+        </li>
+        <li class="md-card trust-card">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="10" r="5" stroke="#0369A1" stroke-width="2"/>
+            <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#0369A1" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Direkte Zusammenarbeit</h3>
+          <p>Kein Agenturapparat. Sie arbeiten direkt mit Paul Dunker zusammen – vom ersten Gespräch bis zur Übergabe und darüber hinaus.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       3. PROBLEM / SOLUTION
+  ========================================================== -->
+  <section class="md-section compare-section" aria-labelledby="compare-headline">
+    <div class="md-container">
+      <span class="md-label">Warum MediaDrift?</span>
+      <h2 id="compare-headline">Was unterscheidet uns von Baukästen?</h2>
+      <div class="compare-grid">
+        <div class="compare-card compare-bad" aria-label="Baukasten-Website Nachteile">
+          <h3>
+            <span class="compare-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.5"/>
+                <path d="M6 6l8 8M14 6l-8 8" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
             </span>
+            Baukasten-Website
+          </h3>
+          <ul class="compare-list">
+            <li>Eingeschränktes Design – alle sehen gleich aus</li>
+            <li>Generische Templates ohne Alleinstellungsmerkmal</li>
+            <li>Monatliche Kosten ohne Preisgarantie</li>
+            <li>Kein echter Support – nur Hilfe-Artikel</li>
+            <li>Sie besitzen nichts – abhängig vom Anbieter</li>
+          </ul>
+        </div>
+        <div class="compare-card compare-good" aria-label="MediaDrift Website Vorteile">
+          <h3>
+            <span class="compare-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="#22C55E" stroke-width="1.5"/>
+                <path d="M6 10l3 3 5-5" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            MediaDrift Website
+          </h3>
+          <ul class="compare-list">
+            <li>Einzigartiges Design, das zu Ihrem Unternehmen passt</li>
+            <li>Conversion-optimiert für Anfragen und Kontakt</li>
+            <li>Die Website gehört Ihnen – ohne monatliche Abhängigkeit</li>
+            <li>Persönlicher Ansprechpartner mit direktem Draht</li>
+            <li>Technisch sauber, schnell und langfristig wartbar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <h1 class="text-4xl sm:text-6xl font-bold text-white leading-tight mb-5 tracking-tight">
-                Automatisierungen,<br/>
-                <span class="bg-gradient-to-r from-brand-400 to-brand-600 bg-clip-text text-transparent">die dein Business</span><br/>
-                voranbringen.
-            </h1>
+  <!-- =========================================================
+       4. SERVICES
+  ========================================================== -->
+  <section id="leistungen" class="md-section services-section" aria-labelledby="services-headline">
+    <div class="md-container">
+      <span class="md-label">Leistungen</span>
+      <h2 id="services-headline">Was wir für Sie tun</h2>
+      <ul class="services-grid" role="list">
+        <li class="md-card service-card">
+          <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="30" height="22" rx="3" stroke="#0369A1" stroke-width="1.8"/>
+            <path d="M3 11h30" stroke="#0369A1" stroke-width="1.8"/>
+            <circle cx="8" cy="8" r="1.5" fill="#0369A1"/>
+            <circle cx="13" cy="8" r="1.5" fill="#0369A1"/>
+            <path d="M10 31h16M18 27v4" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="9" y="16" width="18" height="7" rx="2" fill="#DBEAFE"/>
+          </svg>
+          <h3>Webdesign &amp; Entwicklung</h3>
+          <p>Von der Konzeption bis zur fertigen Website – individuell gestaltet, technisch sauber, auf Ihre Zielgruppe abgestimmt.</p>
+        </li>
+        <li class="md-card service-card">
+          <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <circle cx="18" cy="18" r="14" stroke="#0369A1" stroke-width="1.8"/>
+            <path d="M18 4v4M18 28v4M4 18h4M28 18h4" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="5" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.5"/>
+            <path d="M10 10l2.5 2.5M23.5 23.5L26 26M26 10l-2.5 2.5M12.5 23.5L10 26" stroke="#0369A1" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h3>SEO-Grundoptimierung</h3>
+          <p>Semantische Struktur, Meta-Angaben, saubere URLs und technische Grundlagen – damit Google Ihre Website versteht und indexiert.</p>
+        </li>
+        <li class="md-card service-card">
+          <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <rect x="4" y="4" width="12" height="12" rx="3" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8"/>
+            <rect x="20" y="4" width="12" height="12" rx="3" stroke="#0369A1" stroke-width="1.8"/>
+            <rect x="4" y="20" width="12" height="12" rx="3" stroke="#0369A1" stroke-width="1.8"/>
+            <rect x="20" y="20" width="12" height="12" rx="3" stroke="#0369A1" stroke-width="1.8"/>
+          </svg>
+          <h3>Google-Marketing-Beratung</h3>
+          <p>Einrichtung und Begleitung von Google Ads und Analytics – datenschutzkonform und auf messbare Ergebnisse ausgerichtet.</p>
+        </li>
+        <li class="md-card service-card">
+          <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 5l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          <h3>Ladezeit-Optimierung</h3>
+          <p>Schnelle Websites ranken besser und konvertieren mehr. Wir optimieren Bilder, Code und Hosting für maximale Performance.</p>
+        </li>
+        <li class="md-card service-card">
+          <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M8 28l6-8 5 4 5-7 6 11H8z" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="10" cy="12" r="3" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8"/>
+          </svg>
+          <h3>Conversion-Optimierung</h3>
+          <p>Klare Handlungsaufforderungen, optimierte Kontaktformulare und eine Nutzerführung, die Besucher zu Anfragen macht.</p>
+        </li>
+        <li class="md-card service-card">
+          <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 4C10.268 4 4 10.268 4 18s6.268 14 14 14 14-6.268 14-14S25.732 4 18 4z" stroke="#0369A1" stroke-width="1.8"/>
+            <path d="M18 12v6l4 4" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 29l3-3M27 29l-3-3" stroke="#0369A1" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h3>Wartung &amp; Support</h3>
+          <p>Nach dem Launch bleibt Paul Ihr Ansprechpartner für Änderungen, Updates und technische Fragen – ohne Ticketsystem.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-            <p class="text-neutral-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Professionelle Rechnungen, Angebote und mehr – erstellt in Sekunden.
-                Keine Anmeldung, keine Kosten, keine Kompromisse.
-            </p>
+  <!-- =========================================================
+       5. PROCESS
+  ========================================================== -->
+  <section class="md-section process-section" aria-labelledby="process-headline">
+    <div class="md-container">
+      <span class="md-label" style="color:#93C5FD">Ablauf</span>
+      <h2 id="process-headline" style="color:#F8FAFC">So läuft die Zusammenarbeit ab</h2>
+      <ol class="process-steps" role="list">
+        <li class="process-step">
+          <span class="step-number" aria-hidden="true">01</span>
+          <div>
+            <h3>Erstgespräch &amp; Analyse</h3>
+            <p>Wir lernen uns kennen. Sie erklären, was Ihr Unternehmen auszeichnet, wen Sie erreichen wollen und was Ihre Website leisten soll.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="step-number" aria-hidden="true">02</span>
+          <div>
+            <h3>Konzept &amp; Design</h3>
+            <p>Auf Basis des Gesprächs entwickeln wir Struktur und visuelles Konzept. Sie erhalten einen ersten Entwurf zur Abstimmung.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="step-number" aria-hidden="true">03</span>
+          <div>
+            <h3>Entwicklung</h3>
+            <p>Das abgestimmte Design wird technisch umgesetzt – responsive, barrierefrei, schnell und mit sauberem Code.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="step-number" aria-hidden="true">04</span>
+          <div>
+            <h3>Launch &amp; Übergabe</h3>
+            <p>Nach einem gemeinsamen Review und letzten Anpassungen geht die Website online. Sie erhalten alle Zugänge und eine Einweisung.</p>
+          </div>
+        </li>
+        <li class="process-step">
+          <span class="step-number" aria-hidden="true">05</span>
+          <div>
+            <h3>Support</h3>
+            <p>Auch nach dem Launch sind wir da – für Änderungen, Erweiterungen oder technische Fragen. Direkt, ohne Umwege.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <a href="/invoice" class="no-underline inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-xl shadow-brand-700/40">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                    </svg>
-                    Rechnung erstellen
+  <!-- =========================================================
+       6. INDUSTRY TABS
+  ========================================================== -->
+  <section class="md-section industries-section" aria-labelledby="industries-headline">
+    <div class="md-container">
+      <span class="md-label">Branchen</span>
+      <h2 id="industries-headline">Für Ihre Branche</h2>
+      <p class="industries-intro">
+        Ob Kanzlei, Handwerksbetrieb oder lokaler Dienstleister – eine gute Website spricht die Sprache Ihrer Kunden.
+      </p>
+
+      <div class="industry-tabs" role="tablist" aria-label="Branchenauswahl">
+        {industries.map((ind, i) => (
+          <button
+            class={`industry-tab${i === 0 ? ' active' : ''}`}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${ind.id}`}
+            id={`tab-${ind.id}`}
+            data-industry={ind.id}
+          >
+            {ind.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="industry-panels">
+        {industries.map((ind, i) => (
+          <div
+            class={`industry-panel${i === 0 ? ' active' : ''}`}
+            role="tabpanel"
+            id={`panel-${ind.id}`}
+            aria-labelledby={`tab-${ind.id}`}
+            hidden={i !== 0}
+          >
+            <div class="panel-content">
+              <div class="panel-text">
+                <h3>{ind.headline}</h3>
+                <p>{ind.subline}</p>
+                <div class="panel-pages" aria-label="Typische Seiten">
+                  <span class="md-label" style="font-size:0.75rem">Typische Seiten</span>
+                  <ul class="page-chips" role="list">
+                    {ind.pages.map(page => (
+                      <li class="page-chip">{page}</li>
+                    ))}
+                  </ul>
+                </div>
+                <a href="#kontakt" class="md-btn md-btn-primary" style={`margin-top:1.5rem; background-color:${ind.accent};`}>
+                  Entwurf für {ind.label} anfragen
                 </a>
-                <a href="#features" class="no-underline inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-xl transition">
-                    Alle Funktionen
-                </a>
+              </div>
+              <div class="panel-visual" aria-hidden="true">
+                <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" style={`--accent:${ind.accent}`}>
+                  <rect width="280" height="200" rx="8" fill="#F8FAFC"/>
+                  <rect width="280" height="36" rx="8" fill="#E2E8F0"/>
+                  <rect x="10" y="12" width="60" height="12" rx="3" fill={ind.accent} opacity="0.7"/>
+                  <rect x="160" y="12" width="30" height="12" rx="3" fill="#CBD5E1"/>
+                  <rect x="198" y="12" width="30" height="12" rx="3" fill="#CBD5E1"/>
+                  <rect x="236" y="12" width="34" height="12" rx="3" fill={ind.accent}/>
+                  <rect x="20" y="52" width="180" height="16" rx="3" fill="#0F172A" opacity="0.7"/>
+                  <rect x="20" y="76" width="140" height="8" rx="3" fill="#94A3B8" opacity="0.6"/>
+                  <rect x="20" y="90" width="120" height="8" rx="3" fill="#94A3B8" opacity="0.6"/>
+                  <rect x="20" y="110" width="80" height="24" rx="5" fill={ind.accent}/>
+                  <rect x="110" y="110" width="80" height="24" rx="5" fill="none" stroke="#CBD5E1" stroke-width="1.5"/>
+                  <rect x="20" y="150" width="72" height="36" rx="5" fill={ind.accent} opacity="0.12" stroke={ind.accent} stroke-width="1"/>
+                  <rect x="104" y="150" width="72" height="36" rx="5" fill={ind.accent} opacity="0.12" stroke={ind.accent} stroke-width="1"/>
+                  <rect x="188" y="150" width="72" height="36" rx="5" fill={ind.accent} opacity="0.12" stroke={ind.accent} stroke-width="1"/>
+                </svg>
+              </div>
             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-            <!-- Stats -->
-            <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 justify-center mt-14 text-center">
-                {[
-                    { value: '100%', label: 'Kostenlos' },
-                    { value: '0', label: 'Anmeldung nötig' },
-                    { value: 'DSGVO', label: 'Konform' },
-                ].map(stat => (
-                    <div>
-                        <div class="text-2xl font-bold text-brand-400">{stat.value}</div>
-                        <div class="text-sm text-neutral-500 mt-0.5">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
+  <!-- =========================================================
+       7. REFERENCES
+  ========================================================== -->
+  <section class="md-section references-section" aria-labelledby="references-headline">
+    <div class="md-container">
+      <span class="md-label">Referenzen</span>
+      <h2 id="references-headline">Referenzen</h2>
+      {references.length === 0 ? (
+        <div class="references-empty md-card">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="20" stroke="#CBD5E1" stroke-width="2"/>
+            <path d="M16 24h16M24 16v16" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Erste Projekte entstehen gerade</h3>
+          <p>
+            Wir bauen gerade unsere ersten Kundenprojekte auf. Kontaktieren Sie uns für ein
+            unverbindliches Gespräch – und werden Sie einer unserer ersten Referenzkunden.
+          </p>
+          <a href="#kontakt" class="md-btn md-btn-primary">Jetzt Gespräch anfragen</a>
         </div>
-    </section>
+      ) : (
+        <ul class="references-grid" role="list">
+          {references.map(ref => (
+            <li class="md-card reference-card">
+              <span class="md-badge">{ref.industry}</span>
+              {ref.isConcept && <span class="concept-badge">Konzept</span>}
+              <h3>{ref.title}</h3>
+              <p>{ref.description}</p>
+              {ref.url && <a href={ref.url} class="ref-link" target="_blank" rel="noopener noreferrer">Projekt ansehen →</a>}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
 
-    <!-- Features -->
-    <section id="features" class="py-16 sm:py-20 scroll-mt-10">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Alles was du brauchst</h2>
-            <p class="text-neutral-400">Mächtige Werkzeuge für Freelancer und kleine Unternehmen.</p>
+  <!-- =========================================================
+       8. ABOUT
+  ========================================================== -->
+  <section class="md-section about-section" aria-labelledby="about-headline">
+    <div class="md-container about-inner">
+      <div class="about-photo" aria-hidden="true">
+        <div class="photo-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="26" r="14" stroke="#94A3B8" stroke-width="2"/>
+            <path d="M8 60c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Paul Dunker</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="md-label">Über MediaDrift</span>
+        <h2 id="about-headline">Über MediaDrift</h2>
+        <p>
+          MediaDrift wurde von Paul Dunker gegründet mit einem klaren Ziel: kleinen und
+          mittelständischen Unternehmen den professionellen Online-Auftritt zu geben, den sie
+          verdienen – ohne Agenturapparat, ohne aufgeblasene Prozesse.
+        </p>
+        <p>
+          Die Zusammenarbeit ist direkt. Kein Projektmanager, kein Designerduo, kein
+          Outsourcing. Sie sprechen mit Paul – vom ersten Gespräch bis zur Übergabe und
+          darüber hinaus.
+        </p>
+        <p>
+          Jede Website entsteht aus einem echten Verständnis des Unternehmens, seiner
+          Zielgruppe und des gewünschten Ergebnisses. Das Ergebnis: Websites, die nicht nur
+          gut aussehen, sondern Kunden gewinnen.
+        </p>
+        <a href="/ueber-uns" class="md-btn md-btn-outline">Mehr über uns erfahren</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       9. SALES TEASER
+  ========================================================== -->
+  <section class="sales-teaser-section" aria-labelledby="sales-teaser-headline">
+    <div class="md-container">
+      <div class="sales-teaser-card">
+        <div class="sales-teaser-text">
+          <span class="md-badge" style="background:rgba(147,197,253,0.15); color:#93C5FD">Für Vertriebspartner</span>
+          <h2 id="sales-teaser-headline">Für Vermittler &amp; Vertriebspartner</h2>
+          <p>
+            Sie kennen Unternehmen, die eine professionelle Website brauchen? Vermitteln Sie
+            MediaDrift und verdienen Sie eine Provision bei erfolgreichem Abschluss. Flexibel,
+            nebenberuflich und ohne Vorerfahrung im Webdesign.
+          </p>
+          <a href="/vertrieb" class="md-btn" style="background:rgba(255,255,255,0.1); color:#fff; border:1.5px solid rgba(255,255,255,0.3);">
+            Mehr erfahren
+          </a>
+        </div>
+        <div class="sales-teaser-visual" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="50" stroke="rgba(147,197,253,0.2)" stroke-width="2"/>
+            <circle cx="60" cy="60" r="35" stroke="rgba(147,197,253,0.15)" stroke-width="2"/>
+            <circle cx="30" cy="45" r="10" fill="rgba(147,197,253,0.2)" stroke="rgba(147,197,253,0.4)" stroke-width="1.5"/>
+            <circle cx="90" cy="45" r="10" fill="rgba(147,197,253,0.2)" stroke="rgba(147,197,253,0.4)" stroke-width="1.5"/>
+            <circle cx="60" cy="85" r="10" fill="rgba(147,197,253,0.2)" stroke="rgba(147,197,253,0.4)" stroke-width="1.5"/>
+            <path d="M40 48l16 10M80 48l-16 10M60 75v-15" stroke="rgba(147,197,253,0.4)" stroke-width="1.5"/>
+            <circle cx="60" cy="60" r="8" fill="rgba(147,197,253,0.3)" stroke="rgba(147,197,253,0.6)" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       10. FAQ
+  ========================================================== -->
+  <section class="md-section faq-section" aria-labelledby="faq-headline">
+    <div class="md-container faq-inner">
+      <div class="faq-header">
+        <span class="md-label">FAQ</span>
+        <h2 id="faq-headline">Häufige Fragen</h2>
+        <p>Alles Wichtige auf einen Blick. Haben Sie weitere Fragen? Schreiben Sie uns einfach.</p>
+      </div>
+      <div class="md-faq">
+        {faqMain.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer">{item.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       11. CONTACT FORM
+  ========================================================== -->
+  <section id="kontakt" class="md-section contact-section" aria-labelledby="contact-headline">
+    <div class="md-container contact-inner">
+      <div class="contact-header">
+        <span class="md-label">Kontakt</span>
+        <h2 id="contact-headline">Unverbindlichen Entwurf anfragen</h2>
+        <p>
+          Schildern Sie kurz, was Sie sich vorstellen. Wir melden uns innerhalb eines
+          Werktages mit einem ersten Eindruck.
+        </p>
+        <div class="contact-alternatives">
+          <a href={waCustomer} class="md-btn md-btn-outline whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Per WhatsApp kontaktieren">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+          </a>
+          <a href={`tel:${SITE.contact.phone}`} class="md-btn md-btn-outline" aria-label={`Anrufen: ${SITE.contact.phone}`}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1.08h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            {SITE.contact.phone}
+          </a>
+        </div>
+      </div>
+
+      <form
+        id="contact-form"
+        name="kontakt"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="contact-form md-card"
+        novalidate
+        aria-label="Kontaktformular"
+      >
+        <input type="hidden" name="form-name" value="kontakt" />
+        <p hidden>
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="field-name" class="form-label">Name <span aria-label="Pflichtfeld">*</span></label>
+            <input
+              type="text"
+              id="field-name"
+              name="name"
+              class="form-input"
+              required
+              autocomplete="name"
+              placeholder="Ihr Name oder Unternehmensname"
+              aria-required="true"
+            />
+          </div>
+          <div class="form-group">
+            <label for="field-phone" class="form-label">Telefon</label>
+            <input
+              type="tel"
+              id="field-phone"
+              name="telefon"
+              class="form-input"
+              autocomplete="tel"
+              placeholder="Optional – für Rückruf"
+            />
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-            <!-- Invoice - Available -->
-            <a href="/invoice" class="no-underline group relative bg-white/5 hover:bg-white/8 border border-white/10 hover:border-brand-500/40 rounded-2xl p-6 transition">
-                <div class="absolute top-4 right-4">
-                    <span class="px-2 py-0.5 rounded-full bg-brand-600/20 border border-brand-500/30 text-brand-300 text-xs font-medium">Verfügbar</span>
-                </div>
-                <div class="w-11 h-11 rounded-xl bg-brand-600/20 border border-brand-500/20 flex items-center justify-center mb-4 group-hover:bg-brand-600/30 transition">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                    </svg>
-                </div>
-                <h3 class="text-base font-semibold text-white mb-1.5">Rechnungsgenerator</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">Professionelle Rechnungen im deutschen Format. Mit MwSt-Berechnung, IBAN und PDF-Download.</p>
-            </a>
-
-            <!-- Instagram Toolkit - Available -->
-            <a href="/instagram" class="no-underline group relative bg-white/5 hover:bg-white/8 border border-white/10 hover:border-pink-500/40 rounded-2xl p-6 transition">
-                <div class="absolute top-4 right-4">
-                    <span class="px-2 py-0.5 rounded-full bg-pink-600/20 border border-pink-500/30 text-pink-300 text-xs font-medium">Verfügbar</span>
-                </div>
-                <div class="w-11 h-11 rounded-xl bg-pink-600/20 border border-pink-500/20 flex items-center justify-center mb-4 text-xl group-hover:bg-pink-600/30 transition">
-                    📸
-                </div>
-                <h3 class="text-base font-semibold text-white mb-1.5">Instagram-Toolkit</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">Captions, Hashtags und Bio generieren – auf Deutsch, kostenlos, sofort einsatzbereit.</p>
-            </a>
-
-            <!-- CRM Lite - Available -->
-            <a href="/crm" class="no-underline group relative bg-white/5 hover:bg-white/8 border border-white/10 hover:border-emerald-500/40 rounded-2xl p-6 transition">
-                <div class="absolute top-4 right-4">
-                    <span class="px-2 py-0.5 rounded-full bg-emerald-600/20 border border-emerald-500/30 text-emerald-300 text-xs font-medium">Verfügbar</span>
-                </div>
-                <div class="w-11 h-11 rounded-xl bg-emerald-600/20 border border-emerald-500/20 flex items-center justify-center mb-4 text-xl group-hover:bg-emerald-600/30 transition">
-                    👥
-                </div>
-                <h3 class="text-base font-semibold text-white mb-1.5">CRM Lite</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">Leads und Kontakte verwalten mit Status-Tracking – von Neu bis Gewonnen. Alles an einem Ort.</p>
-            </a>
-
-            <!-- Coming soon: 4 items -->
-            {[
-                {
-                    icon: `<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>`,
-                    title: 'Mahnung & Erinnerung',
-                    desc: 'Automatisierte Zahlungserinnerungen und Mahnungen mit rechtssicherem Text.',
-                },
-                {
-                    icon: `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
-                    title: 'Zeiterfassung',
-                    desc: 'Stunden tracken und automatisch in abrechenbare Rechnungspositionen umwandeln.',
-                },
-                {
-                    icon: `<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>`,
-                    title: 'Vertragsvorlagen',
-                    desc: 'Rechtssichere Vertragsvorlagen für Freelancer – angepasst auf dein Business.',
-                },
-                {
-                    icon: `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`,
-                    title: 'Business Dashboard',
-                    desc: 'Behalte Umsatz, offene Rechnungen und Zahlungen im Überblick.',
-                },
-            ].map(f => (
-                <div class="relative bg-white/[0.03] border border-white/5 rounded-2xl p-6 opacity-70">
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-0.5 rounded-full bg-neutral-700/50 text-neutral-400 text-xs font-medium">Bald</span>
-                    </div>
-                    <div class="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={f.icon}/>
-                    </div>
-                    <h3 class="text-base font-semibold text-neutral-300 mb-1.5">{f.title}</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed">{f.desc}</p>
-                </div>
-            ))}
-
-        </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="py-16 sm:py-20">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">So einfach geht's</h2>
-            <p class="text-neutral-400">In drei Schritten zur fertigen Rechnung.</p>
+        <div class="form-group">
+          <label for="field-email" class="form-label">E-Mail <span aria-label="Pflichtfeld">*</span></label>
+          <input
+            type="email"
+            id="field-email"
+            name="email"
+            class="form-input"
+            required
+            autocomplete="email"
+            placeholder="ihre@email.de"
+            aria-required="true"
+          />
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
-            <!-- Connector line (desktop) -->
-            <div class="hidden sm:block absolute top-8 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-brand-600/50 via-brand-500/50 to-brand-600/50"></div>
-
-            {[
-                { step: '01', title: 'Daten eingeben', desc: 'Trage deine Informationen und die des Kunden ein. Einmalig – du kannst sie beim nächsten Mal wiederverwenden.' },
-                { step: '02', title: 'Positionen hinzufügen', desc: 'Füge deine Leistungen mit Menge und Preis hinzu. Die MwSt wird automatisch berechnet.' },
-                { step: '03', title: 'PDF herunterladen', desc: 'Mit einem Klick erhältst du eine professionelle Rechnung als PDF – direkt zum Versenden.' },
-            ].map(s => (
-                <div class="flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-600/20 border border-brand-500/30 flex items-center justify-center mb-5 relative z-10">
-                        <span class="text-brand-400 font-bold text-lg">{s.step}</span>
-                    </div>
-                    <h3 class="text-base font-semibold text-white mb-2">{s.title}</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">{s.desc}</p>
-                </div>
-            ))}
+        <div class="form-group">
+          <label for="field-message" class="form-label">Nachricht</label>
+          <textarea
+            id="field-message"
+            name="nachricht"
+            class="form-input form-textarea"
+            rows="5"
+            placeholder="Was macht Ihr Unternehmen aus? Wen möchten Sie erreichen? Was soll die Website leisten?"
+          ></textarea>
         </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="py-16 sm:py-20">
-        <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-900/60 to-brand-700/20 border border-brand-500/20 p-10 sm:p-14 text-center">
-            <div class="absolute inset-0 pointer-events-none">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-brand-600/20 blur-[80px] rounded-full"></div>
-            </div>
-            <div class="relative">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Bereit loszulegen?</h2>
-                <p class="text-neutral-300 text-lg mb-8 max-w-xl mx-auto">
-                    Erstelle deine erste Rechnung in unter zwei Minuten – kostenlos und ohne Anmeldung.
-                </p>
-                <a href="/invoice" class="no-underline inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition shadow-xl shadow-brand-700/50 text-lg">
-                    Jetzt Rechnung erstellen →
-                </a>
-            </div>
+        <div class="form-footer">
+          <p class="form-privacy">
+            Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht
+            an Dritte weitergegeben. Es gilt unsere{' '}
+            <a href="/datenschutz">Datenschutzerklärung</a>.
+          </p>
+          <button type="submit" class="md-btn md-btn-primary form-submit" id="submit-btn">
+            Entwurf anfragen
+          </button>
         </div>
-    </section>
 
-</Layout>
+        <div id="form-success" class="form-success" hidden aria-live="polite">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="#22C55E" stroke-width="2"/>
+            <path d="M8 12l3 3 5-5" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Anfrage erhalten!</strong>
+            <p>Wir melden uns innerhalb eines Werktages bei Ihnen. Vielen Dank.</p>
+          </div>
+        </div>
+
+        <div id="form-error" class="form-error" hidden aria-live="polite">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2"/>
+            <path d="M12 8v4M12 16h.01" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <strong>Etwas ist schiefgelaufen.</strong>
+            <p>Bitte versuchen Sie es erneut oder schreiben Sie uns per WhatsApp.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</MDLayout>
+
+<!-- =========================================================
+     STYLES
+========================================================== -->
+<style>
+  /* ---- Hero ---- */
+  .hero { background: var(--md-surface); border-bottom: 1px solid var(--md-border); }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-block: 0.5rem 1.25rem;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--md-secondary);
+    max-width: 44ch;
+    margin-bottom: 2rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-visual { position: relative; }
+  .browser-mockup {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(15,23,42,0.18);
+    display: block;
+    margin-inline: auto;
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+  }
+
+  /* ---- Trust ---- */
+  .trust-section {
+    background: var(--md-bg);
+    padding-block: 3rem;
+    border-bottom: 1px solid var(--md-border);
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .trust-card { display: flex; flex-direction: column; gap: 0.75rem; }
+  .trust-card h3 { font-size: 1.05rem; margin: 0; }
+  .trust-card p { margin: 0; color: var(--md-muted); font-size: 0.93rem; }
+  @media (max-width: 700px) { .trust-grid { grid-template-columns: 1fr; } }
+
+  /* ---- Compare ---- */
+  .compare-section { background: var(--md-surface); }
+  .compare-section h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 2.5rem; }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .compare-card {
+    background: var(--md-surface);
+    border: 1.5px solid var(--md-border);
+    border-radius: 10px;
+    padding: 1.75rem;
+  }
+  .compare-bad { border-color: #FECACA; background: #FFF5F5; }
+  .compare-good { border-color: #BBF7D0; background: #F0FFF4; }
+  .compare-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.05rem;
+    margin-block: 0 1rem;
+  }
+  .compare-icon { display: flex; align-items: center; }
+  .compare-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .compare-bad .compare-list li::before { content: '—'; color: #EF4444; margin-right: 0.5rem; font-weight: 700; }
+  .compare-good .compare-list li::before { content: '✓'; color: #22C55E; margin-right: 0.5rem; font-weight: 700; }
+  .compare-list li { font-size: 0.93rem; color: var(--md-secondary); padding-left: 1.5rem; text-indent: -1.5rem; }
+  @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+
+  /* ---- Services ---- */
+  .services-section { background: var(--md-bg); }
+  .services-section h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 2.5rem; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .service-card { display: flex; flex-direction: column; gap: 0.75rem; }
+  .service-card h3 { font-size: 1.02rem; margin: 0; }
+  .service-card p { margin: 0; color: var(--md-muted); font-size: 0.93rem; line-height: 1.6; }
+  .service-icon { flex-shrink: 0; }
+  @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+  /* ---- Process ---- */
+  .process-section {
+    background: var(--md-primary);
+    color: var(--md-bg);
+  }
+  .process-section h2 { color: #F8FAFC; font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 2.5rem; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .process-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .process-step:last-child { border-bottom: none; }
+  .step-number {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2.5rem;
+    color: var(--md-cta);
+    line-height: 1;
+    min-width: 3rem;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+  .process-step h3 { color: #F8FAFC; font-size: 1.05rem; margin: 0 0 0.35rem; }
+  .process-step p { color: #94A3B8; margin: 0; font-size: 0.93rem; line-height: 1.65; }
+
+  /* ---- Industries ---- */
+  .industries-section { background: var(--md-surface); }
+  .industries-section h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 0.75rem; }
+  .industries-intro { color: var(--md-muted); margin-bottom: 2rem; max-width: 60ch; }
+  .industry-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .industry-tab {
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    border: 1.5px solid var(--md-border);
+    background: transparent;
+    color: var(--md-secondary);
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 150ms, color 150ms, background 150ms;
+    min-height: 40px;
+  }
+  .industry-tab:hover { border-color: var(--md-cta); color: var(--md-cta); }
+  .industry-tab.active { background: var(--md-cta); color: #fff; border-color: var(--md-cta); }
+  .industry-panel { display: none; }
+  .industry-panel.active { display: block; }
+  .panel-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    background: var(--md-bg);
+    border: 1px solid var(--md-border);
+    border-radius: 12px;
+    padding: 2.5rem;
+  }
+  .panel-text h3 { font-size: 1.4rem; margin-block: 0 0.75rem; }
+  .panel-text p { color: var(--md-muted); margin-bottom: 1.25rem; }
+  .panel-pages .md-label { margin-bottom: 0.5rem; }
+  .page-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0; }
+  .page-chip {
+    padding: 0.25rem 0.65rem;
+    background: var(--md-accent);
+    color: var(--md-cta);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .panel-visual svg { width: 100%; max-width: 280px; display: block; margin-inline: auto; border-radius: 8px; box-shadow: 0 8px 32px rgba(15,23,42,0.1); }
+  @media (max-width: 760px) {
+    .panel-content { grid-template-columns: 1fr; }
+    .panel-visual { display: none; }
+  }
+
+  /* ---- References ---- */
+  .references-section { background: var(--md-bg); }
+  .references-section h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 2rem; }
+  .references-empty {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 3rem;
+  }
+  .references-empty h3 { margin: 0; }
+  .references-empty p { color: var(--md-muted); margin: 0; }
+  .references-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .reference-card { display: flex; flex-direction: column; gap: 0.5rem; }
+  .concept-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: #FEF9C3;
+    color: #92400E;
+  }
+  .ref-link { color: var(--md-cta); font-weight: 500; margin-top: 0.5rem; }
+  .ref-link:hover { color: var(--md-cta-dark); }
+
+  /* ---- About ---- */
+  .about-section { background: var(--md-surface); }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .photo-placeholder {
+    aspect-ratio: 3/4;
+    background: var(--md-bg);
+    border: 1px solid var(--md-border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--md-muted);
+    font-size: 0.85rem;
+  }
+  .about-text h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 1.25rem; }
+  .about-text p { color: var(--md-muted); margin-bottom: 1rem; }
+  .about-text p:last-of-type { margin-bottom: 1.5rem; }
+  @media (max-width: 700px) {
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { max-width: 240px; }
+  }
+
+  /* ---- Sales teaser ---- */
+  .sales-teaser-section { background: var(--md-bg); padding-block: 3rem; }
+  .sales-teaser-card {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+    border-radius: 14px;
+    padding: clamp(2rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .sales-teaser-text h2 { color: #F8FAFC; font-size: clamp(1.4rem, 2.5vw, 1.9rem); margin-block: 0.75rem 1rem; }
+  .sales-teaser-text p { color: #94A3B8; margin-bottom: 1.5rem; max-width: 55ch; }
+  .sales-teaser-visual { opacity: 0.7; }
+  @media (max-width: 600px) {
+    .sales-teaser-card { grid-template-columns: 1fr; }
+    .sales-teaser-visual { display: none; }
+  }
+
+  /* ---- FAQ ---- */
+  .faq-section { background: var(--md-surface); }
+  .faq-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .faq-header h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 0.75rem; }
+  .faq-header p { color: var(--md-muted); font-size: 0.95rem; }
+  @media (max-width: 768px) { .faq-inner { grid-template-columns: 1fr; } }
+
+  /* ---- Contact ---- */
+  .contact-section { background: var(--md-bg); }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-header h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 1rem; }
+  .contact-header p { color: var(--md-muted); margin-bottom: 1.5rem; }
+  .contact-alternatives { display: flex; flex-direction: column; gap: 0.75rem; }
+  .whatsapp-btn { color: #25D366; border-color: #25D366; }
+  .whatsapp-btn:hover { background: #25D366; color: #fff; border-color: #25D366; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label { font-size: 0.875rem; font-weight: 500; color: var(--md-secondary); }
+  .form-label span { color: var(--md-cta); }
+  .form-input {
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid var(--md-border);
+    border-radius: 6px;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 0.95rem;
+    color: var(--md-text);
+    background: var(--md-surface);
+    transition: border-color 150ms;
+    min-height: 44px;
+  }
+  .form-input::placeholder { color: var(--md-subtle); }
+  .form-input:focus { outline: none; border-color: var(--md-cta); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-footer { display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+  .form-privacy { font-size: 0.8rem; color: var(--md-muted); max-width: 42ch; flex: 1; }
+  .form-privacy a { color: var(--md-cta); }
+  .form-privacy a:hover { color: var(--md-cta-dark); }
+  .form-submit { white-space: nowrap; }
+
+  .form-success, .form-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  .form-success { background: #F0FFF4; border: 1px solid #BBF7D0; }
+  .form-success strong { color: #15803D; }
+  .form-success p { margin: 0.2rem 0 0; color: #4ADE80; }
+  .form-error { background: #FFF5F5; border: 1px solid #FECACA; }
+  .form-error strong { color: #DC2626; }
+  .form-error p { margin: 0.2rem 0 0; color: #EF4444; }
+
+  @media (max-width: 800px) {
+    .contact-inner { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- =========================================================
+     SCRIPTS
+========================================================== -->
+<script>
+  // ---- Industry Tabs ----
+  (function () {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.industry-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.industry-panel');
+
+    function activate(id: string) {
+      tabs.forEach(tab => {
+        const isActive = tab.dataset.industry === id;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      panels.forEach(panel => {
+        const isActive = panel.id === `panel-${id}`;
+        panel.classList.toggle('active', isActive);
+        panel.hidden = !isActive;
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activate(tab.dataset.industry ?? '');
+      });
+      tab.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const tabsArr = Array.from(tabs);
+          const idx = tabsArr.indexOf(tab);
+          const next = e.key === 'ArrowRight'
+            ? (idx + 1) % tabsArr.length
+            : (idx - 1 + tabsArr.length) % tabsArr.length;
+          tabsArr[next].focus();
+          activate(tabsArr[next].dataset.industry ?? '');
+        }
+      });
+    });
+  })();
+
+  // ---- Contact Form ----
+  (function () {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+    const successEl = document.getElementById('form-success') as HTMLElement | null;
+    const errorEl = document.getElementById('form-error') as HTMLElement | null;
+
+    if (!form) return;
+
+    function showMessage(el: HTMLElement | null) {
+      if (!el) return;
+      el.hidden = false;
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function validate(): boolean {
+      const name = (form!.elements.namedItem('name') as HTMLInputElement)?.value.trim();
+      const email = (form!.elements.namedItem('email') as HTMLInputElement)?.value.trim();
+
+      if (!name) {
+        const nameField = document.getElementById('field-name') as HTMLInputElement;
+        nameField?.focus();
+        nameField?.setCustomValidity('Bitte geben Sie Ihren Namen an.');
+        nameField?.reportValidity();
+        return false;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        const emailField = document.getElementById('field-email') as HTMLInputElement;
+        emailField?.focus();
+        emailField?.setCustomValidity('Bitte geben Sie eine gültige E-Mail-Adresse an.');
+        emailField?.reportValidity();
+        return false;
+      }
+      return true;
+    }
+
+    form.addEventListener('submit', async (e: Event) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet…';
+      }
+      if (successEl) successEl.hidden = true;
+      if (errorEl) errorEl.hidden = true;
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        });
+
+        if (response.ok) {
+          form.reset();
+          showMessage(successEl);
+        } else {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      } catch {
+        showMessage(errorEl);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Entwurf anfragen';
+        }
+      }
+    });
+
+    // Clear custom validity on input
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('.form-input').forEach(field => {
+      field.addEventListener('input', () => field.setCustomValidity(''));
+    });
+  })();
+</script>

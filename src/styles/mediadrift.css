@@ -1,0 +1,188 @@
+/* MediaDrift — Base Styles */
+
+:root {
+  --md-bg: #F8FAFC;
+  --md-surface: #FFFFFF;
+  --md-primary: #0F172A;
+  --md-secondary: #334155;
+  --md-cta: #0369A1;
+  --md-cta-dark: #0284C7;
+  --md-muted: #475569;
+  --md-border: #E2E8F0;
+  --md-text: #020617;
+  --md-subtle: #64748B;
+  --md-accent: #DBEAFE;
+  --nav-h: 72px;
+}
+
+/* Font imports (self-hosted via fontsource) */
+@import '@fontsource/dm-serif-display/400.css';
+@import '@fontsource-variable/jost';
+
+/* Reset für MediaDrift-Seiten */
+.md-page {
+  font-family: 'Jost', system-ui, sans-serif;
+  background-color: var(--md-bg);
+  color: var(--md-text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+}
+
+.md-page h1,
+.md-page h2,
+.md-page h3,
+.md-page h4 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  line-height: 1.15;
+  color: var(--md-primary);
+  font-weight: 400;
+}
+
+.md-page a {
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+/* Utility: max content width */
+.md-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 3rem);
+}
+
+/* Section spacing */
+.md-section {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+/* Focus ring (a11y) */
+.md-page :focus-visible {
+  outline: 2px solid var(--md-cta);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.md-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-family: 'Jost', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  text-decoration: none;
+  border: none;
+  min-height: 44px; /* a11y touch target */
+}
+
+.md-btn-primary {
+  background-color: var(--md-cta);
+  color: #fff;
+}
+.md-btn-primary:hover {
+  background-color: var(--md-cta-dark);
+  color: #fff;
+}
+
+.md-btn-outline {
+  background-color: transparent;
+  color: var(--md-primary);
+  border: 1.5px solid var(--md-border);
+}
+.md-btn-outline:hover {
+  border-color: var(--md-cta);
+  color: var(--md-cta);
+}
+
+.md-btn-ghost {
+  background-color: transparent;
+  color: var(--md-muted);
+  padding-inline: 0;
+}
+.md-btn-ghost:hover {
+  color: var(--md-primary);
+}
+
+/* Cards */
+.md-card {
+  background: var(--md-surface);
+  border: 1px solid var(--md-border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+.md-card:hover {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  border-color: #CBD5E1;
+}
+
+/* Badge */
+.md-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: var(--md-accent);
+  color: var(--md-cta);
+}
+
+/* Section label */
+.md-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--md-cta);
+  margin-bottom: 0.75rem;
+}
+
+/* FAQ accordion */
+.md-faq details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 0;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--md-primary);
+  border-bottom: 1px solid var(--md-border);
+  transition: color 150ms ease;
+}
+.md-faq details summary::-webkit-details-marker { display: none; }
+.md-faq details summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--md-cta);
+  transition: transform 200ms ease;
+  flex-shrink: 0;
+}
+.md-faq details[open] summary::after { transform: rotate(45deg); }
+.md-faq details[open] summary { color: var(--md-cta); border-color: transparent; }
+.md-faq details .faq-answer {
+  padding: 0.75rem 0 1.25rem;
+  color: var(--md-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar */
+.md-page ::-webkit-scrollbar { width: 6px; }
+.md-page ::-webkit-scrollbar-track { background: var(--md-bg); }
+.md-page ::-webkit-scrollbar-thumb { background: var(--md-border); border-radius: 3px; }

@@ -1,0 +1,85 @@
+---
+import '../styles/mediadrift.css';
+import { SITE } from '../config/site';
+import MDNav from '../components/md/Nav.astro';
+import MDFooter from '../components/md/Footer.astro';
+import ConsentBanner from '../components/md/ConsentBanner.astro';
+import Assistant from '../components/md/Assistant.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = 'Individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten, mehr Vertrauen schaffen und online neue Kunden gewinnen möchten.',
+  ogImage = '/og-default.png',
+  canonical,
+  noIndex = false,
+} = Astro.props;
+
+const pageTitle = `${title} | ${SITE.name}`;
+const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${SITE.url}${ogImage}`} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={SITE.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE.url}${ogImage}`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-md.svg" />
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": SITE.contact.company,
+      "description": "Individuelle Unternehmenswebsites – Strategie, Design, Entwicklung, SEO und Google-Marketing.",
+      "url": SITE.url,
+      "telephone": SITE.contact.phone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": SITE.contact.street,
+        "addressLocality": "München",
+        "postalCode": "81539",
+        "addressCountry": "DE"
+      }
+    })} />
+  </head>
+  <body class="md-page">
+    <MDNav />
+    <main id="main-content">
+      <slot />
+    </main>
+    <MDFooter />
+    <ConsentBanner />
+    <Assistant />
+  </body>
+</html>

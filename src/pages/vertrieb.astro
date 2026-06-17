@@ -1,0 +1,548 @@
+---
+import MDLayout from '../layouts/MDLayout.astro';
+import { SITE, whatsappUrl } from '../config/site';
+import { faqSales } from '../data/faq';
+const waSales = whatsappUrl('sales');
+---
+
+<MDLayout
+  title="Für Vertriebspartner"
+  description="Werden Sie Vertriebspartner von MediaDrift und verdienen Sie Provisionen für erfolgreich vermittelte Webdesign-Projekte."
+>
+  <!-- Hero -->
+  <section class="vertrieb-hero md-section">
+    <div class="md-container">
+      <div class="vertrieb-badge md-badge">Für Vermittler & Vertriebspartner</div>
+      <h1 class="vertrieb-headline">
+        Empfehlen Sie uns weiter.<br />
+        <span class="text-cta">Verdienen Sie mit.</span>
+      </h1>
+      <p class="vertrieb-subline">
+        Sie kennen Unternehmen, die eine bessere Website brauchen?
+        Vermitteln Sie uns als Partner und erhalten Sie eine attraktive Provision
+        für jeden erfolgreichen Projektabschluss – ohne eigenes Risiko.
+      </p>
+      <p class="vertrieb-disclaimer">
+        <strong>Hinweis:</strong> Dieses Programm richtet sich an selbstständige Vermittler.
+        Es handelt sich nicht um ein Anstellungsverhältnis. Eine Provision wird
+        nur bei tatsächlichem Vertragsabschluss fällig.
+      </p>
+    </div>
+  </section>
+
+  <!-- Wie es funktioniert -->
+  <section class="md-section">
+    <div class="md-container">
+      <p class="md-label">So funktioniert's</p>
+      <h2 class="section-headline">In 3 Schritten zum Partnerprovision</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Kontakt herstellen</h3>
+          <p>Sie kennen jemanden, der eine neue oder bessere Website benötigt? Stellen Sie uns vor – persönlich, per WhatsApp oder per E-Mail.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Wir übernehmen</h3>
+          <p>MediaDrift führt das Erstgespräch, erstellt ein Angebot und begleitet den Kunden durch den gesamten Prozess. Sie müssen nichts weiter tun.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Provision erhalten</h3>
+          <p>Sobald der Vertrag unterzeichnet und die Anzahlung eingegangen ist, erhalten Sie Ihre vereinbarte Provision. <span class="placeholder">[PROVISIONSMODELL EINFÜGEN]</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vorteile -->
+  <section class="vorteile-section md-section">
+    <div class="md-container">
+      <p class="md-label">Ihre Vorteile</p>
+      <h2 class="section-headline">Warum Partner von MediaDrift werden?</h2>
+      <div class="vorteile-grid">
+        <div class="vorteil-item">
+          <div class="vorteil-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <h3>Attraktive Provision</h3>
+            <p>Faire Vergütung für Ihre Empfehlung – ohne versteckte Abzüge oder komplizierte Abrechnungsmodelle.</p>
+          </div>
+        </div>
+        <div class="vorteil-item">
+          <div class="vorteil-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <h3>Kein Zeitaufwand</h3>
+            <p>Sie empfehlen, wir erledigen den Rest. Kein eigener Verkaufsprozess, kein Projektmanagement, keine technischen Kenntnisse nötig.</p>
+          </div>
+        </div>
+        <div class="vorteil-item">
+          <div class="vorteil-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h3>Direkter Ansprechpartner</h3>
+            <p>Persönliche Zusammenarbeit mit Paul Dunker, kein anonymes Vermittlungsportal, schnelle und direkte Kommunikation.</p>
+          </div>
+        </div>
+        <div class="vorteil-item">
+          <div class="vorteil-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          </div>
+          <div>
+            <h3>Qualität, die überzeugt</h3>
+            <p>Sie empfehlen ein Produkt, hinter dem Sie stehen können – individuelle, hochwertige Websites, die wirklich Ergebnisse bringen.</p>
+          </div>
+        </div>
+        <div class="vorteil-item">
+          <div class="vorteil-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3>Verkaufsmaterialien</h3>
+            <p>Wir stellen Ihnen auf Wunsch Informationsmaterialien zur Verfügung, die Sie bei der Empfehlung unterstützen.</p>
+          </div>
+        </div>
+        <div class="vorteil-item">
+          <div class="vorteil-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <h3>Kein Risiko</h3>
+            <p>Keine Vorabkosten, keine Mindestanzahl an Vermittlungen, keine Laufzeit-Verpflichtungen. Provision nur bei Erfolg.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zielgruppen -->
+  <section class="md-section">
+    <div class="md-container">
+      <p class="md-label">Wer passt als Partner?</p>
+      <h2 class="section-headline">Ideal für diese Berufsgruppen</h2>
+      <div class="partner-types">
+        <div class="partner-type-card">
+          <h3>Unternehmensberater</h3>
+          <p>Sie kennen Ihre Klienten und deren Schwachstellen. Empfehlen Sie MediaDrift wenn eine bessere Online-Präsenz fehlt.</p>
+        </div>
+        <div class="partner-type-card">
+          <h3>Marketing-Freelancer</h3>
+          <p>Sie betreuen Social Media, SEO oder Ads – aber keine Websites? Kooperieren Sie mit uns für ein vollständiges Angebot.</p>
+        </div>
+        <div class="partner-type-card">
+          <h3>Grafiker & Designer</h3>
+          <p>Sie erstellen Logos und Print-Materialien, aber keine Websites? Wir kümmern uns um die digitale Umsetzung für Ihre Kunden.</p>
+        </div>
+        <div class="partner-type-card">
+          <h3>Branchennetworker</h3>
+          <p>Sie sind gut vernetzt in Ihrer Branche und kennen viele Unternehmen, die digitalen Aufholbedarf haben.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bewerbungsformular -->
+  <section class="md-section" id="bewerbung">
+    <div class="md-container">
+      <div class="form-wrapper">
+        <p class="md-label">Interesse geweckt?</p>
+        <h2 class="section-headline">Jetzt als Vertriebspartner bewerben</h2>
+        <p class="form-intro">
+          Füllen Sie das Formular aus und wir melden uns innerhalb von 2 Werktagen bei Ihnen.
+          Wir besprechen dann gemeinsam, ob eine Zusammenarbeit Sinn ergibt.
+        </p>
+
+        <form
+          name="vertriebspartner"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="partner-form"
+          id="partner-form"
+        >
+          <input type="hidden" name="form-name" value="vertriebspartner" />
+          <p hidden><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="partner-name">Ihr Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-name" name="name" required autocomplete="name" placeholder="Max Mustermann" />
+            </div>
+            <div class="form-group">
+              <label for="partner-beruf">Beruf / Tätigkeit <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-beruf" name="beruf" required placeholder="z.B. Unternehmensberater" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="partner-email">E-Mail <span aria-hidden="true">*</span></label>
+              <input type="email" id="partner-email" name="email" required autocomplete="email" placeholder="max@beispiel.de" />
+            </div>
+            <div class="form-group">
+              <label for="partner-telefon">Telefon</label>
+              <input type="tel" id="partner-telefon" name="telefon" autocomplete="tel" placeholder="+49 ..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="partner-netzwerk">Wie sieht Ihr Netzwerk aus? Welche Branchen?</label>
+            <textarea id="partner-netzwerk" name="netzwerk" rows="4" placeholder="Beschreiben Sie kurz, wen Sie kennen und vermitteln könnten..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="partner-nachricht">Weitere Anmerkungen</label>
+            <textarea id="partner-nachricht" name="nachricht" rows="3" placeholder="Haben Sie Fragen oder besondere Wünsche?"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="md-btn md-btn-primary" id="partner-submit">
+              Bewerbung absenden
+            </button>
+            <a href={waSales} target="_blank" rel="noopener noreferrer" class="md-btn md-btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003A9.997 9.997 0 0 0 2 12c0 1.763.463 3.448 1.27 4.91L2 22l5.234-1.244A9.97 9.97 0 0 0 12.004 22C17.523 22 22 17.523 22 12S17.523 2.003 12.004 2.003zm0 18.247a8.219 8.219 0 0 1-4.195-1.15l-.3-.178-3.107.737.78-2.997-.197-.307A8.242 8.242 0 0 1 3.752 12c0-4.556 3.706-8.262 8.252-8.262 4.548 0 8.252 3.706 8.252 8.262 0 4.557-3.704 8.25-8.252 8.25z"/></svg>
+              Direkt per WhatsApp
+            </a>
+          </div>
+
+          <div id="partner-success" class="form-success" hidden>
+            <strong>Bewerbung erhalten!</strong> Wir melden uns innerhalb von 2 Werktagen bei Ihnen.
+          </div>
+          <div id="partner-error" class="form-error" hidden>
+            Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per WhatsApp.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="md-section">
+    <div class="md-container faq-container">
+      <p class="md-label">Häufige Fragen</p>
+      <h2 class="section-headline">Fragen zum Partnerprogramm</h2>
+      <div class="md-faq">
+        {faqSales.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">{item.q}</summary>
+            <div class="faq-answer">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</MDLayout>
+
+<script>
+  const form = document.getElementById('partner-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('partner-submit') as HTMLButtonElement;
+  const successMsg = document.getElementById('partner-success') as HTMLElement;
+  const errorMsg = document.getElementById('partner-error') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet…';
+    successMsg.hidden = true;
+    errorMsg.hidden = true;
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+      });
+
+      if (res.ok) {
+        form.reset();
+        successMsg.removeAttribute('hidden');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        errorMsg.removeAttribute('hidden');
+      }
+    } catch {
+      errorMsg.removeAttribute('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Bewerbung absenden';
+    }
+  });
+</script>
+
+<style>
+  .vertrieb-hero {
+    background: linear-gradient(135deg, var(--md-primary) 0%, #1E3A5F 100%);
+    color: #F1F5F9;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    text-align: center;
+  }
+
+  .vertrieb-badge {
+    background: rgba(3, 105, 161, 0.4);
+    color: #93C5FD;
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .vertrieb-headline {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #F1F5F9;
+    margin-bottom: 1.5rem;
+  }
+
+  .text-cta { color: #60A5FA; }
+
+  .vertrieb-subline {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #94A3B8;
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+  }
+
+  .vertrieb-disclaimer {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: #FCD34D;
+    line-height: 1.6;
+  }
+
+  .section-headline {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--md-primary);
+    margin-bottom: 2.5rem;
+    line-height: 1.3;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .step-card {
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    background: var(--md-cta);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.4rem;
+    margin: 0 auto 1rem;
+  }
+
+  .step-card h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--md-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .step-card p {
+    color: var(--md-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .placeholder {
+    color: var(--md-cta);
+    font-weight: 500;
+  }
+
+  .vorteile-section {
+    background: var(--md-bg);
+  }
+
+  .vorteile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .vorteil-item {
+    display: flex;
+    gap: 1rem;
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .vorteil-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--md-accent);
+    color: var(--md-cta);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .vorteil-item h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1rem;
+    color: var(--md-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .vorteil-item p {
+    color: var(--md-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .partner-types {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .partner-type-card {
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .partner-type-card h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.05rem;
+    color: var(--md-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .partner-type-card p {
+    color: var(--md-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .form-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .form-intro {
+    color: var(--md-muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .partner-form {
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 14px;
+    padding: 2.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--md-secondary);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    border: 1px solid var(--md-border);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    font-family: 'Jost', system-ui, sans-serif;
+    color: var(--md-text);
+    background: var(--md-bg);
+    transition: border-color 150ms;
+    resize: vertical;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--md-cta);
+    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.1);
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .form-success {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: #DCFCE7;
+    border: 1px solid #86EFAC;
+    border-radius: 8px;
+    color: #14532D;
+    font-size: 0.9rem;
+  }
+
+  .form-error {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    border-radius: 8px;
+    color: #7F1D1D;
+    font-size: 0.9rem;
+  }
+
+  .faq-container {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 768px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .vorteile-grid { grid-template-columns: 1fr; }
+    .partner-types { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .partner-form { padding: 1.5rem; }
+  }
+</style>

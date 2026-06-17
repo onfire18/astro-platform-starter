@@ -1,0 +1,272 @@
+---
+import MDLayout from '../layouts/MDLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<MDLayout
+  title="Datenschutzerklärung"
+  description="Datenschutzerklärung von MediaDrift gemäß DSGVO"
+>
+  <div class="legal-page md-container">
+    <h1 class="legal-title">Datenschutzerklärung</h1>
+
+    <div class="legal-notice">
+      <strong>Hinweis:</strong> [RECHTLICH PRÜFEN] – Diese Datenschutzerklärung ist ein Entwurf und muss
+      vor Inbetriebnahme der Website von einem Datenschutzexperten oder Rechtsanwalt geprüft und
+      ggf. angepasst werden.
+    </div>
+
+    <section class="legal-section">
+      <h2>1. Verantwortlicher</h2>
+      <address class="legal-address">
+        {SITE.contact.company}<br />
+        {SITE.contact.name}<br />
+        {SITE.contact.street}<br />
+        {SITE.contact.city}<br />
+        Telefon: {SITE.contact.phone}<br />
+        E-Mail: <span class="placeholder">[AKTUELLE E-MAIL EINFÜGEN]</span>
+      </address>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+      <h3>2.1 Server-Logfiles (Netlify Hosting)</h3>
+      <p>
+        Beim Aufruf unserer Website werden durch den Hosting-Dienstleister Netlify automatisch
+        Informationen in sogenannten Server-Logfiles gespeichert. Diese umfassen:
+      </p>
+      <ul>
+        <li>IP-Adresse des anfragenden Geräts</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Name und URL der abgerufenen Datei</li>
+        <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+        <li>Verwendeter Browser und ggf. das Betriebssystem</li>
+      </ul>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren
+        und stabilen Betrieb der Website). Die Daten werden nach spätestens 30 Tagen gelöscht.
+      </p>
+
+      <h3>2.2 Kontaktformular</h3>
+      <p>
+        Wenn Sie über unser Kontaktformular eine Anfrage stellen, werden die von Ihnen angegebenen
+        Daten (Name, E-Mail-Adresse, Telefonnummer, Nachricht) zur Bearbeitung Ihrer Anfrage
+        gespeichert und verarbeitet.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) bzw.
+        Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Die Daten werden gelöscht,
+        sobald die Anfrage abschließend bearbeitet wurde und kein Vertragsverhältnis entstanden ist.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Cookies und Local Storage</h2>
+      <h3>3.1 Technisch notwendig</h3>
+      <p>
+        Diese Website verwendet keine technisch notwendigen Cookies. Zur Speicherung Ihrer
+        Cookie-Einstellungen nutzen wir <strong>Local Storage</strong> des Browsers (Schlüssel: <code>md_consent</code>).
+        Diese Speicherung erfolgt ausschließlich lokal auf Ihrem Gerät und ist für den Betrieb
+        der datenschutzkonformen Einwilligungsverwaltung notwendig.
+      </p>
+      <h3>3.2 Statistik-Cookies (Google Analytics)</h3>
+      <p>
+        Statistik-Cookies werden nur gesetzt, wenn Sie dieser Nutzung ausdrücklich zugestimmt haben.
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).
+        Ihre Einwilligung können Sie jederzeit über die Cookie-Einstellungen in der Fußzeile widerrufen.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Google Analytics 4</h2>
+      <p>
+        Diese Website kann Google Analytics 4 verwenden, einen Webanalysedienst der Google LLC
+        (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics wird nur
+        nach Ihrer ausdrücklichen Einwilligung geladen.
+      </p>
+      <p>
+        Google Analytics verwendet Cookies und ähnliche Technologien zur Analyse der Website-Nutzung.
+        Die erzeugten Informationen werden in der Regel an einen Server von Google in den USA
+        übertragen und dort gespeichert. Wir haben IP-Anonymisierung aktiviert.
+      </p>
+      <p>
+        Die Datenübertragung in die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln (SCCs).
+        Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzrichtlinie</a>.
+      </p>
+      <p>
+        Sie können Ihre Einwilligung jederzeit über unsere Cookie-Einstellungen widerrufen.
+        Alternativ können Sie das Browser-Add-on zur Deaktivierung von Google Analytics installieren:
+        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out</a>.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Hosting: Netlify</h2>
+      <p>
+        Diese Website wird bei Netlify Inc. (44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA)
+        gehostet. Netlify ist unser Auftragsverarbeiter gemäß Art. 28 DSGVO. Die Datenübertragung
+        erfolgt auf Basis der EU-Standardvertragsklauseln.
+      </p>
+      <p>
+        Weitere Informationen: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify Datenschutzrichtlinie</a>.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Kontaktformular-Daten (Netlify Forms)</h2>
+      <p>
+        Formulareingaben werden von Netlify verarbeitet und gespeichert. Netlify agiert dabei
+        als unser Auftragsverarbeiter. Die Daten werden ausschließlich zur Bearbeitung Ihrer
+        Anfrage verwendet und nicht an Dritte weitergegeben.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. WhatsApp</h2>
+      <p>
+        Auf dieser Website finden Sie Links zu WhatsApp. Wenn Sie auf einen WhatsApp-Link klicken,
+        werden Sie zur WhatsApp-App bzw. zum WhatsApp-Webdienst weitergeleitet. WhatsApp ist ein
+        Dienst der Meta Platforms Ireland Limited (4 Grand Canal Square, Grand Canal Harbour,
+        Dublin 2, Irland). Für die Datenverarbeitung durch WhatsApp gilt die
+        <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener noreferrer">WhatsApp Datenschutzrichtlinie</a>.
+        Die Links zu WhatsApp werden erst nach Ihrem aktiven Klick aufgerufen – es werden
+        keine Daten automatisch an WhatsApp übertragen.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>8. Ihre Rechte</h2>
+      <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+      <ul>
+        <li><strong>Auskunftsrecht</strong> (Art. 15 DSGVO): Recht auf Auskunft über verarbeitete Daten</li>
+        <li><strong>Berichtigungsrecht</strong> (Art. 16 DSGVO): Recht auf Berichtigung unrichtiger Daten</li>
+        <li><strong>Löschungsrecht</strong> (Art. 17 DSGVO): Recht auf Löschung Ihrer Daten</li>
+        <li><strong>Einschränkungsrecht</strong> (Art. 18 DSGVO): Recht auf Einschränkung der Verarbeitung</li>
+        <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO): Recht auf Widerspruch gegen die Verarbeitung</li>
+        <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO): Recht auf Erhalt Ihrer Daten in strukturiertem Format</li>
+        <li><strong>Widerrufsrecht</strong>: Recht auf Widerruf erteilter Einwilligungen</li>
+      </ul>
+      <p>
+        Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:
+        {SITE.contact.name}, {SITE.contact.street}, {SITE.contact.city},
+        Tel.: {SITE.contact.phone}.
+      </p>
+      <p>
+        Sie haben zudem das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren:
+        <strong>Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</strong>,
+        Promenade 18, 91522 Ansbach, <a href="https://www.lda.bayern.de" target="_blank" rel="noopener noreferrer">www.lda.bayern.de</a>.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>9. Kontakt bei Datenschutzfragen</h2>
+      <address class="legal-address">
+        {SITE.contact.name}<br />
+        {SITE.contact.street}<br />
+        {SITE.contact.city}<br />
+        Telefon: {SITE.contact.phone}<br />
+        E-Mail: <span class="placeholder">[AKTUELLE E-MAIL EINFÜGEN]</span>
+      </address>
+    </section>
+
+    <p class="legal-date">Stand: <span class="placeholder">[DATUM DER LETZTEN AKTUALISIERUNG EINFÜGEN]</span></p>
+  </div>
+</MDLayout>
+
+<style>
+  .legal-page {
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+    max-width: 800px;
+  }
+
+  .legal-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--md-primary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .legal-notice {
+    background: #FEF3C7;
+    border: 1px solid #FCD34D;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: #78350F;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .legal-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--md-border);
+  }
+
+  .legal-section:last-of-type { border-bottom: none; }
+
+  .legal-section h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--md-primary);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .legal-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--md-secondary);
+    margin: 1rem 0 0.5rem;
+  }
+
+  .legal-section p, .legal-section li {
+    color: var(--md-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section li { margin-bottom: 0.35rem; }
+
+  .legal-section a {
+    color: var(--md-cta);
+    text-decoration: underline;
+  }
+
+  .legal-address {
+    font-style: normal;
+    color: var(--md-muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  .placeholder {
+    background: #FEF9C3;
+    color: #78350F;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.88rem;
+  }
+
+  code {
+    background: var(--md-accent);
+    color: var(--md-cta);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+
+  .legal-date {
+    color: var(--md-muted);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+</style>
