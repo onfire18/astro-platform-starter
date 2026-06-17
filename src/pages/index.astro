@@ -291,47 +291,93 @@ const waSales = whatsappUrl('sales');
   <!-- =========================================================
        5. PROCESS
   ========================================================== -->
-  <section class="md-section process-section" aria-labelledby="process-headline">
+  <section class="md-section process-section" id="ablauf" aria-labelledby="process-headline">
     <div class="md-container">
       <span class="md-label" style="color:#93C5FD">Ablauf</span>
       <h2 id="process-headline" style="color:#F8FAFC">So läuft die Zusammenarbeit ab</h2>
-      <ol class="process-steps" role="list">
-        <li class="process-step">
-          <span class="step-number" aria-hidden="true">01</span>
-          <div>
-            <h3>Erstgespräch &amp; Analyse</h3>
-            <p>Wir lernen uns kennen. Sie erklären, was Ihr Unternehmen auszeichnet, wen Sie erreichen wollen und was Ihre Website leisten soll.</p>
+
+      <div class="process-layout">
+        <!-- Left: animated steps -->
+        <ol class="process-steps" role="list" id="process-steps">
+          <li class="process-step" data-step="0">
+            <span class="step-number" aria-hidden="true">01</span>
+            <div class="step-body">
+              <h3>Erstgespräch &amp; Analyse</h3>
+              <p>Wir lernen uns kennen. Sie erklären, was Ihr Unternehmen auszeichnet, wen Sie erreichen wollen und was Ihre Website leisten soll.</p>
+            </div>
+          </li>
+          <li class="process-step" data-step="1">
+            <span class="step-number" aria-hidden="true">02</span>
+            <div class="step-body">
+              <h3>Konzept &amp; Design</h3>
+              <p>Auf Basis des Gesprächs entwickeln wir Struktur und visuelles Konzept. Sie erhalten einen ersten Entwurf zur Abstimmung.</p>
+            </div>
+          </li>
+          <li class="process-step" data-step="2">
+            <span class="step-number" aria-hidden="true">03</span>
+            <div class="step-body">
+              <h3>Entwicklung</h3>
+              <p>Das abgestimmte Design wird technisch umgesetzt – responsive, barrierefrei, schnell und mit sauberem Code.</p>
+            </div>
+          </li>
+          <li class="process-step" data-step="3">
+            <span class="step-number" aria-hidden="true">04</span>
+            <div class="step-body">
+              <h3>Launch &amp; Übergabe</h3>
+              <p>Nach einem gemeinsamen Review und letzten Anpassungen geht die Website online. Sie erhalten alle Zugänge und eine Einweisung.</p>
+            </div>
+          </li>
+          <li class="process-step" data-step="4">
+            <span class="step-number" aria-hidden="true">05</span>
+            <div class="step-body">
+              <h3>Support</h3>
+              <p>Auch nach dem Launch sind wir da – für Änderungen, Erweiterungen oder technische Fragen. Direkt, ohne Umwege.</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Right: website that builds up & pops -->
+        <div class="process-visual" aria-hidden="true">
+          <div class="pv-browser" id="pv-browser" data-phase="0">
+            <div class="pv-chrome">
+              <span class="pv-dot"></span><span class="pv-dot"></span><span class="pv-dot"></span>
+              <div class="pv-url"><span class="pv-url-text">ihre-website.de</span></div>
+            </div>
+            <div class="pv-screen">
+              <!-- Phase 0: empty / analysis -->
+              <div class="pv-layer pv-analysis">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <span>Analyse läuft …</span>
+              </div>
+              <!-- Wireframe blocks (phase 1+) -->
+              <div class="pv-wire pv-wire-nav"></div>
+              <div class="pv-wire pv-wire-h1"></div>
+              <div class="pv-wire pv-wire-h2"></div>
+              <div class="pv-wire pv-wire-btn"></div>
+              <div class="pv-wire pv-wire-img"></div>
+              <div class="pv-wire pv-wire-c1"></div>
+              <div class="pv-wire pv-wire-c2"></div>
+              <div class="pv-wire pv-wire-c3"></div>
+              <!-- Launch badge -->
+              <div class="pv-live-badge">● LIVE</div>
+            </div>
+            <!-- Pop overlay: finished -->
+            <div class="pv-done">
+              <div class="pv-done-check">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <strong>Ihre perfekte Website</strong>
+              <span>ist online.</span>
+            </div>
           </div>
-        </li>
-        <li class="process-step">
-          <span class="step-number" aria-hidden="true">02</span>
-          <div>
-            <h3>Konzept &amp; Design</h3>
-            <p>Auf Basis des Gesprächs entwickeln wir Struktur und visuelles Konzept. Sie erhalten einen ersten Entwurf zur Abstimmung.</p>
-          </div>
-        </li>
-        <li class="process-step">
-          <span class="step-number" aria-hidden="true">03</span>
-          <div>
-            <h3>Entwicklung</h3>
-            <p>Das abgestimmte Design wird technisch umgesetzt – responsive, barrierefrei, schnell und mit sauberem Code.</p>
-          </div>
-        </li>
-        <li class="process-step">
-          <span class="step-number" aria-hidden="true">04</span>
-          <div>
-            <h3>Launch &amp; Übergabe</h3>
-            <p>Nach einem gemeinsamen Review und letzten Anpassungen geht die Website online. Sie erhalten alle Zugänge und eine Einweisung.</p>
-          </div>
-        </li>
-        <li class="process-step">
-          <span class="step-number" aria-hidden="true">05</span>
-          <div>
-            <h3>Support</h3>
-            <p>Auch nach dem Launch sind wir da – für Änderungen, Erweiterungen oder technische Fragen. Direkt, ohne Umwege.</p>
-          </div>
-        </li>
-      </ol>
+          <p class="pv-caption" id="pv-caption">Erstgespräch &amp; Analyse</p>
+        </div>
+      </div>
+
+      <div class="process-cta">
+        <p>Klingt gut? Lassen Sie uns über Ihr Projekt sprechen.</p>
+        <a href="#kontakt" class="md-btn md-btn-primary">Jetzt Entwurf anfragen →</a>
+      </div>
     </div>
   </section>
 
@@ -414,7 +460,7 @@ const waSales = whatsappUrl('sales');
   <!-- =========================================================
        7. REFERENCES
   ========================================================== -->
-  <section class="md-section references-section" aria-labelledby="references-headline">
+  <section class="md-section references-section" id="referenzen" aria-labelledby="references-headline">
     <div class="md-container">
       <span class="md-label">Referenzen</span>
       <h2 id="references-headline">Unsere Projekte</h2>
@@ -465,23 +511,23 @@ const waSales = whatsappUrl('sales');
           </a>
         </li>
 
-        <!-- 3: Rupert -->
+        <!-- 3: MediaDrift -->
         <li class="ref-card">
           <div class="ref-img-wrap">
             <img
-              src="/images/rupert.png"
-              alt="Rupertseite – Unternehmenswebsite"
+              src="/images/mediadrift.png"
+              alt="Media Drift – Social Media Management Website"
               class="ref-img"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="ref-info">
-            <span class="md-badge">Unternehmenswebsite</span>
-            <h3>Rupert</h3>
-            <p>Professioneller Online-Auftritt mit klarer Struktur, schnellen Ladezeiten und einem Design, das Kunden überzeugt.</p>
+            <span class="md-badge">Social Media · Marketing</span>
+            <h3>MediaDrift</h3>
+            <p>Markanter Auftritt für eine Social-Media-Agentur – mit klarer Botschaft, starkem Design und Fokus auf Reichweite und Leads.</p>
           </div>
-          <a href="https://rupertseite.netlify.app" class="md-btn md-btn-primary ref-cta" target="_blank" rel="noopener noreferrer">
+          <a href="https://mediadrift.org" class="md-btn md-btn-primary ref-cta" target="_blank" rel="noopener noreferrer">
             Website ansehen
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
@@ -778,6 +824,12 @@ const waSales = whatsappUrl('sales');
       </form>
     </div>
   </section>
+
+  <!-- Schwebender Kontakt-Button (erscheint beim Scrollen) -->
+  <a href="#kontakt" class="floating-contact" id="floating-contact" aria-label="Zum Kontaktformular">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Kontakt</span>
+  </a>
 
 </MDLayout>
 
@@ -1136,6 +1188,13 @@ const waSales = whatsappUrl('sales');
     color: var(--md-bg);
   }
   .process-section h2 { color: #F8FAFC; font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 2.5rem; }
+
+  .process-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
   .process-steps {
     display: grid;
     grid-template-columns: 1fr;
@@ -1148,10 +1207,15 @@ const waSales = whatsappUrl('sales');
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
-    padding-block: 1.5rem;
+    padding-block: 1.4rem;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+    opacity: 0.4;
+    transition: opacity 0.45s ease, transform 0.45s ease;
   }
   .process-step:last-child { border-bottom: none; }
+  .process-step.is-active { opacity: 1; }
+  .process-step.is-done { opacity: 0.85; }
+
   .step-number {
     font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2.5rem;
@@ -1159,10 +1223,216 @@ const waSales = whatsappUrl('sales');
     line-height: 1;
     min-width: 3rem;
     flex-shrink: 0;
-    opacity: 0.8;
+    opacity: 0.5;
+    position: relative;
+    transition: color 0.45s ease, opacity 0.45s ease;
   }
+  .process-step.is-active .step-number { color: #60A5FA; opacity: 1; }
+  .process-step.is-done .step-number { color: #22C55E; opacity: 1; }
   .process-step h3 { color: #F8FAFC; font-size: 1.05rem; margin: 0 0 0.35rem; }
   .process-step p { color: #94A3B8; margin: 0; font-size: 0.93rem; line-height: 1.65; }
+
+  /* Process visual (building website) */
+  .process-visual {
+    position: sticky;
+    top: calc(var(--nav-h) + 2rem);
+  }
+  .pv-browser {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    border: 1px solid #334155;
+  }
+  .pv-chrome {
+    background: #F1F5F9;
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .pv-dot { width: 9px; height: 9px; border-radius: 50%; background: #CBD5E1; flex-shrink: 0; }
+  .pv-url {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.68rem;
+    color: #94A3B8;
+    margin-left: 0.4rem;
+  }
+  .pv-screen {
+    position: relative;
+    height: 300px;
+    padding: 1rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+    overflow: hidden;
+  }
+
+  /* analysis placeholder */
+  .pv-analysis {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: #64748B;
+    font-size: 0.85rem;
+    transition: opacity 0.4s ease;
+  }
+  .pv-analysis svg { animation: pvpulse 1.6s ease-in-out infinite; }
+  @keyframes pvpulse { 0%,100% { opacity: 0.4; transform: scale(0.95);} 50% { opacity: 1; transform: scale(1.05);} }
+  .pv-browser[data-phase="0"] .pv-analysis { opacity: 1; }
+  .pv-browser:not([data-phase="0"]) .pv-analysis { opacity: 0; pointer-events: none; }
+
+  /* wireframe blocks */
+  .pv-wire {
+    position: absolute;
+    border-radius: 4px;
+    background: #CBD5E1;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease, background 0.45s ease;
+  }
+  .pv-wire-nav { top: 16px; left: 16px; right: 16px; height: 22px; }
+  .pv-wire-h1  { top: 58px; left: 16px; width: 55%; height: 16px; }
+  .pv-wire-h2  { top: 82px; left: 16px; width: 40%; height: 10px; }
+  .pv-wire-btn { top: 104px; left: 16px; width: 80px; height: 22px; }
+  .pv-wire-img { top: 58px; right: 16px; width: 38%; height: 68px; }
+  .pv-wire-c1  { bottom: 16px; left: 16px; width: calc(33% - 16px); height: 70px; }
+  .pv-wire-c2  { bottom: 16px; left: calc(33% + 4px); width: calc(33% - 16px); height: 70px; }
+  .pv-wire-c3  { bottom: 16px; right: 16px; width: calc(33% - 16px); height: 70px; }
+
+  /* phase 1: wireframe visible (grey) */
+  .pv-browser[data-phase="1"] .pv-wire,
+  .pv-browser[data-phase="2"] .pv-wire,
+  .pv-browser[data-phase="3"] .pv-wire,
+  .pv-browser[data-phase="4"] .pv-wire,
+  .pv-browser[data-phase="5"] .pv-wire {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* phase 2+: design colors in */
+  .pv-browser[data-phase="2"] .pv-wire-nav,
+  .pv-browser[data-phase="3"] .pv-wire-nav,
+  .pv-browser[data-phase="4"] .pv-wire-nav,
+  .pv-browser[data-phase="5"] .pv-wire-nav { background: #0F172A; }
+  .pv-browser[data-phase="2"] .pv-wire-h1,
+  .pv-browser[data-phase="3"] .pv-wire-h1,
+  .pv-browser[data-phase="4"] .pv-wire-h1,
+  .pv-browser[data-phase="5"] .pv-wire-h1 { background: #1E293B; }
+  .pv-browser[data-phase="2"] .pv-wire-btn,
+  .pv-browser[data-phase="3"] .pv-wire-btn,
+  .pv-browser[data-phase="4"] .pv-wire-btn,
+  .pv-browser[data-phase="5"] .pv-wire-btn { background: #0369A1; }
+  .pv-browser[data-phase="2"] .pv-wire-img,
+  .pv-browser[data-phase="3"] .pv-wire-img,
+  .pv-browser[data-phase="4"] .pv-wire-img,
+  .pv-browser[data-phase="5"] .pv-wire-img { background: linear-gradient(135deg,#3B82F6,#0369A1); }
+  .pv-browser[data-phase="2"] .pv-wire-c1, .pv-browser[data-phase="3"] .pv-wire-c1, .pv-browser[data-phase="4"] .pv-wire-c1, .pv-browser[data-phase="5"] .pv-wire-c1,
+  .pv-browser[data-phase="2"] .pv-wire-c2, .pv-browser[data-phase="3"] .pv-wire-c2, .pv-browser[data-phase="4"] .pv-wire-c2, .pv-browser[data-phase="5"] .pv-wire-c2,
+  .pv-browser[data-phase="2"] .pv-wire-c3, .pv-browser[data-phase="3"] .pv-wire-c3, .pv-browser[data-phase="4"] .pv-wire-c3, .pv-browser[data-phase="5"] .pv-wire-c3 {
+    background: #fff; box-shadow: 0 2px 8px rgba(15,23,42,0.08); border: 1px solid #E2E8F0;
+  }
+
+  /* LIVE badge appears at phase 4 */
+  .pv-live-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: #22C55E;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 4;
+  }
+  .pv-browser[data-phase="4"] .pv-live-badge,
+  .pv-browser[data-phase="5"] .pv-live-badge { opacity: 1; transform: scale(1); }
+
+  /* DONE pop overlay at phase 5 */
+  .pv-done {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,23,42,0.92);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transform: scale(1.08);
+    pointer-events: none;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    z-index: 5;
+  }
+  .pv-done strong { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.25rem; font-weight: 400; }
+  .pv-done span { color: #94A3B8; font-size: 0.9rem; }
+  .pv-done-check {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #22C55E;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.6rem;
+    transform: scale(0);
+  }
+  .pv-browser[data-phase="5"] .pv-done {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    animation: pvpop 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .pv-browser[data-phase="5"] .pv-done-check {
+    animation: pvcheckpop 0.5s 0.15s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+  @keyframes pvpop { 0% { transform: scale(1.12); } 60% { transform: scale(0.97);} 100% { transform: scale(1);} }
+  @keyframes pvcheckpop { 0% { transform: scale(0) rotate(-20deg);} 100% { transform: scale(1) rotate(0);} }
+
+  .pv-caption {
+    text-align: center;
+    margin-top: 1rem;
+    color: #93C5FD;
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-height: 1.4em;
+    transition: color 0.3s ease;
+  }
+
+  .process-cta {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .process-cta p { color: #CBD5E1; margin: 0; font-size: 1.05rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process-step { opacity: 1; }
+    .process-step .step-number { opacity: 1; }
+    .pv-wire { opacity: 1; transform: none; }
+    .pv-analysis { display: none; }
+  }
+  @media (max-width: 860px) {
+    .process-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .process-visual { position: static; max-width: 460px; margin-inline: auto; width: 100%; }
+  }
 
   /* ---- Industries ---- */
   .industries-section { background: var(--md-surface); }
@@ -1480,6 +1750,43 @@ const waSales = whatsappUrl('sales');
     .contact-inner { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
   }
+
+  /* ---- Schwebender Kontakt-Button ---- */
+  .floating-contact {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--md-cta);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 28px rgba(3,105,161,0.4);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s ease;
+  }
+  .floating-contact.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .floating-contact:hover { background: var(--md-cta-dark); color: #fff; }
+  @media (max-width: 560px) {
+    .floating-contact { left: 1rem; bottom: 1rem; padding: 0.7rem 1rem; font-size: 0.9rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .floating-contact { transition: opacity 0.2s ease; transform: none; }
+    .floating-contact.is-visible { transform: none; }
+  }
 </style>
 
 <!-- =========================================================
@@ -1635,5 +1942,90 @@ const waSales = whatsappUrl('sales');
     }
 
     startTimer();
+  })();
+
+  // ---- Process build-up animation ----
+  (function () {
+    const section = document.querySelector('.process-section');
+    const steps = Array.from(document.querySelectorAll<HTMLElement>('.process-step'));
+    const browser = document.getElementById('pv-browser');
+    const caption = document.getElementById('pv-caption');
+    if (!section || !steps.length || !browser) return;
+
+    const captions = [
+      'Erstgespräch & Analyse',
+      'Konzept & Design',
+      'Entwicklung',
+      'Launch & Übergabe',
+      'Support – Ihre Website ist fertig!',
+    ];
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let played = false;
+    let timers: ReturnType<typeof setTimeout>[] = [];
+
+    function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+    function setStep(i: number) {
+      steps.forEach((step, idx) => {
+        step.classList.toggle('is-active', idx === i);
+        step.classList.toggle('is-done', idx < i);
+      });
+      browser!.setAttribute('data-phase', String(i + 1));
+      if (caption) caption.textContent = captions[i] ?? '';
+    }
+
+    function play() {
+      if (played) return;
+      played = true;
+      clearTimers();
+      if (reduce) { setStep(steps.length - 1); return; }
+      browser!.setAttribute('data-phase', '0');
+      steps.forEach((s) => s.classList.remove('is-active', 'is-done'));
+      steps.forEach((_, i) => {
+        timers.push(setTimeout(() => setStep(i), 700 + i * 1400));
+      });
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { play(); io.unobserve(entry.target); }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(section);
+  })();
+
+  // ---- Floating contact button ----
+  (function () {
+    const btn = document.getElementById('floating-contact');
+    const hero = document.querySelector('.hero');
+    const contact = document.getElementById('kontakt');
+    if (!btn) return;
+
+    let pastHero = false;
+    let atContact = false;
+
+    function update() {
+      btn!.classList.toggle('is-visible', pastHero && !atContact);
+    }
+
+    if (hero) {
+      new IntersectionObserver(
+        (entries) => { pastHero = !entries[0].isIntersecting; update(); },
+        { threshold: 0 }
+      ).observe(hero);
+    } else {
+      pastHero = true;
+    }
+
+    if (contact) {
+      new IntersectionObserver(
+        (entries) => { atContact = entries[0].isIntersecting; update(); },
+        { threshold: 0.1 }
+      ).observe(contact);
+    }
   })();
 </script>
