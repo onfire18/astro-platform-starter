@@ -10,7 +10,7 @@ export const SITE = {
     country: 'Deutschland',
     phone: '+49 159 05405185',
     phoneClean: '4915905405185',
-    email: '[AKTUELLE E-MAIL EINFÜGEN]',
+    email: 'info@mediadrift.org',
   },
   whatsapp: {
     number: '4915905405185',
