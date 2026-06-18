@@ -1281,7 +1281,11 @@ const waSales = whatsappUrl('sales');
   .process-step h3 { color: #F8FAFC; font-size: 1.05rem; margin: 0 0 0.35rem; }
   .process-step p { color: #94A3B8; margin: 0; font-size: 0.93rem; line-height: 1.65; }
 
-  /* Process visual (building website) — new animation */
+  /* =====================================================================
+     Prozess-Browser-Animation — CSS-only
+     Steuerung ausschließlich über  .pv-browser[data-phase="0..5"]
+     Farben:  BG #1E293B · Blau #0369A1 · Grün #22C55E
+     ===================================================================== */
   .pv-browser{
     --pv-bg:#1E293B;
     --pv-blue:#0369A1;
@@ -1566,8 +1570,16 @@ const waSales = whatsappUrl('sales');
   @media (prefers-reduced-motion: reduce) {
     .process-step { opacity: 1; }
     .process-step .step-number { opacity: 1; }
-    .pv-wire { opacity: 1; transform: none; }
-    .pv-analysis { display: none; }
+    .pv-browser *,
+    .pv-browser *::before,
+    .pv-browser *::after {
+      animation: none !important;
+      transition-duration: .001ms !important;
+    }
+    .pv-browser[data-phase="3"] .pv-wire-h1::after,
+    .pv-browser[data-phase="4"] .pv-wire-h1::after,
+    .pv-browser[data-phase="5"] .pv-wire-h1::after { width: 22ch; border-right-color: transparent; }
+    .pv-done::before, .pv-done::after { display: none; }
   }
   @media (max-width: 860px) {
     .process-layout { grid-template-columns: 1fr; gap: 2.5rem; }
