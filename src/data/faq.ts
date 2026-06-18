@@ -53,7 +53,7 @@ export const faqSales: FAQItem[] = [
   },
   {
     question: 'Wie funktioniert die Vergütung?',
-    answer: '[PROVISIONSMODELL EINFÜGEN] – die genauen Konditionen besprechen wir im Kennenlerngespräch.',
+    answer: 'Du erhältst 10 % des Netto-Auftragswerts pro erfolgreich vermitteltem Kunden. Die genauen Konditionen besprechen wir im Kennenlerngespräch.',
   },
   {
     question: 'Bin ich angestellt oder selbstständig?',
