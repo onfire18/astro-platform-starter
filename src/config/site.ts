@@ -18,7 +18,7 @@ export const SITE = {
     salesText: 'Hallo Paul, ich interessiere mich für eine Zusammenarbeit als Vertriebspartner bei MediaDrift und würde gerne ein Kennenlerngespräch vereinbaren.',
   },
   booking: 'https://calendly.com/mediadrift/30min',
-  ga4Id: '[GA4-MESS-ID EINFÜGEN]',
+  ga4Id: 'G-W4VQVNXJP4',
   social: {} as Record<string, string>,
 } as const;
 
