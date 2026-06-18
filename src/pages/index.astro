@@ -1771,7 +1771,7 @@ const waSales = whatsappUrl('sales');
   /* ---- Schwebender WhatsApp-Button ---- */
   .floating-contact {
     position: fixed;
-    right: 1.5rem;
+    left: 1.5rem;
     bottom: 1.5rem;
     z-index: 90;
     display: inline-flex;
@@ -1804,7 +1804,7 @@ const waSales = whatsappUrl('sales');
     transform: translateY(-2px) scale(1.02);
   }
   @media (max-width: 560px) {
-    .floating-contact { right: 1rem; bottom: 1rem; padding: 0.75rem 1.1rem; font-size: 0.9rem; }
+    .floating-contact { left: 1rem; bottom: 1rem; padding: 0.75rem 1.1rem; font-size: 0.9rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .floating-contact { transition: opacity 0.2s ease; transform: none; }
