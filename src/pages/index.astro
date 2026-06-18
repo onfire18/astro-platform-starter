@@ -873,60 +873,86 @@ const waSales = whatsappUrl('sales');
 
   /* ---- Hero ---- */
   .hero {
-    background: linear-gradient(150deg, #FFFFFF 0%, #F0F7FF 55%, #E8F2FE 100%);
-    padding-top: calc(var(--nav-h) + 3.5rem);
-    padding-bottom: 5rem;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(219,234,254,0.55) 0%, transparent 70%),
+      linear-gradient(160deg, #FFFFFF 0%, #F4F8FF 60%, #EBF3FF 100%);
+    padding-top: calc(var(--nav-h) + 4rem);
+    padding-bottom: 5.5rem;
     overflow: hidden;
   }
   .hero-inner {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
-    gap: 4rem;
+    gap: 4.5rem;
     align-items: center;
   }
   .hero-label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--md-cta);
     background: var(--md-accent);
-    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(3,105,161,0.15);
+    padding: 0.35rem 0.85rem;
     border-radius: 99px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
+  .hero-label::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.25); }
+    50%       { box-shadow: 0 0 0 5px rgba(34,197,94,0.1); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-label::before { animation: none; } }
   .hero-h1 {
     font-family: 'DM Serif Display', Georgia, serif;
-    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-size: clamp(2.5rem, 5.2vw, 3.9rem);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.08;
     color: var(--md-primary);
     margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
   .hero-highlight { color: var(--md-cta); }
   .hero-sub {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     color: var(--md-secondary);
-    line-height: 1.7;
-    max-width: 42ch;
-    margin-bottom: 2.25rem;
+    line-height: 1.75;
+    max-width: 44ch;
+    margin-bottom: 2.5rem;
   }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-  .hero-btn-primary { display: flex; align-items: center; gap: 0.5rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
+  .hero-btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.75rem;
+    font-size: 1rem;
+  }
   .hero-trust-micro {
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem 1.25rem;
     list-style: none;
-    margin: 0 0 1rem;
+    margin: 0 0 1.25rem;
     padding: 0;
-    font-size: 0.83rem;
+    font-size: 0.84rem;
     color: var(--md-muted);
   }
   .hero-trust-micro li { display: flex; align-items: center; gap: 0.4rem; }
-  .hero-trust-micro span { color: #16a34a; font-weight: 700; }
+  .hero-trust-micro span { color: #16a34a; font-weight: 700; font-size: 0.95rem; }
   .hero-sales-hint { font-size: 0.88rem; color: var(--md-muted); }
   .hero-sales-hint a { color: var(--md-cta); text-decoration: underline; font-weight: 500; }
 
@@ -1094,15 +1120,17 @@ const waSales = whatsappUrl('sales');
   /* Floating stat cards */
   .float-card {
     position: absolute;
-    background: #fff;
-    border-radius: 12px;
-    padding: 0.65rem 0.9rem;
-    box-shadow: 0 8px 32px rgba(15,23,42,0.12), 0 2px 8px rgba(15,23,42,0.06);
-    border: 1px solid #F1F5F9;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 12px 40px rgba(15,23,42,0.14), 0 2px 8px rgba(15,23,42,0.06);
+    border: 1px solid rgba(255,255,255,0.8);
     display: flex;
     align-items: center;
-    gap: 0.55rem;
-    min-width: 130px;
+    gap: 0.6rem;
+    min-width: 140px;
     z-index: 10;
     animation-delay: 0.5s !important;
   }
@@ -1457,7 +1485,7 @@ const waSales = whatsappUrl('sales');
   /* ---- Industries ---- */
   .industries-section { background: var(--md-surface); }
   .industries-section h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 0.75rem; }
-  .industries-intro { color: var(--md-muted); margin-bottom: 2rem; max-width: 60ch; }
+  .industries-intro { color: var(--md-secondary); margin-bottom: 2.5rem; max-width: 58ch; font-size: 1.05rem; line-height: 1.7; }
   .industry-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -1552,9 +1580,11 @@ const waSales = whatsappUrl('sales');
   .references-section { background: var(--md-bg); }
   .references-section h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 2rem; }
   .references-intro {
-    color: var(--md-muted);
-    margin-bottom: 2rem;
-    font-size: 1rem;
+    color: var(--md-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 52ch;
   }
   .references-grid {
     display: grid;
