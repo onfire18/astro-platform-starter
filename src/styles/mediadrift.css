@@ -74,7 +74,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
   text-decoration: none;
   border: none;
   min-height: 44px; /* a11y touch target */
@@ -83,10 +83,13 @@
 .md-btn-primary {
   background-color: var(--md-cta);
   color: #fff;
+  box-shadow: 0 1px 3px rgba(3, 105, 161, 0.3), 0 4px 16px rgba(3, 105, 161, 0.15);
 }
 .md-btn-primary:hover {
   background-color: var(--md-cta-dark);
   color: #fff;
+  box-shadow: 0 2px 6px rgba(3, 105, 161, 0.4), 0 8px 24px rgba(3, 105, 161, 0.2);
+  transform: translateY(-1px);
 }
 
 .md-btn-outline {
