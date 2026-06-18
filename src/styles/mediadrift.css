@@ -69,15 +69,40 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: 'Jost', system-ui, sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease, border-color 150ms ease;
   text-decoration: none;
   border: none;
   min-height: 44px; /* a11y touch target */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* One-way shine sweep on hover */
+.md-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0s;
+  pointer-events: none;
+  z-index: -1;
+}
+.md-btn:hover::before {
+  left: 130%;
+  transition: left 650ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .md-btn::before { display: none; }
 }
 
 .md-btn-primary {
@@ -100,13 +125,17 @@
 .md-btn-outline:hover {
   border-color: var(--md-cta);
   color: var(--md-cta);
+  background-color: rgba(3, 105, 161, 0.06);
+  transform: translateY(-1px);
 }
 
 .md-btn-ghost {
   background-color: transparent;
   color: var(--md-muted);
   padding-inline: 0;
+  overflow: visible;
 }
+.md-btn-ghost::before { display: none; }
 .md-btn-ghost:hover {
   color: var(--md-primary);
 }
