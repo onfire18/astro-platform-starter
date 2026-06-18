@@ -924,6 +924,7 @@ const waSales = whatsappUrl('sales');
     color: var(--md-primary);
     margin-bottom: 1.5rem;
     letter-spacing: -0.015em;
+    text-wrap: balance;
   }
   .hero-highlight { color: var(--md-cta); }
   .hero-sub {
@@ -1258,7 +1259,7 @@ const waSales = whatsappUrl('sales');
     padding-block: 1.4rem;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     opacity: 0.4;
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
   }
   .process-step:last-child { border-bottom: none; }
   .process-step.is-active { opacity: 1; }
@@ -1273,7 +1274,7 @@ const waSales = whatsappUrl('sales');
     flex-shrink: 0;
     opacity: 0.5;
     position: relative;
-    transition: color 0.45s ease, opacity 0.45s ease;
+    transition: color 0.45s var(--ease-out), opacity 0.45s var(--ease-out);
   }
   .process-step.is-active .step-number { color: #60A5FA; opacity: 1; }
   .process-step.is-done .step-number { color: #22C55E; opacity: 1; }
@@ -1593,10 +1594,13 @@ const waSales = whatsappUrl('sales');
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    transition: border-color 150ms, color 150ms, background 150ms;
+    transition: border-color 160ms var(--ease-out), color 160ms var(--ease-out), background-color 160ms var(--ease-out);
     min-height: 40px;
   }
-  .industry-tab:hover { border-color: var(--md-cta); color: var(--md-cta); }
+  .industry-tab:active { transform: scale(0.97); transition-duration: 80ms; }
+  @media (hover: hover) and (pointer: fine) {
+    .industry-tab:hover { border-color: var(--md-cta); color: var(--md-cta); }
+  }
   .industry-tab.active { background: var(--md-cta); color: #fff; border-color: var(--md-cta); }
   .industry-panel { display: none; }
   .industry-panel.active { display: block; }
@@ -1695,11 +1699,15 @@ const waSales = whatsappUrl('sales');
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: box-shadow 200ms ease, border-color 200ms ease;
+    transition: box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out), transform 250ms var(--ease-out);
   }
-  .ref-card:hover {
-    box-shadow: 0 8px 32px rgba(15,23,42,0.1);
-    border-color: #CBD5E1;
+  @media (hover: hover) and (pointer: fine) {
+    .ref-card:hover {
+      box-shadow: 0 12px 40px rgba(3, 87, 133, 0.13);
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+    }
+    .ref-card:hover .ref-img { transform: scale(1.02); }
   }
   .ref-img-wrap {
     aspect-ratio: 16/9;
@@ -1712,9 +1720,8 @@ const waSales = whatsappUrl('sales');
     object-fit: cover;
     object-position: top center;
     display: block;
-    transition: transform 300ms ease;
+    transition: transform 300ms var(--ease-out);
   }
-  .ref-card:hover .ref-img { transform: scale(1.02); }
   .ref-info {
     padding: 1.25rem 1.25rem 0.75rem;
     display: flex;
@@ -1828,7 +1835,9 @@ const waSales = whatsappUrl('sales');
   .contact-header p { color: var(--md-muted); margin-bottom: 1.5rem; }
   .contact-alternatives { display: flex; flex-direction: column; gap: 0.75rem; }
   .whatsapp-btn { color: #25D366; border-color: #25D366; }
-  .whatsapp-btn:hover { background: #25D366; color: #fff; border-color: #25D366; }
+  @media (hover: hover) and (pointer: fine) {
+    .whatsapp-btn:hover { background-color: #25D366; color: #fff; border-color: #25D366; }
+  }
 
   .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
@@ -1843,11 +1852,15 @@ const waSales = whatsappUrl('sales');
     font-size: 0.95rem;
     color: var(--md-text);
     background: var(--md-surface);
-    transition: border-color 150ms;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
     min-height: 44px;
   }
   .form-input::placeholder { color: var(--md-subtle); }
-  .form-input:focus { outline: none; border-color: var(--md-cta); }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--md-cta);
+    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.12);
+  }
   .form-textarea { resize: vertical; min-height: 120px; }
   .form-footer { display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
   .form-privacy { font-size: 0.8rem; color: var(--md-muted); max-width: 42ch; flex: 1; }
@@ -1867,7 +1880,9 @@ const waSales = whatsappUrl('sales');
   .closing-cta-section p { color: #A1A1AA; margin-bottom: 2rem; line-height: 1.6; }
   .closing-cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
   .closing-cta-section .md-btn-outline { border-color: #3f3f46; color: #A1A1AA; }
-  .closing-cta-section .md-btn-outline:hover { border-color: #71717A; color: #FAFAFA; }
+  @media (hover: hover) and (pointer: fine) {
+    .closing-cta-section .md-btn-outline:hover { border-color: #71717A; color: #FAFAFA; }
+  }
 
   .form-success[hidden], .form-error[hidden] { display: none; }
   .form-success, .form-error {
@@ -1911,27 +1926,36 @@ const waSales = whatsappUrl('sales');
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
-    transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      opacity 0.35s var(--ease-out),
+      transform 0.35s var(--ease-out),
+      background-color 160ms var(--ease-out),
+      box-shadow 160ms var(--ease-out);
   }
   .floating-contact.is-visible {
     opacity: 1;
     transform: translateY(0) scale(1);
     pointer-events: auto;
   }
+  .floating-contact:active {
+    transform: scale(0.96);
+    transition-duration: 80ms;
+  }
   .floating-contact svg { flex-shrink: 0; }
-  .floating-contact:hover {
-    background: #1EBE5B;
-    color: #fff;
-    box-shadow: 0 10px 34px rgba(37,211,102,0.55);
-    transform: translateY(-2px) scale(1.02);
+  @media (hover: hover) and (pointer: fine) {
+    .floating-contact:hover {
+      background-color: #1EBE5B;
+      color: #fff;
+      box-shadow: 0 10px 34px rgba(37,211,102,0.55);
+      transform: translateY(-2px) scale(1.02);
+    }
   }
   @media (max-width: 560px) {
     .floating-contact { left: 1rem; bottom: 1rem; padding: 0.75rem 1.1rem; font-size: 0.9rem; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .floating-contact { transition: opacity 0.2s ease; transform: none; }
+    .floating-contact { transition: opacity 0.2s; transform: none; }
     .floating-contact.is-visible { transform: none; }
-    .floating-contact:hover { transform: none; }
   }
 </style>
 

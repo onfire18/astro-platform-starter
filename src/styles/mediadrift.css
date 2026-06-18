@@ -13,6 +13,9 @@
   --md-subtle: #64748B;
   --md-accent: #DBEAFE;
   --nav-h: 72px;
+  /* Easing curves (Emil Kowalski) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 /* Font imports (self-hosted via fontsource) */
@@ -42,10 +45,12 @@
   font-size: clamp(1.85rem, 3.2vw, 2.6rem);
   letter-spacing: -0.01em;
   margin-bottom: 1.25rem;
+  text-wrap: balance;
 }
 
 .md-page h3 {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  text-wrap: balance;
 }
 
 .md-page a {
@@ -84,13 +89,22 @@
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease, border-color 150ms ease;
+  transition:
+    background-color 160ms var(--ease-out),
+    color 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out),
+    transform 160ms var(--ease-out),
+    border-color 160ms var(--ease-out);
   text-decoration: none;
   border: none;
   min-height: 44px; /* a11y touch target */
   position: relative;
   overflow: hidden;
   isolation: isolate;
+}
+.md-btn:active {
+  transform: scale(0.97) !important;
+  transition-duration: 80ms !important;
 }
 
 /* One-way shine sweep on hover */
@@ -107,9 +121,11 @@
   pointer-events: none;
   z-index: -1;
 }
-.md-btn:hover::before {
-  left: 130%;
-  transition: left 650ms cubic-bezier(0.4, 0, 0.2, 1);
+@media (hover: hover) and (pointer: fine) {
+  .md-btn:hover::before {
+    left: 130%;
+    transition: left 650ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .md-btn::before { display: none; }
@@ -120,11 +136,13 @@
   color: #fff;
   box-shadow: 0 1px 3px rgba(3, 105, 161, 0.3), 0 4px 16px rgba(3, 105, 161, 0.15);
 }
-.md-btn-primary:hover {
-  background-color: var(--md-cta-dark);
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(3, 105, 161, 0.4), 0 8px 24px rgba(3, 105, 161, 0.2);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .md-btn-primary:hover {
+    background-color: var(--md-cta-dark);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(3, 105, 161, 0.4), 0 8px 24px rgba(3, 105, 161, 0.2);
+    transform: translateY(-1px);
+  }
 }
 
 .md-btn-outline {
@@ -132,11 +150,13 @@
   color: var(--md-primary);
   border: 1.5px solid var(--md-border);
 }
-.md-btn-outline:hover {
-  border-color: var(--md-cta);
-  color: var(--md-cta);
-  background-color: rgba(3, 105, 161, 0.06);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .md-btn-outline:hover {
+    border-color: var(--md-cta);
+    color: var(--md-cta);
+    background-color: rgba(3, 105, 161, 0.06);
+    transform: translateY(-1px);
+  }
 }
 
 .md-btn-ghost {
@@ -146,8 +166,8 @@
   overflow: visible;
 }
 .md-btn-ghost::before { display: none; }
-.md-btn-ghost:hover {
-  color: var(--md-primary);
+@media (hover: hover) and (pointer: fine) {
+  .md-btn-ghost:hover { color: var(--md-primary); }
 }
 
 /* Cards */
@@ -156,12 +176,17 @@
   border: 1px solid var(--md-border);
   border-radius: 12px;
   padding: 1.75rem;
-  transition: box-shadow 250ms ease, border-color 250ms ease, transform 250ms ease;
+  transition:
+    box-shadow 250ms var(--ease-out),
+    border-color 250ms var(--ease-out),
+    transform 250ms var(--ease-out);
 }
-.md-card:hover {
-  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1);
-  border-color: #CBD5E1;
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .md-card:hover {
+    box-shadow: 0 8px 32px rgba(3, 87, 133, 0.12);
+    border-color: #CBD5E1;
+    transform: translateY(-2px);
+  }
 }
 
 /* Badge */
@@ -214,7 +239,7 @@
   font-size: 1.4rem;
   font-weight: 300;
   color: var(--md-cta);
-  transition: transform 200ms ease;
+  transition: transform 200ms var(--ease-out);
   flex-shrink: 0;
 }
 .md-faq details[open] summary::after { transform: rotate(45deg); }
