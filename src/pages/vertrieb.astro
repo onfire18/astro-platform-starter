@@ -443,9 +443,29 @@ const waSales = whatsappUrl('sales');
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: 1.25rem;
+    text-wrap: balance;
   }
   .v-cta-text { color: #60A5FA; }
-  .v-subline { color: #94A3B8; font-size: clamp(1rem, 2vw, 1.15rem); max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.7; }
+  .v-subline { color: #94A3B8; font-size: clamp(1rem, 2vw, 1.15rem); max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.7; text-wrap: balance; }
+
+  /* Hero reveal (staggered) */
+  .v-hero .v-badge,
+  .v-hero .v-h1,
+  .v-hero .v-subline,
+  .v-hero .v-disclaimer,
+  .v-hero .v-hero-actions {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: v-hero-in 600ms var(--ease-out) forwards;
+  }
+  .v-hero .v-badge { animation-delay: 0ms; }
+  .v-hero .v-h1 { animation-delay: 70ms; }
+  .v-hero .v-subline { animation-delay: 140ms; }
+  .v-hero .v-disclaimer { animation-delay: 210ms; }
+  .v-hero .v-hero-actions { animation-delay: 280ms; }
+  @keyframes v-hero-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
   .v-disclaimer {
     max-width: 580px;
     margin: 0 auto 2rem;
@@ -461,6 +481,14 @@ const waSales = whatsappUrl('sales');
   .v-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
   .v-wa-btn { display: flex; align-items: center; gap: 0.5rem; }
 
+  /* Tactile press feedback on all page buttons */
+  .v-hero-actions .md-btn,
+  .v-form-actions .md-btn {
+    transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+  }
+  .v-hero-actions .md-btn:active,
+  .v-form-actions .md-btn:active { transform: scale(0.97); }
+
   /* Section headline */
   .v-h2 {
     font-family: 'DM Serif Display', Georgia, serif;
@@ -469,6 +497,7 @@ const waSales = whatsappUrl('sales');
     font-weight: 400;
     margin-bottom: 2rem;
     line-height: 1.3;
+    text-wrap: balance;
   }
 
   /* Expect grid */
@@ -481,6 +510,7 @@ const waSales = whatsappUrl('sales');
     display: flex;
     gap: 1rem;
     align-items: flex-start;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
   }
   .v-icon {
     width: 44px;
@@ -492,6 +522,7 @@ const waSales = whatsappUrl('sales');
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: transform 200ms var(--ease-out);
   }
   .v-expect-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1rem; color: var(--md-primary); margin-bottom: 0.35rem; }
   .v-expect-card p { color: var(--md-muted); font-size: 0.88rem; line-height: 1.6; }
@@ -499,7 +530,7 @@ const waSales = whatsappUrl('sales');
   /* For whom */
   .v-forwhom-section { background: var(--md-bg); }
   .v-forwhom-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .v-forwhom-card { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 12px; padding: 1.75rem; }
+  .v-forwhom-card { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 12px; padding: 1.75rem; transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out); }
   .v-forwhom-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.05rem; color: var(--md-primary); margin-bottom: 1rem; }
   .v-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
   .v-list li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--md-muted); font-size: 0.9rem; line-height: 1.5; }
@@ -516,15 +547,15 @@ const waSales = whatsappUrl('sales');
     border-bottom: 1px solid var(--md-border);
   }
   .v-step:last-child { border-bottom: none; }
-  .v-step-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.5rem; color: var(--md-border); font-weight: 400; line-height: 1; min-width: 3.5rem; }
+  .v-step-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.5rem; color: var(--md-border); font-weight: 400; line-height: 1; min-width: 3.5rem; transition: color 200ms var(--ease-out), transform 200ms var(--ease-out); }
   .v-step h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; color: var(--md-primary); margin-bottom: 0.4rem; }
   .v-step p { color: var(--md-muted); font-size: 0.9rem; line-height: 1.6; }
 
   /* Support */
   .v-support-section { background: var(--md-bg); }
   .v-support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .v-support-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 10px; padding: 1.25rem; }
-  .v-support-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .v-support-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 10px; padding: 1.25rem; transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+  .v-support-icon { font-size: 1.5rem; flex-shrink: 0; transition: transform 200ms var(--ease-out); }
   .v-support-item h3 { font-size: 0.95rem; font-weight: 600; color: var(--md-primary); margin-bottom: 0.25rem; }
   .v-support-item p { color: var(--md-muted); font-size: 0.85rem; line-height: 1.6; }
 
@@ -546,8 +577,8 @@ const waSales = whatsappUrl('sales');
   /* Req */
   .v-req-section { background: var(--md-bg); }
   .v-req-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .v-req-item { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 10px; padding: 1.5rem; }
-  .v-req-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; color: var(--md-border); display: block; margin-bottom: 0.5rem; }
+  .v-req-item { background: var(--md-surface); border: 1px solid var(--md-border); border-radius: 10px; padding: 1.5rem; transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+  .v-req-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; color: var(--md-border); display: block; margin-bottom: 0.5rem; transition: color 200ms var(--ease-out); }
   .v-req-item h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1rem; color: var(--md-primary); margin-bottom: 0.4rem; }
   .v-req-item p { color: var(--md-muted); font-size: 0.88rem; line-height: 1.6; }
 
@@ -573,9 +604,9 @@ const waSales = whatsappUrl('sales');
     resize: vertical;
     width: 100%;
     box-sizing: border-box;
-    transition: border-color 150ms;
+    transition: border-color 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
   }
-  .v-input:focus { outline: none; border-color: var(--md-cta); box-shadow: 0 0 0 3px rgba(3,105,161,0.1); }
+  .v-input:focus { outline: none; border-color: var(--md-cta); box-shadow: 0 0 0 3px rgba(3,105,161,0.12); }
   .v-input::placeholder { color: var(--md-muted); opacity: 0.7; }
   select.v-input { cursor: pointer; }
   .v-consent-group { margin-top: 0.25rem; }
@@ -602,18 +633,97 @@ const waSales = whatsappUrl('sales');
     padding: 1.25rem 1.75rem;
     text-decoration: none;
     color: #F1F5F9;
-    transition: background 150ms, border-color 150ms;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out), background-color 200ms var(--ease-out);
     flex: 1;
     min-width: 220px;
     max-width: 280px;
   }
-  .v-contact-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
-  .v-contact-icon { color: #60A5FA; flex-shrink: 0; }
+  .v-contact-card:active { transform: scale(0.98); }
+  .v-contact-icon { color: #60A5FA; flex-shrink: 0; transition: transform 200ms var(--ease-out); }
   .v-contact-card strong { display: block; font-weight: 600; margin-bottom: 0.2rem; }
   .v-contact-card span { font-size: 0.82rem; color: #94A3B8; }
 
   /* Placeholder styling */
   .v-placeholder { background: #FEF9C3; color: #78350F; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.85rem; font-family: monospace; }
+
+  /* Hover states (desktop pointers only) */
+  @media (hover: hover) and (pointer: fine) {
+    .v-expect-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(3, 87, 133, 0.12);
+      border-color: rgba(3, 87, 133, 0.35);
+    }
+    .v-expect-card:hover .v-icon { transform: scale(1.06); }
+
+    .v-forwhom-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(3, 87, 133, 0.1);
+      border-color: rgba(3, 87, 133, 0.3);
+    }
+
+    .v-step:hover .v-step-num {
+      color: var(--md-cta);
+      transform: translateY(-1px);
+    }
+
+    .v-support-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(3, 87, 133, 0.1);
+      border-color: rgba(3, 87, 133, 0.3);
+    }
+    .v-support-item:hover .v-support-icon { transform: scale(1.1); }
+
+    .v-req-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(3, 87, 133, 0.1);
+      border-color: rgba(3, 87, 133, 0.3);
+    }
+    .v-req-item:hover .v-req-num { color: var(--md-cta); }
+
+    .v-contact-card:hover {
+      transform: translateY(-2px);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
+    .v-contact-card:hover .v-contact-icon { transform: scale(1.08); }
+  }
+
+  /* Respect reduced-motion: keep color/opacity, drop movement */
+  @media (prefers-reduced-motion: reduce) {
+    .v-hero .v-badge,
+    .v-hero .v-h1,
+    .v-hero .v-subline,
+    .v-hero .v-disclaimer,
+    .v-hero .v-hero-actions {
+      animation: v-hero-fade 300ms var(--ease-out) forwards;
+      transform: none;
+    }
+    @keyframes v-hero-fade { to { opacity: 1; } }
+    .v-expect-card,
+    .v-forwhom-card,
+    .v-support-item,
+    .v-req-item,
+    .v-contact-card,
+    .v-icon,
+    .v-support-icon,
+    .v-contact-icon,
+    .v-step-num {
+      transition-property: box-shadow, border-color, color, background-color;
+    }
+    .v-expect-card:hover,
+    .v-forwhom-card:hover,
+    .v-support-item:hover,
+    .v-req-item:hover,
+    .v-contact-card:hover { transform: none; }
+    .v-expect-card:hover .v-icon,
+    .v-support-item:hover .v-support-icon,
+    .v-contact-card:hover .v-contact-icon,
+    .v-step:hover .v-step-num { transform: none; }
+    .v-hero-actions .md-btn:active,
+    .v-form-actions .md-btn:active,
+    .v-contact-card:active { transform: none; }
+  }
 
   @media (max-width: 900px) {
     .v-expect-grid { grid-template-columns: 1fr; }

@@ -121,7 +121,12 @@ const currentPath = Astro.url.pathname;
     height: 34px;
     border-radius: 8px;
     object-fit: cover;
+    transition: transform 200ms var(--ease-out);
   }
+  @media (hover: hover) and (pointer: fine) {
+    .md-nav-logo:hover .logo-img { transform: scale(1.06) rotate(-3deg); }
+  }
+  .md-nav-logo:active .logo-img { transform: scale(0.96); transition-duration: 80ms; }
   .logo-mark {
     display: flex;
     align-items: center;
@@ -152,16 +157,33 @@ const currentPath = Astro.url.pathname;
   }
 
   .md-nav-link {
+    position: relative;
     padding: 0.4rem 0.7rem;
     border-radius: 5px;
     font-size: 0.9rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.68);
     text-decoration: none;
-    transition: color 150ms, background-color 150ms;
+    transition: color 150ms var(--ease-out), background-color 150ms var(--ease-out);
   }
-  .md-nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+  /* Animated underline that grows from center */
+  .md-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: 2px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--md-cta-dark, #0284C7);
+    transition: left 200ms var(--ease-out), right 200ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .md-nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+    .md-nav-link:hover::after { left: 0.7rem; right: 0.7rem; }
+  }
   .md-nav-link.active { color: #fff; font-weight: 500; }
+  .md-nav-link.active::after { left: 0.7rem; right: 0.7rem; }
 
   .md-nav-cta {
     flex-shrink: 0;
@@ -172,11 +194,17 @@ const currentPath = Astro.url.pathname;
     letter-spacing: 0.01em;
     background: linear-gradient(135deg, #0EA5E9 0%, #0369A1 100%);
     box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+    transition:
+      background 200ms var(--ease-out),
+      box-shadow 200ms var(--ease-out),
+      transform 200ms var(--ease-out);
   }
-  .md-nav-cta:hover {
-    background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
-    transform: translateY(-1px);
+  @media (hover: hover) and (pointer: fine) {
+    .md-nav-cta:hover {
+      background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+      transform: translateY(-1px);
+    }
   }
 
   /* Hamburger */

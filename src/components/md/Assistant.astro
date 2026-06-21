@@ -134,10 +134,20 @@ const waSales = whatsappUrl('sales');
     font-size: 0.88rem;
     font-weight: 500;
     box-shadow: 0 4px 16px rgba(3, 105, 161, 0.4);
-    transition: background-color 150ms, box-shadow 150ms;
+    transition:
+      background-color 160ms var(--ease-out),
+      box-shadow 160ms var(--ease-out),
+      transform 160ms var(--ease-out);
     min-height: 44px;
   }
-  .assistant-trigger:hover { background: var(--md-cta-dark); }
+  @media (hover: hover) and (pointer: fine) {
+    .assistant-trigger:hover {
+      background: var(--md-cta-dark);
+      box-shadow: 0 6px 22px rgba(3, 105, 161, 0.5);
+      transform: translateY(-1px);
+    }
+  }
+  .assistant-trigger:active { transform: scale(0.97); transition-duration: 80ms; }
 
   .assistant-dialog {
     position: absolute;
@@ -181,14 +191,17 @@ const waSales = whatsappUrl('sales');
     cursor: pointer;
     padding: 0.25rem;
     border-radius: 4px;
-    transition: color 150ms;
+    transition: color 150ms var(--ease-out), transform 150ms var(--ease-out);
     min-height: 44px;
     min-width: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .assistant-close:hover { color: #fff; }
+  @media (hover: hover) and (pointer: fine) {
+    .assistant-close:hover { color: #fff; transform: rotate(90deg); }
+  }
+  .assistant-close:active { transform: scale(0.9); transition-duration: 80ms; }
 
   .assistant-content { padding: 1rem; }
 
@@ -227,12 +240,19 @@ const waSales = whatsappUrl('sales');
     cursor: pointer;
     text-align: left;
     text-decoration: none;
-    transition: border-color 150ms, background-color 150ms;
+    transition:
+      border-color 150ms var(--ease-out),
+      background-color 150ms var(--ease-out),
+      color 150ms var(--ease-out),
+      transform 150ms var(--ease-out);
     font-family: 'Jost', system-ui, sans-serif;
     min-height: 44px;
     line-height: 1.4;
   }
-  .asst-btn:hover { border-color: var(--md-cta); background: var(--md-accent); color: var(--md-cta); }
+  @media (hover: hover) and (pointer: fine) {
+    .asst-btn:hover { border-color: var(--md-cta); background: var(--md-accent); color: var(--md-cta); transform: translateX(2px); }
+  }
+  .asst-btn:active { transform: scale(0.98); transition-duration: 80ms; }
 
   .assistant-footer {
     display: flex;
@@ -252,11 +272,13 @@ const waSales = whatsappUrl('sales');
     cursor: pointer;
     padding: 0.3rem;
     border-radius: 4px;
-    transition: color 150ms;
+    transition: color 150ms var(--ease-out);
     font-family: 'Jost', system-ui, sans-serif;
     min-height: 44px;
   }
-  .asst-ctrl:hover { color: var(--md-primary); }
+  @media (hover: hover) and (pointer: fine) {
+    .asst-ctrl:hover { color: var(--md-primary); }
+  }
 </style>
 
 <script>

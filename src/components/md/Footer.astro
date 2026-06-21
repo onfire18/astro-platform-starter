@@ -110,12 +110,17 @@ import { SITE, whatsappUrl } from '../../config/site';
     align-items: center;
     gap: 0.6rem;
     margin-bottom: 1rem;
+    width: fit-content;
   }
   .footer-logo-img {
     width: 32px;
     height: 32px;
     border-radius: 7px;
     object-fit: cover;
+    transition: transform 200ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .footer-logo:hover .footer-logo-img { transform: scale(1.06) rotate(-3deg); }
   }
   .logo-mark {
     width: 32px;
@@ -169,12 +174,19 @@ import { SITE, whatsappUrl } from '../../config/site';
   nav a, .footer-contact a {
     color: #A1A1AA;
     text-decoration: none;
-    transition: color 150ms;
+    transition: color 150ms var(--ease-out), transform 200ms var(--ease-out);
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
-  nav a:hover, .footer-contact a:hover { color: #FAFAFA; }
+  nav a svg, .footer-contact a svg {
+    transition: transform 200ms var(--ease-out), color 150ms var(--ease-out);
+    flex-shrink: 0;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    nav a:hover, .footer-contact a:hover { color: #FAFAFA; transform: translateX(3px); }
+    .footer-contact a:hover svg { color: var(--md-cta-dark, #0284C7); transform: scale(1.1); }
+  }
 
   .consent-revoke-btn {
     background: none;
@@ -184,10 +196,12 @@ import { SITE, whatsappUrl } from '../../config/site';
     padding: 0;
     font-size: 0.9rem;
     font-family: 'Jost', system-ui, sans-serif;
-    transition: color 150ms;
+    transition: color 150ms var(--ease-out), transform 200ms var(--ease-out);
     text-align: left;
   }
-  .consent-revoke-btn:hover { color: #FAFAFA; }
+  @media (hover: hover) and (pointer: fine) {
+    .consent-revoke-btn:hover { color: #FAFAFA; transform: translateX(3px); }
+  }
 
   .footer-bottom {
     padding-top: 1.5rem;
