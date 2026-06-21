@@ -5,6 +5,10 @@ export interface Industry {
   subline: string;
   pages: string[];
   accent: string;
+  /** Optionales Musterdesign-Bild (Beispielentwurf, keine echten Kundendaten). Pfad relativ zu /public, z.B. '/images/branchen/immobilien.jpg'. Wenn gesetzt, ersetzt es den SVG-Wireframe. */
+  image?: string;
+  /** Alt-Text für das Musterdesign-Bild. */
+  imageAlt?: string;
 }
 
 export const industries: Industry[] = [

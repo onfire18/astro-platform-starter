@@ -437,6 +437,17 @@ const waSales = whatsappUrl('sales');
                   Entwurf für {ind.label} anfragen
                 </a>
               </div>
+              {ind.image ? (
+                <figure class="panel-visual panel-visual-img">
+                  <img
+                    src={ind.image}
+                    alt={ind.imageAlt ?? `Musterdesign einer Website für die Branche ${ind.label} (Beispielentwurf)`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="panel-example-badge">Musterdesign · Beispielentwurf</figcaption>
+                </figure>
+              ) : (
               <div class="panel-visual" aria-hidden="true">
                 <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" style={`--accent:${ind.accent}`}>
                   <rect width="280" height="200" rx="8" fill="#F8FAFC"/>
@@ -455,6 +466,7 @@ const waSales = whatsappUrl('sales');
                   <rect x="188" y="150" width="72" height="36" rx="5" fill={ind.accent} opacity="0.12" stroke={ind.accent} stroke-width="1"/>
                 </svg>
               </div>
+              )}
             </div>
           </div>
         ))}
@@ -1815,9 +1827,51 @@ const waSales = whatsappUrl('sales');
     font-weight: 500;
   }
   .panel-visual svg { width: 100%; max-width: 280px; display: block; margin-inline: auto; border-radius: 8px; box-shadow: 0 8px 32px rgba(15,23,42,0.1); }
+
+  /* Musterdesign-Bild (Beispielentwurf) */
+  .panel-visual-img {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(3, 87, 133, 0.14);
+    border: 1px solid var(--md-border);
+    transition: box-shadow 250ms var(--ease-out), transform 250ms var(--ease-out);
+  }
+  .panel-visual-img img {
+    display: block;
+    width: 100%;
+    /* Auf den Hero-Bereich zugeschnitten: oben verankert, untere (erfundene) Inhalte werden abgeschnitten */
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .panel-example-badge {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #fff;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .panel-visual-img:hover {
+      box-shadow: 0 12px 40px rgba(3, 87, 133, 0.22);
+      transform: translateY(-2px);
+    }
+  }
+
   @media (max-width: 760px) {
     .panel-content { grid-template-columns: 1fr; }
-    .panel-visual { display: none; }
+    .panel-visual:not(.panel-visual-img) { display: none; }
   }
 
   /* ---- Slide screenshot & CTA ---- */
