@@ -1829,6 +1829,7 @@ const waSales = whatsappUrl('sales');
   .panel-visual svg { width: 100%; max-width: 280px; display: block; margin-inline: auto; border-radius: 8px; box-shadow: 0 8px 32px rgba(15,23,42,0.1); }
 
   /* Musterdesign-Bild (Beispielentwurf) */
+  .panel-content:has(.panel-visual-img) { grid-template-columns: 1fr; gap: 1.75rem; }
   .panel-visual-img {
     position: relative;
     margin: 0;
@@ -1842,15 +1843,12 @@ const waSales = whatsappUrl('sales');
   .panel-visual-img img {
     display: block;
     width: 100%;
-    /* Auf den Hero-Bereich zugeschnitten: oben verankert, untere (erfundene) Inhalte werden abgeschnitten */
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: center top;
+    height: auto;
   }
   .panel-example-badge {
     position: absolute;
     top: 0.6rem;
-    left: 0.6rem;
+    right: 0.6rem;
     padding: 0.25rem 0.6rem;
     border-radius: 6px;
     font-size: 0.7rem;

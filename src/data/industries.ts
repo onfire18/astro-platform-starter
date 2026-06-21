@@ -19,6 +19,8 @@ export const industries: Industry[] = [
     subline: 'Klare Positionierung, Leistungsgebiete und ein professioneller erster Eindruck für Anwälte und Steuerberater.',
     pages: ['Startseite', 'Leistungsgebiete', 'Team', 'Mandanten-FAQ', 'Kontakt'],
     accent: '#1e3a5f',
+    image: '/images/branchen/kanzlei.png',
+    imageAlt: 'Musterdesign einer Kanzlei-Website (Beispielentwurf) – Hero-Bereich mit Positionierung',
   },
   {
     id: 'handwerk',
@@ -27,6 +29,8 @@ export const industries: Industry[] = [
     subline: 'Mobile-optimierte Auftritte für Handwerksbetriebe mit Projektfotos, Leistungsübersicht und direkter Anfrage.',
     pages: ['Startseite', 'Leistungen', 'Referenzprojekte', 'Einsatzgebiet', 'Anfrage'],
     accent: '#7c3626',
+    image: '/images/branchen/handwerk.png',
+    imageAlt: 'Musterdesign einer Handwerks-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
     id: 'immobilien',
@@ -35,6 +39,8 @@ export const industries: Industry[] = [
     subline: 'Professionelle Online-Auftritte für Makler mit Objektpräsentation, Bewertungsanfrage und Expertenprofil.',
     pages: ['Startseite', 'Aktuelle Angebote', 'Bewertung anfragen', 'Über mich', 'Kontakt'],
     accent: '#1a4731',
+    image: '/images/branchen/immobilien.png',
+    imageAlt: 'Musterdesign einer Immobilienmakler-Website (Beispielentwurf) – Hero-Bereich mit Objektsuche',
   },
   {
     id: 'gastronomie',
@@ -43,6 +49,8 @@ export const industries: Industry[] = [
     subline: 'Appetitliche Websites mit digitaler Speisekarte, Reservierungsmöglichkeit und der Geschichte dahinter.',
     pages: ['Startseite', 'Speisekarte', 'Reservierung', 'Galerie', 'Über uns'],
     accent: '#5c2a0e',
+    image: '/images/branchen/gastronomie.png',
+    imageAlt: 'Musterdesign einer Restaurant-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
     id: 'beratung',
@@ -51,6 +59,8 @@ export const industries: Industry[] = [
     subline: 'Positionierungsstarke Websites für Coaches und Berater mit klarem Angebot und direktem Erstkontakt.',
     pages: ['Startseite', 'Mein Angebot', 'Meine Methode', 'Über mich', 'Erstgespräch'],
     accent: '#2d1b69',
+    image: '/images/branchen/coaching.png',
+    imageAlt: 'Musterdesign einer Coaching-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
     id: 'dienstleister',
