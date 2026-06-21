@@ -13,6 +13,16 @@ export interface Industry {
 
 export const industries: Industry[] = [
   {
+    id: 'immobilien',
+    label: 'Immobilien',
+    headline: 'Hochwertig präsentieren – hochwertig verkaufen.',
+    subline: 'Professionelle Online-Auftritte für Makler mit Objektpräsentation, Bewertungsanfrage und Expertenprofil.',
+    pages: ['Startseite', 'Aktuelle Angebote', 'Bewertung anfragen', 'Über mich', 'Kontakt'],
+    accent: '#1a4731',
+    image: '/images/branchen/immobilien.png',
+    imageAlt: 'Musterdesign einer Immobilienmakler-Website (Beispielentwurf) – Hero-Bereich mit Objektsuche',
+  },
+  {
     id: 'kanzlei',
     label: 'Kanzleien',
     headline: 'Vertrauen beginnt noch vor dem Erstgespräch.',
@@ -31,16 +41,6 @@ export const industries: Industry[] = [
     accent: '#7c3626',
     image: '/images/branchen/handwerk.png',
     imageAlt: 'Musterdesign einer Handwerks-Website (Beispielentwurf) – Hero-Bereich',
-  },
-  {
-    id: 'immobilien',
-    label: 'Immobilien',
-    headline: 'Hochwertig präsentieren – hochwertig verkaufen.',
-    subline: 'Professionelle Online-Auftritte für Makler mit Objektpräsentation, Bewertungsanfrage und Expertenprofil.',
-    pages: ['Startseite', 'Aktuelle Angebote', 'Bewertung anfragen', 'Über mich', 'Kontakt'],
-    accent: '#1a4731',
-    image: '/images/branchen/immobilien.png',
-    imageAlt: 'Musterdesign einer Immobilienmakler-Website (Beispielentwurf) – Hero-Bereich mit Objektsuche',
   },
   {
     id: 'gastronomie',
