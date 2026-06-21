@@ -23,6 +23,16 @@ export const industries: Industry[] = [
     imageAlt: 'Musterdesign einer Immobilienmakler-Website (Beispielentwurf) – Hero-Bereich mit Objektsuche',
   },
   {
+    id: 'gastronomie',
+    label: 'Gastronomie',
+    headline: 'Ihr Restaurant – auch online ein Erlebnis.',
+    subline: 'Appetitliche Websites mit digitaler Speisekarte, Reservierungsmöglichkeit und der Geschichte dahinter.',
+    pages: ['Startseite', 'Speisekarte', 'Reservierung', 'Galerie', 'Über uns'],
+    accent: '#5c2a0e',
+    image: '/images/branchen/gastronomie.png',
+    imageAlt: 'Musterdesign einer Restaurant-Website (Beispielentwurf) – Hero-Bereich',
+  },
+  {
     id: 'kanzlei',
     label: 'Kanzleien',
     headline: 'Vertrauen beginnt noch vor dem Erstgespräch.',
@@ -41,16 +51,6 @@ export const industries: Industry[] = [
     accent: '#7c3626',
     image: '/images/branchen/handwerk.png',
     imageAlt: 'Musterdesign einer Handwerks-Website (Beispielentwurf) – Hero-Bereich',
-  },
-  {
-    id: 'gastronomie',
-    label: 'Gastronomie',
-    headline: 'Ihr Restaurant – auch online ein Erlebnis.',
-    subline: 'Appetitliche Websites mit digitaler Speisekarte, Reservierungsmöglichkeit und der Geschichte dahinter.',
-    pages: ['Startseite', 'Speisekarte', 'Reservierung', 'Galerie', 'Über uns'],
-    accent: '#5c2a0e',
-    image: '/images/branchen/gastronomie.png',
-    imageAlt: 'Musterdesign einer Restaurant-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
     id: 'beratung',
