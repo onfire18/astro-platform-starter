@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# MCP config (contains API key – never commit)
+.mcp.json
+
 # macOS-specific files
 .DS_Store
 
