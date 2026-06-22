@@ -209,6 +209,7 @@
   text-transform: uppercase;
   color: var(--md-cta);
   margin-bottom: 1rem;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Section intro paragraph */

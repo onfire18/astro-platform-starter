@@ -108,29 +108,31 @@ const waSales = whatsappUrl('sales');
 
           <!-- Navigation dots -->
           <div class="slider-dots-row">
-            <button class="sdot active" data-index="0" aria-label="Kanzlei-Website"></button>
-            <button class="sdot" data-index="1" aria-label="Handwerk-Website"></button>
-            <button class="sdot" data-index="2" aria-label="Restaurant-Website"></button>
+            <button class="sdot active" data-index="0" aria-label="VivaCasa Mallorca – Immobilien-Website ansehen"></button>
+            <button class="sdot" data-index="1" aria-label="Mein Express – Transportservice Mallorca ansehen"></button>
+            <button class="sdot" data-index="2" aria-label="Ihr Projekt anfragen"></button>
           </div>
 
         </div><!-- /mockup-slider-wrap -->
 
-        <!-- Floating stat cards -->
+        <!-- Floating trust cards -->
         <div class="float-card float-card-1 animate-floatup">
           <div class="float-card-icon fc-green">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="float-card-body">
-            <span class="float-card-label">Anfragen</span>
-            <strong class="float-card-value fc-value-green">+127%</strong>
+            <span class="float-card-label">Datenschutz</span>
+            <strong class="float-card-value fc-value-green" style="font-size:0.88rem">DSGVO-konform</strong>
           </div>
         </div>
 
         <div class="float-card float-card-2 animate-floatup animate-delay-1">
+          <div class="float-card-icon" style="background:#EFF6FF;color:#0369A1">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
           <div class="float-card-body">
-            <span class="float-card-label">Ladezeit</span>
-            <strong class="float-card-value">0,8s</strong>
-            <span class="float-card-badge">✓ Sehr gut</span>
+            <span class="float-card-label">Projektstart</span>
+            <strong class="float-card-value" style="font-size:0.88rem">In 4 Wochen live</strong>
           </div>
         </div>
 
@@ -594,7 +596,7 @@ const waSales = whatsappUrl('sales');
       </div>
       <div class="about-text">
         <span class="md-label">Über MediaDrift</span>
-        <h2 id="about-headline">Über MediaDrift</h2>
+        <h2 id="about-headline">Persönlich, direkt und auf den Punkt</h2>
         <p>
           MediaDrift wurde von Paul Dunker gegründet mit einem klaren Ziel: kleinen und
           mittelständischen Unternehmen den professionellen Online-Auftritt zu geben, den sie
@@ -1829,8 +1831,8 @@ const waSales = whatsappUrl('sales');
   }
   .panel-visual svg { width: 100%; max-width: 280px; display: block; margin-inline: auto; border-radius: 8px; box-shadow: 0 8px 32px rgba(15,23,42,0.1); }
 
-  /* Musterdesign-Bild (Beispielentwurf) */
-  .panel-content:has(.panel-visual-img) { grid-template-columns: 1fr; gap: 1.75rem; }
+  /* Musterdesign-Bild: 2-Spalten, Text links – Bild rechts */
+  .panel-content:has(.panel-visual-img) { grid-template-columns: 1fr 1.25fr; gap: 2rem; align-items: center; }
   .panel-visual-img {
     position: relative;
     margin: 0;
