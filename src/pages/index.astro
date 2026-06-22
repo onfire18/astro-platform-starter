@@ -47,7 +47,7 @@ const waSales = whatsappUrl('sales');
           Oder direkt per WhatsApp schreiben
         </a>
         <ul class="hero-trust-micro" aria-label="Unsere Versprechen">
-          <li><span aria-hidden="true">✓</span> In 4 Wochen online</li>
+          <li><span aria-hidden="true">✓</span> Entwurf am nächsten Tag</li>
           <li><span aria-hidden="true">✓</span> Kein Template</li>
           <li><span aria-hidden="true">✓</span> Direkt mit Paul</li>
         </ul>
@@ -408,44 +408,40 @@ const waSales = whatsappUrl('sales');
   </section>
 
   <!-- =========================================================
-       5b. SPEED — In 4 Wochen live
+       5b. SPEED — Entwurf am nächsten Tag, Website in 1 Woche
   ========================================================== -->
   <section class="md-section speed-section" aria-labelledby="speed-headline">
     <div class="md-container">
       <div class="speed-head">
         <span class="md-label">Tempo</span>
-        <h2 id="speed-headline">In der Regel in 4 Wochen live</h2>
+        <h2 id="speed-headline">Entwurf am nächsten Tag. Website in einer Woche.</h2>
         <p class="md-section-intro" style="margin-bottom:0">
-          Kein monatelanges Warten. Vom ersten Gespräch bis zum Launch vergehen
-          bei einem typischen Projekt rund vier Wochen – ohne Abstriche bei Qualität oder Datenschutz.
+          Kein monatelanges Warten. Schon am Tag nach dem Erstgespräch erhalten Sie einen
+          klaren ersten Entwurf – und Ihre fertige Website steht in der Regel nach rund einer Woche.
         </p>
       </div>
 
       <ol class="speed-grid" role="list">
         <li class="speed-card">
-          <span class="speed-week">Woche 1</span>
-          <h3>Kennenlernen &amp; Konzept</h3>
-          <p>Erstgespräch, Analyse und die Struktur Ihrer Website stehen.</p>
+          <span class="speed-week">Tag 1</span>
+          <h3>Erstgespräch &amp; Konzept</h3>
+          <p>Wir klären, was Ihre Website leisten soll und für wen.</p>
         </li>
         <li class="speed-card">
-          <span class="speed-week">Woche 2</span>
-          <h3>Design-Entwurf</h3>
-          <p>Sie erhalten den ersten visuellen Entwurf zur Abstimmung.</p>
-        </li>
-        <li class="speed-card">
-          <span class="speed-week">Woche 3</span>
-          <h3>Entwicklung</h3>
-          <p>Das abgestimmte Design wird sauber und schnell umgesetzt.</p>
+          <span class="speed-week">Am nächsten Tag</span>
+          <h3>Klarer Entwurf</h3>
+          <p>Sie erhalten einen konkreten ersten Entwurf zur Abstimmung.</p>
         </li>
         <li class="speed-card speed-card-final">
-          <span class="speed-week">Woche 4</span>
-          <h3>Launch &amp; Übergabe</h3>
-          <p>Letztes Review, dann geht Ihre Website online – inkl. Einweisung.</p>
+          <span class="speed-week">Nach 1 Woche</span>
+          <h3>Fertige Website live</h3>
+          <p>Abgestimmt, umgesetzt und online – inklusive Einweisung.</p>
         </li>
       </ol>
 
       <p class="speed-note">
-        Der genaue Zeitrahmen hängt vom Umfang und Ihren Rückmeldungen ab – wir besprechen ihn im Erstgespräch verbindlich.
+        Bei komplexeren Websites – etwa mit Login-Bereich, Shop oder speziellen Plugins – können die
+        Zeiten variieren. Den genauen Rahmen besprechen wir im Erstgespräch verbindlich.
       </p>
     </div>
   </section>
@@ -1861,7 +1857,7 @@ const waSales = whatsappUrl('sales');
   .speed-head { max-width: 60ch; margin-bottom: 3rem; }
   .speed-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
     list-style: none;
     margin: 0 0 1.75rem;
@@ -1909,10 +1905,7 @@ const waSales = whatsappUrl('sales');
   .speed-card-final p { color: #DBEAFE; }
   .speed-note { font-size: 0.85rem; color: var(--md-subtle); max-width: 60ch; margin: 0; }
 
-  @media (max-width: 860px) {
-    .speed-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 480px) {
+  @media (max-width: 720px) {
     .speed-grid { grid-template-columns: 1fr; }
   }
 
