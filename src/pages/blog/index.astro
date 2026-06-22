@@ -1,0 +1,173 @@
+---
+import MDLayout from '../../layouts/MDLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const featured = posts[0];
+const rest = posts.slice(1);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<MDLayout
+  title="Blog – Wissen rund um Website, Webdesign & Online-Marketing"
+  description="Praktische Ratgeber zu Website-Kosten, Webdesign für KMU, DSGVO, Barrierefreiheit und mehr Kunden über die eigene Website. Klar, ehrlich und ohne Fachchinesisch."
+>
+  <!-- Hero -->
+  <section class="blog-hero" aria-label="Blog">
+    <div class="md-container">
+      <span class="md-label">Blog</span>
+      <h1 class="blog-hero-h1">Wissen rund um Ihre Website</h1>
+      <p class="blog-hero-sub">
+        Ehrliche Ratgeber zu Kosten, Technik und Strategie – damit Sie fundierte
+        Entscheidungen für Ihren Online-Auftritt treffen. Ohne Fachchinesisch, ohne Verkaufsdruck.
+      </p>
+    </div>
+  </section>
+
+  <section class="md-section blog-list-section">
+    <div class="md-container">
+
+      {featured && (
+        <a href={`/blog/${featured.slug}`} class="blog-featured">
+          <div class="blog-featured-body">
+            <span class="blog-cat">{featured.data.category}</span>
+            <h2 class="blog-featured-title">{featured.data.title}</h2>
+            <p class="blog-featured-desc">{featured.data.description}</p>
+            <div class="blog-meta">
+              <span>{fmtDate(featured.data.pubDate)}</span>
+              {featured.data.readingTime && <span>· {featured.data.readingTime} Min. Lesezeit</span>}
+            </div>
+            <span class="blog-featured-link">Weiterlesen →</span>
+          </div>
+        </a>
+      )}
+
+      <ul class="blog-grid" role="list">
+        {rest.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}`} class="blog-card md-card">
+              <span class="blog-cat">{post.data.category}</span>
+              <h3 class="blog-card-title">{post.data.title}</h3>
+              <p class="blog-card-desc">{post.data.description}</p>
+              <div class="blog-meta">
+                <span>{fmtDate(post.data.pubDate)}</span>
+                {post.data.readingTime && <span>· {post.data.readingTime} Min.</span>}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="md-section blog-cta-section" aria-labelledby="blog-cta-h2">
+    <div class="md-container">
+      <div class="blog-cta-inner">
+        <h2 id="blog-cta-h2">Lieber direkt über Ihr Projekt sprechen?</h2>
+        <p>Wir entwickeln individuelle Websites für Unternehmen, die professioneller auftreten und online neue Kunden gewinnen möchten.</p>
+        <a href="/#kontakt" class="md-btn md-btn-primary">Unverbindlichen Entwurf anfragen →</a>
+      </div>
+    </div>
+  </section>
+</MDLayout>
+
+<style>
+  .blog-hero {
+    background:
+      radial-gradient(ellipse 60% 70% at 85% 20%, rgba(3,105,161,0.16) 0%, transparent 60%),
+      linear-gradient(160deg, #080C14 0%, #0C1828 60%, #0F172A 100%);
+    padding-top: calc(var(--nav-h) + 4.5rem);
+    padding-bottom: 4rem;
+  }
+  .blog-hero .md-label { color: #60A5FA; }
+  .blog-hero-h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: #F1F5F9;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    text-wrap: balance;
+  }
+  .blog-hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: #94A3B8;
+    max-width: 60ch;
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  .blog-list-section { background: var(--md-bg); }
+
+  .blog-cat {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--md-cta);
+    background: var(--md-accent);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .blog-meta { font-size: 0.82rem; color: var(--md-subtle); display: flex; gap: 0.35rem; }
+
+  /* Featured */
+  .blog-featured {
+    display: block;
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 16px;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    margin-bottom: 2.5rem;
+    transition: box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out), transform 250ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .blog-featured:hover { box-shadow: 0 12px 40px rgba(3,87,133,0.12); border-color: #CBD5E1; transform: translateY(-2px); }
+  }
+  .blog-featured-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    color: var(--md-primary);
+    line-height: 1.15;
+    margin-bottom: 0.85rem;
+    text-wrap: balance;
+  }
+  .blog-featured-desc { color: var(--md-secondary); font-size: 1.05rem; line-height: 1.7; max-width: 65ch; margin-bottom: 1.1rem; }
+  .blog-featured-link { display: inline-block; margin-top: 1rem; color: var(--md-cta); font-weight: 600; }
+
+  /* Grid */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .blog-card { display: flex; flex-direction: column; height: 100%; }
+  .blog-card-title {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    color: var(--md-primary);
+    margin-bottom: 0.6rem;
+    text-wrap: balance;
+  }
+  .blog-card-desc { color: var(--md-muted); font-size: 0.92rem; line-height: 1.6; flex: 1; margin-bottom: 1rem; }
+
+  @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+
+  /* CTA */
+  .blog-cta-section { background: var(--md-surface); border-top: 1px solid var(--md-border); }
+  .blog-cta-inner { text-align: center; max-width: 600px; margin-inline: auto; }
+  .blog-cta-inner p { color: var(--md-muted); margin: 1rem 0 2rem; font-size: 1.05rem; line-height: 1.7; }
+</style>
