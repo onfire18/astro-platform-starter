@@ -13,10 +13,15 @@ const waSales = whatsappUrl('sales');
   description="MediaDrift entwickelt individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten, mehr Vertrauen schaffen und online neue Kunden gewinnen möchten."
 >
 
+  <!-- Intro overlay (einmal pro Session) -->
+  <div id="intro" class="intro" aria-hidden="true">
+    <span class="intro__logo">MediaDrift</span>
+  </div>
+
   <!-- =========================================================
        1. HERO
   ========================================================== -->
-  <section class="hero" aria-label="Einleitung">
+  <section class="hero hero-intro" aria-label="Einleitung">
     <div class="md-container hero-inner">
 
       <!-- Left: Text -->
@@ -2200,6 +2205,52 @@ const waSales = whatsappUrl('sales');
     .floating-contact { transition: opacity 0.2s; transform: none; }
     .floating-contact.is-visible { transform: none; }
   }
+  /* ---- Intro overlay ---- */
+  .intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9500; /* über Cookie-Banner (9000) + Hilfe-Widget (8000), unter Skip-Link (9999) */
+    display: grid;
+    place-items: center;
+    background: #000;
+    opacity: 1;
+    will-change: opacity;
+  }
+  .intro__logo {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    color: #fff;
+    opacity: 0;
+    will-change: opacity;
+  }
+  .intro.is-playing .intro__logo {
+    animation: introLogoIn 400ms ease forwards;
+  }
+  .intro.is-leaving {
+    animation: introOut 500ms ease forwards;
+  }
+  @keyframes introLogoIn { to { opacity: 1; } }
+  @keyframes introOut { to { opacity: 0; } }
+
+  .intro.is-done { display: none; }
+
+  /* Hero-Eingang (gleitet rein, sobald das Overlay zu faden beginnt) */
+  .hero-intro {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .hero-intro.is-in {
+    transition:
+      opacity 700ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 700ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro { display: none; }
+    .hero-intro { opacity: 1; transform: none; transition: none; }
+  }
 </style>
 
 <!-- =========================================================
@@ -2465,5 +2516,27 @@ const waSales = whatsappUrl('sales');
         { threshold: 0.1 }
       ).observe(contact);
     }
+  })();
+
+  // ---- Intro overlay (einmal pro Session) ----
+  (function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const intro = document.getElementById('intro');
+    const hero = document.querySelector('.hero-intro');
+    const seen = sessionStorage.getItem('md-intro-seen');
+
+    const showHero = () => hero?.classList.add('is-in');
+
+    if (reduce || seen || !intro) {
+      intro?.classList.add('is-done');
+      showHero();
+      return;
+    }
+
+    sessionStorage.setItem('md-intro-seen', '1');
+    intro.classList.add('is-playing');
+    // Logo 0→1 (400ms) + halten (300ms) → Overlay 1→0 (500ms), Hero gleitet rein
+    window.setTimeout(() => { intro.classList.add('is-leaving'); showHero(); }, 700);
+    window.setTimeout(() => intro.classList.add('is-done'), 1200);
   })();
 </script>
