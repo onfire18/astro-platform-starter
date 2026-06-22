@@ -726,8 +726,9 @@ const waSales = whatsappUrl('sales');
         aria-label="Kontaktformular"
       >
         <input type="hidden" name="form-name" value="kontakt" />
-        <p hidden>
-          <label>Don't fill this out: <input name="bot-field" /></label>
+        <!-- Honeypot: versteckt für Menschen, sichtbar für Bots -->
+        <p aria-hidden="true" style="display:none">
+          <label>Dieses Feld nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
         </p>
 
         <div class="form-row">
@@ -2276,9 +2277,24 @@ const waSales = whatsappUrl('sales');
       return true;
     }
 
+    // Rate limiting: max 3 Versuche pro Session, 60s Cooldown nach Erfolg
+    let submitCount = 0;
+    let lastSubmitTime = 0;
+    const MAX_ATTEMPTS = 3;
+    const COOLDOWN_MS = 60_000;
+
     form.addEventListener('submit', async (e: Event) => {
       e.preventDefault();
       if (!validate()) return;
+
+      const now = Date.now();
+      if (submitCount >= MAX_ATTEMPTS && now - lastSubmitTime < COOLDOWN_MS) {
+        if (errorEl) {
+          errorEl.textContent = 'Zu viele Versuche. Bitte warten Sie eine Minute.';
+          showMessage(errorEl);
+        }
+        return;
+      }
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -2298,12 +2314,22 @@ const waSales = whatsappUrl('sales');
         if (response.ok) {
           form.reset();
           showMessage(successEl);
+          submitCount = 0; // Reset nach Erfolg
+          // Nach Erfolg: Button 60s deaktiviert lassen
+          lastSubmitTime = Date.now();
+          setTimeout(() => {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Entwurf anfragen';
+            }
+          }, COOLDOWN_MS);
         } else {
           throw new Error(`HTTP ${response.status}`);
         }
       } catch {
         showMessage(errorEl);
-      } finally {
+        submitCount++;
+        lastSubmitTime = Date.now();
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Entwurf anfragen';
