@@ -69,5 +69,9 @@ export const industries: Industry[] = [
     subline: 'Regional optimierte Websites für lokale Unternehmen mit klarer Leistungsdarstellung und Kontaktweg.',
     pages: ['Startseite', 'Leistungen', 'Einzugsgebiet', 'Über uns', 'Kontakt & Angebot'],
     accent: '#1a3a4a',
+    // Placeholder: Erstelle ein Musterdesign-Screenshot und speichere ihn als
+    // /public/images/branchen/dienstleister.png (1200×800 px empfohlen)
+    // image: '/images/branchen/dienstleister.png',
+    // imageAlt: 'Musterdesign einer Website für lokale Dienstleister (Beispielentwurf)',
   },
 ];

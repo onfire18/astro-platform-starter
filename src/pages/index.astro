@@ -226,40 +226,101 @@ const faqSchema = {
       <h2 id="compare-headline">Was unterscheidet uns von Baukästen?</h2>
       <div class="compare-grid">
         <div class="compare-card compare-bad" aria-label="Baukasten-Website Nachteile">
-          <h3>
-            <span class="compare-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.5"/>
-                <path d="M6 6l8 8M14 6l-8 8" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </span>
-            Baukasten-Website
-          </h3>
-          <ul class="compare-list">
-            <li>Eingeschränktes Design – alle sehen gleich aus</li>
-            <li>Generische Templates ohne Alleinstellungsmerkmal</li>
-            <li>Monatliche Kosten ohne Preisgarantie</li>
-            <li>Kein echter Support – nur Hilfe-Artikel</li>
-            <li>Sie besitzen nichts – abhängig vom Anbieter</li>
-          </ul>
+          <!-- Placeholder: Ersetze dieses SVG durch einen echten Screenshot
+               eines Wix- oder Jimdo-Templates (Google: "Wix template screenshot").
+               Speichere das Bild als /public/images/compare-baukasten.png -->
+          <div class="compare-visual compare-visual-bad" aria-hidden="true">
+            <svg viewBox="0 0 420 210" xmlns="http://www.w3.org/2000/svg">
+              <rect width="420" height="210" fill="#F1F5F9"/>
+              <!-- Nav: zu viele Links, generisch -->
+              <rect width="420" height="36" fill="#E2E8F0"/>
+              <rect x="12" y="12" width="32" height="12" rx="2" fill="#94A3B8"/>
+              <rect x="90" y="14" width="25" height="8" rx="2" fill="#CBD5E1"/>
+              <rect x="122" y="14" width="25" height="8" rx="2" fill="#CBD5E1"/>
+              <rect x="154" y="14" width="35" height="8" rx="2" fill="#CBD5E1"/>
+              <rect x="196" y="14" width="28" height="8" rx="2" fill="#CBD5E1"/>
+              <rect x="231" y="14" width="22" height="8" rx="2" fill="#CBD5E1"/>
+              <rect x="260" y="14" width="32" height="8" rx="2" fill="#CBD5E1"/>
+              <rect x="370" y="10" width="38" height="16" rx="3" fill="#3B82F6"/>
+              <!-- Hero: Stockfoto-Grau mit zentriertem Text -->
+              <rect x="0" y="36" width="420" height="100" fill="#CBD5E1"/>
+              <rect x="0" y="36" width="420" height="100" fill="url(#stockOverlay)"/>
+              <defs>
+                <linearGradient id="stockOverlay" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#94A3B8" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#64748B" stop-opacity="0.5"/>
+                </linearGradient>
+              </defs>
+              <text x="210" y="72" text-anchor="middle" font-size="7" fill="#94A3B8" font-family="sans-serif" letter-spacing="2">STOCK FOTO PLACEHOLDER</text>
+              <text x="210" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#1E293B" font-family="sans-serif">Willkommen auf unserer Website!</text>
+              <rect x="155" y="103" width="110" height="22" rx="3" fill="#3B82F6"/>
+              <text x="210" y="118" text-anchor="middle" font-size="9" fill="#fff" font-family="sans-serif">Mehr erfahren ›</text>
+              <!-- 3 identische Spalten -->
+              <rect x="10" y="148" width="124" height="52" rx="4" fill="#fff" stroke="#E2E8F0"/>
+              <rect x="148" y="148" width="124" height="52" rx="4" fill="#fff" stroke="#E2E8F0"/>
+              <rect x="286" y="148" width="124" height="52" rx="4" fill="#fff" stroke="#E2E8F0"/>
+              <rect x="20" y="158" width="30" height="6" rx="2" fill="#CBD5E1"/>
+              <rect x="158" y="158" width="30" height="6" rx="2" fill="#CBD5E1"/>
+              <rect x="296" y="158" width="30" height="6" rx="2" fill="#CBD5E1"/>
+              <rect x="20" y="170" width="104" height="4" rx="1" fill="#E2E8F0"/>
+              <rect x="158" y="170" width="104" height="4" rx="1" fill="#E2E8F0"/>
+              <rect x="296" y="170" width="104" height="4" rx="1" fill="#E2E8F0"/>
+              <rect x="20" y="178" width="80" height="4" rx="1" fill="#E2E8F0"/>
+              <rect x="158" y="178" width="80" height="4" rx="1" fill="#E2E8F0"/>
+              <rect x="296" y="178" width="80" height="4" rx="1" fill="#E2E8F0"/>
+              <!-- Watermark -->
+              <text x="210" y="207" text-anchor="middle" font-size="7" fill="#CBD5E1" font-family="sans-serif">EINES VON 50.000 IDENTISCHEN DESIGNS</text>
+            </svg>
+          </div>
+          <div class="compare-body">
+            <h3>
+              <span class="compare-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.5"/>
+                  <path d="M6 6l8 8M14 6l-8 8" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              Baukasten-Website
+            </h3>
+            <ul class="compare-list">
+              <li>Eingeschränktes Design – alle sehen gleich aus</li>
+              <li>Generische Templates ohne Alleinstellungsmerkmal</li>
+              <li>Monatliche Kosten ohne Preisgarantie</li>
+              <li>Kein echter Support – nur Hilfe-Artikel</li>
+              <li>Sie besitzen nichts – abhängig vom Anbieter</li>
+            </ul>
+          </div>
         </div>
         <div class="compare-card compare-good" aria-label="MediaDrift Website Vorteile">
-          <h3>
-            <span class="compare-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="#22C55E" stroke-width="1.5"/>
-                <path d="M6 10l3 3 5-5" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            MediaDrift Website
-          </h3>
-          <ul class="compare-list">
-            <li>Einzigartiges Design, das zu Ihrem Unternehmen passt</li>
-            <li>Conversion-optimiert für Anfragen und Kontakt</li>
-            <li>Die Website gehört Ihnen – ohne monatliche Abhängigkeit</li>
-            <li>Persönlicher Ansprechpartner mit direktem Draht</li>
-            <li>Technisch sauber, schnell und langfristig wartbar</li>
-          </ul>
+          <!-- Placeholder: Ersetze das Bild durch deinen neuesten/besten Kundenentwurf.
+               Aktuell zeigt es VivaCasa Mallorca. Speichere das neue Bild als
+               /public/images/compare-mediadrift.png und ändere den src-Pfad hier. -->
+          <div class="compare-visual compare-visual-good" aria-hidden="true">
+            <img
+              src="/images/vivacasa-mallorca.png"
+              alt="Beispiel einer MediaDrift Website – VivaCasa Mallorca"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="compare-body">
+            <h3>
+              <span class="compare-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" stroke="#22C55E" stroke-width="1.5"/>
+                  <path d="M6 10l3 3 5-5" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              MediaDrift Website
+            </h3>
+            <ul class="compare-list">
+              <li>Einzigartiges Design, das zu Ihrem Unternehmen passt</li>
+              <li>Conversion-optimiert für Anfragen und Kontakt</li>
+              <li>Die Website gehört Ihnen – ohne monatliche Abhängigkeit</li>
+              <li>Persönlicher Ansprechpartner mit direktem Draht</li>
+              <li>Technisch sauber, schnell und langfristig wartbar</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -274,8 +335,8 @@ const faqSchema = {
       <h2 id="services-headline">Was wir für Sie tun</h2>
       <ul class="services-grid" role="list">
         <li class="md-card service-card">
-          <div class="service-header" aria-hidden="true">
-            <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <div class="service-header sh-blue" aria-hidden="true">
+            <svg class="service-icon" width="44" height="44" viewBox="0 0 36 36" fill="none" aria-hidden="true">
               <rect x="3" y="5" width="30" height="22" rx="3" stroke="#0369A1" stroke-width="1.8"/>
               <path d="M3 11h30" stroke="#0369A1" stroke-width="1.8"/>
               <circle cx="8" cy="8" r="1.5" fill="#0369A1"/>
@@ -290,12 +351,12 @@ const faqSchema = {
           </div>
         </li>
         <li class="md-card service-card">
-          <div class="service-header" aria-hidden="true">
-            <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <circle cx="18" cy="18" r="14" stroke="#0369A1" stroke-width="1.8"/>
-              <path d="M18 4v4M18 28v4M4 18h4M28 18h4" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="18" cy="18" r="5" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.5"/>
-              <path d="M10 10l2.5 2.5M23.5 23.5L26 26M26 10l-2.5 2.5M12.5 23.5L10 26" stroke="#0369A1" stroke-width="1.5" stroke-linecap="round"/>
+          <div class="service-header sh-green" aria-hidden="true">
+            <svg class="service-icon" width="44" height="44" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <circle cx="18" cy="18" r="14" stroke="#16A34A" stroke-width="1.8"/>
+              <path d="M18 4v4M18 28v4M4 18h4M28 18h4" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="18" cy="18" r="5" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+              <path d="M10 10l2.5 2.5M23.5 23.5L26 26M26 10l-2.5 2.5M12.5 23.5L10 26" stroke="#16A34A" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <div class="service-body">
@@ -304,12 +365,12 @@ const faqSchema = {
           </div>
         </li>
         <li class="md-card service-card">
-          <div class="service-header" aria-hidden="true">
-            <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <rect x="4" y="4" width="12" height="12" rx="3" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8"/>
-              <rect x="20" y="4" width="12" height="12" rx="3" stroke="#0369A1" stroke-width="1.8"/>
-              <rect x="4" y="20" width="12" height="12" rx="3" stroke="#0369A1" stroke-width="1.8"/>
-              <rect x="20" y="20" width="12" height="12" rx="3" stroke="#0369A1" stroke-width="1.8"/>
+          <div class="service-header sh-orange" aria-hidden="true">
+            <svg class="service-icon" width="44" height="44" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="12" height="12" rx="3" fill="#FED7AA" stroke="#EA580C" stroke-width="1.8"/>
+              <rect x="20" y="4" width="12" height="12" rx="3" stroke="#EA580C" stroke-width="1.8"/>
+              <rect x="4" y="20" width="12" height="12" rx="3" stroke="#EA580C" stroke-width="1.8"/>
+              <rect x="20" y="20" width="12" height="12" rx="3" stroke="#EA580C" stroke-width="1.8"/>
             </svg>
           </div>
           <div class="service-body">
@@ -318,9 +379,9 @@ const faqSchema = {
           </div>
         </li>
         <li class="md-card service-card">
-          <div class="service-header" aria-hidden="true">
-            <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <path d="M18 5l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8" stroke-linejoin="round"/>
+          <div class="service-header sh-purple" aria-hidden="true">
+            <svg class="service-icon" width="44" height="44" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <path d="M18 5l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.8" stroke-linejoin="round"/>
             </svg>
           </div>
           <div class="service-body">
@@ -329,10 +390,10 @@ const faqSchema = {
           </div>
         </li>
         <li class="md-card service-card">
-          <div class="service-header" aria-hidden="true">
-            <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <path d="M8 28l6-8 5 4 5-7 6 11H8z" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8" stroke-linejoin="round"/>
-              <circle cx="10" cy="12" r="3" fill="#DBEAFE" stroke="#0369A1" stroke-width="1.8"/>
+          <div class="service-header sh-teal" aria-hidden="true">
+            <svg class="service-icon" width="44" height="44" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <path d="M8 28l6-8 5 4 5-7 6 11H8z" fill="#CCFBF1" stroke="#0D9488" stroke-width="1.8" stroke-linejoin="round"/>
+              <circle cx="10" cy="12" r="3" fill="#CCFBF1" stroke="#0D9488" stroke-width="1.8"/>
             </svg>
           </div>
           <div class="service-body">
@@ -341,11 +402,11 @@ const faqSchema = {
           </div>
         </li>
         <li class="md-card service-card">
-          <div class="service-header" aria-hidden="true">
-            <svg class="service-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <path d="M18 4C10.268 4 4 10.268 4 18s6.268 14 14 14 14-6.268 14-14S25.732 4 18 4z" stroke="#0369A1" stroke-width="1.8"/>
-              <path d="M18 12v6l4 4" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9 29l3-3M27 29l-3-3" stroke="#0369A1" stroke-width="1.5" stroke-linecap="round"/>
+          <div class="service-header sh-slate" aria-hidden="true">
+            <svg class="service-icon" width="44" height="44" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <path d="M18 4C10.268 4 4 10.268 4 18s6.268 14 14 14 14-6.268 14-14S25.732 4 18 4z" stroke="#475569" stroke-width="1.8"/>
+              <path d="M18 12v6l4 4" stroke="#475569" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 29l3-3M27 29l-3-3" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <div class="service-body">
@@ -1385,11 +1446,43 @@ const faqSchema = {
   .compare-card {
     background: var(--md-surface);
     border: 1.5px solid var(--md-border);
-    border-radius: 10px;
-    padding: 1.75rem;
+    border-radius: 14px;
+    padding: 0;
+    overflow: hidden;
   }
-  .compare-bad { border-color: #FECACA; background: #FFF5F5; }
-  .compare-good { border-color: #BBF7D0; background: #F0FFF4; }
+  .compare-bad { border-color: #FECACA; }
+  .compare-good { border-color: #BBF7D0; }
+  /* Visual area (image / SVG illustration on top) */
+  .compare-visual {
+    height: 180px;
+    overflow: hidden;
+    display: block;
+  }
+  .compare-visual-bad {
+    background: #F1F5F9;
+  }
+  .compare-visual-bad svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .compare-visual-good img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 500ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .compare-card:hover .compare-visual-good img { transform: scale(1.04); }
+  }
+  /* Body of each card */
+  .compare-body {
+    padding: 1.35rem 1.5rem 1.5rem;
+  }
+  .compare-bad .compare-body { background: #FFF5F5; }
+  .compare-good .compare-body { background: #F0FFF4; }
   .compare-card h3 {
     display: flex;
     align-items: center;
@@ -1402,7 +1495,10 @@ const faqSchema = {
   .compare-bad .compare-list li::before { content: '—'; color: #EF4444; margin-right: 0.5rem; font-weight: 700; }
   .compare-good .compare-list li::before { content: '✓'; color: #22C55E; margin-right: 0.5rem; font-weight: 700; }
   .compare-list li { font-size: 0.93rem; color: var(--md-secondary); padding-left: 1.5rem; text-indent: -1.5rem; }
-  @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .compare-visual { height: 160px; }
+  }
 
   /* ---- Services ---- */
   .services-section { background: var(--md-bg); }
@@ -1428,22 +1524,33 @@ const faqSchema = {
     .service-card:hover { border-top-color: var(--md-cta); }
   }
   .service-header {
-    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 120px;
+    min-height: 160px;
     padding: 2rem;
     border-radius: 13px 13px 0 0;
     transition: background 280ms var(--ease-out), transform 280ms var(--ease-out);
+  }
+  /* Color variants per service */
+  .sh-blue   { background: linear-gradient(135deg, #F0F9FF 0%, #DBEAFE 100%); }
+  .sh-green  { background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); }
+  .sh-orange { background: linear-gradient(135deg, #FFF7ED 0%, #FED7AA 100%); }
+  .sh-purple { background: linear-gradient(135deg, #FAF5FF 0%, #EDE9FE 100%); }
+  .sh-teal   { background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%); }
+  .sh-slate  { background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%); }
+  @media (hover: hover) and (pointer: fine) {
+    .service-card:hover .sh-blue   { background: linear-gradient(135deg, #DBEAFE 0%, #BAE6FD 100%); }
+    .service-card:hover .sh-green  { background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%); }
+    .service-card:hover .sh-orange { background: linear-gradient(135deg, #FED7AA 0%, #FDBA74 100%); }
+    .service-card:hover .sh-purple { background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%); }
+    .service-card:hover .sh-teal   { background: linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%); }
+    .service-card:hover .sh-slate  { background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%); }
   }
   .service-card .service-icon {
     transition: transform 280ms var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) {
-    .service-card:hover .service-header {
-      background: linear-gradient(135deg, #DBEAFE 0%, #BAE6FD 100%);
-    }
     .service-card:hover .service-icon {
       transform: scale(1.12) translateY(-2px);
     }
