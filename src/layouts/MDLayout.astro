@@ -10,6 +10,7 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
   canonical?: string;
   noIndex?: boolean;
 }
@@ -17,7 +18,8 @@ interface Props {
 const {
   title,
   description = 'Individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten, mehr Vertrauen schaffen und online neue Kunden gewinnen möchten.',
-  ogImage = '/og-default.png',
+  ogImage = '/og-default.svg',
+  ogType = 'website',
   canonical,
   noIndex = false,
 } = Astro.props;
@@ -39,11 +41,13 @@ const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${SITE.url}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content={SITE.name} />
 
@@ -56,6 +60,23 @@ const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon-md.svg" />
 
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": SITE.name,
+      "url": SITE.url,
+      "inLanguage": "de-DE",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${SITE.url}/blog?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+
     <!-- Structured Data: LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -64,12 +85,27 @@ const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
       "description": "Individuelle Unternehmenswebsites – Strategie, Design, Entwicklung, SEO und Google-Marketing.",
       "url": SITE.url,
       "telephone": SITE.contact.phone,
+      "email": SITE.contact.email,
+      "logo": `${SITE.url}/favicon-md.svg`,
+      "image": `${SITE.url}/og-default.svg`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": SITE.contact.street,
         "addressLocality": "München",
         "postalCode": "81539",
         "addressCountry": "DE"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "München" },
+        { "@type": "State", "name": "Bayern" },
+        { "@type": "Country", "name": "Deutschland" }
+      ],
+      "priceRange": "€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
       }
     })} />
   </head>

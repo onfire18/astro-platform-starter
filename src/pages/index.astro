@@ -6,12 +6,26 @@ import { faqMain } from '../data/faq';
 import { references } from '../data/references';
 const waCustomer = whatsappUrl('customer');
 const waSales = whatsappUrl('sales');
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqMain.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
 ---
 
 <MDLayout
   title="Individuelle Unternehmenswebsites"
   description="MediaDrift entwickelt individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten, mehr Vertrauen schaffen und online neue Kunden gewinnen möchten."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Intro overlay (einmal pro Session) -->
   <div id="intro" class="intro" aria-hidden="true">
