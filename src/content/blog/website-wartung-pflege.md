@@ -1,49 +1,73 @@
 ---
-title: "Website-Wartung: Warum Pflege keine Kür ist"
-description: "Was Website-Wartung umfasst, was passiert wenn sie ausbleibt und wie KMU die Pflege ihrer Website sinnvoll organisieren."
-pubDate: 2025-12-08
+title: "Website-Wartung und Pflege: Was nach dem Launch zu tun ist"
+description: "Warum eine Unternehmenswebsite regelmäßige Wartung braucht und welche Aufgaben in der laufenden Pflege nicht vergessen werden dürfen."
+pubDate: 2026-05-04
 author: "Paul Dunker"
 category: "Technik"
-keywords: ["website wartung", "website pflege", "website updates", "website maintenance kosten", "website betreuen lassen"]
-readingTime: 6
+keywords: ["website wartung", "website pflege", "website aktuell halten", "wordpress wartung", "website update sicherheit"]
+readingTime: 5
 ---
 
-Eine Website ist kein Möbelstück, das man einmal kauft und dann stehen lässt. Sie ist eher wie ein Fahrzeug: Es funktioniert heute zuverlässig, aber ohne regelmäßige Wartung werden kleine Probleme zu großen Ausfällen – meistens zum ungünstigsten Zeitpunkt.
+Eine neue Website zu launchen ist ein Meilenstein. Was danach kommt, wird von vielen Unternehmen unterschätzt: Eine Website braucht laufende Pflege, um sicher, schnell und aktuell zu bleiben.
 
-## Was Website-Wartung tatsächlich bedeutet
+Wer seine Website nach dem Launch als „fertig" betrachtet und monatelang nichts tut, nimmt erhebliche Risiken in Kauf.
 
-Wenn Unternehmer an „Website pflegen" denken, denken viele an Texte aktualisieren oder neue Fotos hochladen. Das ist ein Teil davon. Der größere und oft vernachlässigte Teil ist technische Wartung.
+## Was passiert, wenn die Website nicht gepflegt wird
 
-**Software-Updates.** Wenn Ihre Website auf einem CMS wie WordPress aufbaut, veröffentlichen die Entwickler regelmäßig Sicherheitsupdates für das System selbst, die Themes und Plugins. Diese Updates einzuspielen ist nicht optional – jede ungepatchte Sicherheitslücke ist eine Einladung für Angreifer.
+**Sicherheitslücken**: WordPress-Seiten, Plugins und Themes werden regelmäßig aktualisiert, weil Sicherheitslücken entdeckt und behoben werden. Wer Updates ignoriert, lädt Angreifer ein. Gehackte Websites sind nicht nur ein Ärgernis – sie werden von Google mit Warnmeldungen versehen und verlieren Rankings.
 
-**PHP-Versionsaktualität.** WordPress und andere Systeme laufen auf PHP. Ältere PHP-Versionen erhalten nach einer Übergangszeit keine Sicherheitsupdates mehr. Auf veralteten PHP-Versionen zu betreiben ist ein Sicherheitsrisiko und kann je nach Hoster auch Performance-Nachteile bringen.
+**Fehler nach Updates**: Updates können bestehende Funktionen brechen. Ein veraltetes Theme plus neues WordPress-Update kann zu Darstellungsfehlern führen. Wer regelmäßig wartet, bemerkt das sofort. Wer Monate nichts getan hat, entdeckt das erst, wenn ein Kunde anruft.
 
-**Broken Link-Checks.** Mit der Zeit entstehen tote Links – auf Ihrer eigenen Website oder zu externen Seiten, die nicht mehr existieren. Kaputte Links frustrieren Besucher und sind ein schwaches SEO-Signal.
+**Veraltete Inhalte**: Öffnungszeiten, Preise, Mitarbeiter, Leistungsangebote – alles ändert sich. Eine Website mit falschen Informationen schadet mehr als gar keine Website.
 
-**Backup-Verifikation.** Backups zu machen ist gut. Backups zu machen und sie regelmäßig zu testen (ob sie auch wirklich wiederherstellbar sind) ist besser. Viele Backups scheitern still – man merkt es erst, wenn man sie braucht.
+**Plugin-Konflikte**: Je mehr Plugins installiert sind, desto höher das Risiko von Konflikten nach Updates. Regelmäßige Überprüfung und Bereinigung nicht genutzter Plugins reduziert dieses Risiko.
 
-**Formular- und Funktionstest.** Kontaktformulare, Buchungssysteme, Kalender – all das kann durch Plugin-Updates oder Serverkonfigurationsänderungen leise aufhören zu funktionieren. Ein monatlicher Check verhindert, dass monatelang keine Kundenanfragen ankommen.
+## Regelmäßige Wartungsaufgaben
 
-**Inhaltliche Aktualität.** Veraltete Öffnungszeiten, abgelaufene Angebote, nicht mehr angebotene Leistungen – das schadet Vertrauen und kann für Frust beim Kunden sorgen. Inhaltliche Pflege gehört zu einer lebendigen Website.
+### Wöchentlich
 
-## Was passiert, wenn Wartung ausbleibt
+- **Backup prüfen**: Funktioniert das automatische Backup? Ist die letzte Sicherung aktuell?
+- **Verfügbarkeit prüfen**: Ist die Website erreichbar? Uptime-Monitoring-Tools geben automatisch Bescheid, wenn die Seite nicht erreichbar ist.
 
-**Sicherheitsvorfälle.** Ungepatchte WordPress-Plugins sind der häufigste Weg, über den Websites gehackt werden. Die Folgen: Schadsoftware auf Ihrem Server, Datenverlust, Sperrung durch Google.
+### Monatlich
 
-**Performance-Abbau.** Ohne aktive Pflege akkumulieren sich Datenbankeinträge, temporäre Dateien und Redundanzen. Websites werden schleichend langsamer – was Besucher vertreibt und Google-Rankings belastet.
+- **WordPress-Core, Plugins und Themes aktualisieren**: Immer auf einer Staging-Umgebung (Test-Website) testen, bevor live eingespielt.
+- **Broken Links prüfen**: Links auf externe Quellen können veralten. Tools wie Broken Link Checker finden tote Links.
+- **Formular-Funktionsfähigkeit prüfen**: Kontaktformulare regelmäßig selbst testen. E-Mail-Auslieferung kann leise aufhören zu funktionieren.
+- **Google Search Console prüfen**: Gibt es neue Crawl-Fehler? Sind neue Seiten indexiert?
 
-**Vertrauensverlust durch veraltete Inhalte.** Eine Website mit Neuigkeiten aus dem Jahr 2022 oder einer Preisliste, die nicht mehr stimmt, wirkt verlassen. Kunden zweifeln, ob das Unternehmen noch aktiv ist.
+### Vierteljährlich
 
-## Wie Sie Wartung organisieren
+- **Inhaltliche Überprüfung**: Sind alle Informationen aktuell? Mitarbeiter, Preise, Leistungen, Öffnungszeiten?
+- **Performance prüfen**: PageSpeed Insights für die wichtigsten Seiten laufen lassen.
+- **SEO-Check**: Rankings für wichtige Keywords prüfen, neue Optimierungsmöglichkeiten identifizieren.
 
-**Option 1: Selbst pflegen.** Wenn Sie technisch versiert sind und die nötige Zeit aufwenden, können Sie Ihre WordPress-Website selbst warten. Das setzt regelmäßige Disziplin voraus und ein gewisses technisches Grundverständnis.
+### Jährlich
 
-**Option 2: Wartungsvertrag mit einer Agentur.** Viele Webentwickler und Agenturen bieten Wartungsverträge an. Diese umfassen typischerweise Updates, Backups, Monitoring und eine vereinbarte Anzahl von Pflegestunden pro Monat. Kosten: je nach Leistungsumfang ca. 30–150 Euro pro Monat.
+- **Datenschutzerklärung und Impressum prüfen**: Gesetzliche Anforderungen ändern sich. Was heute korrekt ist, kann in einem Jahr veraltet sein.
+- **SSL-Zertifikat prüfen**: Manche Zertifikate laufen ab. Manche Anbieter verlängern automatisch – das kontrollieren.
+- **Domain-Verlängerung prüfen**: Domains laufen ab. Wer das verpasst, verliert seine Domain.
+- **Hosting-Vertrag prüfen**: Ist der aktuelle Hoster noch der richtige? Hat sich das Preis-Leistungs-Verhältnis verändert?
 
-**Option 3: Technisch pflegearme Lösung wählen.** Wenn Wartungsaufwand ein Problem ist, kann die Wahl der technischen Plattform das Problem verringern. Statisch generierte Websites oder einfache gehostete Lösungen benötigen deutlich weniger laufende Wartung als Plugin-reiche WordPress-Installationen.
+## Backup-Strategie
+
+Backups sind die wichtigste Versicherung. Was eine gute Backup-Strategie umfasst:
+
+- **Regelmäßigkeit**: Täglich für aktive Websites, wöchentlich für einfache Präsenz-Websites
+- **Redundanz**: Backups auf verschiedenen Medien oder Orten speichern (nicht nur auf demselben Server)
+- **Testwiederherstellung**: Einmal pro Jahr testen, ob das Backup tatsächlich wiederherstellbar ist
+
+Wer ein WordPress-Backup-Plugin wie UpdraftPlus oder BackupBuddy nutzt, kann Backups automatisiert in Google Drive, Dropbox oder Amazon S3 speichern.
+
+## Wartungsvertrag oder selbst machen?
+
+Viele Agenturen bieten Wartungsverträge an – ein monatlicher Pauschalpreis für Updates, Backup, Monitoring. Das lohnt sich für Unternehmen, die:
+- Technisch nicht versiert sind
+- Keine Zeit für regelmäßige Wartung haben
+- Schnelle Hilfe bei Problemen brauchen
+
+Wer technisch kompetent ist und Zeit investieren kann, kann die Wartung selbst übernehmen – mit einem klar strukturierten Wartungsplan.
 
 ## Fazit
 
-Wer eine Website betreibt und dabei glaubt, nach dem Launch sei die Arbeit getan, hat oft eine böse Überraschung vor sich. Website-Wartung ist kein Luxus, sondern Grundvoraussetzung für einen zuverlässigen, sicheren Online-Auftritt.
-
-Bei MediaDrift bieten wir auf Wunsch laufende Wartung und Betreuung für Websites an, die wir erstellt haben – damit unsere Kunden sich auf ihr Kerngeschäft konzentrieren können. Sprechen Sie uns an.
+Eine Website ist kein Projekt mit Abschluss, sondern ein laufend gepflegtes System. Wer Wartung vernachlässigt, riskiert Sicherheitsprobleme, Funktionsfehler und veraltete Inhalte. Regelmäßige Wartung ist günstiger als Krisenmanagement nach einem Sicherheitsvorfall. Wenn Sie die Wartung Ihrer Website professionell abgeben möchten, unterstützt MediaDrift. Sprechen Sie uns an.
