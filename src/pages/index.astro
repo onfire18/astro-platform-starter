@@ -1281,7 +1281,16 @@ const faqSchema = {
     padding: 0;
     margin: 0;
   }
-  .trust-card { display: flex; flex-direction: column; gap: 0.75rem; }
+  .trust-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-top: 3px solid transparent;
+    transition: border-color 280ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .trust-card:hover { border-top-color: var(--md-cta); }
+  }
   .trust-card h3 { font-size: 1.05rem; margin: 0; }
   .trust-card p { margin: 0; color: var(--md-muted); font-size: 0.93rem; }
   @media (max-width: 980px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -1898,14 +1907,14 @@ const faqSchema = {
   }
   .speed-week {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--md-cta);
     background: var(--md-accent);
-    padding: 0.25rem 0.65rem;
-    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
     margin-bottom: 1rem;
   }
   .speed-card h3 { font-size: 1.05rem; margin-bottom: 0.45rem; }
@@ -2088,15 +2097,15 @@ const faqSchema = {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out), transform 250ms var(--ease-out);
+    transition: box-shadow 280ms var(--ease-out), border-color 280ms var(--ease-out), transform 280ms var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) {
     .ref-card:hover {
-      box-shadow: 0 12px 40px rgba(3, 87, 133, 0.13);
-      border-color: #CBD5E1;
-      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(3, 105, 161, 0.08), 0 16px 48px rgba(3, 105, 161, 0.16);
+      border-color: rgba(3, 105, 161, 0.2);
+      transform: translateY(-3px);
     }
-    .ref-card:hover .ref-img { transform: scale(1.02); }
+    .ref-card:hover .ref-img { transform: scale(1.03); }
   }
   .ref-img-wrap {
     aspect-ratio: 16/9;
@@ -2146,9 +2155,9 @@ const faqSchema = {
   .concept-badge {
     display: inline-block;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 4px;
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     background: #FEF9C3;
     color: #92400E;
   }
