@@ -1,0 +1,262 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Brandmauer zur AfD – Pro & Contra" description="Eine Übersicht der Argumente für und gegen die Brandmauer zur AfD sowie Zitate der Parteien.">
+
+    <!-- Hero -->
+    <section class="relative py-16 sm:py-24 text-center overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-brand-600/15 blur-[120px]"></div>
+        </div>
+        <div class="relative">
+            <h1 class="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4 tracking-tight">
+                Brandmauer zur AfD
+            </h1>
+            <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+                Argumente für und gegen die Abgrenzungsstrategie demokratischer Parteien – und wie sich Politiker dazu äußern.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pro & Contra -->
+    <section class="pb-16 sm:pb-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+            <!-- Pro -->
+            <div class="bg-emerald-950/40 border border-emerald-500/20 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-emerald-300">Pro Brandmauer</h2>
+                </div>
+                <ul class="space-y-4">
+                    {[
+                        { title: 'Schutz der Demokratie', text: 'Die AfD wird in mehreren Bundesländern als gesichert rechtsextremistisch eingestuft. Die Brandmauer soll die freiheitlich-demokratische Grundordnung schützen.' },
+                        { title: 'Politische Verantwortung', text: 'Demokratische Parteien zeigen damit Haltung und grenzen sich von Positionen ab, die als demokratiegefährdend angesehen werden.' },
+                        { title: 'Historische Erfahrungen', text: 'In der Weimarer Republik scheiterte der Versuch, radikale rechte Kräfte durch Zusammenarbeit zu kontrollieren.' },
+                        { title: 'Studienergebnisse', text: 'Untersuchungen zeigen, dass rechtsradikale Parteien durch Regierungsbeteiligung meist nicht moderater werden.' },
+                        { title: 'Keine „Entzauberung"', text: 'Die Hoffnung, dass die AfD durch Regierungsverantwortung an Zustimmung verliert, wird durch internationale Beispiele (z. B. Österreich, Polen, Dänemark) nicht bestätigt.' },
+                        { title: 'Schutz von Minderheiten', text: 'Kritiker der AfD sehen bestimmte Positionen als Gefahr für gesellschaftliche Vielfalt und Menschenrechte.' },
+                    ].map(item => (
+                        <li class="flex gap-3">
+                            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                            <div>
+                                <span class="text-emerald-200 font-semibold text-sm">{item.title}: </span>
+                                <span class="text-neutral-300 text-sm leading-relaxed">{item.text}</span>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- Contra -->
+            <div class="bg-red-950/30 border border-red-500/20 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-red-300">Contra Brandmauer</h2>
+                </div>
+                <ul class="space-y-4">
+                    {[
+                        { title: 'Viele Wähler werden ausgegrenzt', text: 'Millionen Bürger wählen die AfD. Gegner der Brandmauer sehen darin eine Missachtung des Wählerwillens.' },
+                        { title: 'Demokratische Partei', text: 'Die AfD ist zugelassen und wird demokratisch gewählt. Daher sollte sie wie andere Parteien behandelt werden.' },
+                        { title: 'Probleme bleiben ungelöst', text: 'Die Brandmauer beseitigt nicht die Ursachen für den Erfolg der AfD, etwa Unzufriedenheit mit Migration, Wirtschaft oder Regierungspolitik.' },
+                        { title: 'Mehrheiten werden erschwert', text: 'In einigen Parlamenten sind stabile Regierungsbildungen ohne AfD nur schwer möglich.' },
+                        { title: 'Oppositionsrolle stärkt die AfD', text: 'Manche argumentieren, dass die AfD durch die Ausgrenzung leichter die Rolle des „Opfers des Systems" einnehmen kann.' },
+                        { title: 'Regierungsverantwortung könnte Schwächen offenlegen', text: 'Befürworter einer Zusammenarbeit glauben, dass die AfD in Regierungsverantwortung an Zustimmung verlieren könnte, wenn sie ihre Versprechen nicht umsetzt.' },
+                    ].map(item => (
+                        <li class="flex gap-3">
+                            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-red-400 flex-shrink-0"></span>
+                            <div>
+                                <span class="text-red-200 font-semibold text-sm">{item.title}: </span>
+                                <span class="text-neutral-300 text-sm leading-relaxed">{item.text}</span>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Parteizitate -->
+    <section class="pb-16 sm:pb-20">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Wie äußern sich die Parteien?</h2>
+            <p class="text-neutral-400 text-sm">Zitate und Positionen führender Politiker zur Brandmauer-Debatte</p>
+        </div>
+
+        <div class="space-y-5">
+
+            <!-- CDU/CSU -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-neutral-700/50 flex items-center justify-center font-bold text-white text-sm">CDU</div>
+                    <div>
+                        <div class="text-white font-semibold">Friedrich Merz</div>
+                        <div class="text-neutral-500 text-xs">CDU-Vorsitzender & Bundeskanzler</div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <blockquote class="border-l-2 border-neutral-500 pl-4">
+                        <p class="text-neutral-300 text-sm italic leading-relaxed">„Mit mir wird es eine Brandmauer zur AfD geben."</p>
+                        <cite class="text-neutral-500 text-xs mt-1 block">— Friedrich Merz, 2021 (Kandidatur um den CDU-Vorsitz)</cite>
+                    </blockquote>
+                    <blockquote class="border-l-2 border-orange-500/50 pl-4">
+                        <p class="text-neutral-300 text-sm italic leading-relaxed">„Die Zustimmung der AfD sei mir lieber als weiter ohnmächtig zuzusehen, wie die Menschen in unserem Land weiter bedroht, verletzt und ermordet werden."</p>
+                        <cite class="text-neutral-500 text-xs mt-1 block">— Friedrich Merz, Januar 2025, zur Migrationsdebatte im Bundestag</cite>
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Merkel -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-neutral-700/50 flex items-center justify-center font-bold text-white text-sm">CDU</div>
+                    <div>
+                        <div class="text-white font-semibold">Angela Merkel</div>
+                        <div class="text-neutral-500 text-xs">Ehemalige Bundeskanzlerin</div>
+                    </div>
+                </div>
+                <blockquote class="border-l-2 border-yellow-500/50 pl-4">
+                    <p class="text-neutral-300 text-sm italic leading-relaxed">„Es war falsch, sehenden Auges erstmalig bei einer Abstimmung im Deutschen Bundestag eine Mehrheit mit den Stimmen der AfD zu ermöglichen."</p>
+                    <cite class="text-neutral-500 text-xs mt-1 block">— Angela Merkel, Januar 2025, nach der Bundestags-Abstimmung</cite>
+                </blockquote>
+            </div>
+
+            <!-- SPD -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-red-900/50 border border-red-700/30 flex items-center justify-center font-bold text-red-300 text-sm">SPD</div>
+                    <div>
+                        <div class="text-white font-semibold">Olaf Scholz</div>
+                        <div class="text-neutral-500 text-xs">SPD, ehem. Bundeskanzler</div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <blockquote class="border-l-2 border-red-500/50 pl-4">
+                        <p class="text-neutral-300 text-sm italic leading-relaxed">„Die Brandmauer zur AfD darf nicht bröckeln."</p>
+                        <cite class="text-neutral-500 text-xs mt-1 block">— Olaf Scholz, Tagesspiegel</cite>
+                    </blockquote>
+                    <p class="text-neutral-400 text-sm">Scholz äußerte sich besorgt, nachdem Merz' Aussagen zur Zusammenarbeit mit der AfD bekannt wurden. Er erklärte, er habe geglaubt, auf die Versprechen des Oppositionsführers zur Nicht-Zusammenarbeit zählen zu können.</p>
+                </div>
+            </div>
+
+            <!-- Grüne -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-green-900/50 border border-green-700/30 flex items-center justify-center font-bold text-green-300 text-sm">Grüne</div>
+                    <div>
+                        <div class="text-white font-semibold">Robert Habeck</div>
+                        <div class="text-neutral-500 text-xs">Bündnis 90/Die Grünen</div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <blockquote class="border-l-2 border-green-500/50 pl-4">
+                        <p class="text-neutral-300 text-sm italic leading-relaxed">„Friedrich Merz hat bei der Vorstellung seines 5-Punkte-Plans wohl vergessen: Kein Kanzler steht über dem Gesetz. Und auch an seine Versprechen zur Nicht-Zusammenarbeit mit der AfD erinnert er sich nicht mehr. Keine Zeit für schwache Nerven @CDU. Die Brandmauer darf nicht fallen."</p>
+                        <cite class="text-neutral-500 text-xs mt-1 block">— Robert Habeck, auf X (ehemals Twitter)</cite>
+                    </blockquote>
+                    <p class="text-neutral-400 text-sm">Habeck sprach außerdem von einer <span class="text-white font-medium">„Erpressungssituation"</span>, als Merz AfD-Stimmen für seine Anträge nutzte.</p>
+                </div>
+            </div>
+
+            <!-- Die Linke -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-rose-900/50 border border-rose-700/30 flex items-center justify-center font-bold text-rose-300 text-xs">Linke</div>
+                    <div>
+                        <div class="text-white font-semibold">Heidi Reichinnek</div>
+                        <div class="text-neutral-500 text-xs">Die Linke, Fraktionsvorsitzende</div>
+                    </div>
+                </div>
+                <blockquote class="border-l-2 border-rose-500/50 pl-4">
+                    <p class="text-neutral-300 text-sm italic leading-relaxed">„Besonders die Union und die FDP sind es, bei denen die Brandmauer bröckelt."</p>
+                    <cite class="text-neutral-500 text-xs mt-1 block">— Heidi Reichinnek, auf abgeordnetenwatch.de</cite>
+                </blockquote>
+            </div>
+
+            <!-- BSW -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-purple-900/50 border border-purple-700/30 flex items-center justify-center font-bold text-purple-300 text-sm">BSW</div>
+                    <div>
+                        <div class="text-white font-semibold">Sahra Wagenknecht</div>
+                        <div class="text-neutral-500 text-xs">BSW-Gründerin (ehem. Vorsitzende)</div>
+                    </div>
+                </div>
+                <blockquote class="border-l-2 border-purple-500/50 pl-4">
+                    <p class="text-neutral-300 text-sm italic leading-relaxed">Das BSW werde nicht mehr für Koalitionen zur Verfügung stehen, deren einziger gemeinsamer Nenner das Fernhalten der AfD von der Macht sei.</p>
+                    <cite class="text-neutral-500 text-xs mt-1 block">— Sahra Wagenknecht, November 2025 (sinngemäß)</cite>
+                </blockquote>
+            </div>
+
+            <!-- Zivilgesellschaft -->
+            <div class="bg-brand-950/30 border border-brand-500/20 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-brand-800/40 border border-brand-600/30 flex items-center justify-center">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-white font-semibold">Zivilgesellschaft</div>
+                        <div class="text-neutral-500 text-xs">Offener Brief, Anfang 2025</div>
+                    </div>
+                </div>
+                <blockquote class="border-l-2 border-brand-500/50 pl-4">
+                    <p class="text-neutral-300 text-sm italic leading-relaxed">„Die Brandmauer steht noch" – Union, FDP und BSW destabilisierten sie jedoch „auf dramatische Weise".</p>
+                    <cite class="text-neutral-500 text-xs mt-1 block">— Erklärung zivilgesellschaftlicher Akteure an Abgeordnete, Anfang 2025</cite>
+                </blockquote>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Quellen -->
+    <section class="pb-16 sm:pb-20">
+        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8">
+            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-400">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+                Quellen
+            </h3>
+            <ul class="space-y-2">
+                {[
+                    { text: 'Tagesspiegel: Scholz – „Die Brandmauer zur AfD darf nicht bröckeln"', url: 'https://www.tagesspiegel.de/politik/kanzler-scholz-nach-merz-aussage-besorgt-die-brandmauer-zur-afd-darf-nicht-brockeln-13080034.html' },
+                    { text: 'Robert Habeck auf X: „Die Brandmauer darf nicht fallen"', url: 'https://x.com/roberthabeck/status/1882856698836361220' },
+                    { text: 'taz: Merz\' Anbiederung an die AfD', url: 'https://taz.de/Merz-Anbiederung-an-die-AfD/!6061889/' },
+                    { text: 'WSWS: CDU-Chef Merz reißt die „Brandmauer" zur AfD ein', url: 'https://www.wsws.org/de/articles/2025/01/28/merz-j28.html' },
+                    { text: 'Abgeordnetenwatch: Heidi Reichinnek zur Brandmauer', url: 'https://www.abgeordnetenwatch.de/profile/heidi-reichinnek/fragen-antworten/brandmauer-gegen-die-afd-aber-wie' },
+                    { text: 'ZDF: Merz, CDU, AfD – Brandmauer und Migration', url: 'https://www.zdf.de/nachrichten/politik/deutschland/merz-cdu-afd-bundestag-brandmauer-migration-koalition-100.html' },
+                    { text: 'bpb: Warum die Brandmauer mehr Vor- als Nachteile hat', url: 'https://www.bpb.de/shop/zeitschriften/apuz/konservatismus-2026/574881/warum-die-brandmauer-mehr-vor-als-nachteile-hat/' },
+                    { text: 'Tagesspiegel: Heftige Kritik an Merz-Manöver – Habeck spricht von „Erpressungssituation"', url: 'https://www.tagesspiegel.de/politik/heftige-kritik-an-merz-manover-mit-afd-habeck-spricht-von-erpressungssituation-scholz-halt-koalition-von-union-und-afd-fur-moglich-13120648.html' },
+                ].map(source => (
+                    <li>
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-brand-400 hover:text-brand-300 text-sm flex items-start gap-2 transition">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            {source.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+</Layout>
