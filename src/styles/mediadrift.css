@@ -1,17 +1,17 @@
 /* MediaDrift — Base Styles */
 
 :root {
-  --md-bg: #F8FAFC;
+  --md-bg: #F4F7FB;
   --md-surface: #FFFFFF;
-  --md-primary: #0F172A;
-  --md-secondary: #334155;
+  --md-primary: #0C1521;
+  --md-secondary: #2E4057;
   --md-cta: #0369A1;
   --md-cta-dark: #0284C7;
-  --md-muted: #475569;
-  --md-border: #E2E8F0;
-  --md-text: #020617;
-  --md-subtle: #64748B;
-  --md-accent: #DBEAFE;
+  --md-muted: #4A6070;
+  --md-border: #DDE6EF;
+  --md-text: #0C1521;
+  --md-subtle: #6B8299;
+  --md-accent: #D8EEFF;
   --nav-h: 72px;
   /* Easing curves (Emil Kowalski) */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -24,37 +24,42 @@ html {
 }
 
 /* Font imports (self-hosted via fontsource) */
-@import '@fontsource/dm-serif-display/400.css';
-@import '@fontsource-variable/jost';
+@import '@fontsource-variable/outfit';
+@import '@fontsource-variable/plus-jakarta-sans';
 
 /* Reset für MediaDrift-Seiten */
 .md-page {
-  font-family: 'Jost', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
   background-color: var(--md-bg);
   color: var(--md-text);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.7;
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
 .md-page h1,
 .md-page h2,
 .md-page h3,
 .md-page h4 {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
   line-height: 1.1;
   color: var(--md-primary);
-  font-weight: 400;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .md-page h2 {
-  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
-  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 3.5vw, 2.85rem);
+  font-weight: 700;
   margin-bottom: 1.25rem;
   text-wrap: balance;
 }
 
 .md-page h3 {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
@@ -68,12 +73,12 @@ html {
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 5vw, 3rem);
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
 /* Section spacing */
 .md-section {
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-block: clamp(4.5rem, 9vw, 8rem);
 }
 
 /* Focus ring (a11y) */
@@ -90,9 +95,10 @@ html {
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  font-family: 'Jost', system-ui, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
   transition:
     background-color 160ms var(--ease-out),
@@ -102,7 +108,7 @@ html {
     border-color 160ms var(--ease-out);
   text-decoration: none;
   border: none;
-  min-height: 44px; /* a11y touch target */
+  min-height: 44px;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -120,7 +126,7 @@ html {
   left: -80%;
   width: 55%;
   height: 100%;
-  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
   transform: skewX(-20deg);
   transition: left 0s;
   pointer-events: none;
@@ -129,7 +135,7 @@ html {
 @media (hover: hover) and (pointer: fine) {
   .md-btn:hover::before {
     left: 130%;
-    transition: left 650ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: left 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -139,13 +145,13 @@ html {
 .md-btn-primary {
   background-color: var(--md-cta);
   color: #fff;
-  box-shadow: 0 1px 3px rgba(3, 105, 161, 0.3), 0 4px 16px rgba(3, 105, 161, 0.15);
+  box-shadow: 0 1px 3px rgba(3, 105, 161, 0.25), 0 4px 16px rgba(3, 105, 161, 0.18);
 }
 @media (hover: hover) and (pointer: fine) {
   .md-btn-primary:hover {
     background-color: var(--md-cta-dark);
     color: #fff;
-    box-shadow: 0 2px 6px rgba(3, 105, 161, 0.4), 0 8px 24px rgba(3, 105, 161, 0.2);
+    box-shadow: 0 2px 6px rgba(3, 105, 161, 0.35), 0 10px 28px rgba(3, 105, 161, 0.22);
     transform: translateY(-1px);
   }
 }
@@ -159,7 +165,7 @@ html {
   .md-btn-outline:hover {
     border-color: var(--md-cta);
     color: var(--md-cta);
-    background-color: rgba(3, 105, 161, 0.06);
+    background-color: rgba(3, 105, 161, 0.05);
     transform: translateY(-1px);
   }
 }
@@ -179,7 +185,7 @@ html {
 .md-card {
   background: var(--md-surface);
   border: 1px solid var(--md-border);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1.75rem;
   transition:
     box-shadow 280ms var(--ease-out),
@@ -188,8 +194,8 @@ html {
 }
 @media (hover: hover) and (pointer: fine) {
   .md-card:hover {
-    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.06), 0 12px 40px rgba(3, 105, 161, 0.14);
-    border-color: rgba(3, 105, 161, 0.2);
+    box-shadow: 0 4px 14px rgba(3, 105, 161, 0.07), 0 16px 48px rgba(3, 105, 161, 0.13);
+    border-color: rgba(3, 105, 161, 0.22);
     transform: translateY(-3px);
   }
 }
@@ -199,11 +205,13 @@ html {
   display: inline-block;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
   background-color: var(--md-accent);
   color: var(--md-cta);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* Section label */
@@ -211,9 +219,10 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
+  font-family: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  font-size: 0.73rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--md-cta);
   margin-bottom: 1rem;
@@ -222,7 +231,7 @@ html {
 .md-label::before {
   content: '';
   display: inline-block;
-  width: 18px;
+  width: 20px;
   height: 2px;
   background: currentColor;
   border-radius: 1px;
@@ -231,9 +240,9 @@ html {
 
 /* Section intro paragraph */
 .md-section-intro {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   color: var(--md-secondary);
-  line-height: 1.75;
+  line-height: 1.8;
   max-width: 58ch;
   margin-bottom: 3rem;
 }
@@ -242,14 +251,15 @@ html {
 .md-faq details summary {
   list-style: none;
   cursor: pointer;
-  padding: 1.1rem 0;
-  font-weight: 500;
+  padding: 1.15rem 0;
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--md-primary);
   border-bottom: 1px solid var(--md-border);
   transition: color 150ms ease;
+  font-size: 0.97rem;
 }
 .md-faq details summary::-webkit-details-marker { display: none; }
 .md-faq details summary::after {
@@ -263,10 +273,10 @@ html {
 .md-faq details[open] summary::after { transform: rotate(45deg); }
 .md-faq details[open] summary { color: var(--md-cta); border-color: transparent; }
 .md-faq details .faq-answer {
-  padding: 0.75rem 0 1.25rem;
+  padding: 0.75rem 0 1.35rem;
   color: var(--md-muted);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: 1.75;
+  font-size: 0.96rem;
 }
 
 /* prefers-reduced-motion */
@@ -280,15 +290,16 @@ html {
 /* Scrollbar */
 .md-page ::-webkit-scrollbar { width: 6px; }
 .md-page ::-webkit-scrollbar-track { background: var(--md-bg); }
-.md-page ::-webkit-scrollbar-thumb { background: var(--md-border); border-radius: 3px; }
+.md-page ::-webkit-scrollbar-thumb { background: rgba(3, 105, 161, 0.2); border-radius: 3px; }
+.md-page ::-webkit-scrollbar-thumb:hover { background: rgba(3, 105, 161, 0.35); }
 
 /* Scroll reveal (global, all MediaDrift pages) */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(22px);
   transition:
-    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
