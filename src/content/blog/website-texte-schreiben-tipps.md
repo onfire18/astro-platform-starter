@@ -1,67 +1,93 @@
 ---
-title: "Website-Texte schreiben: So überzeugen Sie Besucher in Sekunden"
-description: "Wie Sie Website-Texte schreiben, die Besucher ansprechen, Vertrauen aufbauen und zu Anfragen führen – praktische Tipps für Unternehmer."
-pubDate: 2026-03-17
+title: "Website-Texte schreiben: Wie man Besucher überzeugt statt einschläfert"
+description: "Praktische Tipps für Unternehmenswebsites: Wie Website-Texte formuliert werden, die gelesen werden, Vertrauen aufbauen und zur Handlung motivieren."
+pubDate: 2026-02-26
 author: "Paul Dunker"
-category: "Strategie"
-keywords: ["website texte schreiben", "copywriting website", "texte für homepage", "website inhalte erstellen", "unternehmenswebsite texte"]
-readingTime: 7
+category: "Marketing"
+keywords: ["website texte schreiben", "website copywriting", "texte für unternehmenswebsite", "website texte tipps", "gute website texte"]
+readingTime: 6
 ---
 
-Eine Website kann technisch einwandfrei und gestalterisch ansprechend sein – wenn die Texte nicht überzeugen, verliert sie trotzdem Kunden. Denn letztendlich entscheiden Worte, ob jemand versteht, was Sie anbieten, Vertrauen fasst und den nächsten Schritt macht.
+Websites werden nicht gelesen – sie werden überflogen. Das ist keine pessimistische Einschätzung, sondern eine gut belegte Beobachtung aus User-Experience-Forschung. Wer Website-Texte schreibt wie Romane oder Broschüren, verliert die meisten Leser nach den ersten paar Zeilen.
 
-Die gute Nachricht: Gute Website-Texte sind keine Frage von Schreibtalent, sondern von klarem Denken über Ihre Kunden.
+Gute Website-Texte sind deshalb anders strukturiert als andere Texte. Sie sind kürzer, klarer und auf den Punkt.
 
-## Der häufigste Fehler: über sich reden statt über den Kunden
+## Der häufigste Fehler: Über sich selbst schreiben
 
-Der typische Text auf der Startseite eines kleinen Unternehmens lautet ungefähr: „Wir sind seit 1998 in München tätig und bieten unseren Kunden erstklassigen Service mit langjähriger Erfahrung und einem engagierten Team."
+Die meisten Unternehmenswebsites beginnen sinngemäß mit: „Wir sind ein erfahrenes Unternehmen, das seit vielen Jahren..." 
 
-Das Problem: Es geht nur um Sie. Der Besucher fragt sich: Was bringt mir das? Wenn ein Besucher auf Ihrer Seite landet, hat er ein Problem oder ein Bedürfnis. Ihre Texte müssen zeigen, dass Sie das verstehen – und lösen können.
+Das interessiert den Besucher nicht. Nicht weil er zynisch ist, sondern weil er auf der Website mit einer konkreten Frage oder einem Bedarf angelangt ist: Kann dieses Unternehmen mir helfen?
 
-Der gleiche Text, anders formuliert: „Sie suchen einen zuverlässigen Schreiner in München, der Maßmöbel pünktlich und ohne Überraschungen liefert. Seit 1998 machen wir genau das." Der Fokus hat sich verschoben – von Ihnen zu Ihrem Kunden.
+Gute Website-Texte beantworten diese Frage sofort. Sie beginnen beim Leser, nicht beim Unternehmen.
 
-## Klarheit geht vor Kreativität
+**Statt**: „Wir sind eine inhabergeführte Steuerkanzlei mit 15 Jahren Erfahrung."
 
-Kreative Überschriften, die clevere Wortspiele nutzen, können gut funktionieren. Aber wenn die Kreativität auf Kosten der Klarheit geht, verlieren Sie Besucher. Wer auf Ihrer Startseite in drei Sekunden nicht versteht, was Sie tun und für wen, springt ab.
+**Besser**: „Sie wollen weniger Steuern zahlen und weniger Zeit mit Bürokratie verbringen. Wir übernehmen beides."
 
-Testen Sie Ihre Hauptüberschrift mit dieser Frage: Kann jemand, der Sie nicht kennt, nach drei Sekunden sagen, was Sie anbieten? Wenn nicht, ist die Überschrift zu vage.
+## Klarheit über Kreativität
 
-## Konkret schreiben, nicht abstrakt
+Geschraubte Formulierungen, Buzzwords und Fachwörter machen Texte unlesbar. Was klingt beeindruckend, wird selten verstanden.
 
-Abstrakte Aussagen überzeugen niemanden. „Wir arbeiten hochqualitativ und kundenorientiert" ist eine Behauptung ohne Substanz. Was zeigt Qualität?
+Konkret:
+- „Wir entwickeln innovative Lösungen für ganzheitliche Transformationsprozesse" → Was macht die Firma genau?
+- „Maximale Transparenz in allen Belangen" → Was bedeutet das praktisch?
 
-- Konkrete Leistungsbeschreibungen: Was genau machen Sie, und wie?
-- Messbare Angaben, wenn Sie welche haben: Wie lange haben Sie Erfahrung? Wie groß ist Ihr Team? Was ist Ihr typischer Auftrag?
-- Spezifische Beispiele: Statt „Wir haben viele zufriedene Kunden" lieber „Wir haben in den letzten Jahren mehr als 80 Gartenbauvorhaben in München umgesetzt."
+Der Test: Würden Sie diesen Satz einem Bekannten gegenüber so sagen? Wenn nicht, ist er wahrscheinlich zu kompliziert.
 
-Wenn Sie keine spezifischen Zahlen haben oder nennen möchten, beschreiben Sie zumindest konkret, wie Sie arbeiten – das ist aussagekräftiger als abstrakte Qualitätsversprechen.
+## Aktive Sprache statt Passiv
 
-## Die Struktur einer guten Leistungsseite
+Passive Konstruktionen wirken distanziert und bürokratisch:
 
-Jede Leistungsseite sollte folgendes abdecken:
+- „Die Anfragen werden schnellstmöglich bearbeitet" → „Wir antworten innerhalb von 24 Stunden"
+- „Es wird empfohlen, frühzeitig zu kontaktieren" → „Kontaktieren Sie uns frühzeitig"
 
-1. **Was ist die Leistung?** Kurze, klare Beschreibung.
-2. **Für wen?** Wer braucht das? Welche Situation, welches Problem?
-3. **Wie gehen Sie vor?** Was macht Ihre Herangehensweise aus?
-4. **Was ist das Ergebnis?** Was hat der Kunde danach?
-5. **Was ist der nächste Schritt?** Wie nimmt er Kontakt auf?
+Aktive Sprache ist konkreter, direkter und persönlicher.
 
-Das muss kein langes Dokument sein. Drei bis fünf gut strukturierte Absätze reichen für die meisten Leistungsseiten.
+## Nutzen kommunizieren, nicht Merkmale
 
-## Schreiben Sie, wie Sie reden – nicht wie Sie meinen, eine Website klingen muss
+Ein klassischer Fehler: Merkmale beschreiben statt Nutzen. 
 
-Viele Menschen wechseln beim Schreiben für die Website in einen Modus, den sie im Gespräch nie benutzen würden. Förmliche Passivkonstruktionen, Bandwurmsätze, Branchenjargon. Das Ergebnis klingt steif und distanziert.
+**Merkmal**: „20 Jahre Erfahrung"  
+**Nutzen**: „Typische Fehler bei der Gründung vermeiden – wir haben sie alle schon erlebt"
 
-Lesen Sie Ihre Texte laut vor. Wenn Sie beim Vorlesen selbst ins Stocken geraten oder es unnatürlich klingt, ist es für Besucher noch schlimmer. Formulieren Sie den Satz so um, wie Sie ihn in einem Kundengespräch sagen würden.
+**Merkmal**: „Modernste Geräte"  
+**Nutzen**: „Präzisere Diagnosen, kürzere Behandlungszeiten"
 
-## Was Calls-to-Action bewirken
+**Merkmal**: „Individuelles Webdesign"  
+**Nutzen**: „Eine Website, die zu Ihrem Unternehmen passt – nicht wie tausend andere"
 
-Jede Seite Ihrer Website sollte eine klare Handlungsaufforderung haben: Was soll der Besucher als Nächstes tun? Anrufen? Ein Formular ausfüllen? Eine E-Mail schicken?
+Die Frage, die Website-Texte beantworten müssen: „Was bedeutet das für mich als Kunde?"
 
-Gute Call-to-Action-Texte sind konkret und nutzenorientiert: „Kostenloses Erstgespräch vereinbaren" ist besser als „Kontakt aufnehmen". „Angebot anfragen" ist besser als „Weiter". Der Unterschied klingt klein, hat aber einen messbaren Effekt auf die Klickrate.
+## Texte für den Scan
+
+Besucher überfliegen Seiten. Hilfreiche Strukturierungswerkzeuge:
+
+**Zwischenüberschriften**: Alle 2-4 Absätze eine Überschrift, die den Inhalt des folgenden Abschnitts zusammenfasst. Ein Besucher, der nur Überschriften liest, sollte trotzdem verstehen, worum es geht.
+
+**Fettschrift** für die wichtigsten Aussagen in einem Absatz. Nicht alles, nicht mehr als einen Begriff oder Satz pro Abschnitt.
+
+**Kurze Absätze**: Maximal 3-4 Zeilen. Langer, dichter Text ohne Absätze wirkt wie eine Wand.
+
+**Listen**: Wenn drei oder mehr Punkte genannt werden, besser als Aufzählung als als Fließtext.
+
+## Call-to-Action: klar und konkret
+
+Nach jedem inhaltlichen Abschnitt oder am Ende einer Seite braucht es eine Handlungsaufforderung. Nicht: „Kontaktieren Sie uns." Sondern:
+
+- „Termin für ein kostenloses Erstgespräch vereinbaren"
+- „Jetzt Angebot anfragen"
+- „Mehr über unsere Leistungen erfahren"
+
+Der CTA sollte dem Besucher sagen, was er bekommt, wenn er klickt – nicht nur, was er tun soll.
+
+## Texte für Startseite, Leistungen und Kontakt
+
+**Startseite**: Sofort klar machen, für wen und wofür. Ein prägnanter Einstiegssatz (Headline), ein kurzer erläuternder Satz (Subheadline) und ein sichtbarer CTA. Die Startseite erklärt – sie verkauft nicht.
+
+**Leistungsseiten**: Konkret beschreiben, was die Leistung beinhaltet. Was passiert nach der Anfrage? Wie läuft der Prozess ab? Was kann der Kunde erwarten? Hier ist mehr Text sinnvoll als auf der Startseite.
+
+**Kontaktseite**: Einfach halten. Name des Ansprechpartners, Kontaktformular, Telefonnummer, Reaktionszeit. „Wir melden uns innerhalb von einem Werktag."
 
 ## Fazit
 
-Website-Texte, die funktionieren, sind klar, konkret und kundenorientiert. Sie erklären, was Sie anbieten, für wen, und warum das Sinn macht. Sie lesen sich natürlich und führen den Besucher durch die Seite zu einer klaren Handlung.
-
-Wenn Sie Hilfe beim Formulieren Ihrer Website-Inhalte brauchen oder eine neue Website mit professionellen Texten aufbauen möchten, ist MediaDrift ein möglicher Partner. Sprechen Sie uns an.
+Gute Website-Texte sind kürzer als Broschüren, aktiver als Berichte und direkter als Alltagssprache. Sie beantworten die Frage des Besuchers – nicht die Selbstdarstellung des Unternehmens. Wer das beim Schreiben im Kopf behält, schreibt Texte, die wirken. Wenn Sie professionelle Website-Texte für Ihr Unternehmen benötigen, unterstützt MediaDrift. Sprechen Sie uns an.
