@@ -969,6 +969,9 @@ const faqSchema = {
     overflow: hidden;
     position: relative;
   }
+  @media (max-width: 640px) {
+    .hero { padding-top: calc(var(--nav-h) + 2rem); padding-bottom: 3rem; }
+  }
   .hero::before {
     content: '';
     position: absolute;
@@ -1897,6 +1900,10 @@ const faqSchema = {
     .process-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .process-visual { position: static; max-width: 460px; margin-inline: auto; width: 100%; }
   }
+  @media (max-width: 480px) {
+    .process-visual { max-width: 100%; }
+    .pv-browser { font-size: 90%; }
+  }
 
   /* ---- Speed (4 Wochen) ---- */
   .speed-section { background: var(--md-bg); }
@@ -1952,6 +1959,9 @@ const faqSchema = {
   .speed-note { font-size: 0.85rem; color: var(--md-subtle); max-width: 60ch; margin: 0; }
 
   @media (max-width: 720px) {
+    .speed-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
     .speed-grid { grid-template-columns: 1fr; }
   }
 
@@ -2049,7 +2059,7 @@ const faqSchema = {
   }
 
   @media (max-width: 760px) {
-    .panel-content { grid-template-columns: 1fr; }
+    .panel-content { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
     .panel-visual:not(.panel-visual-img) { display: none; }
   }
 
@@ -2209,8 +2219,8 @@ const faqSchema = {
   .about-text p { color: var(--md-muted); margin-bottom: 1rem; }
   .about-text p:last-of-type { margin-bottom: 1.5rem; }
   @media (max-width: 700px) {
-    .about-inner { grid-template-columns: 1fr; }
-    .about-photo { max-width: 240px; }
+    .about-inner { grid-template-columns: 1fr; gap: 1.75rem; }
+    .about-photo { max-width: 220px; }
   }
 
   /* ---- Sales teaser ---- */
@@ -2242,7 +2252,7 @@ const faqSchema = {
   }
   .faq-header h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 0.75rem; }
   .faq-header p { color: var(--md-muted); font-size: 0.95rem; }
-  @media (max-width: 768px) { .faq-inner { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .faq-inner { grid-template-columns: 1fr; gap: 1.5rem; } }
 
   /* ---- Contact ---- */
   .contact-section { background: var(--md-bg); }
@@ -2322,7 +2332,7 @@ const faqSchema = {
   .form-error p { margin: 0.2rem 0 0; color: #EF4444; }
 
   @media (max-width: 800px) {
-    .contact-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     .form-row { grid-template-columns: 1fr; }
   }
 

@@ -21,6 +21,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Font imports (self-hosted via fontsource) */
@@ -78,7 +83,10 @@ html {
 
 /* Section spacing */
 .md-section {
-  padding-block: clamp(4.5rem, 9vw, 8rem);
+  padding-block: clamp(3rem, 9vw, 8rem);
+}
+@media (max-width: 640px) {
+  .md-section { padding-block: 3rem; }
 }
 
 /* Focus ring (a11y) */
