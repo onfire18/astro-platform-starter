@@ -6,11 +6,11 @@ export interface FAQItem {
 export const faqMain: FAQItem[] = [
   {
     question: 'Was kostet eine professionelle Website?',
-    answer: 'Die Kosten hängen vom Umfang, der Seitenstruktur und den gewünschten Funktionen ab. In einem ersten Gespräch klären wir gemeinsam, was Ihre Website leisten soll – und erstellen auf dieser Basis ein transparentes Angebot. Es gibt keine Einheitslösung.',
+    answer: 'Einfache Unternehmenswebsites starten ab rund 1.500 €. Individuelle KMU-Websites mit mehreren Seiten, Kontaktformular und SEO-Grundoptimierung liegen typischerweise zwischen 2.500 und 5.000 €. Komplexere Projekte – mit Online-Shop, Buchungssystem oder speziellen Schnittstellen – werden individuell kalkuliert. In einem kostenlosen Erstgespräch erstellen wir ein transparentes Festpreis-Angebot auf Basis Ihres konkreten Bedarfs – ohne versteckte Kosten.',
   },
   {
     question: 'Wie lange dauert die Erstellung?',
-    answer: 'Der genaue Zeitrahmen richtet sich nach dem Projektumfang und der Bereitstellung Ihrer Inhalte. In einem ersten Gespräch besprechen wir realistische Zeitplanung für Ihr Projekt.',
+    answer: 'Bereits am nächsten Tag nach dem Erstgespräch erhalten Sie einen ersten Entwurf. Eine fertige Unternehmenswebsite ist in der Regel nach rund einer Woche live. Bei komplexeren Projekten sprechen wir im Erstgespräch einen verbindlichen Zeitrahmen ab.',
   },
   {
     question: 'Arbeitet MediaDrift mit Vorlagen?',
