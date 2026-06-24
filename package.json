@@ -34,8 +34,10 @@
     "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.106.0",
     "@types/blobshape": "^1.0.3",
     "@types/node": "^20.12.7",
+    "cheerio": "^1.2.0",
     "daisyui": "^4.10.2"
   }
 }
