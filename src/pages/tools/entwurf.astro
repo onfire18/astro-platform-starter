@@ -1,0 +1,322 @@
+---
+// MediaDrift · Website-Entwurf Generator (Web-App)
+// Interne Tool-Seite — gleiche Logik wie die CLI, im Browser nutzbar.
+export const prerender = false;
+
+const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY);
+---
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Entwurf-Generator · MediaDrift</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #EFF2F7;
+      --surface: #FFFFFF;
+      --primary: #0B1828;
+      --cta: #1455A8;
+      --cta-dark: #1B6AC5;
+      --muted: #486172;
+      --border: #C8D8E8;
+      --subtle: #6280A0;
+      --accent: #D0E6FF;
+      --ok: #16A34A;
+      --err: #DC2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.6;
+      min-height: 100dvh;
+    }
+    h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.02em; }
+    .wrap { max-width: 880px; margin-inline: auto; padding: clamp(1.5rem, 5vw, 3rem); }
+
+    header { text-align: center; margin-bottom: 2.5rem; }
+    .logo {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Outfit'; font-weight: 800; font-size: 1.25rem; color: var(--cta);
+      margin-bottom: 1rem;
+    }
+    .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cta); }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 0.6rem; }
+    header p { color: var(--muted); font-size: 1.05rem; max-width: 52ch; margin-inline: auto; }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: clamp(1.5rem, 4vw, 2.25rem);
+      box-shadow: 0 4px 24px rgba(20, 85, 168, 0.06);
+    }
+    .field { margin-bottom: 1.25rem; }
+    label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .hint { font-size: 0.8rem; color: var(--subtle); font-weight: 400; }
+    input[type="text"], input[type="url"], input[type="password"] {
+      width: 100%; padding: 0.8rem 1rem; font-size: 1rem; font-family: inherit;
+      border: 1.5px solid var(--border); border-radius: 10px; background: #fff; color: var(--primary);
+      transition: border-color 150ms, box-shadow 150ms;
+    }
+    input:focus { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(20, 85, 168, 0.12); }
+
+    button {
+      width: 100%; padding: 0.95rem 1.5rem; font-size: 1rem; font-weight: 700; font-family: inherit;
+      color: #fff; background: var(--cta); border: none; border-radius: 10px; cursor: pointer;
+      transition: background 160ms, transform 120ms, box-shadow 160ms;
+      box-shadow: 0 4px 16px rgba(20, 85, 168, 0.25);
+    }
+    button:hover:not(:disabled) { background: var(--cta-dark); transform: translateY(-1px); }
+    button:active:not(:disabled) { transform: scale(0.98); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .log {
+      margin-top: 1.5rem; display: none; flex-direction: column; gap: 0.5rem;
+      background: #F7FAFD; border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem;
+      font-size: 0.88rem; max-height: 280px; overflow-y: auto;
+    }
+    .log.show { display: flex; }
+    .log-line { display: flex; align-items: flex-start; gap: 0.5rem; color: var(--muted); }
+    .log-line .tick { color: var(--ok); flex-shrink: 0; }
+    .log-line.busy .tick { color: var(--cta); }
+    .log-line.err { color: var(--err); }
+    .spinner {
+      width: 14px; height: 14px; border: 2px solid var(--accent); border-top-color: var(--cta);
+      border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0; margin-top: 2px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .result { margin-top: 1.5rem; display: none; }
+    .result.show { display: block; }
+    .result-bar {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .result-meta { font-size: 0.85rem; color: var(--muted); }
+    .result-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .btn-sm {
+      width: auto; padding: 0.55rem 1.1rem; font-size: 0.85rem; box-shadow: none;
+    }
+    .btn-outline { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); }
+    .btn-outline:hover:not(:disabled) { background: rgba(20,85,168,0.06); color: var(--cta); }
+    iframe {
+      width: 100%; height: 640px; border: 1px solid var(--border); border-radius: 12px; background: #fff;
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .meta-item {
+      background: #F7FAFD; border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.9rem;
+    }
+    .meta-item .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--subtle); }
+    .meta-item .v { font-weight: 600; font-size: 0.92rem; }
+    footer { text-align: center; margin-top: 2.5rem; font-size: 0.82rem; color: var(--subtle); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"><span class="logo-dot"></span> MediaDrift</div>
+      <h1>Website-Entwurf Generator</h1>
+      <p>Alte Website eingeben → Inhalte & Bilder werden gescrapt → moderner Entwurf wird automatisch erstellt. Fertig zum Versenden.</p>
+    </header>
+
+    <div class="card">
+      <form id="form">
+        <div class="field">
+          <label for="url">Website-URL der alten Seite</label>
+          <input type="text" id="url" name="url" placeholder="z.B. www.beispiel-kunde.de" required autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="company">Firmenname <span class="hint">(optional — wird sonst automatisch erkannt)</span></label>
+          <input type="text" id="company" name="company" placeholder="z.B. Müller GmbH" autocomplete="off" />
+        </div>
+        {!hasServerKey && (
+          <div class="field">
+            <label for="apikey">Anthropic API-Key <span class="hint">(wird nur für diese Anfrage genutzt, nicht gespeichert)</span></label>
+            <input type="password" id="apikey" name="apikey" placeholder="sk-ant-..." autocomplete="off" />
+          </div>
+        )}
+        <button type="submit" id="submit">Entwurf erstellen</button>
+      </form>
+
+      <div class="log" id="log"></div>
+
+      <div class="result" id="result">
+        <div class="meta-grid" id="metaGrid"></div>
+        <div class="result-bar">
+          <div class="result-meta" id="resultMeta"></div>
+          <div class="result-actions">
+            <button class="btn-sm btn-outline" id="openBtn">In neuem Tab öffnen</button>
+            <button class="btn-sm" id="downloadBtn">HTML herunterladen</button>
+          </div>
+        </div>
+        <iframe id="preview" title="Entwurf-Vorschau"></iframe>
+      </div>
+    </div>
+
+    <footer>MediaDrift · Internes Verkaufstool · Entwürfe sind unverbindliche Vorschläge</footer>
+  </div>
+
+  <script is:inline define:vars={{ hasServerKey }}>
+    const form = document.getElementById('form');
+    const submit = document.getElementById('submit');
+    const logEl = document.getElementById('log');
+    const resultEl = document.getElementById('result');
+    const previewEl = document.getElementById('preview');
+    const metaGrid = document.getElementById('metaGrid');
+    const resultMeta = document.getElementById('resultMeta');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const openBtn = document.getElementById('openBtn');
+
+    let currentHtml = '';
+    let currentFilename = 'entwurf.html';
+    let busyLine = null;
+
+    function resetLog() {
+      logEl.innerHTML = '';
+      logEl.classList.add('show');
+    }
+    function addLog(message, { busy = false, error = false } = {}) {
+      // Vorherige Busy-Zeile abschließen
+      if (busyLine) {
+        busyLine.querySelector('.spinner')?.replaceWith(tick());
+        busyLine.classList.remove('busy');
+        busyLine = null;
+      }
+      const line = document.createElement('div');
+      line.className = 'log-line' + (busy ? ' busy' : '') + (error ? ' err' : '');
+      line.appendChild(busy ? spinner() : (error ? errIcon() : tick()));
+      const span = document.createElement('span');
+      span.textContent = message;
+      line.appendChild(span);
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+      if (busy) busyLine = line;
+    }
+    function tick() { const s = document.createElement('span'); s.className = 'tick'; s.textContent = '✓'; return s; }
+    function errIcon() { const s = document.createElement('span'); s.className = 'tick'; s.textContent = '✕'; return s; }
+    function spinner() { const s = document.createElement('span'); s.className = 'spinner'; return s; }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = document.getElementById('url').value.trim();
+      const companyName = document.getElementById('company').value.trim();
+      const apiKey = hasServerKey ? '' : (document.getElementById('apikey')?.value.trim() || '');
+      if (!url) return;
+
+      submit.disabled = true;
+      submit.textContent = 'Wird erstellt …';
+      resultEl.classList.remove('show');
+      resetLog();
+      addLog('Starte Analyse …', { busy: true });
+
+      try {
+        const res = await fetch('/api/entwurf', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, companyName, apiKey }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({ message: 'Serverfehler' }));
+          throw new Error(data.message || 'Serverfehler');
+        }
+
+        // SSE-Stream lesen
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+
+          const events = buffer.split('\n\n');
+          buffer = events.pop() || '';
+
+          for (const evt of events) {
+            const lines = evt.split('\n');
+            let eventType = 'message', dataStr = '';
+            for (const l of lines) {
+              if (l.startsWith('event:')) eventType = l.slice(6).trim();
+              if (l.startsWith('data:')) dataStr += l.slice(5).trim();
+            }
+            if (!dataStr) continue;
+            const data = JSON.parse(dataStr);
+
+            if (eventType === 'progress') {
+              addLog(data.message, { busy: true });
+            } else if (eventType === 'done') {
+              addLog('Entwurf fertig erstellt.', {});
+              showResult(data);
+            } else if (eventType === 'error') {
+              addLog('Fehler: ' + data.message, { error: true });
+            }
+          }
+        }
+      } catch (err) {
+        addLog('Fehler: ' + err.message, { error: true });
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Entwurf erstellen';
+        if (busyLine) {
+          busyLine.querySelector('.spinner')?.replaceWith(tick());
+          busyLine.classList.remove('busy');
+          busyLine = null;
+        }
+      }
+    });
+
+    function showResult(data) {
+      currentHtml = data.html;
+      currentFilename = data.filename || 'entwurf.html';
+      const m = data.meta || {};
+
+      metaGrid.innerHTML = '';
+      const items = [
+        ['Firma', m.name || '—'],
+        ['Telefon', m.phone || '—'],
+        ['E-Mail', m.email || '—'],
+        ['Bilder', m.images ?? '—'],
+        ['Überschriften', m.headings ?? '—'],
+        ['Absätze', m.paragraphs ?? '—'],
+      ];
+      for (const [k, v] of items) {
+        const div = document.createElement('div');
+        div.className = 'meta-item';
+        div.innerHTML = `<div class="k"></div><div class="v"></div>`;
+        div.querySelector('.k').textContent = k;
+        div.querySelector('.v').textContent = v;
+        metaGrid.appendChild(div);
+      }
+      resultMeta.textContent = currentFilename;
+
+      previewEl.srcdoc = currentHtml;
+      resultEl.classList.add('show');
+      resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    downloadBtn.addEventListener('click', () => {
+      const blob = new Blob([currentHtml], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = currentFilename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    openBtn.addEventListener('click', () => {
+      const blob = new Blob([currentHtml], { type: 'text/html;charset=utf-8' });
+      window.open(URL.createObjectURL(blob), '_blank');
+    });
+  </script>
+</body>
+</html>
