@@ -487,6 +487,51 @@ const waSales = whatsappUrl('sales');
   </section>
 
   <!-- ═══════════════════════════════════════════
+       DEIN LERNWEG (0 → 100 über die Zeit)
+  ════════════════════════════════════════════ -->
+  <section class="md-section v-path-section" aria-labelledby="v-path-h2">
+    <div class="md-container">
+      <span class="md-label">Dein Lernweg</span>
+      <h2 id="v-path-h2" class="v-h2">Von 0 auf 100 — so sieht dein Weg aus</h2>
+      <p class="md-section-intro" style="max-width:60ch;margin-bottom:3rem">
+        Kein Sprung ins kalte Wasser. Du wächst Schritt für Schritt — verdienst von Anfang an
+        und baust dir nebenbei das Handwerk auf, mit dem du später dein Eigenes starten kannst.
+      </p>
+
+      <ol class="v-path" aria-label="Dein Lernweg als Vertriebspartner">
+        <li class="v-path-step">
+          <div class="v-path-marker"><span>Woche 1</span></div>
+          <div class="v-path-body">
+            <h3>Start &amp; Onboarding</h3>
+            <p>Du bekommst Gesprächsleitfäden und Zielgruppen. Die ersten Calls machen wir gemeinsam — du lernst die Basics, ohne ins kalte Wasser zu springen.</p>
+          </div>
+        </li>
+        <li class="v-path-step">
+          <div class="v-path-marker"><span>Monat 1</span></div>
+          <div class="v-path-body">
+            <h3>Erste eigene Abschlüsse</h3>
+            <p>Du führst Gespräche selbstständig, ich gebe dir laufend Feedback. Dein erstes selbst verdientes Geld fließt — und die Sicherheit wächst mit jedem Gespräch.</p>
+          </div>
+        </li>
+        <li class="v-path-step">
+          <div class="v-path-marker"><span>Monat 3</span></div>
+          <div class="v-path-body">
+            <h3>Routine &amp; Sicherheit</h3>
+            <p>Akquise, Einwände, Abschluss — das sitzt jetzt. Du baust dein Netzwerk aus, die Provision summiert sich, und Verkaufen fühlt sich nicht mehr fremd an.</p>
+          </div>
+        </li>
+        <li class="v-path-step v-path-step--goal">
+          <div class="v-path-marker"><span>Ab Monat 6</span></div>
+          <div class="v-path-body">
+            <h3>Dein eigenes Ding</h3>
+            <p>Du beherrschst echtes Verkaufen — die Grundlage für dein eigenes Unternehmen. Wenn du diesen Schritt gehen willst, begleite ich dich dabei.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
        VORAUSSETZUNGEN
   ════════════════════════════════════════════ -->
   <section class="md-section v-req-section" aria-labelledby="v-req-h2">
@@ -1929,5 +1974,103 @@ const waSales = whatsappUrl('sales');
   .v-grow-note svg { color: #60A5FA; flex-shrink: 0; }
   @media (max-width: 860px) {
     .v-grow-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     DEIN LERNWEG (Timeline)
+  ============================================================ */
+  .v-path-section { background: var(--md-bg); }
+  .v-path { list-style: none; padding: 0; margin: 0; position: relative; }
+  .v-path-step {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0 2rem;
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .v-path-step:last-child { padding-bottom: 0; }
+  /* vertikale Linie durch die Marker-Spalte */
+  .v-path-step::before {
+    content: '';
+    position: absolute;
+    left: 119px;
+    top: 2.1rem;
+    bottom: -0.4rem;
+    width: 2px;
+    background: linear-gradient(var(--md-border), var(--md-border));
+  }
+  .v-path-step:last-child::before { display: none; }
+  .v-path-marker {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .v-path-marker span {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--md-cta);
+    background: var(--md-accent);
+    border: 1px solid rgba(20,85,168,0.18);
+    border-radius: 99px;
+    padding: 0.3rem 0.85rem;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+  }
+  /* Knotenpunkt auf der Linie */
+  .v-path-marker::after {
+    content: '';
+    position: absolute;
+    right: -2rem;
+    top: 0.55rem;
+    transform: translateX(50%);
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--md-surface);
+    border: 3px solid var(--md-cta);
+    z-index: 2;
+  }
+  .v-path-step--goal .v-path-marker span {
+    color: #fff;
+    background: var(--md-cta);
+    border-color: var(--md-cta);
+  }
+  .v-path-step--goal .v-path-marker::after {
+    background: var(--md-cta);
+    box-shadow: 0 0 0 4px rgba(20,85,168,0.18);
+  }
+  .v-path-body {
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    transition: box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out), transform 250ms var(--ease-out);
+  }
+  .v-path-step--goal .v-path-body {
+    border-color: rgba(20,85,168,0.3);
+    background: linear-gradient(135deg, var(--md-accent) 0%, var(--md-surface) 100%);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .v-path-body:hover {
+      box-shadow: 0 10px 28px rgba(20,85,168,0.1);
+      border-color: rgba(20,85,168,0.25);
+      transform: translateX(2px);
+    }
+  }
+  .v-path-body h3 {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: 1.1rem;
+    color: var(--md-primary);
+    margin: 0 0 0.4rem;
+  }
+  .v-path-body p { color: var(--md-muted); font-size: 0.9rem; line-height: 1.65; margin: 0; text-wrap: pretty; }
+
+  @media (max-width: 640px) {
+    .v-path-step { grid-template-columns: 1fr; gap: 0.75rem; padding-bottom: 1.75rem; }
+    .v-path-step::before,
+    .v-path-marker::after { display: none; }
+    .v-path-marker { justify-content: flex-start; }
   }
 </style>
