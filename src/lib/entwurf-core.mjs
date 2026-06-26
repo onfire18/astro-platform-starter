@@ -298,7 +298,7 @@ Erstelle einen **vollständigen modernen Website-Entwurf** auf Basis der Daten o
 - Hintergrund: #EFF2F7 (helles Blau-Grau), Cards: #FFFFFF
 - Fonts via Google Fonts CDN: "Outfit" (Headlines, 700/800), "Plus Jakarta Sans" (Fließtext, 400/600)
 - Border-Radius: 14–16px für Cards, 999px für Buttons
-- Shadows: `0 4px 24px rgba(20,85,168,0.08)`
+- Shadows: \`0 4px 24px rgba(20,85,168,0.08)\`
 
 ### Pflicht-Sektionen (alle vollständig ausarbeiten):
 1. **Sticky Navigation** — Logo (Firmenname), Haupt-Links aus den Nav-Texten, CTA-Button
