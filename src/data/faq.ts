@@ -48,23 +48,27 @@ export const faqMain: FAQItem[] = [
 
 export const faqSales: FAQItem[] = [
   {
-    question: 'Muss ich Vorerfahrung im Webdesign haben?',
-    answer: 'Nein. Du musst kein Webdesign können – du verkaufst die Dienstleistung. Wichtig ist, dass du kommunikationsstark bist, eigenständig arbeitest und klare Gesprächsverläufe konsequent umsetzt.',
+    question: 'Ich hab noch nie etwas verkauft – kann ich das trotzdem machen?',
+    answer: 'Ja, genau dafür ist das gedacht. Du musst weder Webdesign noch Verkauf können. Ich bilde dich von 0 auf 100 aus: Du bekommst Gesprächsleitfäden, lernst Schritt für Schritt, wie du Unternehmer ansprichst und Gespräche führst, und ich gebe dir laufend Feedback. Wichtig ist nur, dass du motiviert bist und auf Menschen zugehen willst.',
+  },
+  {
+    question: 'Was lerne ich dabei – und was bringt mir das langfristig?',
+    answer: 'Du lernst echtes Verkaufen: Akquise, Gesprächsführung, Einwandbehandlung und Abschluss. Das sind genau die Fähigkeiten, mit denen du dir später dein eigenes Unternehmen aufbauen kannst. Viele starten hier nebenbei, verdienen erstes Geld und nutzen das Gelernte als Sprungbrett in die eigene Selbstständigkeit. Ich begleite dich auf dem Weg.',
   },
   {
     question: 'Wie funktioniert die Vergütung?',
-    answer: 'Du erhältst 10 % des Netto-Auftragswerts pro erfolgreich vermitteltem Kunden. Die genauen Konditionen besprechen wir im Kennenlerngespräch.',
+    answer: 'Du erhältst 10 % des Netto-Auftragswerts pro erfolgreich vermitteltem Kunden. Bei einem 3.000-€-Projekt sind das 300 € für dich – für ein Gespräch. Die genauen Konditionen besprechen wir im Kennenlerngespräch.',
   },
   {
     question: 'Bin ich angestellt oder selbstständig?',
-    answer: 'Du arbeitest als freier Vertriebspartner auf selbstständiger Basis. Es handelt sich um eine erfolgsabhängige Zusammenarbeit – keine Festanstellung, kein garantiertes Gehalt.',
+    answer: 'Du arbeitest als freier Vertriebspartner auf selbstständiger Basis. Es handelt sich um eine erfolgsabhängige Zusammenarbeit – keine Festanstellung, kein garantiertes Gehalt. Genau das ist die Idee: Du baust dir etwas Eigenes auf, statt für ein Festgehalt zu arbeiten.',
   },
   {
     question: 'Wie finde ich Kunden?',
-    answer: 'Du erhältst Zielgruppen-Listen, Gesprächsleitfäden und Einwandbehandlungen. Der Erstkontakt erfolgt typischerweise per Cold Calling. Weitere Unterstützung besprechen wir individuell.',
+    answer: 'Du startest nicht bei null: Du bekommst Zielgruppen-Listen, Gesprächsleitfäden und Einwandbehandlungen. Den Erstkontakt machst du über dein Netzwerk, persönlich oder per Telefon – wie genau, üben wir gemeinsam. Ich zeige dir, was funktioniert.',
   },
   {
     question: 'Wie viel Zeit muss ich einbringen?',
-    answer: 'Das ist flexibel – du kannst nebenberuflich starten. Je mehr Zeit und Einsatz, desto mehr Abschlüsse und Provision. Feste Stunden gibt es nicht, aber Eigeninitiative ist Voraussetzung.',
+    answer: 'Das ist flexibel – du kannst nebenberuflich starten. Je mehr Zeit und Einsatz, desto mehr Abschlüsse und Provision. Feste Stunden gibt es nicht, aber Eigeninitiative und Motivation sind Voraussetzung.',
   },
 ];
