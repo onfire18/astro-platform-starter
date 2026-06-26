@@ -116,6 +116,14 @@ const waSales = whatsappUrl('sales');
           <strong>Wenn einer deiner vermittelten Kunden eine Website für 3.000 € beauftragt,
           bekommst du 300 € — für ein Gespräch.</strong>
         </p>
+        <p class="v-paul-p">
+          Und wenn du noch nie verkauft hast: kein Problem. Ich zeig dir alles,
+          Schritt für Schritt. Du brauchst nur den Willen, anzufangen.
+        </p>
+        <div class="v-paul-sign" aria-hidden="true">
+          <span class="v-paul-sign-name">Paul</span>
+          <span class="v-paul-sign-role">Gründer von MediaDrift</span>
+        </div>
         <div class="v-paul-actions">
           <a href="#bewerbung" class="md-btn md-btn-primary" style="width:auto">
             Kennenlernen
@@ -426,6 +434,10 @@ const waSales = whatsappUrl('sales');
     <div class="md-container">
       <span class="md-label">Was du von uns bekommst</span>
       <h2 id="v-support-h2" class="v-h2">Du startest nicht bei null</h2>
+      <p class="md-section-intro" style="max-width:58ch;margin-top:-1.5rem;margin-bottom:2.5rem">
+        Du bekommst nicht nur ein paar PDFs in die Hand gedrückt. Ich arbeite dich ein
+        und bleibe an deiner Seite — gerade am Anfang, wenn noch alles neu ist.
+      </p>
 
       <div class="v-support-grid">
         <div class="v-support-item">
@@ -1743,6 +1755,27 @@ const waSales = whatsappUrl('sales');
   }
   .v-paul-p:last-of-type { margin-bottom: 1.5rem; }
   .v-paul-p strong { color: var(--md-primary); }
+  .v-paul-sign {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    margin: 0.25rem 0 1.5rem;
+  }
+  .v-paul-sign-name {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--md-cta);
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    width: max-content;
+  }
+  .v-paul-sign-role {
+    font-size: 0.8rem;
+    color: var(--md-subtle);
+    margin-top: 0.35rem;
+  }
   .v-paul-actions {
     display: flex;
     align-items: center;
