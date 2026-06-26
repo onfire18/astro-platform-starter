@@ -185,6 +185,21 @@ const currentPath = Astro.url.pathname;
   }
   .md-nav-link.active { color: #fff; font-weight: 500; }
   .md-nav-link.active::after { left: 0.7rem; right: 0.7rem; }
+  .md-nav-link:focus-visible {
+    outline: 2px solid var(--md-cta-dark, #1B6AC5);
+    outline-offset: 2px;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+  }
+  .md-nav-cta:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  .md-mobile-link:focus-visible {
+    outline: 2px solid var(--md-cta-dark, #1B6AC5);
+    outline-offset: 2px;
+    color: #fff;
+  }
 
   .md-nav-cta {
     flex-shrink: 0;
