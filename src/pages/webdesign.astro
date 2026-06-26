@@ -34,8 +34,8 @@ const waUrl = whatsappUrl('customer');
       <span class="md-label">Warum individuell?</span>
       <h2 id="compare-heading">Baukasten oder individuelle Website?</h2>
       <p class="section-intro">
-        Baukästen wie Squarespace, Wix oder Jimdo versprechen schnelle Ergebnisse – aber zu welchem Preis?
-        Hier ist der ehrliche Vergleich.
+        Warum 1.500 € Individualdesign langfristig günstiger ist als 29 € im Monat —
+        und was Sie bei Baukästen wirklich bekommen.
       </p>
 
       <div class="compare-grid" role="list">
@@ -398,6 +398,18 @@ const waUrl = whatsappUrl('customer');
     .compare-col--good:hover .compare-icon--good {
       transform: scale(1.18);
     }
+    .compare-col--good:hover {
+      border-color: rgba(20, 85, 168, 0.5);
+      box-shadow: 0 10px 32px rgba(20, 85, 168, 0.12);
+      transform: translateY(-2px);
+    }
+    .compare-col--bad:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+  }
+  .compare-col {
+    transition: opacity 220ms var(--ease-out, ease), transform 220ms var(--ease-out, ease), box-shadow 220ms var(--ease-out, ease), border-color 220ms var(--ease-out, ease);
   }
 
   /* Services */
