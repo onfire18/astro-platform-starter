@@ -158,13 +158,14 @@ def build_segments(theme, words):
     def add(rev,row,text,lang,md,speed=1.0):
         S.append(dict(revealed=rev,row=row,text=text,lang=lang,md=md,speed=speed))
     n=len(words); mid=n//2
+    DE_SPEED=1.1   # Deutsch etwas frecher/lebendiger
     for i,w in enumerate(words):
-        add(i,   i, f"Wie sagt man {w['de']}?", "de", 3.0)      # kurze Frage + Rate-Pause
-        add(i+1, i, w["it"], "it", 1.6)                          # vorlesen
-        add(i+1, i, w["it"], "it", 2.6, speed=0.7)               # langsam wiederholen
-        if i==mid-1:                                             # Spruch in der Mitte
-            add(i+1, None, "Italienisch lernen. Jeden Tag eine Minute. In neunzig Tagen sprichst du fließend.", "de", 4.8)
-    add(n, None, "Folge mir, wenn du Italienisch lernen willst. Es ist nicht schwer. Du musst mir nur folgen.", "de", 5.0)
+        add(i,   i, f"Wie sagt man {w['de']}?", "de", 2.8, speed=DE_SPEED)  # kurze Frage + Rate-Pause
+        add(i+1, i, w["it"], "it", 1.6)                                      # vorlesen (normal)
+        add(i+1, i, w["it"], "it", 3.2, speed=0.55)                         # langsam, Laut für Laut
+        if i==mid-1:                                                         # Spruch in der Mitte
+            add(i+1, None, "Italienisch lernen. Jeden Tag eine Minute. In neunzig Tagen sprichst du fließend.", "de", 4.6, speed=DE_SPEED)
+    add(n, None, "Folge mir, wenn du Italienisch lernen willst. Es ist nicht schwer. Du musst mir nur folgen.", "de", 4.8, speed=DE_SPEED)
     return S
 
 # ── Pipeline ──────────────────────────────────────────────────────────────────
