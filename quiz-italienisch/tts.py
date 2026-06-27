@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # ── Kokoro: EINE natürliche, männliche Stimme für Deutsch UND Italienisch ─────
 # Klingt deutlich weniger "nach KI" als Piper. sid 26 = tiefe, confidente Stimme.
 KOKORO_DIR = os.path.join(HERE, "voices", "kokoro-multi-lang-v1_0")
-KOKORO_SID = int(os.environ.get("KOKORO_SID", "26"))
+KOKORO_SID = int(os.environ.get("KOKORO_SID", "36"))
 EDGE_VOICES = {"de": "de-DE-KatjaNeural", "it": "it-IT-IsabellaNeural"}
 PIPER_MODELS = {
     "de": os.path.join(HERE, "voices", "de-thorsten-low.onnx"),
