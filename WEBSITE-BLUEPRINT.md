@@ -6,6 +6,27 @@
 
 ---
 
+## 0. WICHTIGSTER GRUNDSATZ — Individualitäts-Mandat
+
+**Jede Website bleibt individuell. Niemals zwei Seiten gleich aussehen lassen.**
+
+Dieses Dokument enthält zwei Arten von Inhalt — verwechsle sie nie:
+
+| Kategorie | Gilt für | Übertragbar auf Kundenwebsites? |
+|---|---|---|
+| **Marken-spezifisch** — §3 Marke, §4 Palette „Bayerisch Cobalt", Outfit/Plus-Jakarta-Fonts | **NUR** für mediadrift.de selbst | ❌ **NEIN — niemals kopieren** |
+| **Universell** — §6.1 Ton-Regeln, §7 Qualitätskriterien, §8 Anti-Patterns, §9 Prozess, §13 Arbeitsweise | **jede** Website | ✅ **JA — immer anwenden** |
+
+**Konkret heißt das:**
+- Cobalt `#1455A8` + Outfit ist **die Identität von MediaDrift**, nicht eine Vorlage. Eine Kundenwebsite bekommt eine **eigene, aus ihrem Briefing abgeleitete Identität**: eigene Palette, eigenes Font-Pairing, eigenes Layout-Archetyp, eigene Bildsprache.
+- Für jede neue/zu verbessernde Kundenseite zuerst den **Brief lesen** (Branche, Zielgruppe, Wettbewerb, vorhandene Marken-Assets) und daraus eine **passende, einzigartige** Designrichtung ableiten — siehe Skill `design-taste-frontend` (Abschnitt „Brief Inference" + Dials) und `high-end-visual-design` (Variance Engine).
+- **Nie** denselben Look/dieselbe Palette zweimal hintereinander ausliefern. Keine generischen AI-Defaults (Lila-Gradient, zentriertes Hero, drei gleiche Cards).
+- Was bei **allen** Seiten gleich ist, ist nur das **Qualitätsniveau** (§7) und der **Prozess** — nicht die Optik.
+
+> Merksatz: Das Blueprint hebt die **Messlatte**, es liefert keine **Schablone**. Qualität ist universell, Identität ist pro Projekt einzigartig.
+
+---
+
 ## 1. Projekt-Überblick
 
 **MediaDrift** ist das Webdesign-Geschäft von **Paul Dunker** (München). Die Website verkauft individuelle Unternehmens-Websites an KMU (Handwerker, Kanzleien, Dienstleister) und wirbt zusätzlich **Vertriebspartner** an.
@@ -56,6 +77,8 @@ Alle Kontaktdaten **immer** aus `SITE` (config/site.ts) ziehen, nie hardcoden.
 ---
 
 ## 4. Design-System — „Bayerisch Cobalt"
+
+> ⚠️ **Nur für mediadrift.de.** Diese Palette und Fonts sind die Identität von MediaDrift selbst. Auf **Kundenwebsites NICHT übertragen** — jede bekommt ihre eigene Identität (siehe §0). Übertragbar sind nur die *Konventionen* (eine Akzentfarbe, eine Radius-Skala, getönte Shadows, Custom-Easing), nicht die *konkreten Werte*.
 
 ### 4.1 Farben (CSS-Variablen, `:root` in `src/styles/mediadrift.css`)
 
@@ -256,5 +279,6 @@ Diese Dateien existieren als **lokal gerenderte Platzhalter** und sollten durch 
 1. Dieses Dokument + die genannten Skills lesen.
 2. `npm install`, `npm run build` (grün?) — Baseline herstellen.
 3. Für **Verbesserungen**: Backlog (§12) oder ein frisches Audit einer Seite gegen §7; **eine** konkrete Verbesserung pro Schritt, build → commit → push.
-4. Für **Neuerstellung**: §2–§7 sind die verbindliche Spezifikation. Marke (§3), Palette/Fonts (§4), Botschaft (§6) exakt übernehmen; Kriterien (§7) erfüllen; Anti-Patterns (§8) vermeiden.
-5. Immer gegen das „Einsteiger-willkommen / 0 auf 100"-Versprechen (§6.2) und die Qualitäts-Checkliste (§7) prüfen, bevor du committest.
+4. Für **Neuerstellung von mediadrift.de**: §2–§7 sind die verbindliche Spezifikation. Marke (§3), Palette/Fonts (§4), Botschaft (§6) exakt übernehmen; Kriterien (§7) erfüllen; Anti-Patterns (§8) vermeiden.
+5. Für **eine Kundenwebsite** (die MediaDrift baut): §0 beachten — eigene, einzigartige Identität aus dem Kunden-Brief ableiten. Nur die **universellen** Teile übernehmen: Ton-Regeln (§6.1), Qualitätskriterien (§7), Anti-Patterns (§8), Prozess (§9, §13). **Niemals** MediaDrifts Cobalt/Outfit aufzwingen.
+6. Immer gegen das Individualitäts-Mandat (§0) und die Qualitäts-Checkliste (§7) prüfen, bevor du committest — und bei der Vertrieb-Seite zusätzlich gegen das „Einsteiger-willkommen / 0 auf 100"-Versprechen (§6.2).
