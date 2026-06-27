@@ -1,0 +1,67 @@
+name: Italiano-Reel täglich
+
+# Erzeugt jeden Tag automatisch ein ~60s-Vokabel-Video (7 Wörter, KI-Stimme).
+# Kein Claude/LLM nötig: die Wörter kommen aus curriculum.json, die Stimme von Piper.
+
+on:
+  schedule:
+    # 06:17 UTC täglich (off-peak Minute, nicht :00). Anpassbar.
+    - cron: "17 6 * * *"
+  workflow_dispatch:        # zusätzlich manuell auslösbar
+    inputs:
+      day:
+        description: "Bestimmter Tag-Index (0-basiert). Leer = nächster laut state.json."
+        required: false
+      voice:
+        description: "Stimme: piper (offline) oder edge (Microsoft, bessere Qualität)"
+        required: false
+        default: "edge"
+
+permissions:
+  contents: write           # um state.json zurückzucommitten
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: italiano-reels
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Abhängigkeiten installieren
+        run: pip install -r requirements.txt
+
+      - name: Italienische Stimme laden (Piper)
+        run: bash download_voice.sh
+
+      - name: Video erzeugen
+        run: |
+          DAY="${{ github.event.inputs.day }}"
+          VOICE="${{ github.event.inputs.voice }}"
+          VOICE="${VOICE:-edge}"
+          if [ -n "$DAY" ]; then
+            python3 generate_lesson.py --day "$DAY" --voice "$VOICE"
+          else
+            python3 generate_lesson.py --voice "$VOICE"
+          fi
+
+      - name: Video als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: italiano-reel
+          path: italiano-reels/output/*.mp4
+          retention-days: 90
+
+      - name: Fortschritt (state.json) zurückcommitten
+        if: github.event.inputs.day == ''
+        run: |
+          git config user.name  "italiano-reels-bot"
+          git config user.email "actions@github.com"
+          git add state.json
+          git commit -m "chore: Italiano-Reel Tag fortgeschritten" || echo "nichts zu committen"
+          git push || echo "push übersprungen"

@@ -1,0 +1,11 @@
+# Stimm-Modelle (per download_voice.sh holen – zu groß fürs Repo)
+voices/*.onnx
+voices/*.onnx.json
+voices/*.tar.gz
+
+# Python
+__pycache__/
+*.pyc
+
+# Fertige Videos & Zwischendateien (Verteilung via CI-Artefakt)
+output/

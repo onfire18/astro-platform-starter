@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "title": "Italiano — 7 parole al giorno",
+    "description": "Tägliche Vokabel-Reels für Italienisch-Lernende. Jeder Tag = 1 Thema, 7 Wörter, ~60 Sekunden.",
+    "words_per_day": 7
+  },
+  "days": [
+    {
+      "theme": "Al bar — Im Café",
+      "words": [
+        { "it": "il caffè",   "de": "der Kaffee",      "gender": "m", "ex_it": "Vorrei un caffè, per favore.", "ex_de": "Ich hätte gern einen Kaffee, bitte." },
+        { "it": "buongiorno", "de": "guten Morgen",    "gender": "-", "ex_it": "Buongiorno, come va?",          "ex_de": "Guten Morgen, wie geht's?" },
+        { "it": "grazie",     "de": "danke",           "gender": "-", "ex_it": "Grazie mille!",                  "ex_de": "Vielen Dank!" },
+        { "it": "per favore", "de": "bitte",           "gender": "-", "ex_it": "Un cornetto, per favore.",       "ex_de": "Ein Croissant, bitte." },
+        { "it": "l'acqua",    "de": "das Wasser",      "gender": "f", "ex_it": "Un bicchiere d'acqua, grazie.",  "ex_de": "Ein Glas Wasser, danke." },
+        { "it": "il conto",   "de": "die Rechnung",    "gender": "m", "ex_it": "Il conto, per favore.",          "ex_de": "Die Rechnung, bitte." },
+        { "it": "arrivederci","de": "auf Wiedersehen", "gender": "-", "ex_it": "Arrivederci, a presto!",         "ex_de": "Auf Wiedersehen, bis bald!" }
+      ]
+    },
+    {
+      "theme": "La famiglia — Die Familie",
+      "words": [
+        { "it": "la madre",    "de": "die Mutter",   "gender": "f", "ex_it": "Mia madre è gentile.",        "ex_de": "Meine Mutter ist freundlich." },
+        { "it": "il padre",    "de": "der Vater",    "gender": "m", "ex_it": "Mio padre lavora molto.",     "ex_de": "Mein Vater arbeitet viel." },
+        { "it": "il fratello", "de": "der Bruder",   "gender": "m", "ex_it": "Ho un fratello piccolo.",     "ex_de": "Ich habe einen kleinen Bruder." },
+        { "it": "la sorella",  "de": "die Schwester","gender": "f", "ex_it": "Mia sorella studia a Roma.",  "ex_de": "Meine Schwester studiert in Rom." },
+        { "it": "il figlio",   "de": "der Sohn",     "gender": "m", "ex_it": "Il loro figlio ha dieci anni.","ex_de": "Ihr Sohn ist zehn Jahre alt." },
+        { "it": "i nonni",     "de": "die Großeltern","gender": "m","ex_it": "I nonni vivono in campagna.",  "ex_de": "Die Großeltern leben auf dem Land." },
+        { "it": "la moglie",   "de": "die Ehefrau",  "gender": "f", "ex_it": "Sua moglie è italiana.",      "ex_de": "Seine Ehefrau ist Italienerin." }
+      ]
+    },
+    {
+      "theme": "I numeri — Die Zahlen",
+      "words": [
+        { "it": "uno",     "de": "eins",   "gender": "-", "ex_it": "Ho solo un cane.",          "ex_de": "Ich habe nur einen Hund." },
+        { "it": "due",     "de": "zwei",   "gender": "-", "ex_it": "Vorrei due biglietti.",     "ex_de": "Ich hätte gern zwei Tickets." },
+        { "it": "tre",     "de": "drei",   "gender": "-", "ex_it": "Sono le tre.",              "ex_de": "Es ist drei Uhr." },
+        { "it": "quattro", "de": "vier",   "gender": "-", "ex_it": "Un tavolo per quattro.",    "ex_de": "Ein Tisch für vier." },
+        { "it": "cinque",  "de": "fünf",   "gender": "-", "ex_it": "Cinque euro, per favore.",  "ex_de": "Fünf Euro, bitte." },
+        { "it": "dieci",   "de": "zehn",   "gender": "-", "ex_it": "Ci vediamo alle dieci.",    "ex_de": "Wir sehen uns um zehn." },
+        { "it": "cento",   "de": "hundert","gender": "-", "ex_it": "Costa cento euro.",         "ex_de": "Es kostet hundert Euro." }
+      ]
+    },
+    {
+      "theme": "Al ristorante — Im Restaurant",
+      "words": [
+        { "it": "il menù",     "de": "die Speisekarte","gender": "m", "ex_it": "Il menù, per favore.",        "ex_de": "Die Speisekarte, bitte." },
+        { "it": "la pasta",    "de": "die Pasta",      "gender": "f", "ex_it": "La pasta è deliziosa.",       "ex_de": "Die Pasta ist köstlich." },
+        { "it": "il vino",     "de": "der Wein",       "gender": "m", "ex_it": "Un bicchiere di vino rosso.", "ex_de": "Ein Glas Rotwein." },
+        { "it": "il pane",     "de": "das Brot",       "gender": "m", "ex_it": "Vorrei del pane, grazie.",    "ex_de": "Ich hätte gern etwas Brot, danke." },
+        { "it": "il pesce",    "de": "der Fisch",      "gender": "m", "ex_it": "Oggi mangio il pesce.",       "ex_de": "Heute esse ich Fisch." },
+        { "it": "la verdura",  "de": "das Gemüse",     "gender": "f", "ex_it": "Mi piace la verdura fresca.", "ex_de": "Ich mag frisches Gemüse." },
+        { "it": "il dolce",    "de": "die Nachspeise", "gender": "m", "ex_it": "Prendiamo un dolce?",         "ex_de": "Nehmen wir eine Nachspeise?" }
+      ]
+    },
+    {
+      "theme": "I colori — Die Farben",
+      "words": [
+        { "it": "rosso",   "de": "rot",    "gender": "m", "ex_it": "Il vestito è rosso.",      "ex_de": "Das Kleid ist rot." },
+        { "it": "blu",     "de": "blau",   "gender": "-", "ex_it": "Il cielo è blu.",          "ex_de": "Der Himmel ist blau." },
+        { "it": "verde",   "de": "grün",   "gender": "-", "ex_it": "L'erba è verde.",          "ex_de": "Das Gras ist grün." },
+        { "it": "giallo",  "de": "gelb",   "gender": "m", "ex_it": "Il sole è giallo.",        "ex_de": "Die Sonne ist gelb." },
+        { "it": "nero",    "de": "schwarz","gender": "m", "ex_it": "Un caffè nero, grazie.",   "ex_de": "Einen schwarzen Kaffee, danke." },
+        { "it": "bianco",  "de": "weiß",   "gender": "m", "ex_it": "Vino bianco o rosso?",     "ex_de": "Weiß- oder Rotwein?" },
+        { "it": "marrone", "de": "braun",  "gender": "-", "ex_it": "Ha gli occhi marroni.",    "ex_de": "Er hat braune Augen." }
+      ]
+    }
+  ]
+}
