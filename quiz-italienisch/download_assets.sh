@@ -6,7 +6,7 @@ mkdir -p "$HERE/voices" "$HERE/fonts"
 dl(){ curl -sSL --retry 4 -o "$1" "$2"; }
 
 SB="https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models"
-for v in vits-piper-it_IT-paola-medium vits-piper-de_DE-thorsten-medium; do
+for v in vits-piper-it_IT-miro-high vits-piper-de_DE-miro-high; do
   if [[ ! -d "$HERE/voices/$v" ]]; then
     echo "Lade Stimme $v …"
     dl "/tmp/$v.tar.bz2" "$SB/$v.tar.bz2"

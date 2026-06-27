@@ -17,9 +17,10 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ── sherpa-onnx Stimmen (Ordner + Modellname) ─────────────────────────────────
+# Gleicher männlicher Sprecher "miro" in beiden Sprachen, HIGH-Qualität (22 kHz)
 SHERPA = {
-    "it": ("voices/vits-piper-it_IT-paola-medium",     "it_IT-paola-medium"),
-    "de": ("voices/vits-piper-de_DE-thorsten-medium",  "de_DE-thorsten-medium"),
+    "it": ("voices/vits-piper-it_IT-miro-high",  "it_IT-miro-high"),
+    "de": ("voices/vits-piper-de_DE-miro-high",  "de_DE-miro-high"),
 }
 EDGE_VOICES = {"de": "de-DE-KatjaNeural", "it": "it-IT-IsabellaNeural"}
 PIPER_MODELS = {
