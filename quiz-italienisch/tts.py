@@ -16,12 +16,10 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# ── sherpa-onnx Stimmen (Ordner + Modellname) ─────────────────────────────────
-# Gleicher männlicher Sprecher "miro" in beiden Sprachen, HIGH-Qualität (22 kHz)
-SHERPA = {
-    "it": ("voices/vits-piper-it_IT-miro-high",  "it_IT-miro-high"),
-    "de": ("voices/vits-piper-de_DE-miro-high",  "de_DE-miro-high"),
-}
+# ── Kokoro: EINE natürliche, männliche Stimme für Deutsch UND Italienisch ─────
+# Klingt deutlich weniger "nach KI" als Piper. sid 26 = tiefe, confidente Stimme.
+KOKORO_DIR = os.path.join(HERE, "voices", "kokoro-multi-lang-v1_0")
+KOKORO_SID = int(os.environ.get("KOKORO_SID", "26"))
 EDGE_VOICES = {"de": "de-DE-KatjaNeural", "it": "it-IT-IsabellaNeural"}
 PIPER_MODELS = {
     "de": os.path.join(HERE, "voices", "de-thorsten-low.onnx"),
@@ -38,21 +36,22 @@ def synth(text, lang, out_path, backend="sherpa", speed=1.0):
     return _piper(text, lang, out_path, speed)
 
 
-# ── sherpa-onnx (Standard) ────────────────────────────────────────────────────
+# ── Kokoro (Standard) — eine Stimme, DE + IT, natürlich ───────────────────────
 _TTS = {}
 def _sherpa(text, lang, out_path, speed):
     import sherpa_onnx
-    if lang not in _TTS:
-        rel, name = SHERPA[lang]; d = os.path.join(HERE, rel)
+    if "kokoro" not in _TTS:
+        d = KOKORO_DIR
         cfg = sherpa_onnx.OfflineTtsConfig(
             model=sherpa_onnx.OfflineTtsModelConfig(
-                vits=sherpa_onnx.OfflineTtsVitsModelConfig(
-                    model=f"{d}/{name}.onnx", tokens=f"{d}/tokens.txt",
-                    data_dir=f"{d}/espeak-ng-data"),
-                num_threads=2),
-            max_num_sentences=2)
-        _TTS[lang] = sherpa_onnx.OfflineTts(cfg)
-    a = _TTS[lang].generate(text, sid=0, speed=speed)
+                kokoro=sherpa_onnx.OfflineTtsKokoroModelConfig(
+                    model=f"{d}/model.onnx", voices=f"{d}/voices.bin",
+                    tokens=f"{d}/tokens.txt", data_dir=f"{d}/espeak-ng-data",
+                    dict_dir=f"{d}/dict",
+                    lexicon=f"{d}/lexicon-us-en.txt,{d}/lexicon-zh.txt"),
+                num_threads=2))
+        _TTS["kokoro"] = sherpa_onnx.OfflineTts(cfg)
+    a = _TTS["kokoro"].generate(text, sid=KOKORO_SID, speed=speed)
     samples = (np.array(a.samples, dtype=np.float32) * 32767).astype(np.int16)
     with wave.open(out_path, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(a.sample_rate)
