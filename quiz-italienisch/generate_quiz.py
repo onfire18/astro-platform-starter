@@ -151,25 +151,20 @@ def load_audio(path,ffmpeg):
 
 # ── Lehrer-Skript ─────────────────────────────────────────────────────────────
 def build_segments(theme, words):
-    """Segmente: dict(revealed, row(int|None), text, lang, min_dur)."""
+    """Segmente: dict(revealed, row(int|None), text, lang, min_dur, speed).
+    Kein Intro – direkt los. Pro Wort: kurze Frage → vorlesen → langsam wiederholen.
+    Ein Spruch in der Mitte, einer am Ende. Kurze, simple Sätze."""
     S=[]
-    def add(rev,row,text,lang,md): S.append(dict(revealed=rev,row=row,text=text,lang=lang,md=md))
-    add(0,None,f"Ciao! Heute lernen wir das Thema {theme}. Italienisch ist gar nicht so schwer. Du musst nur folgen!","de",5.8)
-    recap_after=3
+    def add(rev,row,text,lang,md,speed=1.0):
+        S.append(dict(revealed=rev,row=row,text=text,lang=lang,md=md,speed=speed))
+    n=len(words); mid=n//2
     for i,w in enumerate(words):
-        if w.get("hook"):
-            add(i,i,f"Pass auf, das erste Wort ist lustig. Wie sagt man {w['de']}?","de",3.6)
-        else:
-            add(i,i,f"Wie sagt man {w['de']}?","de",2.7)
-        add(i+1,i,w["it"],"it",1.5)                          # Lösung erscheint
-        if w.get("repeat"):
-            add(i+1,i,"Noch mal zusammen.","de",1.4)
-            add(i+1,i,w["it"],"it",1.6)
-        if i==recap_after:
-            add(i+1,None,"Kurze Wiederholung!","de",1.7)
-            for j in range(i+1):
-                add(i+1,j,words[j]["it"],"it",1.0)
-    add(len(words),None,"Bravo! Du hast es geschafft. Italienisch lernen ist easy. Du musst nur folgen. Folge für mehr!","de",5.5)
+        add(i,   i, f"Wie sagt man {w['de']}?", "de", 3.0)      # kurze Frage + Rate-Pause
+        add(i+1, i, w["it"], "it", 1.6)                          # vorlesen
+        add(i+1, i, w["it"], "it", 2.6, speed=0.7)               # langsam wiederholen
+        if i==mid-1:                                             # Spruch in der Mitte
+            add(i+1, None, "Italienisch lernen. Jeden Tag eine Minute. In neunzig Tagen sprichst du fließend.", "de", 4.8)
+    add(n, None, "Folge mir, wenn du Italienisch lernen willst. Es ist nicht schwer. Du musst mir nur folgen.", "de", 5.0)
     return S
 
 # ── Pipeline ──────────────────────────────────────────────────────────────────
@@ -188,7 +183,8 @@ def generate(day_index, backend):
     ext="mp3" if backend in ("edge","elevenlabs") else "wav"
     seg_audio=[]
     for k,s in enumerate(segs):
-        raw=os.path.join(tmp,f"s{k}.{ext}"); tts.synth(s["text"],s["lang"],raw,backend)
+        raw=os.path.join(tmp,f"s{k}.{ext}")
+        tts.synth(s["text"],s["lang"],raw,backend,speed=s.get("speed",1.0))
         seg_audio.append(load_audio(raw,ffmpeg))
 
     # 2) Dauern
@@ -268,7 +264,7 @@ def generate(day_index, backend):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--day",type=int,default=None)
-    ap.add_argument("--backend",choices=["piper","edge","elevenlabs"],default="piper")
+    ap.add_argument("--backend",choices=["sherpa","piper","edge","elevenlabs"],default="sherpa")
     ap.add_argument("--no-advance",action="store_true")
     args=ap.parse_args()
     state=json.load(open(STATE,encoding="utf-8"))
