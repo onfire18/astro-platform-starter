@@ -16,10 +16,12 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# ── Kokoro: EINE natürliche, männliche Stimme für Deutsch UND Italienisch ─────
-# Klingt deutlich weniger "nach KI" als Piper. sid 26 = tiefe, confidente Stimme.
+# Stimmen so, dass BEIDE Sprachen korrekt klingen, beide männlich:
+#   Italienisch -> natürliche Kokoro-Stimme (sid 36 = gewählte Stimme C)
+#   Deutsch     -> echte deutsche Männerstimme (Piper-VITS "miro")
 KOKORO_DIR = os.path.join(HERE, "voices", "kokoro-multi-lang-v1_0")
 KOKORO_SID = int(os.environ.get("KOKORO_SID", "36"))
+DE_VITS    = (os.path.join(HERE, "voices", "vits-piper-de_DE-miro-high"), "de_DE-miro-high")
 EDGE_VOICES = {"de": "de-DE-KatjaNeural", "it": "it-IT-IsabellaNeural"}
 PIPER_MODELS = {
     "de": os.path.join(HERE, "voices", "de-thorsten-low.onnx"),
@@ -36,22 +38,34 @@ def synth(text, lang, out_path, backend="sherpa", speed=1.0):
     return _piper(text, lang, out_path, speed)
 
 
-# ── Kokoro (Standard) — eine Stimme, DE + IT, natürlich ───────────────────────
+# ── Standard: Kokoro fürs Italienische, deutsche Männerstimme fürs Deutsche ───
 _TTS = {}
-def _sherpa(text, lang, out_path, speed):
+def _engine(lang):
     import sherpa_onnx
-    if "kokoro" not in _TTS:
-        d = KOKORO_DIR
-        cfg = sherpa_onnx.OfflineTtsConfig(
-            model=sherpa_onnx.OfflineTtsModelConfig(
+    key = "kokoro" if lang == "it" else "de_vits"
+    if key not in _TTS:
+        if lang == "it":
+            d = KOKORO_DIR
+            cfg = sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(
                 kokoro=sherpa_onnx.OfflineTtsKokoroModelConfig(
                     model=f"{d}/model.onnx", voices=f"{d}/voices.bin",
                     tokens=f"{d}/tokens.txt", data_dir=f"{d}/espeak-ng-data",
                     dict_dir=f"{d}/dict",
                     lexicon=f"{d}/lexicon-us-en.txt,{d}/lexicon-zh.txt"),
                 num_threads=2))
-        _TTS["kokoro"] = sherpa_onnx.OfflineTts(cfg)
-    a = _TTS["kokoro"].generate(text, sid=KOKORO_SID, speed=speed)
+        else:
+            d, name = DE_VITS
+            cfg = sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(
+                vits=sherpa_onnx.OfflineTtsVitsModelConfig(
+                    model=f"{d}/{name}.onnx", tokens=f"{d}/tokens.txt",
+                    data_dir=f"{d}/espeak-ng-data"),
+                num_threads=2))
+        _TTS[key] = sherpa_onnx.OfflineTts(cfg)
+    return _TTS[key]
+
+def _sherpa(text, lang, out_path, speed):
+    sid = KOKORO_SID if lang == "it" else 0
+    a = _engine(lang).generate(text, sid=sid, speed=speed)
     samples = (np.array(a.samples, dtype=np.float32) * 32767).astype(np.int16)
     with wave.open(out_path, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(a.sample_rate)

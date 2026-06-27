@@ -6,7 +6,7 @@ mkdir -p "$HERE/voices" "$HERE/fonts"
 dl(){ curl -sSL --retry 4 -o "$1" "$2"; }
 
 SB="https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models"
-for v in kokoro-multi-lang-v1_0; do
+for v in kokoro-multi-lang-v1_0 vits-piper-de_DE-miro-high; do
   if [[ ! -d "$HERE/voices/$v" ]]; then
     echo "Lade Kokoro-Stimme $v (~370 MB) …"
     dl "/tmp/$v.tar.bz2" "$SB/$v.tar.bz2"
