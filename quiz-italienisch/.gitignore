@@ -1,0 +1,5 @@
+voices/
+fonts/
+__pycache__/
+*.pyc
+output/

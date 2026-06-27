@@ -1,0 +1,61 @@
+name: Quiz Italienisch täglich
+
+on:
+  schedule:
+    - cron: "31 6 * * *"     # 06:31 UTC täglich (off-peak Minute)
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "Tag-Index (0-basiert). Leer = nächster laut state.json."
+        required: false
+      backend:
+        description: "Stimme: piper | edge | elevenlabs"
+        required: false
+        default: "elevenlabs"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: quiz-italienisch
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Abhängigkeiten
+        run: pip install -r requirements.txt
+      - name: Assets (Stimmen + Schrift)
+        run: bash download_assets.sh
+      - name: Video erzeugen
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: |
+          DAY="${{ github.event.inputs.day }}"
+          BACKEND="${{ github.event.inputs.backend }}"; BACKEND="${BACKEND:-elevenlabs}"
+          if [ "$BACKEND" = "elevenlabs" ] && [ -z "$ELEVENLABS_API_KEY" ]; then
+            echo "Kein Key — nutze Piper."; BACKEND="piper"
+          fi
+          if [ -n "$DAY" ]; then
+            python3 generate_quiz.py --day "$DAY" --backend "$BACKEND"
+          else
+            python3 generate_quiz.py --backend "$BACKEND"
+          fi
+      - name: Video als Artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-italienisch-reel
+          path: quiz-italienisch/output/*.mp4
+          retention-days: 90
+      - name: Fortschritt zurückcommitten
+        if: github.event.inputs.day == ''
+        run: |
+          git config user.name  "quiz-italienisch-bot"
+          git config user.email "actions@github.com"
+          git add state.json
+          git commit -m "chore: Quiz-Italienisch Tag fortgeschritten" || echo "nichts zu committen"
+          git push || echo "push übersprungen"

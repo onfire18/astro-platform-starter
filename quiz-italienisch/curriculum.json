@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Wie sagt man? — Deutsch → Italienisch",
+    "format": "Notizblock-Quiz mit Stift-Zeiger & Lehrer-Stimme, 9:16, ~60-70s",
+    "note": "Jeder Tag = ein Wortfeld. Das erste Wort ist ein lustiger Hook (Aufmerksamkeit). 'repeat': true = 'Sag's mit mir'-Wiederholung."
+  },
+  "days": [
+    {
+      "theme": "Einkaufen",
+      "words": [
+        { "emoji": "🤪", "de": "Dummkopf",  "it": "scemo",         "hook": true },
+        { "emoji": "🛒", "de": "kaufen",    "it": "comprare",      "repeat": true },
+        { "emoji": "🏪", "de": "Geschäft",  "it": "il negozio" },
+        { "emoji": "💰", "de": "Geld",      "it": "i soldi" },
+        { "emoji": "🏷️", "de": "Preis",     "it": "il prezzo" },
+        { "emoji": "💸", "de": "teuer",     "it": "caro" },
+        { "emoji": "🧾", "de": "Kassenbon", "it": "lo scontrino",  "repeat": true }
+      ]
+    },
+    {
+      "theme": "Befehle (Imperativ)",
+      "words": [
+        { "emoji": "✋", "de": "Schluss!",   "it": "Basta!",   "hook": true },
+        { "emoji": "🚶", "de": "Geh!",       "it": "Vai!" },
+        { "emoji": "👂", "de": "Hör zu!",    "it": "Ascolta!", "repeat": true },
+        { "emoji": "👀", "de": "Schau!",     "it": "Guarda!" },
+        { "emoji": "⏳", "de": "Warte!",     "it": "Aspetta!", "repeat": true },
+        { "emoji": "💪", "de": "Komm schon!","it": "Dai!" },
+        { "emoji": "🤗", "de": "Komm her!",  "it": "Vieni!" }
+      ]
+    },
+    {
+      "theme": "Gefühle",
+      "words": [
+        { "emoji": "🤮", "de": "Igitt!",     "it": "Che schifo!", "hook": true },
+        { "emoji": "😀", "de": "glücklich",  "it": "felice" },
+        { "emoji": "😢", "de": "traurig",    "it": "triste",      "repeat": true },
+        { "emoji": "😴", "de": "müde",       "it": "stanco" },
+        { "emoji": "😠", "de": "wütend",     "it": "arrabbiato",  "repeat": true },
+        { "emoji": "😍", "de": "verliebt",   "it": "innamorato" },
+        { "emoji": "🥱", "de": "gelangweilt","it": "annoiato" }
+      ]
+    }
+  ]
+}
