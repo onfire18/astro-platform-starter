@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Wie sagt man? — Deutsch → Spanisch",
+    "format": "Notizblock-Quiz, 9:16, ~60s, 7 Wörter pro Tag",
+    "words_per_day": 7
+  },
+  "days": [
+    {
+      "theme": "Erste Wörter",
+      "words": [
+        { "emoji": "❓", "de": "Frage",  "es": "la pregunta" },
+        { "emoji": "🍎", "de": "Apfel",  "es": "la manzana" },
+        { "emoji": "🔥", "de": "Feuer",  "es": "el fuego" },
+        { "emoji": "❄️", "de": "Kalt",   "es": "frío" },
+        { "emoji": "⛅", "de": "Himmel", "es": "el cielo" },
+        { "emoji": "📖", "de": "Buch",   "es": "el libro" },
+        { "emoji": "💧", "de": "Wasser", "es": "el agua" }
+      ]
+    },
+    {
+      "theme": "Essen & Trinken",
+      "words": [
+        { "emoji": "🍞", "de": "Brot",    "es": "el pan" },
+        { "emoji": "🧀", "de": "Käse",    "es": "el queso" },
+        { "emoji": "🥛", "de": "Milch",   "es": "la leche" },
+        { "emoji": "☕", "de": "Kaffee",  "es": "el café" },
+        { "emoji": "🍷", "de": "Wein",    "es": "el vino" },
+        { "emoji": "🐟", "de": "Fisch",   "es": "el pescado" },
+        { "emoji": "🍰", "de": "Kuchen",  "es": "el pastel" }
+      ]
+    },
+    {
+      "theme": "Tiere",
+      "words": [
+        { "emoji": "🐶", "de": "Hund",    "es": "el perro" },
+        { "emoji": "🐱", "de": "Katze",   "es": "el gato" },
+        { "emoji": "🐴", "de": "Pferd",   "es": "el caballo" },
+        { "emoji": "🐦", "de": "Vogel",   "es": "el pájaro" },
+        { "emoji": "🐮", "de": "Kuh",     "es": "la vaca" },
+        { "emoji": "🐷", "de": "Schwein", "es": "el cerdo" },
+        { "emoji": "🐝", "de": "Biene",   "es": "la abeja" }
+      ]
+    }
+  ]
+}

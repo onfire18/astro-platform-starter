@@ -1,0 +1,72 @@
+name: Wie-sagt-man Quiz täglich
+
+# Erzeugt täglich ein ~60s "Wie sagt man?" Deutsch→Spanisch Quiz-Reel.
+# Stimme standardmäßig ElevenLabs (multilingual, EINE Stimme DE+ES), wenn ein
+# Key als Secret ELEVENLABS_API_KEY hinterlegt ist — sonst Fallback auf Piper.
+
+on:
+  schedule:
+    - cron: "23 6 * * *"     # 06:23 UTC täglich (off-peak Minute)
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "Tag-Index (0-basiert). Leer = nächster laut state.json."
+        required: false
+      backend:
+        description: "Stimme: piper | edge | elevenlabs"
+        required: false
+        default: "elevenlabs"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: wie-sagt-man
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Abhängigkeiten
+        run: pip install -r requirements.txt
+
+      - name: Assets (Stimmen + Fonts)
+        run: bash download_assets.sh
+
+      - name: Video erzeugen
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: |
+          DAY="${{ github.event.inputs.day }}"
+          BACKEND="${{ github.event.inputs.backend }}"
+          BACKEND="${BACKEND:-elevenlabs}"
+          # Ohne Key automatisch auf Piper zurückfallen
+          if [ "$BACKEND" = "elevenlabs" ] && [ -z "$ELEVENLABS_API_KEY" ]; then
+            echo "Kein ELEVENLABS_API_KEY — nutze Piper."; BACKEND="piper"
+          fi
+          if [ -n "$DAY" ]; then
+            python3 generate_quiz.py --day "$DAY" --backend "$BACKEND"
+          else
+            python3 generate_quiz.py --backend "$BACKEND"
+          fi
+
+      - name: Video als Artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: wie-sagt-man-reel
+          path: wie-sagt-man/output/*.mp4
+          retention-days: 90
+
+      - name: Fortschritt zurückcommitten
+        if: github.event.inputs.day == ''
+        run: |
+          git config user.name  "wie-sagt-man-bot"
+          git config user.email "actions@github.com"
+          git add state.json
+          git commit -m "chore: Wie-sagt-man Tag fortgeschritten" || echo "nichts zu committen"
+          git push || echo "push übersprungen"

@@ -1,0 +1,8 @@
+# Stimm-Modelle & Fonts (per download_assets.sh holen)
+voices/
+fonts/
+
+# Python / Rendering
+__pycache__/
+*.pyc
+output/
