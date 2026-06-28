@@ -55,11 +55,18 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="md-mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobilmenü">
     <ul role="list">
-      {navLinks.map(({ href, label }) => (
-        <li>
-          <a href={href} class="md-mobile-link">{label}</a>
-        </li>
-      ))}
+      {navLinks.map(({ href, label }) => {
+        const isActive = href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+        return (
+          <li>
+            <a
+              href={href}
+              class={`md-mobile-link ${isActive ? 'active' : ''}`}
+              aria-current={isActive ? 'page' : undefined}
+            >{label}</a>
+          </li>
+        );
+      })}
     </ul>
     <a href="/#kontakt" class="md-btn md-btn-primary" style="margin-top: 1.5rem; width: 100%; justify-content: center;">
       Entwurf anfragen
@@ -271,6 +278,12 @@ const currentPath = Astro.url.pathname;
     font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
   }
   .md-mobile-link:hover { color: #fff; }
+  .md-mobile-link.active {
+    color: #fff;
+    font-weight: 500;
+    box-shadow: inset 3px 0 0 var(--md-cta-dark, #1B6AC5);
+    padding-left: 0.75rem;
+  }
 
   @media (max-width: 900px) {
     .md-nav-links, .md-nav-cta { display: none; }
