@@ -1,0 +1,356 @@
+/* MediaDrift — Base Styles */
+
+:root {
+  --md-bg: #EFF2F7;
+  --md-surface: #FFFFFF;
+  --md-primary: #0B1828;
+  --md-secondary: #1B3254;
+  --md-cta: #1455A8;
+  --md-cta-dark: #1B6AC5;
+  --md-muted: #486172;
+  --md-border: #C8D8E8;
+  --md-text: #0B1828;
+  --md-subtle: #6280A0;
+  --md-accent: #D0E6FF;
+  --nav-h: 72px;
+  /* Easing curves (Emil Kowalski) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Prevent grid/flex children from overflowing their cells */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Font imports (self-hosted via fontsource) */
+@import '@fontsource-variable/outfit';
+@import '@fontsource-variable/plus-jakarta-sans';
+
+/* Reset für MediaDrift-Seiten */
+.md-page {
+  font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: var(--md-bg);
+  color: var(--md-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+.md-page h1,
+.md-page h2,
+.md-page h3,
+.md-page h4 {
+  font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+  line-height: 1.1;
+  color: var(--md-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.md-page h2 {
+  font-size: clamp(2rem, 3.5vw, 2.85rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-wrap: balance;
+}
+
+.md-page h3 {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.md-page a {
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+/* Utility: max content width */
+.md-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* Section spacing */
+.md-section {
+  padding-block: clamp(3rem, 9vw, 8rem);
+}
+@media (max-width: 640px) {
+  .md-section { padding-block: 3rem; }
+}
+
+/* Focus ring (a11y) */
+.md-page :focus-visible {
+  outline: 2px solid var(--md-cta);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.md-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--ease-out),
+    color 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out),
+    transform 160ms var(--ease-out),
+    border-color 160ms var(--ease-out);
+  text-decoration: none;
+  border: none;
+  min-height: 44px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.md-btn:active {
+  transform: scale(0.97) !important;
+  transition-duration: 80ms !important;
+}
+
+/* One-way shine sweep on hover */
+.md-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0s;
+  pointer-events: none;
+  z-index: -1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .md-btn:hover::before {
+    left: 130%;
+    transition: left 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .md-btn::before { display: none; }
+}
+
+.md-btn-primary {
+  background-color: var(--md-cta);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(20, 85, 168, 0.25), 0 4px 16px rgba(20, 85, 168, 0.18);
+}
+@media (hover: hover) and (pointer: fine) {
+  .md-btn-primary:hover {
+    background-color: var(--md-cta-dark);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(20, 85, 168, 0.35), 0 10px 28px rgba(20, 85, 168, 0.22);
+    transform: translateY(-1px);
+  }
+}
+
+.md-btn-outline {
+  background-color: transparent;
+  color: var(--md-primary);
+  border: 1.5px solid var(--md-border);
+}
+@media (hover: hover) and (pointer: fine) {
+  .md-btn-outline:hover {
+    border-color: var(--md-cta);
+    color: var(--md-cta);
+    background-color: rgba(20, 85, 168, 0.05);
+    transform: translateY(-1px);
+  }
+}
+
+.md-btn-ghost {
+  background-color: transparent;
+  color: var(--md-muted);
+  padding-inline: 0;
+  overflow: visible;
+}
+.md-btn-ghost::before { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .md-btn-ghost:hover { color: var(--md-primary); }
+}
+
+/* Cards */
+.md-card {
+  background: var(--md-surface);
+  border: 1px solid var(--md-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition:
+    box-shadow 280ms var(--ease-out),
+    border-color 280ms var(--ease-out),
+    transform 280ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .md-card:hover {
+    box-shadow: 0 4px 14px rgba(20, 85, 168, 0.07), 0 16px 48px rgba(20, 85, 168, 0.13);
+    border-color: rgba(20, 85, 168, 0.22);
+    transform: translateY(-3px);
+  }
+}
+
+/* Badge */
+.md-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  background-color: var(--md-accent);
+  color: var(--md-cta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Section label */
+.md-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--md-cta);
+  margin-bottom: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+.md-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+/* Section intro paragraph */
+.md-section-intro {
+  font-size: 1.08rem;
+  color: var(--md-secondary);
+  line-height: 1.8;
+  max-width: 58ch;
+  margin-bottom: 3rem;
+}
+
+/* FAQ accordion */
+.md-faq details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.15rem 0;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--md-primary);
+  border-bottom: 1px solid var(--md-border);
+  transition: color 150ms ease;
+  font-size: 0.97rem;
+}
+.md-faq details summary::-webkit-details-marker { display: none; }
+.md-faq details summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--md-cta);
+  transition: transform 200ms var(--ease-out);
+  flex-shrink: 0;
+}
+.md-faq details[open] summary::after { transform: rotate(45deg); }
+.md-faq details[open] summary { color: var(--md-cta); border-color: transparent; }
+.md-faq details .faq-answer {
+  padding: 0.75rem 0 1.35rem;
+  color: var(--md-muted);
+  line-height: 1.75;
+  font-size: 0.96rem;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar */
+.md-page ::-webkit-scrollbar { width: 6px; }
+.md-page ::-webkit-scrollbar-track { background: var(--md-bg); }
+.md-page ::-webkit-scrollbar-thumb { background: rgba(20, 85, 168, 0.2); border-radius: 3px; }
+.md-page ::-webkit-scrollbar-thumb:hover { background: rgba(20, 85, 168, 0.35); }
+
+/* Scroll reveal (global, all MediaDrift pages) */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Section divider accent line (reusable) */
+.md-section-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--md-cta);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+/* Link with animated underline */
+.md-link-underline {
+  color: var(--md-cta);
+  text-decoration: none;
+  background-image: linear-gradient(var(--md-cta), var(--md-cta));
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 250ms var(--ease-out);
+}
+.md-link-underline:hover {
+  background-size: 100% 1.5px;
+}

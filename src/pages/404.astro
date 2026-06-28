@@ -1,0 +1,73 @@
+---
+import MDLayout from '../layouts/MDLayout.astro';
+export const prerender = true;
+---
+
+<MDLayout
+  title="Seite nicht gefunden"
+  description="Die gesuchte Seite konnte nicht gefunden werden."
+  noIndex={true}
+>
+  <div class="not-found md-container">
+    <div class="not-found-inner">
+      <div class="error-number" aria-hidden="true">404</div>
+      <h1 class="not-found-title">Diese Seite existiert nicht</h1>
+      <p class="not-found-desc">
+        Die gesuchte Seite konnte nicht gefunden werden.
+        Vielleicht wurde sie verschoben oder gelöscht.
+      </p>
+      <div class="not-found-actions">
+        <a href="/" class="md-btn md-btn-primary">Zur Startseite</a>
+        <a href="/#kontakt" class="md-btn md-btn-outline">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </div>
+</MDLayout>
+
+<style>
+  .not-found {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .not-found-inner {
+    text-align: center;
+    max-width: 520px;
+  }
+
+  .error-number {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: clamp(5rem, 15vw, 10rem);
+    color: var(--md-border);
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .not-found-title {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    color: var(--md-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .not-found-desc {
+    color: var(--md-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .not-found-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

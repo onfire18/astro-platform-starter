@@ -1,0 +1,281 @@
+---
+import MDLayout from '../../layouts/MDLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { SITE } from '../../config/site';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = { post: CollectionEntry<'blog'> };
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Related posts (same category, otherwise most recent)
+const all = (await getCollection('blog', ({ data }) => !data.draft)).filter((p) => p.slug !== post.slug);
+const related = [
+  ...all.filter((p) => p.data.category === post.data.category),
+  ...all.filter((p) => p.data.category !== post.data.category),
+].slice(0, 3);
+
+const url = `${SITE.url}/blog/${post.slug}`;
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  author: {
+    '@type': 'Person',
+    name: post.data.author,
+    url: SITE.url,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE.url}/favicon-md.svg`,
+    },
+  },
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  keywords: post.data.keywords.join(', '),
+  inLanguage: 'de-DE',
+  articleSection: post.data.category,
+  ...(post.data.readingTime && { timeRequired: `PT${post.data.readingTime}M` }),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Startseite',
+      item: SITE.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Blog',
+      item: `${SITE.url}/blog`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: post.data.category,
+      item: `${SITE.url}/blog`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: post.data.title,
+      item: url,
+    },
+  ],
+};
+---
+
+<MDLayout title={post.data.title} description={post.data.description} canonical={url} ogType="article">
+  <article class="article">
+    <!-- Header -->
+    <header class="article-hero">
+      <div class="md-container article-hero-inner">
+        <nav class="article-breadcrumb" aria-label="Brotkrümel">
+          <a href="/blog">Blog</a>
+          <span aria-hidden="true">/</span>
+          <span>{post.data.category}</span>
+        </nav>
+        <h1 class="article-title">{post.data.title}</h1>
+        <p class="article-lead">{post.data.description}</p>
+        <div class="article-meta">
+          <span>Von {post.data.author}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={post.data.pubDate.toISOString()}>{fmtDate(post.data.pubDate)}</time>
+          {post.data.readingTime && (<><span aria-hidden="true">·</span><span>{post.data.readingTime} Min. Lesezeit</span></>)}
+        </div>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="md-container">
+      <div class="article-body">
+        <Content />
+      </div>
+
+      <!-- CTA box -->
+      <aside class="article-cta">
+        <h2>Bereit für eine Website, die Kunden gewinnt?</h2>
+        <p>Wir entwickeln individuelle Unternehmenswebsites – Entwurf am nächsten Tag, fertige Website in der Regel nach einer Woche.</p>
+        <a href="/#kontakt" class="md-btn md-btn-primary">Unverbindlichen Entwurf anfragen →</a>
+      </aside>
+    </div>
+
+    <!-- Related -->
+    {related.length > 0 && (
+      <section class="md-section article-related-section" aria-labelledby="related-h2">
+        <div class="md-container">
+          <h2 id="related-h2" class="article-related-h2">Weitere Artikel</h2>
+          <ul class="blog-grid" role="list">
+            {related.map((p) => (
+              <li>
+                <a href={`/blog/${p.slug}`} class="blog-card md-card">
+                  <span class="blog-cat">{p.data.category}</span>
+                  <h3 class="blog-card-title">{p.data.title}</h3>
+                  <p class="blog-card-desc">{p.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</MDLayout>
+
+<style>
+  .article-hero {
+    background:
+      radial-gradient(ellipse 60% 70% at 85% 15%, rgba(20,85,168,0.16) 0%, transparent 60%),
+      linear-gradient(160deg, #080C14 0%, #0C1828 60%, #0F172A 100%);
+    padding-top: calc(var(--nav-h) + 3.5rem);
+    padding-bottom: 3.25rem;
+  }
+  .article-hero-inner { max-width: 760px; }
+  .article-breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: #64748B;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .article-breadcrumb a { color: #60A5FA; }
+  .article-title {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    color: #F1F5F9;
+    line-height: 1.12;
+    margin-bottom: 1.1rem;
+    text-wrap: balance;
+  }
+  .article-lead { color: #94A3B8; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.65; max-width: 65ch; text-wrap: pretty; }
+  .article-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.85rem; color: #64748B; }
+
+  /* Article body typography */
+  .article-body {
+    max-width: 720px;
+    margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+    font-size: 1.075rem;
+    line-height: 1.8;
+    color: var(--md-secondary);
+  }
+  .article-body :global(h2) {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--md-primary);
+    line-height: 1.2;
+    margin: 2.75rem 0 1rem;
+    text-wrap: balance;
+  }
+  .article-body :global(h3) {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+    color: var(--md-primary);
+    margin: 2rem 0 0.75rem;
+    text-wrap: balance;
+  }
+  .article-body :global(p) { margin: 0 0 1.4rem; }
+  .article-body :global(a) { color: var(--md-cta); text-decoration: underline; text-underline-offset: 2px; }
+  .article-body :global(a:hover) { color: var(--md-cta-dark); }
+  .article-body :global(ul),
+  .article-body :global(ol) { margin: 0 0 1.5rem; padding-left: 1.4rem; }
+  .article-body :global(li) { margin-bottom: 0.6rem; }
+  .article-body :global(strong) { color: var(--md-primary); font-weight: 600; }
+  .article-body :global(blockquote) {
+    border-left: 3px solid var(--md-cta);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 0 0 1.5rem;
+    color: var(--md-primary);
+    font-style: italic;
+  }
+  .article-body :global(h2 + p),
+  .article-body :global(h3 + p) { margin-top: 0; }
+  .article-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 1.75rem;
+    font-size: 0.95rem;
+  }
+  .article-body :global(th),
+  .article-body :global(td) {
+    border: 1px solid var(--md-border);
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .article-body :global(th) { background: var(--md-bg); color: var(--md-primary); font-weight: 600; }
+  .article-body :global(hr) { border: none; border-top: 1px solid var(--md-border); margin: 2.5rem 0; }
+  .article-body :global(code) {
+    background: var(--md-bg);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  /* CTA box */
+  .article-cta {
+    max-width: 720px;
+    margin: 3.5rem auto 0;
+    background: linear-gradient(160deg, #1455A8 0%, #0E3D7A 100%);
+    border-radius: 16px;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    text-align: center;
+    color: #fff;
+  }
+  .article-cta h2 {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    color: #fff;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .article-cta p { color: #DBEAFE; margin-bottom: 1.75rem; line-height: 1.7; }
+  .article-cta .md-btn-primary { background: #fff; color: #1455A8; }
+
+  .article-related-section { background: var(--md-bg); margin-top: clamp(3rem, 6vw, 5rem); }
+  .article-related-h2 {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    margin-bottom: 2rem;
+  }
+
+  /* reuse blog grid/card from index styles */
+  .blog-cat {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--md-cta); background: var(--md-accent);
+    padding: 0.2rem 0.55rem; border-radius: 4px; margin-bottom: 1rem;
+  }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  .blog-card { display: flex; flex-direction: column; height: 100%; }
+  .blog-card-title { font-size: 1.15rem; line-height: 1.25; color: var(--md-primary); margin-bottom: 0.6rem; text-wrap: balance; }
+  .blog-card-desc { color: var(--md-muted); font-size: 0.9rem; line-height: 1.6; flex: 1; }
+  @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+</style>

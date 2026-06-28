@@ -1,0 +1,344 @@
+---
+import { whatsappUrl } from '../../config/site';
+const waCustomer = whatsappUrl('customer');
+const waSales = whatsappUrl('sales');
+---
+
+<!-- Regelbasierter Assistent – kein KI-API, keine Datenspeicherung -->
+<div id="assistant-widget" aria-live="polite" aria-label="MediaDrift Website-Assistent">
+  <!-- Trigger Button -->
+  <button
+    id="assistant-trigger"
+    class="assistant-trigger"
+    aria-label="Website-Assistent öffnen"
+    aria-expanded="false"
+    aria-controls="assistant-dialog"
+    type="button"
+  >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Hilfe</span>
+  </button>
+
+  <!-- Dialog -->
+  <div id="assistant-dialog" class="assistant-dialog" hidden role="dialog" aria-labelledby="assistant-heading" aria-modal="true">
+    <!-- Header -->
+    <div class="assistant-header">
+      <div class="assistant-avatar" aria-hidden="true">M</div>
+      <div>
+        <p id="assistant-heading" class="assistant-name">MediaDrift Assistent</p>
+        <p class="assistant-note">Kein KI-Chatbot · Keine Datenspeicherung</p>
+      </div>
+      <button type="button" class="assistant-close" id="assistant-close" aria-label="Assistent schließen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Steps container -->
+    <div id="assistant-content" class="assistant-content">
+      <!-- Step 0: Start -->
+      <div data-step="0" class="assistant-step active">
+        <p class="assistant-q">Wobei können wir Ihnen helfen?</p>
+        <div class="assistant-options">
+          <button type="button" class="asst-btn" data-next="1">Ich brauche eine neue Website</button>
+          <button type="button" class="asst-btn" data-next="2">Ich möchte meine Website überarbeiten</button>
+          <button type="button" class="asst-btn" data-next="3">SEO oder Google-Marketing</button>
+          <button type="button" class="asst-btn" data-next="4">Vertriebspartner werden</button>
+          <button type="button" class="asst-btn" data-next="5">Ich habe eine andere Frage</button>
+        </div>
+      </div>
+
+      <!-- Step 1: Neue Website -->
+      <div data-step="1" class="assistant-step" hidden>
+        <p class="assistant-q">Super – lassen Sie uns den nächsten Schritt machen.</p>
+        <p class="assistant-text">Füllen Sie unser kurzes Kontaktformular aus oder schreiben Sie uns direkt. Wir melden uns zeitnah und erstellen einen ersten Konzeptentwurf.</p>
+        <div class="assistant-options">
+          <a href="/#kontakt" class="asst-btn">Zum Kontaktformular</a>
+          <a href={waCustomer} target="_blank" rel="noopener noreferrer" class="asst-btn">Per WhatsApp schreiben</a>
+        </div>
+      </div>
+
+      <!-- Step 2: Redesign -->
+      <div data-step="2" class="assistant-step" hidden>
+        <p class="assistant-q">Ihre bestehende Website soll professioneller werden?</p>
+        <p class="assistant-text">Wir analysieren gemeinsam, was verbessert werden kann – und entwickeln einen gezielten Plan. Schreiben Sie uns kurz, was Sie beschäftigt.</p>
+        <div class="assistant-options">
+          <a href="/#kontakt" class="asst-btn">Kontakt aufnehmen</a>
+          <a href="/webdesign" class="asst-btn">Mehr über Webdesign erfahren</a>
+        </div>
+      </div>
+
+      <!-- Step 3: SEO / Ads -->
+      <div data-step="3" class="assistant-step" hidden>
+        <p class="assistant-q">SEO und Google-Marketing für mehr Reichweite.</p>
+        <p class="assistant-text">Wir richten Google Analytics (nach Einwilligung) und Google Ads ein und betreuen Ihre Kampagnen. Alle Maßnahmen werden datenschutzkonform umgesetzt.</p>
+        <div class="assistant-options">
+          <a href="/#kontakt" class="asst-btn">Anfrage senden</a>
+          <a href={waCustomer} target="_blank" rel="noopener noreferrer" class="asst-btn">Per WhatsApp fragen</a>
+        </div>
+      </div>
+
+      <!-- Step 4: Vertrieb -->
+      <div data-step="4" class="assistant-step" hidden>
+        <p class="assistant-q">Gemeinsam Kunden gewinnen – auf Provisionsbasis.</p>
+        <p class="assistant-text">Als freier Vertriebspartner gewinnen Sie Unternehmen für professionelle Websites und erhalten eine vereinbarte Provision für erfolgreiche Abschlüsse.</p>
+        <div class="assistant-options">
+          <a href="/vertrieb" class="asst-btn">Zur Vertriebsseite</a>
+          <a href={waSales} target="_blank" rel="noopener noreferrer" class="asst-btn">Per WhatsApp bewerben</a>
+        </div>
+      </div>
+
+      <!-- Step 5: Andere Frage -->
+      <div data-step="5" class="assistant-step" hidden>
+        <p class="assistant-q">Wir helfen Ihnen gerne weiter.</p>
+        <p class="assistant-text">Nutzen Sie das Kontaktformular für eine detaillierte Anfrage – oder schreiben Sie uns direkt per WhatsApp.</p>
+        <div class="assistant-options">
+          <a href="/#kontakt" class="asst-btn">Zum Kontaktformular</a>
+          <a href={waCustomer} target="_blank" rel="noopener noreferrer" class="asst-btn">Per WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer controls -->
+    <div class="assistant-footer">
+      <button type="button" id="assistant-back" class="asst-ctrl" hidden>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        Zurück
+      </button>
+      <button type="button" id="assistant-restart" class="asst-ctrl" hidden>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.4"/></svg>
+        Neu starten
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #assistant-widget {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 8000;
+    font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  .assistant-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--md-cta);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 0.65rem 1.1rem;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(20, 85, 168, 0.4);
+    transition:
+      background-color 160ms var(--ease-out),
+      box-shadow 160ms var(--ease-out),
+      transform 160ms var(--ease-out);
+    min-height: 44px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .assistant-trigger:hover {
+      background: var(--md-cta-dark);
+      box-shadow: 0 6px 22px rgba(20, 85, 168, 0.5);
+      transform: translateY(-1px);
+    }
+  }
+  .assistant-trigger:active { transform: scale(0.97); transition-duration: 80ms; }
+
+  .assistant-dialog {
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    right: 0;
+    width: min(360px, calc(100vw - 2rem));
+    background: var(--md-surface);
+    border: 1px solid var(--md-border);
+    border-radius: 14px;
+    box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
+    overflow: hidden;
+  }
+
+  .assistant-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--md-primary);
+    color: #fff;
+  }
+  .assistant-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--md-cta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .assistant-name { font-weight: 600; font-size: 0.9rem; margin: 0; }
+  .assistant-note { font-size: 0.72rem; color: #94A3B8; margin: 0; }
+  .assistant-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 150ms var(--ease-out), transform 150ms var(--ease-out);
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .assistant-close:hover { color: #fff; transform: rotate(90deg); }
+  }
+  .assistant-close:active { transform: scale(0.9); transition-duration: 80ms; }
+
+  .assistant-content { padding: 1rem; }
+
+  .assistant-step { display: none; }
+  .assistant-step.active { display: block; }
+
+  .assistant-q {
+    font-weight: 500;
+    color: var(--md-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+  }
+  .assistant-text {
+    color: var(--md-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .assistant-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .asst-btn {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    background: var(--md-bg);
+    border: 1px solid var(--md-border);
+    border-radius: 7px;
+    color: var(--md-primary);
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    transition:
+      border-color 150ms var(--ease-out),
+      background-color 150ms var(--ease-out),
+      color 150ms var(--ease-out),
+      transform 150ms var(--ease-out);
+    font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+    min-height: 44px;
+    line-height: 1.4;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .asst-btn:hover { border-color: var(--md-cta); background: var(--md-accent); color: var(--md-cta); transform: translateX(2px); }
+  }
+  .asst-btn:active { transform: scale(0.98); transition-duration: 80ms; }
+
+  .assistant-footer {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem 0.75rem;
+    border-top: 1px solid var(--md-border);
+  }
+
+  .asst-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    color: var(--md-subtle);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 4px;
+    transition: color 150ms var(--ease-out);
+    font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+    min-height: 44px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .asst-ctrl:hover { color: var(--md-primary); }
+  }
+</style>
+
+<script>
+  const trigger = document.getElementById('assistant-trigger') as HTMLButtonElement;
+  const dialog = document.getElementById('assistant-dialog') as HTMLElement;
+  const closeBtn = document.getElementById('assistant-close') as HTMLButtonElement;
+  const backBtn = document.getElementById('assistant-back') as HTMLButtonElement;
+  const restartBtn = document.getElementById('assistant-restart') as HTMLButtonElement;
+
+  let history: number[] = [];
+
+  function showStep(n: number) {
+    document.querySelectorAll<HTMLElement>('.assistant-step').forEach(s => {
+      s.classList.remove('active');
+      s.hidden = true;
+    });
+    const target = document.querySelector<HTMLElement>(`.assistant-step[data-step="${n}"]`);
+    if (target) { target.hidden = false; target.classList.add('active'); }
+    backBtn.hidden = history.length === 0;
+    restartBtn.hidden = history.length === 0;
+  }
+
+  function openDialog() {
+    dialog.removeAttribute('hidden');
+    trigger.setAttribute('aria-expanded', 'true');
+    closeBtn.focus();
+  }
+
+  function closeDialog() {
+    dialog.setAttribute('hidden', '');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.focus();
+  }
+
+  trigger.addEventListener('click', () => {
+    dialog.hasAttribute('hidden') ? openDialog() : closeDialog();
+  });
+
+  closeBtn.addEventListener('click', closeDialog);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !dialog.hasAttribute('hidden')) closeDialog();
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('.asst-btn[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const next = parseInt(btn.dataset.next ?? '0', 10);
+      const current = parseInt(document.querySelector<HTMLElement>('.assistant-step.active')?.dataset.step ?? '0', 10);
+      history.push(current);
+      showStep(next);
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    const prev = history.pop();
+    if (prev !== undefined) showStep(prev);
+  });
+
+  restartBtn.addEventListener('click', () => {
+    history = [];
+    showStep(0);
+  });
+</script>

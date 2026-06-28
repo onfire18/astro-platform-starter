@@ -1,19 +1,36 @@
 import type { APIRoute } from 'astro';
 import { purgeCache } from '@netlify/functions';
+import { isSameOrigin, sanitizeTags } from '../../utils/security';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
-    const { tags } = await request.json();
-
-    if (!Array.isArray(tags)) {
-        return new Response(`Bad Request: expected tags attribute with array of strings in the body, got ${typeof tags}`, { status: 400 });
+    if (!isSameOrigin(request)) {
+        return new Response('Forbidden', { status: 403 });
     }
 
-    await purgeCache({ tags });
-    return new Response(
-        JSON.stringify({
-            invalidated: tags
-        })
-    );
+    let body: Record<string, unknown>;
+    try {
+        body = await request.json();
+    } catch {
+        return new Response('Bad Request: invalid JSON body', { status: 400 });
+    }
+
+    const tags = sanitizeTags(body.tags);
+    if (!tags) {
+        return new Response(
+            'Bad Request: expected tags — a non-empty array of up to 50 strings',
+            { status: 400 }
+        );
+    }
+
+    try {
+        await purgeCache({ tags });
+        return new Response(JSON.stringify({ invalidated: tags }), {
+            headers: { 'Content-Type': 'application/json' }
+        });
+    } catch (e) {
+        console.error('[api/revalidate POST] error purging cache:', tags, e);
+        return new Response('Internal Server Error', { status: 500 });
+    }
 };

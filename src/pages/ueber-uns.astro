@@ -1,0 +1,523 @@
+---
+import MDLayout from '../layouts/MDLayout.astro';
+import { SITE, whatsappUrl } from '../config/site';
+
+const waUrl = whatsappUrl('customer');
+---
+
+<MDLayout
+  title="Über uns"
+  ogImage="/images/og/ueber-uns.jpg"
+  description="MediaDrift – Webdesign aus München. Paul Dunker entwickelt individuelle Unternehmenswebsites mit Leidenschaft, ohne Agentur-Overhead und ohne monatliche Abo-Fallen."
+>
+
+  <!-- HERO -->
+  <section class="md-section hero-section hero" aria-labelledby="hero-heading">
+    <div class="md-container hero-inner">
+      <span class="md-label hero-anim" style="--hero-delay: 0ms">Wer wir sind</span>
+      <h1 id="hero-heading" class="hero-anim" style="--hero-delay: 70ms">Über MediaDrift</h1>
+      <p class="hero-sub hero-anim" style="--hero-delay: 140ms">Webdesign mit Leidenschaft für Ihren Erfolg</p>
+    </div>
+  </section>
+
+  <!-- GRÜNDUNGSGESCHICHTE -->
+  <section class="md-section story-section" aria-labelledby="story-heading">
+    <div class="md-container story-inner">
+      <span class="md-label">Warum MediaDrift?</span>
+      <h2 id="story-heading">Die Idee dahinter</h2>
+
+      <div class="story-body">
+        <p>
+          Paul Dunker gründete MediaDrift aus einer klaren Überzeugung heraus:
+          Kleine und mittelständische Unternehmen verdienen dieselbe Qualität im Web wie große Konzerne –
+          ohne aufgeblähten Agentur-Overhead und ohne monatliche Abo-Fallen, die einen dauerhaft
+          von einem Anbieter abhängig machen.
+        </p>
+        <p>
+          Wer eine Website bei MediaDrift beauftragt, arbeitet direkt mit dem Menschen zusammen, der sie baut.
+          Kein Projektmanager als Mittelsmann, kein Junior-Designer ohne Kontext. Direkte Zusammenarbeit,
+          persönliche Betreuung, ehrliche Beratung – von der ersten Idee bis zum fertigen Launch
+          und darüber hinaus.
+        </p>
+        <p>
+          Das Ergebnis: Websites, die nicht nur gut aussehen, sondern messbar dazu beitragen,
+          dass Unternehmen online gefunden werden und neue Kunden gewinnen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERTE -->
+  <section class="md-section values-section" aria-labelledby="values-heading">
+    <div class="md-container">
+      <span class="md-label">Grundsätze</span>
+      <h2 id="values-heading">Wofür MediaDrift steht</h2>
+
+      <div class="values-grid" role="list">
+        <article class="md-card value-card" role="listitem">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Ehrlichkeit</h3>
+          <p>Keine versteckten Kosten, keine unrealistischen Versprechen. Sie wissen von Anfang an, was Sie erhalten und was es kostet.</p>
+        </article>
+
+        <article class="md-card value-card" role="listitem">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>Qualität</h3>
+          <p>Sauberer Code, durchdachtes Design, messbare Ergebnisse. Jedes Detail wird mit dem Anspruch umgesetzt, dass es langfristig funktioniert.</p>
+        </article>
+
+        <article class="md-card value-card" role="listitem">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Partnerschaft</h3>
+          <p>Ihre Website ist Ihr Eigentum – nicht das von MediaDrift, nicht das eines Baukastens. Wir bauen für Sie, nicht für uns.</p>
+        </article>
+
+        <article class="md-card value-card" role="listitem">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+          <h3>Direktheit</h3>
+          <p>Kein Agentur-Overhead, kein Mittelsmann. Sie haben direkten Draht zu dem Webdesigner, der Ihre Website tatsächlich baut.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="md-section contact-section" aria-labelledby="contact-heading">
+    <div class="md-container contact-inner">
+      <span class="md-label">Persönlicher Kontakt</span>
+      <h2 id="contact-heading">Sprechen Sie direkt mit Paul</h2>
+      <p class="contact-intro">
+        Kein Formular-Ping-Pong, keine automatischen Antworten.
+        Sie erreichen Paul persönlich – per Telefon oder WhatsApp, in der Regel innerhalb von 24 Stunden.
+      </p>
+
+      <div class="contact-card md-card">
+        <div class="contact-person">
+          <div class="contact-avatar">
+            <img src="/images/profilbild.jpg" alt="Paul Dunker, Gründer von MediaDrift" class="contact-photo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+          <div class="contact-details">
+            <p class="contact-name">{SITE.contact.name}</p>
+            <p class="contact-role">Gründer &amp; Webdesigner, {SITE.contact.company}</p>
+          </div>
+        </div>
+
+        <div class="contact-links">
+          <a
+            href={`tel:${SITE.contact.phone.replace(/\s/g, '')}`}
+            class="contact-link"
+            aria-label={`Paul Dunker anrufen: ${SITE.contact.phone}`}
+          >
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.42 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6.59 6.59l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span>{SITE.contact.phone}</span>
+          </a>
+
+          <a
+            href={waUrl}
+            class="contact-link contact-link--wa"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Paul Dunker via WhatsApp kontaktieren"
+          >
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </span>
+            <span>WhatsApp schreiben</span>
+          </a>
+        </div>
+
+        <address class="contact-address">
+          {SITE.contact.street}<br />
+          {SITE.contact.city}<br />
+          {SITE.contact.country}
+        </address>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="md-section cta-section" aria-labelledby="cta-heading">
+    <div class="md-container cta-inner">
+      <h2 id="cta-heading">Projekt besprechen</h2>
+      <p class="cta-sub">
+        Kein Druck, keine Verpflichtung. Erzählen Sie uns von Ihrem Vorhaben –
+        wir melden uns mit einem ersten Entwurf.
+      </p>
+      <a href="/#kontakt" class="md-btn md-btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+</MDLayout>
+
+<style>
+  /* Hero */
+  .hero-section {
+    position: relative;
+    background: linear-gradient(160deg, var(--md-surface) 0%, var(--md-accent) 100%);
+    border-bottom: 1px solid var(--md-border);
+    overflow: hidden;
+  }
+
+  /* Subtle brand-tinted glow, no extra assets */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(20, 85, 168, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 660px;
+  }
+
+  .hero-inner h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-block: 0.5rem 0.75rem;
+    color: var(--md-primary);
+    text-wrap: balance;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--md-secondary);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* Hero entrance on load (hero is excluded from global scroll reveal) */
+  .hero-anim {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroFadeUp 0.7s var(--ease-out) forwards;
+    animation-delay: var(--hero-delay, 0ms);
+  }
+
+  @keyframes heroFadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-anim {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  /* Story */
+  .story-section {
+    background: var(--md-bg);
+  }
+
+  .story-inner {
+    max-width: 780px;
+  }
+
+  .story-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 1.5rem;
+    text-wrap: balance;
+  }
+
+  .story-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .story-body p {
+    font-size: 1.05rem;
+    color: var(--md-secondary);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* Values */
+  .values-section {
+    background: var(--md-surface);
+    border-block: 1px solid var(--md-border);
+  }
+
+  .values-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 2rem;
+    text-wrap: balance;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .value-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--md-accent);
+    color: var(--md-cta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    flex-shrink: 0;
+    transition:
+      transform 200ms var(--ease-out),
+      box-shadow 200ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .value-card:hover .value-icon {
+      transform: scale(1.06) rotate(-3deg);
+      box-shadow: 0 6px 18px rgba(20, 85, 168, 0.18);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .value-icon { transition: none; }
+    .value-card:hover .value-icon { transform: none; }
+  }
+
+  .value-card h3 {
+    font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--md-primary);
+    text-wrap: balance;
+  }
+
+  .value-card p {
+    font-size: 0.93rem;
+    color: var(--md-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Contact */
+  .contact-section {
+    background: var(--md-bg);
+  }
+
+  .contact-inner {
+    max-width: 640px;
+  }
+
+  .contact-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-block: 0.5rem 0.75rem;
+    text-wrap: balance;
+  }
+
+  .contact-intro {
+    color: var(--md-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    line-height: 1.65;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-person {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--md-border);
+    transition: border-color 250ms var(--ease-out);
+  }
+  .contact-photo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 350ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .contact-card:hover .contact-avatar {
+      border-color: var(--md-cta);
+    }
+    .contact-card:hover .contact-photo {
+      transform: scale(1.05);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-avatar,
+    .contact-photo { transition: none; }
+    .contact-card:hover .contact-photo { transform: none; }
+  }
+
+  .contact-initials {
+    font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+    font-size: 1.2rem;
+    color: var(--md-cta);
+  }
+
+  .contact-name {
+    font-weight: 600;
+    color: var(--md-primary);
+    font-size: 1.05rem;
+    margin: 0 0 0.15rem;
+  }
+
+  .contact-role {
+    font-size: 0.88rem;
+    color: var(--md-muted);
+    margin: 0;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--md-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    transition:
+      color 160ms var(--ease-out),
+      transform 160ms var(--ease-out);
+    width: fit-content;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .contact-link:hover {
+      color: var(--md-cta);
+      transform: translateX(3px);
+    }
+    .contact-link--wa:hover {
+      color: #15803d;
+    }
+  }
+
+  .contact-link:active {
+    transform: scale(0.97);
+    transition-duration: 80ms;
+  }
+
+  .contact-link--wa {
+    color: #16a34a;
+  }
+
+  .contact-link__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--md-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-cta);
+    flex-shrink: 0;
+    transition:
+      transform 160ms var(--ease-out),
+      box-shadow 160ms var(--ease-out);
+  }
+
+  .contact-link--wa .contact-link__icon {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .contact-link:hover .contact-link__icon {
+      transform: scale(1.08);
+      box-shadow: 0 4px 14px rgba(20, 85, 168, 0.18);
+    }
+    .contact-link--wa:hover .contact-link__icon {
+      box-shadow: 0 4px 14px rgba(22, 163, 74, 0.20);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-link,
+    .contact-link__icon { transition: none; }
+    .contact-link:hover,
+    .contact-link:active,
+    .contact-link:hover .contact-link__icon { transform: none; }
+  }
+
+  .contact-address {
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--md-muted);
+    line-height: 1.7;
+    border-top: 1px solid var(--md-border);
+    padding-top: 1.25rem;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--md-primary);
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: #fff;
+    margin-block: 0 1rem;
+    text-wrap: balance;
+  }
+
+  .cta-sub {
+    color: #94A3B8;
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    text-wrap: balance;
+  }
+</style>

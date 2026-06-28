@@ -1,0 +1,501 @@
+---
+export const prerender = false;
+
+// Einfacher PIN-Schutz — gesetzt via ENV ENTWURF_PIN (default: "mediadrift")
+const ENV_PIN = import.meta.env.ENTWURF_PIN || process.env.ENTWURF_PIN || 'mediadrift';
+const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY);
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Entwurf-Generator · MediaDrift Intern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
+  <style>
+    :root {
+      --bg: #EFF2F7; --surface: #fff; --primary: #0B1828; --secondary: #1B3254;
+      --cta: #1455A8; --cta-dark: #1B6AC5; --muted: #486172; --border: #C8D8E8;
+      --subtle: #6280A0; --accent: #D0E6FF; --ok: #16A34A; --err: #DC2626;
+      --warn: #D97706; --r: 14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.65; min-height: 100dvh; }
+    h1, h2, h3, .logo-text { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.02em; }
+    a { color: var(--cta); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .page { max-width: 960px; margin-inline: auto; padding: clamp(1.25rem, 5vw, 2.5rem); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: clamp(1.25rem, 4vw, 2rem); box-shadow: 0 4px 24px rgba(20,85,168,.06); }
+
+    /* ── Top bar ── */
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .logo { display: flex; align-items: center; gap: 0.6rem; }
+    .logo-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--cta); flex-shrink: 0; }
+    .logo-text { font-size: 1.1rem; font-weight: 800; color: var(--cta); }
+    .topbar-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; background: var(--accent); color: var(--cta); padding: 0.25rem 0.65rem; border-radius: 99px; }
+
+    /* ── PIN screen ── */
+    #pinScreen { display: flex; align-items: center; justify-content: center; min-height: 80dvh; }
+    .pin-card { max-width: 380px; width: 100%; text-align: center; }
+    .pin-card h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .pin-card p { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .pin-input { width: 100%; padding: .8rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-size: 1.05rem; text-align: center; letter-spacing: .15em; font-family: inherit; }
+    .pin-input:focus { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(20,85,168,.12); }
+    .pin-err { color: var(--err); font-size: 0.85rem; margin-top: .5rem; min-height: 1.2em; }
+
+    /* ── Main app ── */
+    #app { display: none; }
+    #app.show { display: block; }
+
+    /* ── Form ── */
+    .app-header { margin-bottom: 1.75rem; }
+    .app-header h1 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: .4rem; }
+    .app-header p { color: var(--muted); max-width: 55ch; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    .field-full { grid-column: 1 / -1; }
+    label { font-size: .88rem; font-weight: 600; }
+    .hint { font-weight: 400; color: var(--subtle); font-size: .78rem; }
+    input[type="text"], input[type="url"], input[type="password"] {
+      padding: .75rem 1rem; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: .97rem; font-family: inherit; background: var(--surface); color: var(--primary);
+      transition: border-color 140ms, box-shadow 140ms;
+    }
+    input:focus { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(20,85,168,.12); }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .78rem 1.4rem;
+      font-size: .92rem; font-weight: 700; font-family: inherit; border: none; border-radius: 10px;
+      cursor: pointer; transition: background 150ms, transform 120ms, box-shadow 150ms; text-decoration: none; }
+    .btn:active:not(:disabled) { transform: scale(.97) !important; }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-primary { background: var(--cta); color: #fff; box-shadow: 0 4px 16px rgba(20,85,168,.25); width: 100%; justify-content: center; padding: .9rem; font-size: 1rem; }
+    .btn-primary:hover:not(:disabled) { background: var(--cta-dark); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(20,85,168,.35); }
+    .btn-outline { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); }
+    .btn-outline:hover:not(:disabled) { background: rgba(20,85,168,.06); }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--border); }
+    .btn-ghost:hover:not(:disabled) { color: var(--primary); border-color: var(--subtle); }
+
+    /* ── Progress log ── */
+    .log { display: none; flex-direction: column; gap: .4rem; background: #F7FAFD;
+      border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem;
+      max-height: 260px; overflow-y: auto; margin-top: 1.25rem; font-size: .86rem; }
+    .log.show { display: flex; }
+    .log-line { display: flex; align-items: flex-start; gap: .5rem; }
+    .log-line .ico { flex-shrink: 0; margin-top: 1px; }
+    .log-line.ok  .ico { color: var(--ok); }
+    .log-line.err .ico { color: var(--err); }
+    .log-line.busy .ico { color: var(--cta); }
+    .log-line.err { color: var(--err); }
+    .spinner { width: 13px; height: 13px; border: 2px solid var(--accent); border-top-color: var(--cta);
+      border-radius: 50%; animation: spin .75s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Result ── */
+    .result { display: none; margin-top: 1.5rem; }
+    .result.show { display: block; }
+    .result-topbar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .result-title { font-size: 1rem; font-weight: 700; }
+    .result-sub { font-size: .82rem; color: var(--subtle); }
+    .actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .6rem; margin-bottom: 1rem; }
+    .meta-item { background: #F7FAFD; border: 1px solid var(--border); border-radius: 10px; padding: .6rem .85rem; }
+    .meta-item .k { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--subtle); margin-bottom: .15rem; }
+    .meta-item .v { font-weight: 600; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    iframe { width: 100%; height: 700px; border: 1px solid var(--border); border-radius: 12px; background: #fff; }
+
+    /* ── History ── */
+    .history { margin-top: 2rem; }
+    .history h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: .85rem; color: var(--secondary); }
+    .history-empty { font-size: .9rem; color: var(--subtle); }
+    .history-list { display: flex; flex-direction: column; gap: .5rem; }
+    .history-item { display: flex; align-items: center; gap: .75rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 10px; padding: .65rem 1rem; cursor: pointer;
+      transition: border-color 140ms, box-shadow 140ms; }
+    .history-item:hover { border-color: var(--cta); box-shadow: 0 2px 12px rgba(20,85,168,.08); }
+    .history-icon { color: var(--subtle); flex-shrink: 0; }
+    .history-info { flex: 1; min-width: 0; }
+    .history-name { font-weight: 600; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .history-date { font-size: .76rem; color: var(--subtle); }
+    .history-del { background: none; border: none; cursor: pointer; color: var(--subtle); padding: .25rem;
+      border-radius: 6px; flex-shrink: 0; font-size: 1.1rem; line-height: 1; }
+    .history-del:hover { color: var(--err); background: rgba(220,38,38,.08); }
+
+    footer { text-align: center; margin-top: 2.5rem; font-size: .8rem; color: var(--subtle); }
+  </style>
+</head>
+<body>
+
+<!-- ── PIN-Screen ── -->
+<div id="pinScreen" class="page">
+  <div class="card pin-card">
+    <div class="logo" style="justify-content:center;margin-bottom:1.25rem">
+      <span class="logo-dot"></span>
+      <span class="logo-text">MediaDrift</span>
+    </div>
+    <h2>Internes Tool</h2>
+    <p>Bitte PIN eingeben, um den Entwurf-Generator zu nutzen.</p>
+    <input id="pinInput" class="pin-input" type="password" placeholder="PIN" autocomplete="current-password" />
+    <p class="pin-err" id="pinErr">&nbsp;</p>
+    <button class="btn btn-primary" id="pinBtn" style="margin-top:.5rem">Anmelden</button>
+  </div>
+</div>
+
+<!-- ── Main App ── -->
+<div id="app" class="page">
+  <div class="topbar">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text">MediaDrift</span>
+    </div>
+    <span class="topbar-badge">Internes Tool</span>
+  </div>
+
+  <div class="app-header">
+    <h1>Website-Entwurf Generator</h1>
+    <p>Alte Website eingeben → Inhalte werden automatisch gescrapt → moderner Entwurf wird erstellt. Fertig zum Versenden an den Kunden.</p>
+  </div>
+
+  <div class="card">
+    <form id="form">
+      <div class="form-grid">
+        <div class="field field-full">
+          <label for="url">Website-URL (alte Seite) *</label>
+          <input type="text" id="url" name="url" placeholder="z.B. www.alte-seite.de" required autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="company">Firmenname <span class="hint">(optional)</span></label>
+          <input type="text" id="company" name="company" placeholder="z.B. Müller GmbH" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="industry">Branche <span class="hint">(optional)</span></label>
+          <input type="text" id="industry" name="industry" placeholder="z.B. Rechtsanwalt, Handwerk, Gastronomie" />
+        </div>
+        {!hasServerKey && (
+          <div class="field field-full">
+            <label for="apikey">Anthropic API-Key <span class="hint">(für diese Anfrage, nicht gespeichert)</span></label>
+            <input type="password" id="apikey" name="apikey" placeholder="sk-ant-…" autocomplete="off" />
+          </div>
+        )}
+      </div>
+      <div style="margin-top:1.25rem">
+        <button class="btn btn-primary" type="submit" id="submitBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Entwurf erstellen
+        </button>
+      </div>
+    </form>
+
+    <div class="log" id="log"></div>
+
+    <div class="result" id="result">
+      <div class="meta-grid" id="metaGrid"></div>
+      <div class="result-topbar">
+        <div>
+          <div class="result-title" id="resultTitle">Entwurf fertig</div>
+          <div class="result-sub" id="resultSub"></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" id="openBtn">In Tab öffnen</button>
+          <button class="btn btn-outline" id="copyLinkBtn">Link kopieren</button>
+          <button class="btn btn-primary" id="downloadBtn" style="width:auto">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            HTML laden
+          </button>
+        </div>
+      </div>
+      <iframe id="preview" title="Entwurf-Vorschau" sandbox="allow-same-origin allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <!-- Verlauf -->
+  <div class="history" id="historySection">
+    <h2>Verlauf</h2>
+    <div id="historyList" class="history-list"></div>
+  </div>
+
+  <footer>MediaDrift · Internes Verkaufstool · Entwürfe sind unverbindliche Vorschläge</footer>
+</div>
+
+<script is:inline define:vars={{ correctPin: ENV_PIN, hasServerKey }}>
+// ── PIN-Schutz ──────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'md_entwurf_auth';
+const HISTORY_KEY = 'md_entwurf_history';
+
+function isAuthed() {
+  return sessionStorage.getItem(STORAGE_KEY) === 'ok';
+}
+function setAuthed() {
+  sessionStorage.setItem(STORAGE_KEY, 'ok');
+}
+
+const pinScreen = document.getElementById('pinScreen');
+const app       = document.getElementById('app');
+
+function showApp() {
+  pinScreen.style.display = 'none';
+  app.classList.add('show');
+  renderHistory();
+}
+
+if (isAuthed()) {
+  showApp();
+} else {
+  const pinInput = document.getElementById('pinInput');
+  const pinBtn   = document.getElementById('pinBtn');
+  const pinErr   = document.getElementById('pinErr');
+
+  function tryPin() {
+    if (pinInput.value === correctPin) {
+      setAuthed();
+      showApp();
+    } else {
+      pinErr.textContent = 'Falscher PIN. Bitte erneut versuchen.';
+      pinInput.value = '';
+      pinInput.focus();
+    }
+  }
+
+  pinBtn.addEventListener('click', tryPin);
+  pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryPin(); });
+  pinInput.focus();
+}
+
+// ── Verlauf ──────────────────────────────────────────────────────────────────
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch { return []; }
+}
+function saveHistory(list) {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0, 20)));
+}
+function addToHistory(entry) {
+  const list = loadHistory().filter(e => e.url !== entry.url);
+  list.unshift(entry);
+  saveHistory(list);
+  renderHistory();
+}
+
+function renderHistory() {
+  const list = loadHistory();
+  const el   = document.getElementById('historyList');
+  if (!el) return;
+  if (!list.length) {
+    el.innerHTML = '<p class="history-empty">Noch keine Entwürfe erstellt.</p>';
+    return;
+  }
+  el.innerHTML = '';
+  list.forEach((entry, i) => {
+    const item = document.createElement('div');
+    item.className = 'history-item';
+    item.innerHTML = `
+      <svg class="history-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div class="history-info">
+        <div class="history-name">${entry.name || entry.url}</div>
+        <div class="history-date">${entry.date} · ${entry.url}</div>
+      </div>
+      <button class="history-del" data-i="${i}" title="Aus Verlauf löschen">×</button>
+    `;
+    item.addEventListener('click', (e) => {
+      if (e.target.classList.contains('history-del')) {
+        const idx = parseInt(e.target.dataset.i);
+        const l   = loadHistory();
+        l.splice(idx, 1);
+        saveHistory(l);
+        renderHistory();
+      } else {
+        // Alten Entwurf neu laden
+        currentHtml     = entry.html || '';
+        currentFilename = entry.filename || 'entwurf.html';
+        if (currentHtml) showResult({ html: currentHtml, filename: currentFilename, meta: entry.meta });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+    el.appendChild(item);
+  });
+}
+
+// ── Form ──────────────────────────────────────────────────────────────────────
+let currentHtml     = '';
+let currentFilename = 'entwurf.html';
+let busyLine        = null;
+
+const form      = document.getElementById('form');
+const submitBtn = document.getElementById('submitBtn');
+const logEl     = document.getElementById('log');
+const resultEl  = document.getElementById('result');
+const previewEl = document.getElementById('preview');
+const metaGrid  = document.getElementById('metaGrid');
+
+function resetLog() {
+  logEl.innerHTML = '';
+  logEl.classList.add('show');
+  busyLine = null;
+}
+
+function addLog(msg, type = 'ok') {
+  if (busyLine && type !== 'busy') {
+    busyLine.querySelector('.ico').innerHTML = '✓';
+    busyLine.classList.remove('busy');
+    busyLine.classList.add('ok');
+    busyLine = null;
+  }
+  const line = document.createElement('div');
+  line.className = `log-line ${type}`;
+  const ico = document.createElement('span');
+  ico.className = 'ico';
+  if (type === 'busy') {
+    ico.innerHTML = '<span class="spinner"></span>';
+  } else if (type === 'err') {
+    ico.textContent = '✕';
+  } else {
+    ico.textContent = '✓';
+  }
+  const txt = document.createElement('span');
+  txt.textContent = msg;
+  line.append(ico, txt);
+  logEl.appendChild(line);
+  logEl.scrollTop = logEl.scrollHeight;
+  if (type === 'busy') busyLine = line;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const url        = document.getElementById('url').value.trim();
+  const company    = document.getElementById('company').value.trim();
+  const industry   = document.getElementById('industry').value.trim();
+  const apiKey     = hasServerKey ? '' : (document.getElementById('apikey')?.value.trim() || '');
+  if (!url) return;
+
+  submitBtn.disabled     = true;
+  submitBtn.textContent  = 'Wird erstellt …';
+  resultEl.classList.remove('show');
+  resetLog();
+  addLog('Verbindung wird aufgebaut …', 'busy');
+
+  try {
+    const res = await fetch('/api/entwurf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, companyName: company, industry, apiKey }),
+    });
+
+    if (!res.ok) {
+      const d = await res.json().catch(() => ({ message: 'Serverfehler' }));
+      throw new Error(d.message || 'Serverfehler');
+    }
+
+    const reader  = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer    = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const events = buffer.split('\n\n');
+      buffer = events.pop() || '';
+
+      for (const evt of events) {
+        let eventType = 'message', dataStr = '';
+        for (const l of evt.split('\n')) {
+          if (l.startsWith('event:')) eventType = l.slice(6).trim();
+          if (l.startsWith('data:')) dataStr += l.slice(5).trim();
+        }
+        if (!dataStr) continue;
+        const data = JSON.parse(dataStr);
+
+        if (eventType === 'progress') addLog(data.message, 'busy');
+        else if (eventType === 'done') {
+          addLog('Entwurf erfolgreich erstellt.', 'ok');
+          showResult(data);
+          const date = new Date().toLocaleDateString('de-DE');
+          addToHistory({
+            url, name: data.meta?.name || company || url,
+            date, filename: data.filename, html: data.html, meta: data.meta,
+          });
+        }
+        else if (eventType === 'error') addLog('Fehler: ' + data.message, 'err');
+      }
+    }
+  } catch (err) {
+    addLog('Fehler: ' + err.message, 'err');
+  } finally {
+    submitBtn.disabled    = false;
+    submitBtn.innerHTML   = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Entwurf erstellen`;
+    if (busyLine) {
+      busyLine.querySelector('.ico').innerHTML = '✓';
+      busyLine.classList.replace('busy', 'ok');
+      busyLine = null;
+    }
+  }
+});
+
+function showResult(data) {
+  currentHtml     = data.html  || '';
+  currentFilename = data.filename || 'entwurf.html';
+  const m         = data.meta  || {};
+
+  metaGrid.innerHTML = '';
+  const items = [
+    ['Firma',     m.name    || '—'],
+    ['Telefon',   m.phone   || '—'],
+    ['E-Mail',    m.email   || '—'],
+    ['Bilder',    m.images  ?? '—'],
+    ['Headlines', m.headings ?? '—'],
+    ['Absätze',   m.paragraphs ?? '—'],
+  ];
+  items.forEach(([k, v]) => {
+    const div = document.createElement('div');
+    div.className = 'meta-item';
+    div.innerHTML = `<div class="k"></div><div class="v" title="${v}"></div>`;
+    div.querySelector('.k').textContent = k;
+    div.querySelector('.v').textContent = v;
+    metaGrid.appendChild(div);
+  });
+
+  document.getElementById('resultTitle').textContent = m.name || 'Entwurf fertig';
+  document.getElementById('resultSub').textContent   = currentFilename;
+  previewEl.srcdoc = currentHtml;
+  resultEl.classList.add('show');
+  resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Download / Open / Copy Link ──────────────────────────────────────────────
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const blob = new Blob([currentHtml], { type: 'text/html;charset=utf-8' });
+  const a    = document.createElement('a');
+  a.href     = URL.createObjectURL(blob);
+  a.download = currentFilename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('openBtn').addEventListener('click', () => {
+  const blob = new Blob([currentHtml], { type: 'text/html;charset=utf-8' });
+  window.open(URL.createObjectURL(blob), '_blank');
+});
+
+document.getElementById('copyLinkBtn').addEventListener('click', async () => {
+  const btn  = document.getElementById('copyLinkBtn');
+  const blob = new Blob([currentHtml], { type: 'text/html' });
+  try {
+    await navigator.clipboard.write([new ClipboardItem({ 'text/plain': new Blob([currentHtml], {type:'text/plain'}) })]);
+    btn.textContent = 'Kopiert ✓';
+    setTimeout(() => { btn.textContent = 'Link kopieren'; }, 2000);
+  } catch {
+    // Fallback: URL in die Zwischenablage (funktioniert nicht perfekt, aber besser als nichts)
+    btn.textContent = '— nicht möglich';
+    setTimeout(() => { btn.textContent = 'Link kopieren'; }, 2000);
+  }
+});
+</script>
+</body>
+</html>
