@@ -38,7 +38,7 @@ const fmtDate = (d: Date) =>
       {featured && (
         <a href={`/blog/${featured.slug}`} class="blog-featured">
           <div class="blog-featured-body">
-            <span class="blog-cat">{featured.data.category}</span>
+            <span class="blog-cat" aria-label={`Kategorie: ${featured.data.category}`}>{featured.data.category}</span>
             <h2 class="blog-featured-title">{featured.data.title}</h2>
             <p class="blog-featured-desc">{featured.data.description}</p>
             <div class="blog-meta">
@@ -54,7 +54,7 @@ const fmtDate = (d: Date) =>
         {rest.map((post) => (
           <li>
             <a href={`/blog/${post.slug}`} class="blog-card">
-              <span class="blog-cat">{post.data.category}</span>
+              <span class="blog-cat" aria-label={`Kategorie: ${post.data.category}`}>{post.data.category}</span>
               <h3 class="blog-card-title">{post.data.title}</h3>
               <p class="blog-card-desc">{post.data.description}</p>
               <div class="blog-meta">
