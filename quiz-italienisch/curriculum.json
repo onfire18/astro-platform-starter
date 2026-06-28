@@ -64,6 +64,66 @@
         { "emoji": "🍷", "de": "Wein",    "it": "il vino" },
         { "emoji": "🍦", "de": "Eis",     "it": "il gelato" }
       ]
+    },
+    {
+      "theme": "Reisen",
+      "words": [
+        { "emoji": "✈️", "de": "Flugzeug", "it": "l'aereo",     "hook": true },
+        { "emoji": "🧳", "de": "Koffer",   "it": "la valigia" },
+        { "emoji": "🏨", "de": "Hotel",    "it": "l'albergo" },
+        { "emoji": "🗺️", "de": "Karte",    "it": "la mappa" },
+        { "emoji": "🚆", "de": "Zug",      "it": "il treno" },
+        { "emoji": "🏖️", "de": "Strand",   "it": "la spiaggia" },
+        { "emoji": "🎫", "de": "Ticket",   "it": "il biglietto" }
+      ]
+    },
+    {
+      "theme": "Zahlen",
+      "words": [
+        { "emoji": "1️⃣", "de": "eins",   "it": "uno",     "hook": true },
+        { "emoji": "2️⃣", "de": "zwei",   "it": "due" },
+        { "emoji": "3️⃣", "de": "drei",   "it": "tre" },
+        { "emoji": "4️⃣", "de": "vier",   "it": "quattro" },
+        { "emoji": "5️⃣", "de": "fünf",   "it": "cinque" },
+        { "emoji": "6️⃣", "de": "sechs",  "it": "sei" },
+        { "emoji": "7️⃣", "de": "sieben", "it": "sette" }
+      ]
+    },
+    {
+      "theme": "Smalltalk",
+      "words": [
+        { "emoji": "👋", "de": "Hallo",       "it": "Ciao",     "hook": true },
+        { "emoji": "🙏", "de": "Danke",       "it": "Grazie" },
+        { "emoji": "🤝", "de": "Bitte",       "it": "Prego" },
+        { "emoji": "❓", "de": "Wie geht's?", "it": "Come stai?" },
+        { "emoji": "😊", "de": "Gut",         "it": "Bene" },
+        { "emoji": "👋", "de": "Tschüss",     "it": "Arrivederci" },
+        { "emoji": "🤔", "de": "Vielleicht",  "it": "Forse" }
+      ]
+    },
+    {
+      "theme": "Jugendsprache 2",
+      "words": [
+        { "emoji": "💪", "de": "flexen",     "it": "flexare",     "hook": true },
+        { "emoji": "😬", "de": "cringe",     "it": "cringe" },
+        { "emoji": "🕵️", "de": "verdächtig", "it": "losco" },
+        { "emoji": "🔥", "de": "lit",        "it": "una figata" },
+        { "emoji": "🫡", "de": "Ehrenmann",  "it": "un mito" },
+        { "emoji": "🤞", "de": "Ich schwör", "it": "giuro" },
+        { "emoji": "😎", "de": "alles safe", "it": "tranqui" }
+      ]
+    },
+    {
+      "theme": "Im Restaurant",
+      "words": [
+        { "emoji": "🧾", "de": "Rechnung", "it": "il conto",     "hook": true },
+        { "emoji": "🍴", "de": "Gabel",    "it": "la forchetta" },
+        { "emoji": "🥄", "de": "Löffel",   "it": "il cucchiaio" },
+        { "emoji": "🔪", "de": "Messer",   "it": "il coltello" },
+        { "emoji": "🧂", "de": "Salz",     "it": "il sale" },
+        { "emoji": "💧", "de": "Wasser",   "it": "l'acqua" },
+        { "emoji": "🥖", "de": "Brot",     "it": "il pane" }
+      ]
     }
   ]
 }
