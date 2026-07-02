@@ -58,8 +58,10 @@ const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${SITE.url}${ogImage}`} />
 
-    <!-- Favicon -->
+    <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon-md.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0A0A0A" />
 
     <!-- Structured Data: WebSite -->
     <script type="application/ld+json" set:html={JSON.stringify({
