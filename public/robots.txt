@@ -1,6 +1,19 @@
 User-agent: *
 Allow: /
 
+# API-Routen
 Disallow: /api/
+
+# Interne Tools (PIN-geschützt, nicht für Suchmaschinen)
+Disallow: /tools/
+
+# Starter-/Demo-Seiten (kein öffentlicher Inhalt)
+Disallow: /crm/
+Disallow: /invoice/
+Disallow: /instagram/
+Disallow: /blobs/
+Disallow: /edge/
+Disallow: /image-cdn
+Disallow: /revalidation
 
 Sitemap: https://mediadrift.de/sitemap.xml
