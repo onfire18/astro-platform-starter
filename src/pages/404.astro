@@ -20,13 +20,20 @@ export const prerender = true;
         <a href="/" class="md-btn md-btn-primary">Zur Startseite</a>
         <a href="/#kontakt" class="md-btn md-btn-outline">Kontakt aufnehmen</a>
       </div>
+      <nav class="not-found-links" aria-label="Beliebte Seiten">
+        <span>Oder direkt zu:</span>
+        <a href="/webdesign">Webdesign</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/blog">Blog</a>
+        <a href="/vertrieb">Vertriebspartner</a>
+      </nav>
     </div>
   </div>
 </MDLayout>
 
 <style>
   .not-found {
-    min-height: 70vh;
+    min-height: 70dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,5 +76,30 @@ export const prerender = true;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .not-found-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--md-border);
+    font-size: 0.9rem;
+  }
+  .not-found-links span { color: var(--md-subtle); }
+  .not-found-links a {
+    color: var(--md-cta);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 160ms var(--ease-out);
+  }
+  .not-found-links a:hover { color: var(--md-cta-dark); text-decoration: underline; }
+  .not-found-links a:focus-visible {
+    outline: 2px solid var(--md-cta);
+    outline-offset: 2px;
+    border-radius: 3px;
   }
 </style>
