@@ -10,7 +10,7 @@
   --md-muted: #486172;
   --md-border: #C8D8E8;
   --md-text: #0B1828;
-  --md-subtle: #6280A0;
+  --md-subtle: #54718E; /* WCAG AA: 4.53:1 auf --md-bg, 5.09:1 auf Weiß (vorher #6280A0 = 3.66:1) */
   --md-accent: #D0E6FF;
   --nav-h: 72px;
   /* Easing curves (Emil Kowalski) */
