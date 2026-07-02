@@ -119,6 +119,13 @@ const waSales = whatsappUrl('sales');
     right: 1.5rem;
     z-index: 8000;
     font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+    transition: bottom 300ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  /* Wird per JS gesetzt, wenn die Mobile-Sticky-Bar eingeblendet ist */
+  @media (max-width: 900px) {
+    :global(#assistant-widget.lift-for-bar) {
+      bottom: calc(4.4rem + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   .assistant-trigger {

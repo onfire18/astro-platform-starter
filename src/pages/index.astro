@@ -3139,10 +3139,20 @@ const faqSchema = {
     padding: 0.8rem 1.25rem calc(0.8rem + env(safe-area-inset-bottom, 0px));
     box-shadow: 0 -4px 24px rgba(15,23,42,0.08);
     transform: translateY(100%);
-    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
+    visibility: hidden; /* versteckt = nicht tabbbar */
+    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1), visibility 0s 400ms;
   }
   .mobile-sticky-bar.is-visible {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1), visibility 0s;
+  }
+  /* Schwebende Elemente über die eingeblendete Bar heben (Mobil) */
+  @media (max-width: 900px) {
+    .floating-contact.lift-for-bar {
+      bottom: calc(4.4rem + env(safe-area-inset-bottom, 0px));
+      transition: bottom 300ms cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s, transform 0.3s;
+    }
   }
   .mobile-sticky-cta {
     flex: 1;
@@ -3476,9 +3486,15 @@ const faqSchema = {
     const bar = document.getElementById('mobile-sticky-bar');
     const hero = document.querySelector('.hero');
     if (!bar || !hero || window.innerWidth > 900) return;
+    const floating = document.getElementById('floating-contact');
+    const assistant = document.getElementById('assistant-widget');
     const show = () => {
       const past = window.scrollY > (hero as HTMLElement).offsetHeight * 0.6;
       bar.classList.toggle('is-visible', past);
+      bar.setAttribute('aria-hidden', String(!past));
+      // Schwebende Elemente anheben, damit die Bar sie nicht überdeckt
+      floating?.classList.toggle('lift-for-bar', past);
+      assistant?.classList.toggle('lift-for-bar', past);
     };
     window.addEventListener('scroll', show, { passive: true });
     show();
