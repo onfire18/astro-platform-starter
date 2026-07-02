@@ -53,20 +53,30 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C5 | `cbbe063` | Blog-Kategorie-Chips mit `aria-label="Kategorie: …"` |
 | C6 | `e54e3da` | Aktive-Seite-Markierung + `aria-current` im Mobile-Menü (Parität zur Desktop-Nav) |
 | C7 | `fc96f01` | 404-Seite: Direktlinks zu Hauptseiten, `70dvh`, Focus-Outlines |
+| C8 | `29f8748` | Report-Meilenstein (Phase-C-Log C1–C7) |
+| C9 | `fa58670` | `IconWhatsApp.astro`-Komponente — 11 duplizierte Inline-SVGs ersetzt (index 5×, vertrieb 4×, ueber-uns, Footer) |
+| C10 | `560bb6d` | `--md-subtle` verdunkelt auf #54718E — WCAG AA bestanden (4.53:1 auf bg, vorher 3.66:1) |
+| C11 | `b1f3332` | Blog-Artikel: Blog-OG-Bild, Focus-States auf Links, Related-Grid-Breakpoint-Parität (1100px) |
+| C12 | `c4b9e95` | aria-hidden-Focus-Trap im Hero-Slider behoben (fokussierbare Controls waren für Screenreader versteckt — WCAG 4.1.2) |
+| C13 | `a1e48a3` | robots.txt: interne Tools (/tools/) + Starter-Demo-Seiten (crm, invoice, blobs, edge, …) für Crawler gesperrt |
+| C14 | `5401f5b` | apple-touch-icon (180×180 aus Logo generiert) + theme-color #0A0A0A im Head |
+| C15 | `6bd0e5e` | Roving-Tabindex auf Branchen-Tabs (WAI-ARIA-Tabs-Pattern vervollständigt) |
+
+**Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
 ## Verbleibende Empfehlungen (Backlog für weitere Durchgänge)
 
 1. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User)
-2. **SVG-Icon-Komponente** — WhatsApp-Icon u.a. sind mehrfach dupliziert (vertrieb.astro allein 4×); `Icon.astro` extrahieren
-3. **Kontrast-Audit** der Subtle-Töne (`--md-subtle` auf `--md-bg`) gegen WCAG AA
-4. **Blog-Einzelartikel** (`[...slug].astro`) gegen die gleichen Kriterien auditieren
-5. **Impressum/Datenschutz/AGB** Konsistenz-Check (Fonts, Farben, Focus-States)
+2. **tools/entwurf-Seite** a11y/Politur-Audit (PIN-Screen, Formular, Verlauf)
+3. **Assistant-Chat-Widget** Feinschliff (Antwort-Flows, Motion-Politur)
+4. **Sticky-Mobile-Bar & Floating-Contact** auf Überdeckung/Kontrast prüfen
+5. **Blog-Inhalte**: weitere Artikel wären SEO-wirksamer als weitere Code-Politur
 
 ---
 
-## Zusammenfassung (Stand C7)
+## Zusammenfassung (Stand C16)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 7 Iterationen (laufend)
-- **21 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 16 Iterationen (laufend)
+- **30 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
 - **Kein PR** erstellt (wie gewünscht) · **Branch:** `claude/website-deployment-security-dpw830`
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
