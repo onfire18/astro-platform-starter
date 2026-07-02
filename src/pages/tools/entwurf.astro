@@ -129,6 +129,18 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
     .history-del:hover { color: var(--err); background: rgba(220,38,38,.08); }
 
     footer { text-align: center; margin-top: 2.5rem; font-size: .8rem; color: var(--subtle); }
+
+    /* Sichtbarer Tastatur-Fokus */
+    .btn:focus-visible,
+    .history-del:focus-visible {
+      outline: 2px solid var(--cta, #1455A8);
+      outline-offset: 2px;
+    }
+    input:focus-visible {
+      outline: 2px solid var(--cta, #1455A8);
+      outline-offset: 1px;
+      border-color: var(--cta, #1455A8);
+    }
   </style>
 </head>
 <body>
@@ -142,8 +154,8 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
     </div>
     <h2>Internes Tool</h2>
     <p>Bitte PIN eingeben, um den Entwurf-Generator zu nutzen.</p>
-    <input id="pinInput" class="pin-input" type="password" placeholder="PIN" autocomplete="current-password" />
-    <p class="pin-err" id="pinErr">&nbsp;</p>
+    <input id="pinInput" class="pin-input" type="password" placeholder="PIN" aria-label="PIN eingeben" autocomplete="current-password" />
+    <p class="pin-err" id="pinErr" role="alert" aria-live="assertive">&nbsp;</p>
     <button class="btn btn-primary" id="pinBtn" style="margin-top:.5rem">Anmelden</button>
   </div>
 </div>
@@ -193,7 +205,7 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
       </div>
     </form>
 
-    <div class="log" id="log"></div>
+    <div class="log" id="log" role="log" aria-live="polite" aria-label="Fortschritt"></div>
 
     <div class="result" id="result">
       <div class="meta-grid" id="metaGrid"></div>
