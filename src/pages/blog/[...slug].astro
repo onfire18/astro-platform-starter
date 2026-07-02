@@ -89,7 +89,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<MDLayout title={post.data.title} description={post.data.description} canonical={url} ogType="article">
+<MDLayout title={post.data.title} description={post.data.description} canonical={url} ogType="article" ogImage="/images/og/blog.jpg">
   <article class="article">
     <!-- Header -->
     <header class="article-hero">
@@ -204,6 +204,16 @@ const breadcrumbSchema = {
   .article-body :global(p) { margin: 0 0 1.4rem; }
   .article-body :global(a) { color: var(--md-cta); text-decoration: underline; text-underline-offset: 2px; }
   .article-body :global(a:hover) { color: var(--md-cta-dark); }
+  .article-body :global(a:focus-visible) {
+    outline: 2px solid var(--md-cta);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .article-breadcrumb a:focus-visible {
+    outline: 2px solid #60A5FA;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
   .article-body :global(ul),
   .article-body :global(ol) { margin: 0 0 1.5rem; padding-left: 1.4rem; }
   .article-body :global(li) { margin-bottom: 0.6rem; }
@@ -276,6 +286,6 @@ const breadcrumbSchema = {
   .blog-card { display: flex; flex-direction: column; height: 100%; }
   .blog-card-title { font-size: 1.15rem; line-height: 1.25; color: var(--md-primary); margin-bottom: 0.6rem; text-wrap: balance; }
   .blog-card-desc { color: var(--md-muted); font-size: 0.9rem; line-height: 1.6; flex: 1; }
-  @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1100px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
 </style>
