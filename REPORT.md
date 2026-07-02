@@ -40,21 +40,33 @@
 
 ---
 
-## Verbleibende Empfehlungen (nicht im Loop umgesetzt)
+## Phase C — Dauerhafter Verbesserungs-Loop (läuft)
 
-Diese Punkte wurden identifiziert, aber bewusst ausgespart, weil sie Inhalte oder externe Ressourcen erfordern:
+Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt nur auf User-„stopp".
 
-1. **OG-Bilder pro Seite** (höchste SEO-Wirkung) — braucht echte 1200×630px Screenshots der Seiten
-2. **SVG-Icon-Komponente** — sinnvoll ab ~3x Code-Duplizierung; derzeit noch vertretbar
-3. **Erweiterte Alt-Texte auf Referenz-Screenshots** — beschreiben was auf dem Screenshot zu sehen ist, nicht nur der Seitenname
-4. **Blog-Kategorie-Tags** semantisch als `<p>` oder `role="doc-subtitle"` statt `<span>`
-5. **Echte Paul-Fotos** für Vertrieb-Seite: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg`
+| Iter | Commit | Was |
+|------|--------|-----|
+| C1 | `030c4c2` | Beschreibende Alt-Texte auf Referenz-Screenshots (SEO + A11y) |
+| C2 | `a44f44e` | On-brand Platzhalter-Bilder (sharp): Paul-Porträt + 2 Testimonial-Avatare — externe KI-Bilddienste sind netzwerkseitig blockiert |
+| C3 | `76fcc80` | 5 Raster-OG-Bilder (1200×630 JPG) pro Seite verdrahtet (SVG-OG wird sozial nicht angezeigt) + `WEBSITE-BLUEPRINT.md` Übergabe-Dokument |
+| C4 | `dd4f2df` | Individualitäts-Mandat (§0) im Blueprint: Cobalt/Outfit = nur MediaDrift-Identität, keine Vorlage für Kundenseiten |
+| C5 | `cbbe063` | Blog-Kategorie-Chips mit `aria-label="Kategorie: …"` |
+| C6 | `e54e3da` | Aktive-Seite-Markierung + `aria-current` im Mobile-Menü (Parität zur Desktop-Nav) |
+| C7 | `fc96f01` | 404-Seite: Direktlinks zu Hauptseiten, `70dvh`, Focus-Outlines |
+
+## Verbleibende Empfehlungen (Backlog für weitere Durchgänge)
+
+1. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User)
+2. **SVG-Icon-Komponente** — WhatsApp-Icon u.a. sind mehrfach dupliziert (vertrieb.astro allein 4×); `Icon.astro` extrahieren
+3. **Kontrast-Audit** der Subtle-Töne (`--md-subtle` auf `--md-bg`) gegen WCAG AA
+4. **Blog-Einzelartikel** (`[...slug].astro`) gegen die gleichen Kriterien auditieren
+5. **Impressum/Datenschutz/AGB** Konsistenz-Check (Fonts, Farben, Focus-States)
 
 ---
 
-## Zusammenfassung
+## Zusammenfassung (Stand C7)
 
-- **14 Commits**, alle gebaut (0 Build-Fehler), alle gepusht
-- **Kein PR** erstellt (wie gewünscht)
-- **Branch:** `claude/website-deployment-security-dpw830`
-- **Loop-Ende:** nach B8, wie geplant
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 7 Iterationen (laufend)
+- **21 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Kein PR** erstellt (wie gewünscht) · **Branch:** `claude/website-deployment-security-dpw830`
+- **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
