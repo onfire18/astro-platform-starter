@@ -121,10 +121,10 @@ besetzt, bekommt die Empfehlungen. Geschwindigkeit ist gerade wichtiger als Perf
 
 ## 8. Konsequenzen für die Landingpage (offene To-dos)
 
-- [ ] **Beweis-Dreiklang einbauen:** „Vor Ort voll → Video viral → Laden voller" als Ergebnis-Geschichte(n), sobald Zahlen/Videos da sind (stärkster Hebel gegen Einwand 1).
-- [ ] **FAQ-/Vertrauens-Sektion vor dem finalen CTA:** die zwei echten Einwände beantworten, inkl. Freigabe-Versprechen (Hebel gegen Einwand 2).
-- [ ] **Publikums-Argument ergänzen:** „Unsere Formate erreichen 16–50 — genau eure Kundschaft" (z. B. bei den Zahlen).
-- [ ] **Beispielvideos Gastro-first** befüllen (Burger King zuerst — zahlt auf den Wunschkunden Franchise ein).
+- [x] **Beweis-Dreiklang einbauen:** qualitativ umgesetzt als Intro über den Zahlen („Plätze gefüllt, Videos viral, Läden voller"); konkrete Zahlen/Videos folgen über PLATZHALTER.md.
+- [x] **FAQ-/Vertrauens-Sektion vor dem finalen CTA:** Sektion „Ehrliche Antworten" mit den zwei echten Einwänden + Recht + Preis, inkl. Freigabe-Versprechen.
+- [x] **Publikums-Argument ergänzt:** „…bei einem Publikum von 16 bis 50. Genau eure Kundschaft." in der Zahlen-Sektion.
+- [x] **Beispiele Gastro-first sortiert** (Burger King zuerst); Videodateien selbst folgen über PLATZHALTER.md.
 - [ ] Sektion „Für wen?" bleibt breit ✓ — Ansprache und Beispiele aber Gastro-first.
 - [ ] Kein Preis auf der Seite ✓ — bereits umgesetzt.
 

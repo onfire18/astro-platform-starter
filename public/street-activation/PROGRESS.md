@@ -28,6 +28,15 @@ Checkliste (Definition of Done). Fertig = alles `[x]`.
 - [x] `PLATZHALTER.md` vollständig (alles Fehlende gelistet) — Alle Videos, Zahlen, Logo, Links, Kontakt und Rechtstexte als Einkaufsliste dokumentiert.
 - [x] DSGVO-Check gelaufen (falls Skill da) + Findings behoben — Eigener DSGVO-Skill nicht verfügbar → manuell geprüft: kein Tracking, keine Cookies, keine Auto-Embeds von Drittanbietern, Buchungs-Tool nur als externer Link, Rechtsseiten verlinkt. Offener Punkt (Google Fonts lokal hosten) in PLATZHALTER.md dokumentiert.
 
+## Optimierung Runde 2 (auf Basis Zielgruppenanalyse + Recherche)
+- [x] Duo-Sektion „Strategie trifft Straße" — Isabelle (Marke & Produktion) × Paul (Reichweite & Energie) mit Foto-Platzhaltern, Kurzprofilen und Links zu beiden Agenturen + Instagram.
+- [x] FAQ-Sektion „Ehrliche Antworten" vor dem finalen CTA — beantwortet die zwei echten Einwände (Wirkung, Angst) plus Recht & Preis; native <details>-Elemente, barrierearm.
+- [x] Beweis-Dreiklang + Publikums-Argument — Intro über den Zahlen: „Plätze gefüllt, Videos viral, Läden voller — Publikum 16 bis 50."
+- [x] Lokale Verankerung — „München & Umgebung" in Hero, Footer, title und Meta-Description (als zu bestätigender Punkt in PLATZHALTER.md notiert).
+- [x] Footer-Partner-Zeile — „Eine Zusammenarbeit von wir-machen-content.de × mediadrift.org" + beide Instagram-Handles.
+- [x] Beispiele Gastro-first sortiert — Burger King, Pommes, Pizza, Cookie Shop vor Forum und Fitnessstudio (Kernzielgruppe zuerst).
+- [x] Browser-Check wiederholt — kein horizontaler Scroll bei 360px, eine <h1>, FAQ auf/zu funktioniert, reduced-motion ok.
+
 ## Wirkung
 - [x] „30-Sekunden-Test" — Hero-Botschaft + Hook + Video-Play + Zahlen-Kacheln stehen in den ersten zwei Scroll-Screens; ein einziges Ziel (Erstgespräch) von der Navigation bis zum CTA.
 - [x] Es liest sich wie eine Sales-Page, nicht wie eine Agentur-Website — Kein Menü, keine Leistungsübersicht, eine durchgehende Argumentationslinie Richtung CTA.

@@ -20,7 +20,8 @@ fehlende Inhalte werden sauber als Platzhalter angezeigt.
 - [ ] Sektion 6 — Was: Beispielvideo Fitnessstudio — Format: wie oben → `assets/videos/beispiel-fitnessstudio.mp4` (+ Poster `assets/poster/beispiel-fitnessstudio.jpg`)
 
 ## Fotos
-- [ ] Fotos Isabelle & Paul — Was: aktuell nicht auf der Seite eingebaut (Sales-Page lebt von den Videos). Optional für Impressum/„Über uns"-Erweiterung bereithalten — Format: JPG 1200×800
+- [ ] Sektion „Strategie trifft Straße" — Was: Foto Isabelle (authentisch, gern beim Dreh) — Format: JPG ca. 1200×900 (4:3) → `assets/images/isabelle.jpg`, dann im HTML den `duo-foto`-Platzhalter durch `<img src="assets/images/isabelle.jpg" alt="Isabelle Wurm" loading="lazy">` ersetzen
+- [ ] Sektion „Strategie trifft Straße" — Was: Foto Paul (authentisch, gern beim Dreh) — Format: JPG ca. 1200×900 (4:3) → `assets/images/paul.jpg`, gleicher Einbau wie bei Isabelle
 
 ## Zahlen (Sektion 8 — alle in `js/main.js`, Konstante `ZAHLEN` eintragen)
 - [ ] Sektion 8 — Was: Views in Mio. (nur Zahl, z. B. 12) — Format: Zahl → `views`
@@ -33,6 +34,10 @@ fehlende Inhalte werden sauber als Platzhalter angezeigt.
 - [ ] Alle Buttons — Was: Buchungs-Link (Calendly o. Ä.) für „Kostenloses Erstgespräch buchen". Nur an **einer** Stelle eintragen: `js/main.js`, Konstante `BUCHUNGS_LINK` — Format: URL (https://…)
 - [ ] Footer — Was: E-Mail-Adresse — Format: Text, in `index.html` im Footer ersetzen
 - [ ] Footer — Was: Telefonnummer — Format: Text, in `index.html` im Footer ersetzen (Mediadrift-Bezug optional: mediadrift.org · +49 0159 05405185 steht schon als Vorschlag drin)
+
+## Zu bestätigen (aus Recherche übernommen)
+- [ ] Standort-Angabe „München & Umgebung" — Was: steht jetzt im Hero, Footer und in den SEO-Tags (aus der Recherche abgeleitet: Isabelles Agentur sitzt in München). Falls euer Einzugsgebiet anders heißt, an diesen 4 Stellen in `index.html` ändern — Format: Text
+- [ ] Partner-Links im Footer & in der Duo-Sektion — Was: wir-machen-content.de, mediadrift.org, @wir_machen_content.de, @paultosuccess sind verlinkt. Bitte prüfen, ob alle 4 Links/Handles so stimmen — Format: URLs prüfen
 
 ## Recht (DSGVO)
 - [ ] impressum.html — Was: Anbieter, Anschrift, Kontakt, Verantwortlicher, ggf. USt-IdNr., EU-Streitschlichtung — Format: Text in die `[PLATZHALTER]`-Blöcke

@@ -86,8 +86,8 @@ Einwände ab, die laut Zielgruppenanalyse jeden Deal entscheiden:
 
 ## 4. Konsequenzen für die Landingpage (To-dos aus der Recherche)
 
-- [ ] **Footer/„Powered by"-Zeile konkretisieren:** „Eine Zusammenarbeit von wir-machen-content.de × Mediadrift" mit Links auf beide Websites — ersetzt den bisherigen generischen Mediadrift-Platzhalter.
-- [ ] **Sektion „Warum wir?" personalisieren (optional):** Die zwei Profile als Duo-Argument („Strategie trifft Straße") — Isabelle = Marke & Produktion, Paul = Reichweite & Energie. Passt zu den vorgesehenen Foto-Platzhaltern.
+- [x] **Footer/„Powered by"-Zeile konkretisiert:** „Eine Zusammenarbeit von wir-machen-content.de × mediadrift.org" mit Links + beide Instagram-Handles im Footer.
+- [x] **Duo-Sektion „Strategie trifft Straße" eingebaut:** Isabelle = Marke & Produktion, Paul = Reichweite & Energie, mit Foto-Platzhaltern und Links.
 - [ ] **Impressum klären:** Wer ist Anbieter der Street-Activation-Seite — eine der beiden Firmen, beide (GbR?) oder Paul allein? Muss vor Veröffentlichung entschieden werden (Platzhalter existiert bereits).
 - [ ] **Kontakt vereinheitlichen:** Welche E-Mail/Telefonnummer gilt für Street Activation? (Vorhanden: info@wir-machen-content.de, +49 0159 05405185, media.drift.business@gmail.com.)
 - [ ] **Referenz-Brücke nutzen:** Isabelles Kunden (Mittelstand/Kliniken/Marken) als Vertrauens-Logos prüfen, auch wenn sie keine Street-Formate waren — „bekannt aus der Zusammenarbeit mit…" nur, wenn sauber freigegeben.
