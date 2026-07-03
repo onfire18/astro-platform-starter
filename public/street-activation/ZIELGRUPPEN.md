@@ -1,139 +1,139 @@
 # Zielgruppenanalyse — Street Activation (Isabelle & Paul)
 
-Stand: Juli 2026 · Arbeitsdokument für Positionierung, Landingpage-Texte und Akquise.
+Stand: Juli 2026 · Gemeinsam mit Paul im Frage-Antwort-Verfahren erarbeitet.
+Grundlage für Positionierung, Landingpage-Texte, Preisgespräche und Akquise.
 
 ---
 
-## 1. Grundsatz: Wer kauft hier eigentlich?
+## 1. Ausgangslage (Fakten aus den Antworten)
 
-Street Activation ist ein **B2B-Angebot mit B2C-Wirkung**: Bezahlt wird von lokalen
-Unternehmen, wirken muss es auf deren Endkunden. Die Landingpage muss also den
-**Entscheider** überzeugen — und das ist in fast allen Fällen:
-
-- **Inhaberin / Inhaber** eines lokalen Betriebs (Gastro, Fitness, Handwerk) — entscheidet
-  allein, oft aus dem Bauch, schnell.
-- **Marketing-/Center-Management** (Shopping Center, Freizeitparks, Ketten) — entscheidet
-  im Team, braucht Argumente „nach oben", längerer Vorlauf, aber größeres Budget.
-
-Das sind zwei sehr unterschiedliche Kaufprozesse. Die Seite spricht aktuell (richtig!) den
-Inhaber-Typ an. Für Center & Parks braucht es später eher ein PDF/Deck fürs Weiterleiten.
-
----
-
-## 2. Segmente nach Priorität
-
-### Prio A — Gastronomie: Restaurants, Cafés, Bäckereien, Imbisse, Cookie-/Snack-Shops
-- **Warum zuerst:** Produkt ist sichtbar, emotional und günstig zu zeigen. Formate passen
-  perfekt (Blindtest, Schätzfragen, Ranking „beste Pommes der Stadt"). Erfolg ist direkt
-  spürbar: mehr Laufkundschaft am Wochenende danach.
-- **Entscheidung:** Inhaber, oft in einem einzigen Gespräch. Ticketgröße klein bis mittel.
-- **Beweis auf der Seite:** Beispiele Burger King, Cookie Shop, Pommes, Pizza zahlen genau
-  hierauf ein — das stärkste Segment ist schon am besten belegt.
-
-### Prio B — Fitnessstudios
-- **Warum stark:** Challenges (Liegestütze, Wettbewerbe) sind das natürliche Format.
-  Mitgliedschaften bedeuten hohen Kundenwert — schon wenige Neuanmeldungen rechtfertigen
-  das Budget. Studios denken bereits in Content und Community.
-- **Entscheidung:** Studioleitung/Inhaber; bei Ketten die Marketingzentrale.
-- **Besonderheit:** Erfolg messbar machen (Probetrainings, Anmeldungen) — das Argument
-  „hoher Kundenwert pro Abschluss" gehört ins Erstgespräch.
-
-### Prio C — Shopping Center & Freizeitparks
-- **Warum attraktiv:** Größte Budgets, Bedarf an Frequenz-Events, Street Activation ist
-  gleichzeitig Live-Event vor Ort UND Content. Das Forum-Beispiel belegt das Segment.
-- **Aber:** Entscheider ist angestelltes Marketing-Management → braucht Absicherung,
-  Referenzen, saubere Abwicklung (Drehgenehmigungen, Einverständniserklärungen der
-  Gefilmten!). Vorlauf Wochen statt Tage.
-- **Konsequenz:** Nicht der Fokus der Landingpage, aber ein eigenes Referenz-Argument wert.
-
-### Prio D — Friseure & kleine Dienstleister
-- Kleines Budget, Einzelentscheider, eher Mitnahme-Geschäft über Empfehlungen, wenn die
-  Maschine läuft. Auf der Seite als Chip vorhanden — reicht. Keine aktive Akquise wert,
-  bis A/B ausgelastet sind.
-
----
-
-## 3. Personas (die drei Gesichter hinter den Segmenten)
-
-### „Der Gastronom" — Murat, 42, Burgerladen mit 2 Filialen
-- **Situation:** Läuft okay, aber Neueröffnung der Konkurrenz drückt. Hat 500–2.000 €/Monat
-  in Flyer, lokale Anzeigen oder Google Ads gesteckt — „gebracht hat's nix".
-- **Denkt:** „Instagram müsste man machen, aber ich steh nicht gern vor der Kamera und
-  meine Nichte postet nur Fotos vom Essen."
-- **Kauft, wenn:** Er Videos aus seiner Stadt sieht, die Reaktion echter Menschen zeigen,
-  und das Erstgespräch nichts kostet. Entscheidet emotional, am Handy, abends.
-- **Größte Angst:** Peinlich wirken. Geld verbrennen wie bei der letzten Agentur.
-
-### „Die Studioleiterin" — Jana, 33, inhabergeführtes Fitnessstudio
-- **Situation:** Januar-Geschäft trägt das Jahr, danach Flaute. Kennt Reels, hat selbst
-  schon Content probiert, aber keine Zeit und keine Reichweite.
-- **Denkt:** „Die großen Ketten haben Media-Budgets — ich brauche etwas, das knallt."
-- **Kauft, wenn:** Sie sieht, dass eine Challenge vor Ort gleichzeitig Event für die
-  Mitglieder UND Content ist. Rechnet nach: 10 neue Mitglieder × Jahresbeitrag.
-- **Größte Angst:** Dass nur Zuschauer kommen und keine Mitglieder.
-
-### „Der Center-Manager" — Herr Brandt, 51, Marketingleitung Einkaufszentrum
-- **Situation:** Frequenz sinkt seit Jahren, Budget für „Aktionen" ist da, aber jede
-  Ausgabe muss er gegenüber Center-Eigentümer begründen.
-- **Denkt:** „Klingt gut, aber wer haftet, wer holt die Einverständnisse ein, was bekomme
-  ich schwarz auf weiß?"
-- **Kauft, wenn:** Referenzen + professionelle Abwicklung + Reporting versprochen sind.
-- **Größte Angst:** Negativ-Viralität, rechtliche Probleme mit Gefilmten im Center.
-
----
-
-## 4. Gemeinsame Schmerzpunkte (darauf zahlt die Seite ein)
-
-1. **Klassische Werbung wirkt nicht mehr** — Flyer, Anzeigen, Radio: teuer, unmessbar.
-   → Deckt der Hook der Seite bereits perfekt ab („tausende Euro… und verlieren trotzdem").
-2. **Keine Zeit / kein Können für Social Media** — sie wissen, dass sie es „müssten".
-3. **Agentur-Skepsis** — viele wurden schon enttäuscht; Hochglanz-Versprechen schrecken ab.
-   → Deshalb ist die „keine Millionen-Views-Versprechen"-Regel nicht nur rechtlich klug,
-   sondern das zentrale Vertrauensargument.
-4. **Angst vor Kontrollverlust** — „Was, wenn Leute Blödes über uns sagen?" Die Seite
-   sollte das später aktiv entkräften (Auswahl/Schnitt liegt bei Isabelle & Paul).
-
-## 5. Kauf-Trigger (was den Ausschlag gibt)
-
-- **Lokalbezug:** „Die waren schon beim Forum / bei XY hier in der Stadt" schlägt jede Statistik.
-- **Menschen sehen Menschen:** Die Beispielvideos sind das wichtigste Verkaufsargument der
-  Seite — Priorität Nr. 1 aus PLATZHALTER.md.
-- **Null-Risiko-Einstieg:** Kostenloses Erstgespräch, keine Vertragsbindung im ersten Schritt.
-- **Konkurrenzdruck:** „Der Laden gegenüber war schon in so einem Video."
-
-## 6. Typische Einwände → Antworten (für Erstgespräch & spätere FAQ-Sektion)
-
-| Einwand | Antwort |
+| Thema | Antwort |
 |---|---|
-| „Bringt das wirklich Kunden — oder nur Klicks?" | Formate sind lokal: Wer zuschaut, wohnt hier. Ziel sind Besucher im Laden, nicht anonyme Reichweite. |
-| „Was, wenn das Video floppt?" | Es entsteht immer beides: Live-Aktion vor Ort (wirkt sofort) + Content. Kein Einzelvideo trägt das Risiko allein. |
-| „Was, wenn jemand was Negatives sagt?" | Auswahl, Schnitt und Freigabe sind Teil der Methode — nichts geht ungeprüft online. |
-| „Zu teuer für mich." | Vergleich mit dem, was bereits monatlich in wirkungslose Werbung fließt. |
-| „Dürfen die das überhaupt filmen?" | Einverständniserklärungen und Drehgenehmigungen sind Teil des Ablaufs (v. a. für Center wichtig). |
-
-## 7. Wo diese Zielgruppe erreichbar ist
-
-1. **Direkt vor Ort** — die Methode verkauft sich selbst: Nach jedem Dreh sind umliegende
-   Geschäfte die wärmsten Leads („Das könnt ihr auch für uns machen?").
-2. **Eigene Kanäle** (Instagram/TikTok) — jedes veröffentlichte Format ist zugleich Akquise.
-3. **Empfehlungen & lokale Netzwerke** — Gewerbevereine, City-Marketing, Unternehmerstammtische.
-4. Die Landingpage ist dabei kein Traffic-Magnet, sondern der **Abschluss-Ort**: der Link,
-   der nach dem ersten Kontakt aufs Handy geschickt wird. Genau dafür ist sie gebaut
-   (mobile-first, ein CTA).
-
-## 8. Konsequenzen für die Landingpage (To-dos, wenn gewünscht)
-
-- [ ] **Beispielvideos priorisieren:** Gastro-Beispiele zuerst besorgen (Prio-A-Segment) — wichtigster Hebel der Seite.
-- [ ] **Zahlen lokal denken:** Neben Views/Impressionen wirken „Teilnehmer" und „Unternehmen" auf diese Zielgruppe am stärksten — im Zweifel prominenter platzieren.
-- [ ] **Einwand-Sektion (FAQ) ergänzen:** Die 5 Einwände aus Punkt 6 als kompakte Fragen/Antworten vor dem finalen CTA — nimmt die letzte Kaufbremse.
-- [ ] **Sektion „Für wen?" umsortieren:** Reihenfolge nach Priorität (Gastro zuerst — ist bereits der Fall) beibehalten.
-- [ ] **Später für Prio C:** Einseitiges PDF/Deck zum Weiterleiten an Center-Entscheider (nicht Teil der Landingpage).
+| Markt | Großstadt (>500k) + Umkreis |
+| Bisherige Drehs | Shopping Center (Forum) + Gastro/Food |
+| Zielkunden | Mischung: kleine Läden UND große Player |
+| Modell | Monatspaket/Abo, Zielgröße 2.500–5.000 €/Monat, Preis je Kunde flexibel |
+| Kapazität | Mehr als 5 Kunden parallel möglich |
+| Eigene Kanäle | 10k–50k Follower (Instagram + TikTok) |
+| Publikum der Videos | Gemischt, ca. 16–50 Jahre |
+| Akquise bisher | Social-Media-DMs + Kontakte/Empfehlungen |
+| Bisherige Entscheider | Inhaber direkt + Filial-/Storeleitungen |
+| Bewiesene Ergebnisse | Virales Video ✓ · Mehr Kunden im Laden ✓ · Volles Event vor Ort ✓ |
+| Haupteinwände | Zweifel an der Wirkung · Angst/Unsicherheit |
+| Konkurrenz | Nur vereinzelt/halbherzig — Kategorie ist unbesetzt |
+| Wunschkunde | Gastro-Kette / Franchise |
 
 ---
 
-**Kurzfassung:** Kernzielgruppe ist der inhabergeführte lokale Betrieb mit Laufkundschaft —
-allen voran Gastronomie, dann Fitnessstudios. Er entscheidet schnell, emotional und am
-Handy, ist werbemüde und agentur-skeptisch. Er kauft keine „Reichweite", sondern das
-Gefühl „endlich redet die Stadt über meinen Laden" — bei null Risiko im ersten Schritt.
-Die Seite ist darauf bereits gut ausgerichtet; größter Hebel sind echte lokale
-Beispielvideos, danach eine kurze Einwand-/FAQ-Sektion.
+## 2. Die Kernzielgruppe (spitz formuliert)
+
+**Gastronomie-Entscheider in [Stadt] und Umkreis, vom inhabergeführten Laden bis zur
+Franchise-Filiale — mit dem Franchisenehmer als idealem Wunschkunden.**
+
+Warum der Franchisenehmer der Sweet Spot ist:
+- Er **entscheidet wie ein Inhaber** (schnell, persönlich, ohne Konzernfreigabe) —
+  genau der Entscheidertyp, mit dem ihr bisher erfolgreich verhandelt habt.
+- Er hat **Budget wie eine Kette**: 2.500–5.000 €/Monat sind für jemanden mit 2–10
+  Filialen realistisch, für den einzelnen Dönerladen nicht.
+- Er hat **mehrere Standorte** = wiederkehrender Content-Bedarf = Abo-Logik passt.
+- Ihr habt mit Burger King bereits **exakt diese Referenz** in der Tasche.
+
+**Wichtige Lernerfahrung aus euren bisherigen Deals:** Filial-/Storeleitungen sind
+begeisterte Türöffner, aber oft keine Entscheider. Regel für die Akquise: Die
+Storeleitung ist der Weg zum Franchisenehmer — nicht das Ziel. Immer fragen:
+„Wer unterschreibt bei euch Marketing-Ausgaben?"
+
+## 3. Segmente nach Priorität (validiert)
+
+### Prio A — Gastro-Ketten & Franchisenehmer (der Wunschdeal)
+- Systemgastronomie, Burger-/Pizza-/Snack-Franchises, regionale Ketten mit 2–15 Filialen.
+- Zahlt das volle Monatspaket, braucht laufend Content für mehrere Standorte.
+- Einstieg über Storeleitung oder direkt über den Franchisenehmer; Referenzen: Burger King + eure viralen Formate.
+
+### Prio B — Etablierte inhabergeführte Gastro
+- Restaurants, Cafés, Imbisse mit gutem Laden und echtem Werbebudget.
+- Zahlt flexibel verhandelte, kleinere Pakete — füllt die Kapazität (>5 Kunden) auf.
+- Schnellste Abschlüsse: Inhaber entscheidet allein, oft nach einem Gespräch.
+
+### Prio C — Shopping Center & große Locations
+- Forum-Referenz vorhanden; Budgets groß, Entscheidungswege länger (Marketing-Management).
+- Euer „gemischtes Publikum 16–50" ist hier das Killer-Argument — Center wollen keine reine Teenager-Reichweite.
+- Eher 2–3 Leuchtturm-Deals pro Jahr als Massengeschäft.
+
+### Prio D — Fitnessstudios & Sonstige (Friseure, Einzelhandel)
+- Challenges passen perfekt zu Fitness, aber ihr habt dort noch keine Referenz.
+- Mitnehmen, wenn Anfragen kommen (Inbound über eure 10k–50k-Kanäle) — keine aktive Akquise, solange A–C nicht ausgeschöpft sind.
+
+## 4. Personas
+
+### „Der Franchisenehmer" — Kaan, 38, 4 Filialen einer Burger-Kette (Prio A, Wunschkunde)
+- Denkt unternehmerisch in Zahlen pro Filiale; nationale Werbung der Marke hilft ihm lokal wenig.
+- Will lokale Sichtbarkeit, die die Zentrale nicht liefert — und darf lokales Marketing meist selbst beauftragen.
+- Kauft, wenn: Referenz Burger King + konkrete Idee für SEINE Standorte + klarer Monatspreis.
+- Einwand: „Muss die Zentrale das freigeben?" → Antwort vorbereiten (lokales Marketing ist üblicherweise sein Spielraum; Branding-Guidelines werden eingehalten).
+
+### „Die Gastro-Inhaberin" — Melek, 45, gut laufendes Restaurant (Prio B)
+- Werbemüde: Flyer und Anzeigen gebracht — nichts. Weiß, dass „man Social Media machen müsste".
+- Kauft emotional, am Handy, nach einem Videobeweis aus der eigenen Stadt.
+- Einwand: „Bringt das wirklich Kunden — oder nur Klicks?" → euer stärkster Konter: Ihr habt alle drei Beweise (viral, Laden voller, Event voll).
+
+### „Der Center-Marketing-Manager" — Herr Brandt, 51 (Prio C)
+- Braucht Absicherung: Referenzen, saubere Einverständniserklärungen, Reporting, Publikumsstruktur.
+- Kauft langsam, aber groß und wiederkehrend (Frequenz-Events sind sein Jahresziel).
+- Einwand: Angst vor Negativ-Viralität → Freigabeprozess und Forum-Referenz sind die Antwort.
+
+## 5. Die zwei echten Einwände — und wie ihr sie schlagt
+
+Eure Praxis zeigt: Es geht fast nie um den Preis. Es geht um **Wirkung** und **Angst**.
+
+**Einwand 1: „Bringt das wirklich was?" (Zweifel an der Wirkung)**
+- Ihr habt die seltene Dreifach-Antwort: ① Video ging viral, ② danach kamen messbar mehr
+  Kunden, ③ die Aktion selbst füllte den Ort. Diese Kette — *Aufmerksamkeit → Besucher →
+  Umsatz* — muss überall erzählt werden: Landingpage, Erstgespräch, DMs.
+- Publikums-Argument dazu: Eure Zuschauer sind 16–50, nicht nur Teenager — also genau
+  die zahlende Kundschaft von Gastro und Centern.
+
+**Einwand 2: „Was, wenn das peinlich wird?" (Angst/Unsicherheit)**
+- Antwort ist ein Prozessversprechen: Auswahl, Schnitt und **Freigabe vor
+  Veröffentlichung** liegen im Ablauf — nichts geht ungeprüft online.
+- Einverständniserklärungen der Gefilmten sind Teil der Methode (für Center Pflicht-Argument).
+
+## 6. Preisstrategie (Empfehlung)
+
+„Preis je Kunde flexibel" ist richtig für den Start — aber ohne Leitplanken führt es zu
+Unterbezahlung und Rechtfertigungsdruck. Empfehlung (intern, nicht auf die Website):
+
+1. **Anker-Paket** (Prio A/C): 2.500–5.000 €/Monat — mehrere Videos, ggf. mehrere Standorte, Priorität im Kalender.
+2. **Einstiegs-Deal** (Prio B): Einzelaktion zum Festpreis mit Upgrade-Pfad ins Monatspaket („Wenn's funktioniert, machen wir monatlich weiter").
+3. **Interne Untergrenze festlegen** — unter der kein Deal gemacht wird, egal wie sympathisch der Laden ist. Kapazität >5 Kunden verführt sonst zu vielen kleinen, schlecht bezahlten Deals.
+4. Kein Preis auf der Landingpage — der CTA „Kostenloses Erstgespräch" bleibt der einzige nächste Schritt. ✓ (ist bereits so gebaut)
+
+## 7. Akquise-Kanäle (nach dem, was bei euch nachweislich funktioniert)
+
+1. **Social-Media-DMs** — euer bewiesener Kanal. Die Landingpage ist dafür gebaut: der Link, der nach der DM aufs Handy des Inhabers geschickt wird (mobile-first, ein CTA).
+2. **Empfehlungen/Kontakte** — zweiter bewiesener Kanal. Nach jedem Dreh aktiv nach Intros fragen („Kennst du einen, für den das passt?").
+3. **Der Dreh selbst als Akquise** — umliegende Geschäfte nach jeder Aktion ansprechen; wärmer wird ein Lead nie.
+4. **Eigene Kanäle (10k–50k)** — jedes veröffentlichte Format ist ein Schaufenster; Inbound-Anfragen sind bei dieser Größe realistisch und werden mit jedem viralen Video mehr.
+
+**Zeitfaktor:** Die Konkurrenz ist „vereinzelt/halbherzig" — die Kategorie
+„Straßeninterviews für Unternehmen in [Stadt]" ist unbesetzt. Wer sie zuerst sichtbar
+besetzt, bekommt die Empfehlungen. Geschwindigkeit ist gerade wichtiger als Perfektion.
+
+## 8. Konsequenzen für die Landingpage (offene To-dos)
+
+- [ ] **Beweis-Dreiklang einbauen:** „Vor Ort voll → Video viral → Laden voller" als Ergebnis-Geschichte(n), sobald Zahlen/Videos da sind (stärkster Hebel gegen Einwand 1).
+- [ ] **FAQ-/Vertrauens-Sektion vor dem finalen CTA:** die zwei echten Einwände beantworten, inkl. Freigabe-Versprechen (Hebel gegen Einwand 2).
+- [ ] **Publikums-Argument ergänzen:** „Unsere Formate erreichen 16–50 — genau eure Kundschaft" (z. B. bei den Zahlen).
+- [ ] **Beispielvideos Gastro-first** befüllen (Burger King zuerst — zahlt auf den Wunschkunden Franchise ein).
+- [ ] Sektion „Für wen?" bleibt breit ✓ — Ansprache und Beispiele aber Gastro-first.
+- [ ] Kein Preis auf der Seite ✓ — bereits umgesetzt.
+
+---
+
+**Kurzfassung:** Kernzielgruppe ist die Gastronomie einer Großstadt + Umkreis — spitz
+zugespitzt auf den **Franchisenehmer** (entscheidet wie ein Inhaber, zahlt wie eine
+Kette, Referenz vorhanden). Zweite Säule: etablierte inhabergeführte Gastro über
+flexible Einstiegs-Deals, dritte: Center als Leuchtturm-Projekte. Verkauft wird nicht
+über Preis, sondern gegen zwei Einwände — Wirkungszweifel (Konter: euer bewiesener
+Dreiklang viral/Besucher/Event) und Angst (Konter: Freigabeprozess). Der bewiesene
+Akquiseweg ist DM + Empfehlung; die Landingpage ist der Abschluss-Link dahinter.
