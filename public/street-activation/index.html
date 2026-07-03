@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO-Basics -->
+    <title>Street Activation — Straßeninterviews, Challenges & Social Experiments für eure Marke</title>
+    <meta name="description" content="Wir bringen eure Marke auf die Straße: Straßeninterviews, Challenges und Social Experiments mit dem Potenzial für hohe Reichweiten und starke Interaktionen. Kostenloses Erstgespräch buchen.">
+
+    <!-- Open Graph (Vorschau beim Teilen des Links) -->
+    <meta property="og:title" content="Street Activation — Wir bringen eure Marke auf die Straße">
+    <meta property="og:description" content="Straßeninterviews. Challenges. Social Experiments. Formate, die Menschen zum Mitmachen, Kommentieren und Weitererzählen bringen.">
+    <meta property="og:image" content="assets/images/og-bild.jpg"><!-- [PLATZHALTER: OG-Vorschaubild 1200x630] -->
+    <meta property="og:type" content="website">
+
+    <!-- Schriften: Google Fonts per Link (DSGVO-Hinweis: besser lokal hosten, siehe PLATZHALTER.md) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================================================
+     NAVIGATION — schlank & sticky: nur Logo + Button
+     ====================================================== -->
+<header class="nav">
+    <div class="nav-innen">
+        <a href="#" class="nav-logo" aria-label="Zur Startseite">
+            <!-- [PLATZHALTER: Logo] — sobald vorhanden: <img src="assets/images/logo.svg" alt="Logo"> -->
+            <span class="nav-logo-platzhalter" data-markenname>Street Activation</span>
+        </a>
+        <a href="#cta" class="btn btn-klein js-buchung">Erstgespräch</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ======================================================
+     SEKTION 1 — HERO
+     Hintergrund: stummes Reel (autoplay, loop, muted).
+     Fallback: dunkle Fläche, Text bleibt immer lesbar.
+     ====================================================== -->
+<section class="hero" id="hero">
+    <!-- Hintergrund-Video: läuft stumm, sobald Paul die Datei einsetzt -->
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+        <source src="assets/videos/hero-reel.mp4" type="video/mp4">
+    </video>
+    <!-- Dunkler Verlauf über dem Video, damit Text immer lesbar ist -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Sichtbarer Hinweis, solange das Reel fehlt (verschwindet automatisch) -->
+    <p class="hero-platzhalter-hinweis" data-platzhalter-hero>[PLATZHALTER: Hero-Reel — stummes Video mit Menschen, Lachen, Action]</p>
+
+    <div class="hero-inhalt">
+        <h1 class="hero-headline reveal">Wir bringen eure Marke auf die Straße. Und in die Köpfe der Menschen.</h1>
+        <p class="hero-sub reveal">Straßeninterviews. Challenges. Social Experiments. Wir entwickeln virale Formate, die Menschen zum Mitmachen, Kommentieren und Weitererzählen bringen.</p>
+        <a href="#cta" class="btn btn-gross js-buchung reveal">Kostenloses Erstgespräch buchen</a>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 2 — VORSTELLUNGSVIDEO (90 Sekunden)
+     Hook-Text mit Pause, Video klick-to-play mit Poster.
+     ====================================================== -->
+<section class="sektion" id="vorstellung">
+    <div class="innen">
+        <div class="hook reveal">
+            <p class="hook-zeile-1">Unternehmen geben tausende Euro für Werbung aus…</p>
+            <p class="hook-zeile-2">…und verlieren trotzdem gegen Creator mit einem Handy.</p>
+        </div>
+
+        <!-- Video: startet erst per Klick, mit Ton -->
+        <div class="video-rahmen reveal js-content-video" data-titel="Vorstellungsvideo (90 Sekunden)">
+            <video preload="metadata" poster="assets/poster/vorstellung.jpg" title="Vorstellungsvideo Isabelle & Paul (90 Sekunden)">
+                <source src="assets/videos/vorstellung.mp4" type="video/mp4">
+            </video>
+            <button class="video-play" type="button" aria-label="Vorstellungsvideo abspielen">
+                <span class="play-icon" aria-hidden="true">▶</span>
+                <span class="video-play-text">[PLATZHALTER: Vorstellungsvideo 90 Sek.]</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 3 — WARUM WIR?
+     Fünf Punkte als Karten-Reihe mit Emoji-Icons.
+     ====================================================== -->
+<section class="sektion" id="warum-wir">
+    <div class="innen">
+        <h2 class="sektion-titel reveal">Warum wir?</h2>
+        <ul class="warum-liste">
+            <li class="warum-karte reveal"><span class="warum-emoji" aria-hidden="true">🧠</span> Psychologie statt Werbung</li>
+            <li class="warum-karte reveal"><span class="warum-emoji" aria-hidden="true">🎤</span> Straßeninterviews</li>
+            <li class="warum-karte reveal"><span class="warum-emoji" aria-hidden="true">🏆</span> Challenges</li>
+            <li class="warum-karte reveal"><span class="warum-emoji" aria-hidden="true">📈</span> Hohe Reichweiten &amp; starke Interaktionen</li>
+            <li class="warum-karte reveal"><span class="warum-emoji" aria-hidden="true">❤️</span> Community statt Werbung</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 4 — WAS PASSIERT BEI UNSEREN FORMATEN?
+     Animierte Ablauf-Kette: Schritt → Pfeil → Schritt.
+     Kein Fließtext.
+     ====================================================== -->
+<section class="sektion" id="ablauf">
+    <div class="innen innen-schmal">
+        <h2 class="sektion-titel reveal">Was passiert bei unseren Formaten?</h2>
+        <ol class="ablauf-kette">
+            <li class="ablauf-schritt reveal">Menschen bleiben stehen</li>
+            <li class="ablauf-pfeil reveal" aria-hidden="true">↓</li>
+            <li class="ablauf-schritt reveal">Menschen machen mit</li>
+            <li class="ablauf-pfeil reveal" aria-hidden="true">↓</li>
+            <li class="ablauf-schritt reveal">Menschen lernen eure Marke kennen</li>
+            <li class="ablauf-pfeil reveal" aria-hidden="true">↓</li>
+            <li class="ablauf-schritt reveal">Menschen posten euch</li>
+            <li class="ablauf-pfeil reveal" aria-hidden="true">↓</li>
+            <li class="ablauf-schritt reveal">Freunde sehen das Video</li>
+            <li class="ablauf-pfeil reveal" aria-hidden="true">↓</li>
+            <li class="ablauf-schritt reveal">Neue Besucher</li>
+            <li class="ablauf-pfeil reveal" aria-hidden="true">↓</li>
+            <li class="ablauf-schritt ablauf-schritt-final reveal">Mehr Umsatz</li>
+        </ol>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 5 — UNSERE FORMATE
+     Drei große Karten (Handy: untereinander).
+     ====================================================== -->
+<section class="sektion" id="formate">
+    <div class="innen">
+        <h2 class="sektion-titel reveal">Unsere Formate</h2>
+        <div class="format-raster">
+            <article class="format-karte reveal">
+                <h3>Straßeninterviews</h3>
+                <ul>
+                    <li>Meinungen</li>
+                    <li>Blindtests</li>
+                    <li>Schätzfragen</li>
+                    <li>Rankings</li>
+                </ul>
+            </article>
+            <article class="format-karte reveal">
+                <h3>Challenges</h3>
+                <ul>
+                    <li>Liegestütze</li>
+                    <li>Wettbewerbe</li>
+                    <li>Gewinnspiele</li>
+                    <li>Social Experiments</li>
+                </ul>
+            </article>
+            <article class="format-karte reveal">
+                <h3>Individuelle Aktionen</h3>
+                <ul>
+                    <li>Für Restaurants</li>
+                    <li>Für Einkaufszentren</li>
+                    <li>Für Fitnessstudios</li>
+                    <li>Für Events</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 6 — BEISPIELE
+     6 Video-Kacheln. Ohne Datei: dunkle Kachel „Video folgt".
+     Mit Datei: klickbar, öffnet Lightbox.
+     ====================================================== -->
+<section class="sektion" id="beispiele">
+    <div class="innen">
+        <h2 class="sektion-titel reveal">Beispiele</h2>
+        <div class="beispiel-raster">
+            <!-- Jede Kachel: Video wird automatisch aktiv, sobald die Datei existiert -->
+            <button class="beispiel-kachel reveal js-beispiel" type="button" data-video="assets/videos/beispiel-burger-king.mp4" data-poster="assets/poster/beispiel-burger-king.jpg" data-titel="Burger King">
+                <span class="beispiel-titel">Burger King</span>
+                <span class="beispiel-status">Video folgt</span>
+            </button>
+            <button class="beispiel-kachel reveal js-beispiel" type="button" data-video="assets/videos/beispiel-forum.mp4" data-poster="assets/poster/beispiel-forum.jpg" data-titel="Forum">
+                <span class="beispiel-titel">Forum</span>
+                <span class="beispiel-status">Video folgt</span>
+            </button>
+            <button class="beispiel-kachel reveal js-beispiel" type="button" data-video="assets/videos/beispiel-cookie-shop.mp4" data-poster="assets/poster/beispiel-cookie-shop.jpg" data-titel="Cookie Shop">
+                <span class="beispiel-titel">Cookie Shop</span>
+                <span class="beispiel-status">Video folgt</span>
+            </button>
+            <button class="beispiel-kachel reveal js-beispiel" type="button" data-video="assets/videos/beispiel-pommes.mp4" data-poster="assets/poster/beispiel-pommes.jpg" data-titel="Pommes">
+                <span class="beispiel-titel">Pommes</span>
+                <span class="beispiel-status">Video folgt</span>
+            </button>
+            <button class="beispiel-kachel reveal js-beispiel" type="button" data-video="assets/videos/beispiel-pizza.mp4" data-poster="assets/poster/beispiel-pizza.jpg" data-titel="Pizza">
+                <span class="beispiel-titel">Pizza</span>
+                <span class="beispiel-status">Video folgt</span>
+            </button>
+            <button class="beispiel-kachel reveal js-beispiel" type="button" data-video="assets/videos/beispiel-fitnessstudio.mp4" data-poster="assets/poster/beispiel-fitnessstudio.jpg" data-titel="Fitnessstudio">
+                <span class="beispiel-titel">Fitnessstudio</span>
+                <span class="beispiel-status">Video folgt</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 7 — WARUM FUNKTIONIERT DAS?
+     Kurzer, kraftvoller Textblock + Häkchen-Liste.
+     ====================================================== -->
+<section class="sektion" id="warum-funktioniert">
+    <div class="innen innen-schmal">
+        <h2 class="warum-funktioniert-text reveal">Nicht wegen der Kamera. Nicht wegen dem Schnitt. Sondern weil Menschen…</h2>
+        <ul class="haken-liste">
+            <li class="reveal"><span class="haken" aria-hidden="true">✔</span> mitmachen</li>
+            <li class="reveal"><span class="haken" aria-hidden="true">✔</span> diskutieren</li>
+            <li class="reveal"><span class="haken" aria-hidden="true">✔</span> kommentieren</li>
+            <li class="reveal"><span class="haken" aria-hidden="true">✔</span> Freunde markieren</li>
+            <li class="reveal"><span class="haken" aria-hidden="true">✔</span> eure Marke weitererzählen</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 8 — ZAHLEN
+     Kacheln mit Zähl-Animation. Werte pflegt Paul in js/main.js
+     (Konstante ZAHLEN). Solange leer: „XX" als Platzhalter.
+     ====================================================== -->
+<section class="sektion" id="zahlen">
+    <div class="innen">
+        <h2 class="sektion-titel reveal">Zahlen, die für uns sprechen</h2>
+        <div class="zahlen-raster">
+            <div class="zahl-kachel reveal">
+                <span class="zahl" data-zahl="views">XX</span>
+                <span class="zahl-label">Mio. Views</span>
+            </div>
+            <div class="zahl-kachel reveal">
+                <span class="zahl" data-zahl="impressionen">XX</span>
+                <span class="zahl-label">Mio. Impressionen</span>
+            </div>
+            <div class="zahl-kachel reveal">
+                <span class="zahl" data-zahl="teilnehmer">XX</span>
+                <span class="zahl-label">Teilnehmer</span>
+            </div>
+            <div class="zahl-kachel reveal">
+                <span class="zahl" data-zahl="unternehmen">XX</span>
+                <span class="zahl-label">Unternehmen</span>
+            </div>
+            <div class="zahl-kachel reveal">
+                <span class="zahl" data-zahl="kommentare">XX</span>
+                <span class="zahl-label">Kommentare</span>
+            </div>
+        </div>
+        <p class="zahlen-hinweis reveal">[PLATZHALTER: echte Zahlen in js/main.js eintragen — Konstante ZAHLEN]</p>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 9 — FÜR WEN?
+     Kompaktes Raster mit Zielgruppen-Chips.
+     ====================================================== -->
+<section class="sektion" id="fuer-wen">
+    <div class="innen">
+        <h2 class="sektion-titel reveal">Für wen?</h2>
+        <ul class="chip-raster">
+            <li class="chip reveal">🍽️ Restaurants</li>
+            <li class="chip reveal">☕ Cafés</li>
+            <li class="chip reveal">🥨 Bäckereien</li>
+            <li class="chip reveal">🛍️ Shopping Center</li>
+            <li class="chip reveal">💪 Fitnessstudios</li>
+            <li class="chip reveal">🎢 Freizeitparks</li>
+            <li class="chip reveal">💇 Friseure</li>
+            <li class="chip reveal">📍 Lokale Unternehmen</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ======================================================
+     SEKTION 10 — FINALER CTA
+     Der stärkste Moment der Seite.
+     ====================================================== -->
+<section class="cta-final" id="cta">
+    <div class="innen innen-schmal">
+        <h2 class="cta-headline reveal">Eure Marke könnte die nächste sein.</h2>
+        <p class="cta-sub reveal">Lasst uns gemeinsam ein Format entwickeln, über das Menschen sprechen.</p>
+        <a href="#" class="btn btn-gross btn-cta js-buchung reveal">Kostenloses Erstgespräch buchen</a>
+        <p class="cta-hinweis reveal" data-buchung-hinweis>[PLATZHALTER: Buchungs-Link in js/main.js eintragen — Konstante BUCHUNGS_LINK]</p>
+    </div>
+</section>
+
+</main>
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
+<footer class="footer">
+    <div class="innen">
+        <p class="footer-marke" data-markenname>Street Activation</p>
+        <p class="footer-zeile">Isabelle &amp; Paul · <span data-markenname>Street Activation</span></p>
+        <p class="footer-kontakt">
+            [PLATZHALTER: E-Mail] · [PLATZHALTER: Telefon]<br>
+            <span class="footer-klein">Mediadrift-Bezug (optional): mediadrift.org · +49 0159 05405185</span>
+        </p>
+        <nav class="footer-links" aria-label="Rechtliches">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+    </div>
+</footer>
+
+<!-- ======================================================
+     LIGHTBOX / MODAL für Beispiel-Videos
+     ====================================================== -->
+<div class="modal" id="video-modal" hidden>
+    <div class="modal-hintergrund js-modal-schliessen" aria-hidden="true"></div>
+    <div class="modal-inhalt" role="dialog" aria-modal="true" aria-label="Video-Ansicht">
+        <button class="modal-schliessen js-modal-schliessen" type="button" aria-label="Video schließen">✕</button>
+        <div class="modal-video-halter"><!-- Video wird per JS eingefügt --></div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

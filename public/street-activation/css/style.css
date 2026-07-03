@@ -1,0 +1,645 @@
+/* ============================================================
+   STREET ACTIVATION — Stylesheet
+   Mobile-first. Alle Werte kommen aus den Design-Tokens unten.
+   ============================================================ */
+
+/* ---------- Design-Tokens (nur diese Werte verwenden!) ---------- */
+:root {
+    /* Farben */
+    --farbe-hintergrund: #0B0B0F;   /* dunkler Seitenhintergrund */
+    --farbe-flaeche:     #16161D;   /* Karten & Flächen */
+    --farbe-text:        #F5F5F7;   /* heller Text */
+    --farbe-text-matt:   #A0A0AB;   /* gedämpfter Text */
+    --farbe-akzent:      #FF3D2E;   /* Signalfarbe: Buttons & Highlights */
+    --farbe-akzent-2:    #FFC531;   /* zweiter Akzent (sparsam einsetzen) */
+    --farbe-rand:        #26262F;   /* dezente Kartenränder */
+
+    /* Typografie */
+    --schrift-headline: 'Archivo Black', 'Arial Black', sans-serif;
+    --schrift-text:     'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Schriftgrößen (skalieren von Handy zu Desktop) */
+    --groesse-h1:    clamp(2.1rem, 7vw, 4.5rem);
+    --groesse-h2:    clamp(1.6rem, 4.5vw, 2.8rem);
+    --groesse-h3:    clamp(1.15rem, 3vw, 1.5rem);
+    --groesse-text:  clamp(1rem, 2.2vw, 1.2rem);
+    --groesse-klein: 0.85rem;
+
+    /* Abstände */
+    --abstand-sektion: clamp(4rem, 12vw, 8rem);
+    --abstand-innen:   clamp(1rem, 4vw, 2rem);
+    --abstand-element: 1.5rem;
+
+    /* Sonstiges */
+    --radius: 16px;
+    --breite-max: 1200px;
+    --breite-schmal: 760px;
+    --uebergang: 0.25s ease;
+}
+
+/* ---------- Basis ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--farbe-hintergrund);
+    color: var(--farbe-text);
+    font-family: var(--schrift-text);
+    font-size: var(--groesse-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* kein horizontaler Scroll, auch bei 360px */
+}
+
+img, video { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+    font-family: var(--schrift-headline);
+    line-height: 1.15;
+    font-weight: 400; /* Archivo Black ist von Haus aus fett */
+    overflow-wrap: break-word; /* lange Wörter (z. B. „Datenschutzerklärung") brechen um */
+    hyphens: auto;
+}
+
+ul, ol { list-style: none; }
+
+a { color: inherit; }
+
+/* Sichtbarer Fokus für Tastatur-Nutzung */
+a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--farbe-akzent-2);
+    outline-offset: 3px;
+}
+
+/* ---------- Layout-Helfer ---------- */
+.innen {
+    max-width: var(--breite-max);
+    margin: 0 auto;
+    padding-left: var(--abstand-innen);
+    padding-right: var(--abstand-innen);
+}
+
+.innen-schmal { max-width: var(--breite-schmal); }
+
+.sektion { padding: var(--abstand-sektion) 0; }
+
+.sektion-titel {
+    font-size: var(--groesse-h2);
+    margin-bottom: calc(var(--abstand-element) * 1.5);
+    text-transform: uppercase;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    background: var(--farbe-akzent);
+    color: #fff;
+    font-family: var(--schrift-text);
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform var(--uebergang), background var(--uebergang), box-shadow var(--uebergang);
+}
+
+.btn:hover {
+    background: #ff5a4d; /* hellere Akzent-Abstufung beim Hover */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 61, 46, 0.35);
+}
+
+.btn-gross {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    padding: 1rem 2.2rem;
+}
+
+.btn-klein {
+    font-size: 0.95rem;
+    padding: 0.55rem 1.2rem;
+}
+
+/* ---------- Navigation (sticky, schlank) ---------- */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11, 11, 15, 0.85); /* leicht durchscheinend */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--farbe-rand);
+}
+
+.nav-innen {
+    max-width: var(--breite-max);
+    margin: 0 auto;
+    padding: 0.75rem var(--abstand-innen);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nav-logo { text-decoration: none; }
+
+.nav-logo-platzhalter {
+    font-family: var(--schrift-headline);
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* ---------- Sektion 1: Hero ---------- */
+.hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--farbe-flaeche); /* Fallback, falls Video fehlt */
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dunkler Verlauf: Text bleibt immer lesbar — mit und ohne Video */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11,11,15,0.65) 0%, rgba(11,11,15,0.45) 50%, rgba(11,11,15,0.9) 100%);
+}
+
+.hero-platzhalter-hinweis {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 90%;
+    font-size: var(--groesse-klein);
+    color: var(--farbe-text-matt);
+    background: rgba(11,11,15,0.7);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    z-index: 2;
+}
+
+.hero-inhalt {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 6rem var(--abstand-innen);
+}
+
+.hero-headline {
+    font-size: var(--groesse-h1);
+    text-transform: uppercase;
+    margin-bottom: var(--abstand-element);
+}
+
+.hero-sub {
+    color: var(--farbe-text);
+    max-width: 640px;
+    margin: 0 auto calc(var(--abstand-element) * 1.4);
+}
+
+/* ---------- Sektion 2: Vorstellungsvideo ---------- */
+.hook { text-align: center; margin-bottom: calc(var(--abstand-element) * 2); }
+
+.hook-zeile-1 {
+    font-family: var(--schrift-headline);
+    font-size: var(--groesse-h2);
+    margin-bottom: 1.2rem; /* die „Pause" zwischen den Zeilen */
+}
+
+.hook-zeile-2 {
+    font-family: var(--schrift-headline);
+    font-size: var(--groesse-h2);
+    color: var(--farbe-akzent);
+}
+
+.video-rahmen {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-rand);
+    aspect-ratio: 16 / 9;
+}
+
+.video-rahmen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Play-Overlay: liegt über dem Video, bis geklickt wird */
+.video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgba(11,11,15,0.55);
+    border: none;
+    color: var(--farbe-text);
+    font-family: var(--schrift-text);
+    font-size: var(--groesse-klein);
+    cursor: pointer;
+}
+
+.play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: var(--farbe-akzent);
+    color: #fff;
+    font-size: 1.6rem;
+    padding-left: 6px; /* Dreieck optisch mittig */
+    transition: transform var(--uebergang);
+}
+
+.video-play:hover .play-icon { transform: scale(1.1); }
+
+.video-play-text { color: var(--farbe-text-matt); }
+
+/* ---------- Sektion 3: Warum wir? ---------- */
+.warum-liste {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.warum-karte {
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-rand);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.warum-emoji { font-size: 1.6rem; }
+
+/* ---------- Sektion 4: Ablauf-Kette ---------- */
+.ablauf-kette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+}
+
+.ablauf-schritt {
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-rand);
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    font-weight: 600;
+    max-width: 100%;
+}
+
+.ablauf-schritt-final {
+    background: var(--farbe-akzent);
+    border-color: var(--farbe-akzent);
+    color: #fff;
+    font-family: var(--schrift-headline);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+}
+
+.ablauf-pfeil {
+    color: var(--farbe-akzent);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+/* ---------- Sektion 5: Formate ---------- */
+.format-raster {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.format-karte {
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-rand);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    transition: transform var(--uebergang), border-color var(--uebergang);
+}
+
+.format-karte:hover {
+    transform: translateY(-6px);
+    border-color: var(--farbe-akzent);
+}
+
+.format-karte h3 {
+    font-size: var(--groesse-h3);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--farbe-akzent);
+}
+
+.format-karte li {
+    padding: 0.35rem 0;
+    color: var(--farbe-text-matt);
+    border-bottom: 1px solid var(--farbe-rand);
+}
+
+.format-karte li:last-child { border-bottom: none; }
+
+/* ---------- Sektion 6: Beispiele ---------- */
+.beispiel-raster {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.beispiel-kachel {
+    position: relative;
+    aspect-ratio: 9 / 12; /* hochkant, wie Reels */
+    background: var(--farbe-flaeche);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--farbe-rand);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--farbe-text);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform var(--uebergang), border-color var(--uebergang);
+}
+
+.beispiel-kachel:hover {
+    transform: translateY(-6px);
+    border-color: var(--farbe-akzent);
+}
+
+.beispiel-titel {
+    font-family: var(--schrift-headline);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.beispiel-status {
+    font-size: var(--groesse-klein);
+    color: var(--farbe-text-matt);
+    position: relative;
+    z-index: 1;
+}
+
+/* Sobald ein Video vorhanden ist: Play-Zeichen statt „Video folgt" */
+.beispiel-kachel.hat-video .beispiel-status { color: var(--farbe-akzent); }
+
+/* ---------- Sektion 7: Warum funktioniert das? ---------- */
+.warum-funktioniert-text {
+    font-size: var(--groesse-h2);
+    text-align: center;
+    margin-bottom: calc(var(--abstand-element) * 1.5);
+}
+
+.haken-liste {
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 600;
+}
+
+.haken {
+    color: var(--farbe-akzent-2);
+    margin-right: 0.6rem;
+}
+
+/* ---------- Sektion 8: Zahlen ---------- */
+.zahlen-raster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.zahl-kachel {
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-rand);
+    border-radius: var(--radius);
+    padding: 1.75rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.zahl {
+    font-family: var(--schrift-headline);
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: var(--farbe-akzent);
+    line-height: 1;
+}
+
+.zahl-label {
+    color: var(--farbe-text-matt);
+    font-size: var(--groesse-klein);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.zahlen-hinweis {
+    margin-top: 1rem;
+    font-size: var(--groesse-klein);
+    color: var(--farbe-text-matt);
+    text-align: center;
+}
+
+/* ---------- Sektion 9: Für wen? ---------- */
+.chip-raster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.chip {
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-rand);
+    border-radius: 999px;
+    padding: 0.6rem 1.25rem;
+    font-weight: 600;
+}
+
+/* ---------- Sektion 10: Finaler CTA ---------- */
+.cta-final {
+    background: linear-gradient(160deg, var(--farbe-akzent) 0%, #c41e12 100%);
+    padding: var(--abstand-sektion) 0;
+    text-align: center;
+    color: #fff;
+}
+
+.cta-headline {
+    font-size: var(--groesse-h1);
+    text-transform: uppercase;
+    margin-bottom: var(--abstand-element);
+}
+
+.cta-sub {
+    margin-bottom: calc(var(--abstand-element) * 1.4);
+    font-size: var(--groesse-text);
+}
+
+/* Button im CTA: invertiert, damit er auf Rot heraussticht */
+.btn-cta {
+    background: #fff;
+    color: var(--farbe-akzent);
+}
+
+.btn-cta:hover {
+    background: var(--farbe-hintergrund);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.cta-hinweis {
+    margin-top: 1rem;
+    font-size: var(--groesse-klein);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--farbe-rand);
+}
+
+.footer-marke {
+    font-family: var(--schrift-headline);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-zeile { color: var(--farbe-text-matt); margin-bottom: 1rem; }
+
+.footer-kontakt { color: var(--farbe-text-matt); font-size: var(--groesse-klein); margin-bottom: 1.25rem; }
+
+.footer-klein { opacity: 0.7; }
+
+.footer-links { display: flex; justify-content: center; gap: 1.5rem; }
+
+.footer-links a { color: var(--farbe-text-matt); }
+
+.footer-links a:hover { color: var(--farbe-text); }
+
+/* ---------- Lightbox / Modal ---------- */
+/* Wichtig: hidden-Attribut muss gewinnen, sonst blockiert das Modal die Seite */
+.modal[hidden] { display: none; }
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-hintergrund {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-inhalt {
+    position: relative;
+    width: 100%;
+    max-width: 420px; /* hochkant-Videos brauchen wenig Breite */
+    background: var(--farbe-flaeche);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.modal-inhalt video { width: 100%; max-height: 80vh; }
+
+.modal-schliessen {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(11, 11, 15, 0.8);
+    color: var(--farbe-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.modal-platzhalter {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--farbe-text-matt);
+}
+
+/* ---------- Scroll-Reveal-Animationen ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.sichtbar {
+    opacity: 1;
+    transform: none;
+}
+
+/* Reduzierte Bewegung respektieren: alles sofort sichtbar, keine Animationen */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .btn, .format-karte, .beispiel-kachel, .play-icon { transition: none; }
+}
+
+/* ---------- Breakpoints (mobile-first) ---------- */
+@media (min-width: 640px) {
+    .warum-liste { grid-template-columns: repeat(2, 1fr); }
+    .beispiel-raster { grid-template-columns: repeat(2, 1fr); }
+    .zahlen-raster { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 960px) {
+    .warum-liste { grid-template-columns: repeat(5, 1fr); }
+    .warum-karte { flex-direction: column; text-align: center; padding: 1.75rem 1rem; }
+    .format-raster { grid-template-columns: repeat(3, 1fr); }
+    .beispiel-raster { grid-template-columns: repeat(3, 1fr); }
+    .zahlen-raster { grid-template-columns: repeat(5, 1fr); }
+    .chip-raster { justify-content: center; }
+}
