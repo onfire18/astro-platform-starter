@@ -155,6 +155,32 @@ if (heroVideo && heroHinweis) {
     });
 }
 
+/* ---------- 8b) Sticky Buchungs-Leiste (nur Handy) ---------- */
+// Erscheint, sobald der Hero aus dem Bild ist — verschwindet, wenn der
+// finale CTA sichtbar ist (dort steht ja schon der große Button).
+const stickyCta = document.querySelector('[data-sticky-cta]');
+const heroSektion = document.querySelector('.hero');
+const ctaSektion = document.getElementById('cta');
+
+if (stickyCta && heroSektion && ctaSektion && 'IntersectionObserver' in window) {
+    let heroSichtbar = true;
+    let ctaSichtbar = false;
+
+    function stickyAktualisieren() {
+        stickyCta.hidden = heroSichtbar || ctaSichtbar;
+    }
+
+    new IntersectionObserver(function (eintraege) {
+        heroSichtbar = eintraege[0].isIntersecting;
+        stickyAktualisieren();
+    }, { threshold: 0.15 }).observe(heroSektion);
+
+    new IntersectionObserver(function (eintraege) {
+        ctaSichtbar = eintraege[0].isIntersecting;
+        stickyAktualisieren();
+    }, { threshold: 0.1 }).observe(ctaSektion);
+}
+
 /* ---------- 9) Beispiel-Kacheln + Lightbox ---------- */
 const modal = document.getElementById('video-modal');
 const modalHalter = modal ? modal.querySelector('.modal-video-halter') : null;

@@ -58,6 +58,7 @@ h1, h2, h3 {
     line-height: 1.15;
     font-weight: 400; /* Archivo Black ist von Haus aus fett */
     overflow-wrap: break-word; /* lange Wörter (z. B. „Datenschutzerklärung") brechen um */
+    -webkit-hyphens: auto; /* iOS Safari */
     hyphens: auto;
 }
 
@@ -127,6 +128,7 @@ a:focus-visible, button:focus-visible {
     z-index: 100;
     background: rgba(11, 11, 15, 0.85); /* leicht durchscheinend */
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* iOS Safari */
     border-bottom: 1px solid var(--farbe-rand);
 }
 
@@ -149,10 +151,45 @@ a:focus-visible, button:focus-visible {
     letter-spacing: 0.03em;
 }
 
+/* ---------- Sticky Buchungs-Leiste (nur Handy) ---------- */
+.sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90; /* unter Modal (200), über Inhalt */
+    padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(11, 11, 15, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--farbe-rand);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.sticky-cta[hidden] { display: block; transform: translateY(110%); pointer-events: none; }
+
+.sticky-cta-btn {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+}
+
+/* Ab Tablet-Größe nicht nötig — Buttons sind ohnehin präsent */
+@media (min-width: 960px) {
+    .sticky-cta { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sticky-cta { transition: none; }
+}
+
 /* ---------- Sektion 1: Hero ---------- */
 .hero {
     position: relative;
     min-height: 92vh;
+    min-height: 92svh; /* stabile Höhe trotz ein-/ausblendender Browser-Leiste am Handy */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -296,14 +333,14 @@ a:focus-visible, button:focus-visible {
     background: var(--farbe-flaeche);
     border: 1px solid var(--farbe-rand);
     border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem; /* am Handy kompakt — 5 Karten sollen nicht endlos stapeln */
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.9rem;
 }
 
-.warum-emoji { font-size: 1.6rem; }
+.warum-emoji { font-size: 1.5rem; }
 
 /* ---------- Sektion 3b: Das Duo (Strategie trifft Straße) ---------- */
 .duo-intro {
@@ -439,8 +476,9 @@ a:focus-visible, button:focus-visible {
 /* ---------- Sektion 6: Beispiele ---------- */
 .beispiel-raster {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    /* 2 Spalten schon am Handy: wirkt wie ein Reel-Grid und halbiert die Scroll-Länge */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
 }
 
 .beispiel-kachel {
@@ -469,7 +507,9 @@ a:focus-visible, button:focus-visible {
 
 .beispiel-titel {
     font-family: var(--schrift-headline);
-    font-size: 1.2rem;
+    font-size: clamp(0.85rem, 3.2vw, 1.2rem); /* passt auch in halbe Breite bei 360px */
+    padding: 0 0.4rem;
+    text-align: center;
     text-transform: uppercase;
     position: relative;
     z-index: 1;
@@ -763,7 +803,7 @@ a:focus-visible, button:focus-visible {
 /* ---------- Breakpoints (mobile-first) ---------- */
 @media (min-width: 640px) {
     .warum-liste { grid-template-columns: repeat(2, 1fr); }
-    .beispiel-raster { grid-template-columns: repeat(2, 1fr); }
+    .beispiel-raster { gap: 1rem; }
     .zahlen-raster { grid-template-columns: repeat(3, 1fr); }
 }
 

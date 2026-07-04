@@ -158,6 +158,58 @@ Duo-Sektion „Strategie trifft Straße". Scroll-Reveals wie im Rest der Seite.
 Liefere: komplettes HTML + CSS (+ JS falls nötig) und aktualisiere PLATZHALTER.md.
 ```
 
+## A6 · Reel-Karussell: Handy-Mockups mit durchlaufenden Straßeninterview-Videos (schnelle Ladezeit)
+
+```
+AUFGABE: Baue für die Street-Activation-Landingpage ein „Reel-Karussell": mehrere
+iPhone-Mockups nebeneinander, in denen Straßeninterview-Videos laufen, während die
+Reihe langsam endlos horizontal durchzieht. Das mittlere Handy ist groß und hell,
+die äußeren kleiner und abgedunkelt. Vorbild: Agentur-Heroes mit Phone-Carousel.
+
+DESIGN:
+- Design-Tokens der Seite: Hintergrund #0B0B0F, Flächen #16161D, Text #F5F5F7,
+  Akzent #FF3D2E, Akzent 2 #FFC531, Headlines 'Archivo Black', Text 'Inter', Radius 16px.
+- iPhone-Rahmen komplett in CSS/SVG (abgerundeter Rahmen, Dynamic Island,
+  Home-Indicator) — KEINE PNG-Mockups.
+- Reel-UI (Herz, Kommentar, Teilen, Username, Caption) als leichtes Inline-SVG/CSS
+  mit Platzhalter-Texten — keine echten Marken oder Logos.
+- Center-Phone: scale 1, volle Helligkeit. Nachbarn: scale ~0.85, brightness ~0.5.
+- Bewegung: nahtloser Endlos-Loop über eine duplizierte Spur (CSS-Keyframe auf
+  transform: translateX, GPU-freundlich), ca. 40–60 s pro Durchlauf.
+- Der Haupt-Button „Kostenloses Erstgespräch buchen" (Klasse js-buchung, zentrale
+  BUCHUNGS_LINK-Logik aus main.js) liegt prominent über oder unter dem Karussell.
+
+PERFORMANCE — HARTES BUDGET (die Seite muss trotz Videos schnell laden):
+1. KEIN Video lädt beim Seitenaufruf: alle <video> mit preload="none" und Poster
+   (WebP, ≤ 30 KB, 480×854). Erst das macht die Ladezeit niedrig.
+2. Es spielt IMMER NUR EIN Video gleichzeitig — das im mittleren Phone. Alle
+   anderen zeigen ihr Poster-Bild.
+3. Videos erst nach dem First Paint initialisieren (requestIdleCallback, Fallback
+   setTimeout) und nur, wenn das Karussell im Viewport ist (IntersectionObserver).
+   Verlässt es den Viewport oder wird der Tab gewechselt (visibilitychange): pausieren.
+4. Maximal 2 Videos gleichzeitig „warm": das laufende + das nächste mit
+   preload="metadata". Alte Videos zurück auf Poster.
+5. Fokus-Rotation: alle ~8 s wird das nächste Phone zum Center — neues Video
+   startet (muted, loop, playsinline), altes stoppt.
+6. Datei-Vorgaben als Kommentar in den Code schreiben: Clips 5–8 Sekunden, 480px
+   breit, H.264, CRF ~28, OHNE Tonspur, Ziel ≤ 1,5 MB pro Clip — inklusive fertigem
+   ffmpeg-Beispielbefehl zum Komprimieren.
+7. Zusatz-Payload des Karussells beim Laden ≤ 200 KB (ohne Videos). Kein
+   Layout-Shift: Phones mit fester Aspect-Ratio (9:19.5), Container reserviert Höhe.
+8. prefers-reduced-motion: reduce → keine Laufbewegung, statische Phone-Reihe,
+   Videos starten nur per Tipp.
+9. Fallback ohne Videodateien: dunkle Poster-Fläche mit Titel — Layout nie kaputt.
+   Erwartete Dateien: assets/videos/karussell-1.mp4 … karussell-6.mp4 und
+   assets/poster/karussell-1.webp … — alle in PLATZHALTER.md ergänzen.
+
+TECHNIK: Reines HTML/CSS/Vanilla-JS, keine Bibliotheken. Mobile-first: am Handy
+1 zentriertes Phone mit angeschnittenen Nachbarn, am Desktop 3–5 Phones. Kein
+horizontaler Scroll der Seite. Deutsche Kommentare.
+
+EINBAU: Entweder in den Hero (hinter Headline + Button) oder als eigene Sektion
+direkt nach dem Hero — entscheide nach Lesefluss und begründe kurz.
+```
+
 ---
 ---
 

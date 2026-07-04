@@ -37,6 +37,14 @@ Checkliste (Definition of Done). Fertig = alles `[x]`.
 - [x] Beispiele Gastro-first sortiert — Burger King, Pommes, Pizza, Cookie Shop vor Forum und Fitnessstudio (Kernzielgruppe zuerst).
 - [x] Browser-Check wiederholt — kein horizontaler Scroll bei 360px, eine <h1>, FAQ auf/zu funktioniert, reduced-motion ok.
 
+## Optimierung Runde 3 (Mobile)
+- [x] Sticky Buchungs-Leiste am unteren Rand (nur Handy) — erscheint nach dem Hero, verschwindet am finalen CTA; safe-area-inset für iPhone-Homebalken; getestet.
+- [x] Beispiele als 2-Spalten-Reel-Grid schon am Handy — halbiert die Scroll-Länge, wirkt wie ein Reels-Feed.
+- [x] „Warum wir?"-Karten kompakter (weniger Padding) — 5 Karten stapeln nicht mehr endlos.
+- [x] Hero-Höhe mit svh-Einheit — stabil trotz ein-/ausblendender Browser-Leiste am Handy.
+- [x] iOS-Safari-Fixes — -webkit-backdrop-filter (Nav + Sticky-Leiste), -webkit-hyphens.
+- [x] Browser-Test 360px — kein horizontaler Scroll, keine JS-Fehler, Sticky-Logik verifiziert.
+
 ## Wirkung
 - [x] „30-Sekunden-Test" — Hero-Botschaft + Hook + Video-Play + Zahlen-Kacheln stehen in den ersten zwei Scroll-Screens; ein einziges Ziel (Erstgespräch) von der Navigation bis zum CTA.
 - [x] Es liest sich wie eine Sales-Page, nicht wie eine Agentur-Website — Kein Menü, keine Leistungsübersicht, eine durchgehende Argumentationslinie Richtung CTA.
