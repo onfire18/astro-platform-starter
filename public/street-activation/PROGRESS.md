@@ -45,6 +45,10 @@ Checkliste (Definition of Done). Fertig = alles `[x]`.
 - [x] iOS-Safari-Fixes — -webkit-backdrop-filter (Nav + Sticky-Leiste), -webkit-hyphens.
 - [x] Browser-Test 360px — kein horizontaler Scroll, keine JS-Fehler, Sticky-Logik verifiziert.
 
+## Optimierung Runde 4 (Inhalte)
+- [x] Echte TikTok-Beispielvideos (Burger King, Forum) mit DSGVO-Zwei-Klick-Lösung; lokale MP4s behalten Vorrang.
+- [x] Referenzen-Sektion „Marken, die uns vertrauen" — Logo-Marquee mit 9 echten Partner-Logos (aus Vorlage übernommen, ins Design-System übersetzt): Endlos-Lauf, Hover-Pause, Kanten-Fades, reduced-motion = statisch scrollbar; platziert nach den Beispielen.
+
 ## Wirkung
 - [x] „30-Sekunden-Test" — Hero-Botschaft + Hook + Video-Play + Zahlen-Kacheln stehen in den ersten zwei Scroll-Screens; ein einziges Ziel (Erstgespräch) von der Navigation bis zum CTA.
 - [x] Es liest sich wie eine Sales-Page, nicht wie eine Agentur-Website — Kein Menü, keine Leistungsübersicht, eine durchgehende Argumentationslinie Richtung CTA.

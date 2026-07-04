@@ -35,6 +35,11 @@ fehlende Inhalte werden sauber als Platzhalter angezeigt.
 - [ ] Footer — Was: E-Mail-Adresse — Format: Text, in `index.html` im Footer ersetzen
 - [ ] Footer — Was: Telefonnummer — Format: Text, in `index.html` im Footer ersetzen (Mediadrift-Bezug optional: mediadrift.org · +49 0159 05405185 steht schon als Vorschlag drin)
 
+## Referenzen-Sektion (eingebaut ✅)
+- [x] 9 Partner-Logos eingebaut (BK-Süd, REWE Eberhardt, Forum Schwanthalerhöhe, VivaCasa Mallorca, Stabinger, bumpli, AYUUKU, DIA, Auto & Palme) → `assets/images/referenzen/`
+- [ ] Logo-Freigaben prüfen — Was: Bestätigen, dass alle 9 Partner der Logo-Nennung auf der Website zugestimmt haben (üblich, aber sauber abklären) — Format: kurzes OK je Partner
+- [ ] Optional: `auto-palme.jpg` (64 KB) und `vivacasa.jpg` (21 KB) als AVIF/WebP nachkomprimieren wie die übrigen Logos — Format: Bilddatei ersetzen, gleicher Dateiname
+
 ## Zu bestätigen (aus Recherche übernommen)
 - [ ] Standort-Angabe „München & Umgebung" — Was: steht jetzt im Hero, Footer und in den SEO-Tags (aus der Recherche abgeleitet: Isabelles Agentur sitzt in München). Falls euer Einzugsgebiet anders heißt, an diesen 4 Stellen in `index.html` ändern — Format: Text
 - [ ] Partner-Links im Footer & in der Duo-Sektion — Was: wir-machen-content.de, mediadrift.org, @wir_machen_content.de, @paultosuccess sind verlinkt. Bitte prüfen, ob alle 4 Links/Handles so stimmen — Format: URLs prüfen

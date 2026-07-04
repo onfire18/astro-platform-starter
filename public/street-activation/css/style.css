@@ -526,6 +526,89 @@ a:focus-visible, button:focus-visible {
 .beispiel-kachel.hat-video .beispiel-status,
 .beispiel-kachel.hat-tiktok .beispiel-status { color: var(--farbe-akzent); }
 
+/* ---------- Sektion 6b: Referenzen (Logo-Marquee) ---------- */
+.referenzen-sub {
+    color: var(--farbe-text-matt);
+    margin-top: -1rem; /* näher an den Sektionstitel rücken */
+    margin-bottom: calc(var(--abstand-element) * 1.5);
+}
+
+.referenzen-marquee {
+    position: relative;
+    overflow: hidden;
+}
+
+.referenzen-spur {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    padding-right: 1rem; /* gleicher Abstand am Nahtpunkt des Loops */
+    animation: logos-lauf 35s linear infinite;
+    will-change: transform;
+}
+
+/* Bei Hover/Fokus anhalten, damit man Logos in Ruhe ansehen kann */
+.referenzen-marquee:hover .referenzen-spur { animation-play-state: paused; }
+
+@keyframes logos-lauf {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); } /* Spur ist dupliziert -> nahtlos */
+}
+
+.referenz-karte {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 84px;
+    padding: 0.8rem 1rem;
+    background: var(--farbe-text); /* helle Karte: Logos sind für hellen Grund gemacht */
+    border: 1px solid var(--farbe-rand);
+    border-radius: calc(var(--radius) - 4px);
+}
+
+.referenz-karte img {
+    max-width: 100%;
+    /* --logo-h gleicht optische Größenunterschiede der Logos aus */
+    max-height: min(var(--logo-h, 60px), 100%);
+    object-fit: contain;
+}
+
+/* Weiche Kanten links/rechts, damit der Lauf nicht hart abschneidet */
+.referenzen-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(40px, 10vw, 140px);
+    pointer-events: none;
+}
+
+.referenzen-fade-links  { left: 0;  background: linear-gradient(90deg, var(--farbe-hintergrund), transparent); }
+.referenzen-fade-rechts { right: 0; background: linear-gradient(270deg, var(--farbe-hintergrund), transparent); }
+
+.referenzen-fussnote {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: var(--groesse-klein);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--farbe-text-matt);
+}
+
+@media (min-width: 640px) {
+    .referenz-karte { width: 220px; height: 110px; padding: 1.2rem 1.6rem; }
+    .referenzen-spur { gap: 1.5rem; padding-right: 1.5rem; }
+}
+
+/* Reduzierte Bewegung: kein Lauf — stattdessen von Hand scrollbar,
+   Duplikat-Satz ausblenden (sonst sieht man alles doppelt) */
+@media (prefers-reduced-motion: reduce) {
+    .referenzen-spur { animation: none; }
+    .referenzen-marquee { overflow-x: auto; }
+    .referenz-doppel { display: none; }
+}
+
 /* ---------- Sektion 7: Warum funktioniert das? ---------- */
 .warum-funktioniert-text {
     font-size: var(--groesse-h2);
