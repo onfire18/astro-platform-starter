@@ -212,12 +212,54 @@ if (modal) {
     });
 }
 
+/* TikTok-Einbindung (DSGVO: Zwei-Klick-Lösung).
+   Das TikTok-iframe wird ERST geladen, nachdem die Besucherin zugestimmt hat.
+   Die Zustimmung gilt für die laufende Sitzung (sessionStorage). */
+function tiktokIframeHtml(tiktokId, titel) {
+    return '<div class="modal-tiktok">' +
+        '<iframe src="https://www.tiktok.com/embed/v2/' + tiktokId + '"' +
+        ' title="TikTok-Video: ' + titel + '"' +
+        ' allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>' +
+        '</div>';
+}
+
+function tiktokOeffnen(tiktokId, titel) {
+    if (sessionStorage.getItem('tiktokEinwilligung') === '1') {
+        modalOeffnen(tiktokIframeHtml(tiktokId, titel));
+        return;
+    }
+    // Erst informieren, dann laden — nichts geht ohne Klick zu TikTok raus
+    modalOeffnen(
+        '<div class="modal-platzhalter modal-consent"><strong>' + titel + '</strong>' +
+        '<p>Dieses Video wird von <strong>TikTok</strong> geladen. Dabei werden Daten ' +
+        '(z. B. deine IP-Adresse) an TikTok übertragen. Details in der ' +
+        '<a href="datenschutz.html">Datenschutzerklärung</a>.</p>' +
+        '<button type="button" class="btn btn-klein js-tiktok-laden">Video laden</button>' +
+        '</div>'
+    );
+    const ladeKnopf = modal.querySelector('.js-tiktok-laden');
+    if (ladeKnopf) {
+        ladeKnopf.addEventListener('click', function () {
+            sessionStorage.setItem('tiktokEinwilligung', '1');
+            modalHalter.innerHTML = tiktokIframeHtml(tiktokId, titel);
+        });
+    }
+}
+
 document.querySelectorAll('.js-beispiel').forEach(function (kachel) {
     const videoPfad = kachel.dataset.video;
     const posterPfad = kachel.dataset.poster;
+    const tiktokId = kachel.dataset.tiktok;
     const titel = kachel.dataset.titel;
 
-    // Prüfen, ob die Videodatei schon existiert (Kachel schaltet sich automatisch scharf)
+    // TikTok-Video vorhanden? Kachel sofort scharf schalten
+    if (tiktokId) {
+        kachel.classList.add('hat-tiktok');
+        kachel.querySelector('.beispiel-status').textContent = '▶ Ansehen';
+    }
+
+    // Prüfen, ob die lokale Videodatei existiert (hat Vorrang vor TikTok:
+    // schneller und ganz ohne Drittanbieter)
     const testVideo = document.createElement('video');
     testVideo.preload = 'metadata';
     testVideo.src = videoPfad;
@@ -237,7 +279,7 @@ document.querySelectorAll('.js-beispiel').forEach(function (kachel) {
 
     kachel.addEventListener('click', function () {
         if (kachel.classList.contains('hat-video')) {
-            // Video in der Lightbox abspielen (mit Ton, mit Bedienelementen)
+            // Lokale Datei in der Lightbox abspielen (mit Ton, mit Bedienelementen)
             modalOeffnen(
                 '<video controls autoplay playsinline preload="metadata"' +
                 (posterPfad ? ' poster="' + posterPfad + '"' : '') +
@@ -245,6 +287,9 @@ document.querySelectorAll('.js-beispiel').forEach(function (kachel) {
                 '<source src="' + videoPfad + '" type="video/mp4">' +
                 '</video>'
             );
+        } else if (tiktokId) {
+            // TikTok-Video mit Zwei-Klick-Einwilligung
+            tiktokOeffnen(tiktokId, titel);
         } else {
             // Noch kein Video: freundlicher Hinweis statt kaputtem Player
             modalOeffnen(

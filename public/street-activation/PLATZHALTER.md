@@ -12,8 +12,8 @@ fehlende Inhalte werden sauber als Platzhalter angezeigt.
 - [ ] Sektion 1 (Hero) — Was: Hintergrund-Reel, stumm, viele Menschen/Lachen/Action — Format: MP4 quer 16:9, max. 10 MB, ohne Ton nötig → `assets/videos/hero-reel.mp4`
 - [ ] Sektion 2 — Was: Vorstellungsvideo Isabelle & Paul (90 Sek.) — Format: MP4 16:9, max. 50 MB → `assets/videos/vorstellung.mp4`
 - [ ] Sektion 2 — Was: Vorschaubild (Poster) fürs Vorstellungsvideo — Format: JPG 1280×720 → `assets/poster/vorstellung.jpg`
-- [ ] Sektion 6 — Was: Beispielvideo Burger King — Format: MP4 vertikal 9:16, max. 10 MB → `assets/videos/beispiel-burger-king.mp4` (+ Poster `assets/poster/beispiel-burger-king.jpg`, JPG 720×960)
-- [ ] Sektion 6 — Was: Beispielvideo Forum — Format: wie oben → `assets/videos/beispiel-forum.mp4` (+ Poster `assets/poster/beispiel-forum.jpg`)
+- [x] Sektion 6 — Beispielvideo Burger King: ✅ als TikTok eingebunden (@burgerking_bk_sued, Video 7631228572149075233, Zwei-Klick-Lösung). Optional besser: MP4-Datei unter `assets/videos/beispiel-burger-king.mp4` ablegen — lokale Datei hat automatisch Vorrang (schneller + ohne Drittanbieter)
+- [x] Sektion 6 — Beispielvideo Forum: ✅ als TikTok eingebunden (@forum_shoppingcenter, Video 7502754679449718048 „Frühlingsfest mit einer Amerikanerin"). Ersatz-/Zweitvideo vorhanden: 7631228809928248609 („Wer war schon auf dem Frühlingsfest?") — bei Bedarf ID in index.html (data-tiktok der Forum-Kachel) tauschen. Optional besser: MP4 unter `assets/videos/beispiel-forum.mp4`
 - [ ] Sektion 6 — Was: Beispielvideo Cookie Shop — Format: wie oben → `assets/videos/beispiel-cookie-shop.mp4` (+ Poster `assets/poster/beispiel-cookie-shop.jpg`)
 - [ ] Sektion 6 — Was: Beispielvideo Pommes — Format: wie oben → `assets/videos/beispiel-pommes.mp4` (+ Poster `assets/poster/beispiel-pommes.jpg`)
 - [ ] Sektion 6 — Was: Beispielvideo Pizza — Format: wie oben → `assets/videos/beispiel-pizza.mp4` (+ Poster `assets/poster/beispiel-pizza.jpg`)
@@ -41,7 +41,7 @@ fehlende Inhalte werden sauber als Platzhalter angezeigt.
 
 ## Recht (DSGVO)
 - [ ] impressum.html — Was: Anbieter, Anschrift, Kontakt, Verantwortlicher, ggf. USt-IdNr., EU-Streitschlichtung — Format: Text in die `[PLATZHALTER]`-Blöcke
-- [ ] datenschutz.html — Was: Verantwortlicher, Hosting-Hinweis, Google-Fonts-Hinweis, Buchungs-Tool-Hinweis, Betroffenenrechte, Speicherdauer — Format: Text in die `[PLATZHALTER]`-Blöcke
+- [ ] datenschutz.html — Was: Verantwortlicher, Hosting-Hinweis, Google-Fonts-Hinweis, Buchungs-Tool-Hinweis, **TikTok-Hinweis (Abschnitt 4a, Zwei-Klick-Lösung ist technisch schon umgesetzt)**, Betroffenenrechte, Speicherdauer — Format: Text in die `[PLATZHALTER]`-Blöcke
 - [ ] DSGVO / Google Fonts — Was: Die Schriften (Archivo Black, Inter) werden aktuell per Link von Google geladen. **Empfehlung: lokal hosten** (Dateien herunterladen, in `assets/` legen, `<link>`-Zeilen in allen 3 HTML-Dateien ersetzen). Solange sie von Google kommen, muss die Datenschutzerklärung darüber informieren — Format: Entscheidung + ggf. WOFF2-Dateien
 - [ ] DSGVO / Buchungs-Tool — Was: Calendly & Co. werden bewusst **nicht eingebettet**, sondern nur verlinkt (öffnet neuen Tab). Das ist DSGVO-freundlich. Beim Einbetten wäre eine Einwilligung nötig — Format: nichts zu tun, nur wissen
 
