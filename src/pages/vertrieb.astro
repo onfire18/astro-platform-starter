@@ -1485,7 +1485,8 @@ const waSales = whatsappUrl('sales');
     border: 1.5px solid var(--md-border);
     border-radius: 7px;
     padding: 0.65rem 0.9rem;
-    font-size: 0.95rem;
+    font-size: max(0.95rem, 16px); /* <16px löst iOS-Auto-Zoom beim Fokussieren aus */
+    min-height: 44px;
     font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--md-text);
     background: var(--md-surface);
