@@ -1020,7 +1020,7 @@ const faqSchema = {
       </div>
       <div class="md-faq">
         {faqMain.map(item => (
-          <details>
+          <details name="faq-main">
             <summary>{item.question}</summary>
             <div class="faq-answer">{item.answer}</div>
           </details>
