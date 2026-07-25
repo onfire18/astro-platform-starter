@@ -234,11 +234,15 @@ const currentPath = Astro.url.pathname;
   .md-nav-burger {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px; /* Touch-Target */
     margin-left: auto;
   }
   .md-nav-burger span {
@@ -305,14 +309,25 @@ const currentPath = Astro.url.pathname;
     burger.setAttribute('aria-label', expanded ? 'Menü öffnen' : 'Menü schließen');
   });
 
+  function closeMenu() {
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Menü öffnen');
+    menu.setAttribute('aria-hidden', 'true');
+    menu.classList.remove('open');
+  }
+
   // Close on ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('open')) {
-      burger.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      menu.classList.remove('open');
+      closeMenu();
       burger.focus();
     }
+  });
+
+  // Klick auf einen Menü-Link schließt das Menü — sonst bleibt es bei
+  // Anker-Zielen auf derselben Seite (z.B. /#kontakt) offen darüber liegen
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 
   // Scroll shadow
