@@ -391,6 +391,7 @@ form.addEventListener('submit', async (e) => {
   resultEl.classList.remove('show');
   resetLog();
   addLog('Verbindung wird aufgebaut …', 'busy');
+  let failed = false;
 
   try {
     const res = await fetch('/api/entwurf', {
@@ -422,7 +423,8 @@ form.addEventListener('submit', async (e) => {
           if (l.startsWith('data:')) dataStr += l.slice(5).trim();
         }
         if (!dataStr) continue;
-        const data = JSON.parse(dataStr);
+        let data;
+        try { data = JSON.parse(dataStr); } catch { continue; } // defektes Event überspringen statt Stream abbrechen
 
         if (eventType === 'progress') addLog(data.message, 'busy');
         else if (eventType === 'done') {
@@ -434,17 +436,19 @@ form.addEventListener('submit', async (e) => {
             date, filename: data.filename, html: data.html, meta: data.meta,
           });
         }
-        else if (eventType === 'error') addLog('Fehler: ' + data.message, 'err');
+        else if (eventType === 'error') { failed = true; addLog('Fehler: ' + data.message, 'err'); }
       }
     }
   } catch (err) {
+    failed = true;
     addLog('Fehler: ' + err.message, 'err');
   } finally {
     submitBtn.disabled    = false;
     submitBtn.innerHTML   = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Entwurf erstellen`;
     if (busyLine) {
-      busyLine.querySelector('.ico').innerHTML = '✓';
-      busyLine.classList.replace('busy', 'ok');
+      // Bei Fehlschlag kein grünes Häkchen an der letzten Zeile
+      busyLine.querySelector('.ico').innerHTML = failed ? '✕' : '✓';
+      busyLine.classList.replace('busy', failed ? 'err' : 'ok');
       busyLine = null;
     }
   }
