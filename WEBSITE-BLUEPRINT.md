@@ -191,16 +191,23 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] Scroll-Reveals via `IntersectionObserver`, nicht `scroll`-Listener.
 
 ### 7.3 Accessibility (A11y)
-- [ ] Sichtbare `:focus-visible`-Outlines auf allen interaktiven Elementen.
+- [ ] Sichtbare `:focus-visible`-Outlines auf allen interaktiven Elementen — **auf dunklen Flächen hellere Ringfarbe** (Fokus-Indikator braucht ≥3:1 gegen den Hintergrund; Cobalt auf Navy fällt durch).
 - [ ] `aria-label` auf icon-only Buttons; sinnvoller, beschreibender Alt-Text auf Bildern.
 - [ ] Semantisches HTML (`<nav>`, `<main>`, `<article>`, `<section>`, `<figure>`).
-- [ ] Kontrast WCAG AA (4.5:1 Text, 3:1 große Schrift). Button-Text muss lesbar sein.
+- [ ] Kontrast WCAG AA (4.5:1 Text, 3:1 große Schrift) — **auch „subtle"-Grautöne nachmessen**, die fallen am häufigsten durch.
 - [ ] „Skip to content"-Link vorhanden.
-- [ ] Formulare: Validierung, Inline-Fehlermeldungen (kein `alert()`), Pflichtfeld-Markierung.
+- [ ] Formulare: **Bei `novalidate` MUSS der Submit-Handler selbst validieren** (`checkValidity()` je Feld, `aria-invalid` + rote Markierung, Fokus aufs erste Fehlerfeld, Live-Region-Meldung; `aria-invalid` beim Tippen löschen). Sonst gehen leere Formulare als „Erfolg" durch.
+- [ ] **Touch-Targets ≥44px** für echte Aktionen (Tel/WhatsApp/Mail-Links, Breadcrumbs, kleine Buttons) — `min-height: 44px`, ggf. negatives Margin gegen Layout-Shift.
+- [ ] **Kein `aria-hidden` auf Containern mit fokussierbaren Elementen** (Focus-Trap). Ein-/ausblendbare Leisten: `visibility` togglen + `aria-hidden` per JS synchron halten.
+- [ ] Dialoge: Escape schließt, Fokus-Management, `aria-expanded` am Trigger, Eintritts-Animation mit `prefers-reduced-motion`-Guard.
+- [ ] Tabs: WAI-ARIA-Pattern komplett — `role="tab(list/panel)"`, `aria-selected`, Pfeiltasten **und Roving-Tabindex** (nur aktiver Tab `tabindex=0`).
+- [ ] Live aktualisierte Bereiche (Logs, Statusmeldungen): `aria-live` / `role="log"` / `role="alert"`.
 
 ### 7.4 Performance
-- [ ] `loading="lazy"` + `decoding="async"` auf allen Below-the-fold-Bildern (erstes Hero-Bild `eager`).
+- [ ] `loading="lazy"` + `decoding="async"` auf allen Below-the-fold-Bildern; LCP-Bild `eager` + **`fetchpriority="high"`**.
 - [ ] `width`/`height` auf `<img>` (CLS vermeiden).
+- [ ] **Bild-Budget: Fotos/Screenshots als WebP, Zielbreite ≈ 2× Anzeigebreite, q80–85. Nichts über ~250 KB ausliefern** (PNG-Screenshots sind oft 10–20× zu groß). Echte Dateigrößen messen, nicht schätzen.
+- [ ] Unreferenzierte Assets aus `public/` löschen (vorher Referenzen greppen).
 - [ ] Keine `backdrop-blur` auf scrollenden Containern (nur fixed/sticky).
 
 ### 7.5 SEO
@@ -208,6 +215,9 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] OG-Tags + **Raster** (JPG/PNG) OG-Bild 1200×630 (SVG wird sozial NICHT angezeigt).
 - [ ] Saubere Heading-Hierarchie (genau ein `h1`).
 - [ ] `sitemap.xml`, Schema.org (in MDLayout vorhanden).
+- [ ] **Strukturierte Daten nur für real existierende Features** (keine SearchAction ohne Suche o.ä.).
+- [ ] `robots.txt`: interne Tools und Demo-/Systemseiten für Crawler sperren.
+- [ ] **Copy-Konsistenz:** Kernversprechen (z.B. „Entwurf am nächsten Tag") überall identisch — Widersprüche zwischen Seiten aktiv suchen.
 
 ### 7.6 Content-Qualität
 - [ ] Keine Lorem Ipsum, keine Platzhalter-`[TAGS]`, keine `John Doe`.
