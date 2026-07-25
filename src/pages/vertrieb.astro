@@ -747,6 +747,14 @@ const waSales = whatsappUrl('sales');
             <p>Wir melden uns innerhalb von 2 Werktagen bei dir.</p>
           </div>
         </div>
+        <div id="vp-validation" class="v-form-error" hidden aria-live="polite">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#DC2626" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg>
+          <div>
+            <strong>Bitte prüfe deine Angaben.</strong>
+            <p>Einige Pflichtfelder fehlen noch oder sind ungültig — sie sind rot markiert.</p>
+          </div>
+        </div>
+
         <div id="vp-error" class="v-form-error" hidden aria-live="polite">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#DC2626" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg>
           <div>
@@ -792,9 +800,27 @@ const waSales = whatsappUrl('sales');
   const successMsg = document.getElementById('vp-success') as HTMLElement | null;
   const errorMsg = document.getElementById('vp-error') as HTMLElement | null;
 
+  const validationMsg = document.getElementById('vp-validation') as HTMLElement | null;
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!submitBtn || !successMsg || !errorMsg) return;
+
+    // Client-Validierung — das Formular steht auf novalidate
+    const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('.v-input'));
+    let firstInvalid: HTMLInputElement | HTMLTextAreaElement | null = null;
+    fields.forEach(f => {
+      const valid = f.checkValidity();
+      f.setAttribute('aria-invalid', String(!valid));
+      if (!valid && !firstInvalid) firstInvalid = f;
+    });
+    if (firstInvalid) {
+      if (validationMsg) validationMsg.hidden = false;
+      (firstInvalid as HTMLElement).focus();
+      (firstInvalid as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (validationMsg) validationMsg.hidden = true;
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet…';
@@ -824,7 +850,10 @@ const waSales = whatsappUrl('sales');
 
   // Clear validity on input
   form?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('.v-input').forEach(field => {
-    field.addEventListener('input', () => field.setCustomValidity(''));
+    field.addEventListener('input', () => {
+      field.setCustomValidity('');
+      field.removeAttribute('aria-invalid');
+    });
   });
 
   // Journey Roadmap — scroll-triggered animation
@@ -1467,6 +1496,8 @@ const waSales = whatsappUrl('sales');
     min-height: 44px;
   }
   .v-input:focus { outline: none; border-color: var(--md-cta); box-shadow: 0 0 0 3px rgba(20,85,168,0.12); }
+  .v-input[aria-invalid="true"] { border-color: #DC2626; }
+  .v-input[aria-invalid="true"]:focus { border-color: #DC2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.12); }
   .v-input::placeholder { color: var(--md-subtle); }
   select.v-input { cursor: pointer; }
   .v-consent-group { margin-top: 0.25rem; }
