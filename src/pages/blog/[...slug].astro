@@ -166,7 +166,13 @@ const breadcrumbSchema = {
     margin-bottom: 1.25rem;
     flex-wrap: wrap;
   }
-  .article-breadcrumb a { color: #60A5FA; }
+  .article-breadcrumb a {
+    color: #60A5FA;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px; /* Touch-Target — einziger Rückweg zur Blog-Übersicht */
+    margin-block: -0.5rem;
+  }
   .article-title {
     font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
     font-size: clamp(1.9rem, 4.5vw, 3rem);

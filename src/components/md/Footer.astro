@@ -179,7 +179,10 @@ import { SITE, whatsappUrl } from '../../config/site';
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding-block: 0.2rem;
   }
+  /* Telefon/WhatsApp/Mail sind echte Aktionen → volles Touch-Target */
+  .footer-contact a { min-height: 44px; }
   nav a svg, .footer-contact a svg {
     transition: transform 200ms var(--ease-out), color 150ms var(--ease-out);
     flex-shrink: 0;
