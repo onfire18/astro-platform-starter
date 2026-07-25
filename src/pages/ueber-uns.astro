@@ -425,6 +425,8 @@ const waUrl = whatsappUrl('customer');
     color: var(--md-primary);
     font-size: 1rem;
     font-weight: 500;
+    min-height: 44px; /* Touch-Target (WCAG 2.5.8) — Anrufen/WhatsApp sind die Kern-Aktionen */
+    padding-block: 0.25rem;
     transition:
       color 160ms var(--ease-out),
       transform 160ms var(--ease-out);
