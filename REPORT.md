@@ -90,6 +90,8 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 
 ## Verbleibende Empfehlungen (Backlog für weitere Durchgänge)
 
+0. **[USER-ENTSCHEIDUNG] Blog: Keyword-Kannibalisierung auflösen.** `website-fuer-handwerksbetrieb.md` und `website-fuer-handwerksbetriebe.md` zielen auf dasselbe Haupt-Keyword (fast identische Titel/Keywords) — Google wertet das als konkurrierende Seiten. Ebenso überschneiden sich `website-fuer-steuerberater.md` und `website-fuer-steuerberaterkanzlei.md` (die übrigen 4 Steuerberater-Varianten haben eigene Winkel und sind ok). Empfehlung: je Paar den schwächeren Artikel löschen oder per Redirect/Canonical auf den stärkeren zeigen — Auswahl bitte durch den User.
+
 1. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User)
 2. **Blog-Inhalte**: weitere Artikel wären inzwischen SEO-wirksamer als weitere Code-Politur
 3. **ueber-uns** frisches Mobile-Audit (Werte-Karten, Kontakt-Card)
