@@ -69,6 +69,14 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C21 | `a6c64ac` | **BUGFIX:** Vertrieb-Formular validierte nie (novalidate ohne JS-Check) — leere Bewerbungen gingen als „Erfolg" durch. Jetzt: aria-invalid, rote Markierung, Fokus aufs erste Fehlerfeld, Live-Region-Meldung |
 | C22 | `f405952` | Copy-Widerspruch: webdesign-CTA „48 Stunden Einschätzung" → einheitlich „Entwurf am nächsten Tag, kostenlos & unverbindlich" |
 | C23 | `b74a81d` | Fokusring auf dunklen Flächen (Hero, Footer, v-closing, Artikel): Cobalt 2,46:1 → helles Blau 7:1 (WCAG-Fokus-Sichtbarkeit) |
+| C24 | `c62f1b0` | Report-Meilenstein (C16–C23) |
+| C25 | `c35ebf3` | **Performance:** Hero-Slider-Screenshots PNG→WebP: 1,83 MB→99 KB + 1,35 MB→123 KB (−95 %), `fetchpriority="high"` aufs LCP-Bild |
+| C26 | `0cea931` | Referenz-Bilder PNG→WebP (1,99 MB→118 KB; 1,32 MB→55 KB) + 4 MB unreferenzierte Dateien gelöscht (ref-vivacasa ×2, rupert.png) |
+| C27 | `74feb2f` | Paul-Porträt 451 KB JPEG→183 KB WebP @840px (Korrektur: Commit-Message nannte fälschlich „~50 KB") |
+| C28 | `312d80a` | 44px-Touch-Targets für Anrufen/WhatsApp auf ueber-uns (WCAG 2.5.8) |
+| C29 | `ea4d306` | Touch-Target-Sweep: Footer-Kontaktlinks 44px + Nav-Padding, Blog-Breadcrumb 44px |
+| C30 | `0973b1c` | Blueprint-Checkliste §7 um alle C-Phase-Erkenntnisse erweitert (Touch-Targets, novalidate-Validierung, dunkle Fokusringe, Bild-Budget, ehrliche Schema-Daten, Copy-Konsistenz) |
+| C31 | `29b6fa6` | **iOS-Fokus-Zoom behoben:** Formular-Inputs (Kontakt + Bewerbung) hatten 15,2px Schrift → `max(0.95rem, 16px)`; v-input zusätzlich 44px Mindesthöhe |
 
 **Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
@@ -82,10 +90,10 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 
 ---
 
-## Zusammenfassung (Stand C24)
+## Zusammenfassung (Stand C32)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 24 Iterationen (laufend)
-- **38 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
-- **Wichtigster Fund:** C21 — das Bewerbungsformular akzeptierte leere Submissions als Erfolg
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 32 Iterationen (laufend)
+- **46 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Wichtigste Funde:** C21 (Bewerbungsformular akzeptierte leere Submissions als Erfolg) · C25/C26/C27 (~10 MB Bildgewicht entfernt, Startseiten-Hero −95 %) · C31 (iOS-Fokus-Zoom auf allen Formularen)
 - **Kein PR** erstellt (wie gewünscht) · **Branch:** `claude/website-deployment-security-dpw830`
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
