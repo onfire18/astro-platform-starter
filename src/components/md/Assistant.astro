@@ -161,11 +161,24 @@ const waSales = whatsappUrl('sales');
     bottom: calc(100% + 0.75rem);
     right: 0;
     width: min(360px, calc(100vw - 2rem));
+    max-height: min(70dvh, 560px);
+    display: flex;
+    flex-direction: column;
     background: var(--md-surface);
     border: 1px solid var(--md-border);
     border-radius: 14px;
     box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
     overflow: hidden;
+  }
+  .assistant-dialog:not([hidden]) {
+    animation: asst-in 260ms var(--ease-drawer, cubic-bezier(0.32, 0.72, 0, 1)) both;
+  }
+  @keyframes asst-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .assistant-dialog:not([hidden]) { animation: none; }
   }
 
   .assistant-header {
@@ -210,7 +223,7 @@ const waSales = whatsappUrl('sales');
   }
   .assistant-close:active { transform: scale(0.9); transition-duration: 80ms; }
 
-  .assistant-content { padding: 1rem; }
+  .assistant-content { padding: 1rem; overflow-y: auto; }
 
   .assistant-step { display: none; }
   .assistant-step.active { display: block; }
