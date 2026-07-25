@@ -77,6 +77,14 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C29 | `ea4d306` | Touch-Target-Sweep: Footer-Kontaktlinks 44px + Nav-Padding, Blog-Breadcrumb 44px |
 | C30 | `0973b1c` | Blueprint-Checkliste §7 um alle C-Phase-Erkenntnisse erweitert (Touch-Targets, novalidate-Validierung, dunkle Fokusringe, Bild-Budget, ehrliche Schema-Daten, Copy-Konsistenz) |
 | C31 | `29b6fa6` | **iOS-Fokus-Zoom behoben:** Formular-Inputs (Kontakt + Bewerbung) hatten 15,2px Schrift → `max(0.95rem, 16px)`; v-input zusätzlich 44px Mindesthöhe |
+| C32 | `6d62cb6` | Report-Meilenstein (C24–C31) |
+| C33 | `ecf1a26` | **Blog-Pagination:** 176 Artikel rendern nicht mehr auf einer Seite — Featured + 24/Seite, ältere unter `/blog/seite/2–8`; Index-HTML 152 KB → 44 KB (−71 %) |
+| C34 | `2156990` | Sitemap um die 7 paginierten Blog-Seiten ergänzt |
+| C35 | `e35acdf` | Kontakt-Avatar profilbild: 96 KB JPEG (1080px) → 3,4 KB WebP (128px) |
+| C36 | `d500e29` | Consent-Banner UX: 44px-Buttons, `100dvh`-Überlauf-Schutz, sanfter Eintritt mit reduced-motion-Guard (Semantik unangetastet) |
+| C37 | `f9faab4` | autoflowki-Referenzbild 157 KB PNG → 39 KB WebP — Bild-Budget der Seite damit komplett eingehalten |
+| C38 | `87c43cf` | Assistant-Flow-Copy: Kernversprechen („Entwurf am nächsten Tag") im Neue-Website-Schritt, Vertriebs-Schritt in Du-Form/„0 auf 100"-Ton |
+| C39 | `83f4909` | webdesign Service-Icons korrigiert: „UI/UX Design" zeigte eine Uhr, „Betreuung" ein Balkendiagramm → Stift/Rettungsring im Bestandsstil |
 
 **Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
@@ -90,10 +98,10 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 
 ---
 
-## Zusammenfassung (Stand C32)
+## Zusammenfassung (Stand C40)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 32 Iterationen (laufend)
-- **46 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
-- **Wichtigste Funde:** C21 (Bewerbungsformular akzeptierte leere Submissions als Erfolg) · C25/C26/C27 (~10 MB Bildgewicht entfernt, Startseiten-Hero −95 %) · C31 (iOS-Fokus-Zoom auf allen Formularen)
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 40 Iterationen (laufend)
+- **54 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Wichtigste Funde:** C21 (Bewerbungsformular akzeptierte leere Submissions als Erfolg) · C25–C27/C35/C37 (~10,7 MB Bildgewicht entfernt, Startseiten-Hero −95 %) · C31 (iOS-Fokus-Zoom auf allen Formularen) · C33 (Blog-Index −71 % durch Pagination)
 - **Kein PR** erstellt (wie gewünscht) · **Branch:** `claude/website-deployment-security-dpw830`
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
