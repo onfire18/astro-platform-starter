@@ -61,22 +61,31 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C13 | `a1e48a3` | robots.txt: interne Tools (/tools/) + Starter-Demo-Seiten (crm, invoice, blobs, edge, …) für Crawler gesperrt |
 | C14 | `5401f5b` | apple-touch-icon (180×180 aus Logo generiert) + theme-color #0A0A0A im Head |
 | C15 | `6bd0e5e` | Roving-Tabindex auf Branchen-Tabs (WAI-ARIA-Tabs-Pattern vervollständigt) |
+| C16 | `e1a54f2` | Report-Meilenstein (C8–C15) |
+| C17 | `9293e3b` | entwurf-Tool: PIN-Label, `role=alert` für PIN-Fehler, `role=log`+`aria-live` fürs Fortschritts-Log, Focus-States |
+| C18 | `5063be3` | Mobile-Sticky-Bar: versteckte Links aus Tab-Order entfernt (visibility+aria-hidden synchron); WhatsApp-Button & Assistant heben sich jetzt über die Bar statt überdeckt zu werden |
+| C19 | `ba1b2d6` | Assistant-Dialog: Eintritts-Animation (Drawer-Kurve, reduced-motion-Guard) + max-height/Scroll für kleine Screens |
+| C20 | `ebf3f03` | Falsche SearchAction aus WebSite-Schema entfernt (Blog hat keine Suche — tote Sitelinks-Suchbox riskiert) |
+| C21 | `a6c64ac` | **BUGFIX:** Vertrieb-Formular validierte nie (novalidate ohne JS-Check) — leere Bewerbungen gingen als „Erfolg" durch. Jetzt: aria-invalid, rote Markierung, Fokus aufs erste Fehlerfeld, Live-Region-Meldung |
+| C22 | `f405952` | Copy-Widerspruch: webdesign-CTA „48 Stunden Einschätzung" → einheitlich „Entwurf am nächsten Tag, kostenlos & unverbindlich" |
+| C23 | `b74a81d` | Fokusring auf dunklen Flächen (Hero, Footer, v-closing, Artikel): Cobalt 2,46:1 → helles Blau 7:1 (WCAG-Fokus-Sichtbarkeit) |
 
 **Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
 ## Verbleibende Empfehlungen (Backlog für weitere Durchgänge)
 
 1. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User)
-2. **tools/entwurf-Seite** a11y/Politur-Audit (PIN-Screen, Formular, Verlauf)
-3. **Assistant-Chat-Widget** Feinschliff (Antwort-Flows, Motion-Politur)
-4. **Sticky-Mobile-Bar & Floating-Contact** auf Überdeckung/Kontrast prüfen
-5. **Blog-Inhalte**: weitere Artikel wären SEO-wirksamer als weitere Code-Politur
+2. **Blog-Inhalte**: weitere Artikel wären inzwischen SEO-wirksamer als weitere Code-Politur
+3. **ueber-uns** frisches Mobile-Audit (Werte-Karten, Kontakt-Card)
+4. **Performance-Pass**: Font-Subsetting/`font-display`, LCP der Hero-Screenshots prüfen
+5. **Frische Gesamt-Audits** der schon bearbeiteten Seiten (jede Runde findet erfahrungsgemäß noch echte Kleinigkeiten)
 
 ---
 
-## Zusammenfassung (Stand C16)
+## Zusammenfassung (Stand C24)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 16 Iterationen (laufend)
-- **30 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 24 Iterationen (laufend)
+- **38 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Wichtigster Fund:** C21 — das Bewerbungsformular akzeptierte leere Submissions als Erfolg
 - **Kein PR** erstellt (wie gewünscht) · **Branch:** `claude/website-deployment-security-dpw830`
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
