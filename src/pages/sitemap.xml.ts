@@ -24,7 +24,15 @@ export const GET: APIRoute = async () => {
     lastmod: (post.data.updatedDate ?? post.data.pubDate).toISOString().split('T')[0],
   }));
 
-  const pages = [...staticPages, ...blogPages];
+  // Paginierte Blog-Übersichten (/blog = Seite 1, Rest unter /blog/seite/N) — muss zu PAGE_SIZE in blog/index.astro passen
+  const PAGE_SIZE = 24;
+  const totalPages = Math.max(1, Math.ceil((posts.length - 1) / PAGE_SIZE));
+  const paginationPages = [];
+  for (let p = 2; p <= totalPages; p++) {
+    paginationPages.push({ url: `/blog/seite/${p}`, priority: '0.4', changefreq: 'weekly' });
+  }
+
+  const pages = [...staticPages, ...paginationPages, ...blogPages];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
