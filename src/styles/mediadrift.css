@@ -108,6 +108,15 @@ svg {
   outline-offset: 3px;
   border-radius: 4px;
 }
+/* Auf dunklen Flächen wäre Cobalt unsichtbar (2.5:1) — heller Ring (7:1) */
+.md-page .hero :focus-visible,
+.md-page .v-hero :focus-visible,
+.md-page .v-closing-section :focus-visible,
+.md-page .article-hero :focus-visible,
+.md-page .article-cta :focus-visible,
+.md-page .md-footer :focus-visible {
+  outline-color: #60A5FA;
+}
 
 /* Buttons */
 .md-btn {
