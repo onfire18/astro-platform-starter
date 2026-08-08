@@ -19,7 +19,7 @@ export const industries: Industry[] = [
     subline: 'Professionelle Online-Auftritte für Makler mit Objektpräsentation, Bewertungsanfrage und Expertenprofil.',
     pages: ['Startseite', 'Aktuelle Angebote', 'Bewertung anfragen', 'Über mich', 'Kontakt'],
     accent: '#1a4731',
-    image: '/images/branchen/immobilien.png',
+    image: '/images/branchen/immobilien.webp',
     imageAlt: 'Musterdesign einer Immobilienmakler-Website (Beispielentwurf) – Hero-Bereich mit Objektsuche',
   },
   {
@@ -29,7 +29,7 @@ export const industries: Industry[] = [
     subline: 'Appetitliche Websites mit digitaler Speisekarte, Reservierungsmöglichkeit und der Geschichte dahinter.',
     pages: ['Startseite', 'Speisekarte', 'Reservierung', 'Galerie', 'Über uns'],
     accent: '#5c2a0e',
-    image: '/images/branchen/gastronomie.png',
+    image: '/images/branchen/gastronomie.webp',
     imageAlt: 'Musterdesign einer Restaurant-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
@@ -39,7 +39,7 @@ export const industries: Industry[] = [
     subline: 'Klare Positionierung, Leistungsgebiete und ein professioneller erster Eindruck für Anwälte und Steuerberater.',
     pages: ['Startseite', 'Leistungsgebiete', 'Team', 'Mandanten-FAQ', 'Kontakt'],
     accent: '#1e3a5f',
-    image: '/images/branchen/kanzlei.png',
+    image: '/images/branchen/kanzlei.webp',
     imageAlt: 'Musterdesign einer Kanzlei-Website (Beispielentwurf) – Hero-Bereich mit Positionierung',
   },
   {
@@ -49,7 +49,7 @@ export const industries: Industry[] = [
     subline: 'Mobile-optimierte Auftritte für Handwerksbetriebe mit Projektfotos, Leistungsübersicht und direkter Anfrage.',
     pages: ['Startseite', 'Leistungen', 'Referenzprojekte', 'Einsatzgebiet', 'Anfrage'],
     accent: '#7c3626',
-    image: '/images/branchen/handwerk.png',
+    image: '/images/branchen/handwerk.webp',
     imageAlt: 'Musterdesign einer Handwerks-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
@@ -59,7 +59,7 @@ export const industries: Industry[] = [
     subline: 'Positionierungsstarke Websites für Coaches und Berater mit klarem Angebot und direktem Erstkontakt.',
     pages: ['Startseite', 'Mein Angebot', 'Meine Methode', 'Über mich', 'Erstgespräch'],
     accent: '#2d1b69',
-    image: '/images/branchen/coaching.png',
+    image: '/images/branchen/coaching.webp',
     imageAlt: 'Musterdesign einer Coaching-Website (Beispielentwurf) – Hero-Bereich',
   },
   {
@@ -70,8 +70,8 @@ export const industries: Industry[] = [
     pages: ['Startseite', 'Leistungen', 'Einzugsgebiet', 'Über uns', 'Kontakt & Angebot'],
     accent: '#1a3a4a',
     // Placeholder: Erstelle ein Musterdesign-Screenshot und speichere ihn als
-    // /public/images/branchen/dienstleister.png (1200×800 px empfohlen)
-    // image: '/images/branchen/dienstleister.png',
+    // /public/images/branchen/dienstleister.webp (1200×800 px empfohlen)
+    // image: '/images/branchen/dienstleister.webp',
     // imageAlt: 'Musterdesign einer Website für lokale Dienstleister (Beispielentwurf)',
   },
 ];
