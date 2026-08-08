@@ -2735,6 +2735,10 @@ const faqSchema = {
     box-shadow: 0 12px 40px rgba(15,23,42,0.12);
     display: block;
   }
+  /* Die Grid-Spalte gibt 776px her = gemessene 86 Zeichen pro Zeile, über der
+     80er-Grenze (WCAG 1.4.8). 650px ergeben ~72. Begrenzt wird die ganze
+     Textspalte, damit Überschrift, Absätze und Liste bündig bleiben. */
+  .about-text { max-width: 650px; }
   .about-text h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin-block: 0.5rem 1.25rem; }
   .about-text p { color: var(--md-muted); margin-bottom: 1rem; }
   .about-text p:last-of-type { margin-bottom: 1rem; }
