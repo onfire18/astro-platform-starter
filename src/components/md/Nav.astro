@@ -12,6 +12,11 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
+<!-- Muss das ERSTE fokussierbare Element im Dokument sein: Der Link soll die
+     Navigation überspringen. Stand er dahinter, hatte man sie bereits
+     durchgetabbt (gemessen: Station 10 statt 1) — WCAG 2.4.1. -->
+<a href="#main-content" class="md-skip-link">Zum Inhalt springen</a>
+
 <header class="md-nav-wrap" role="banner">
   <nav class="md-nav md-container" aria-label="Hauptnavigation">
     <!-- Logo -->
@@ -73,9 +78,6 @@ const currentPath = Astro.url.pathname;
     </a>
   </div>
 </header>
-
-<!-- Skip link -->
-<a href="#main-content" class="md-skip-link">Zum Inhalt springen</a>
 
 <style>
   .md-skip-link {
