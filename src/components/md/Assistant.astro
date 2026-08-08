@@ -170,6 +170,9 @@ const waSales = whatsappUrl('sales');
     box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
     overflow: hidden;
   }
+  /* Nötig, weil das display oben sonst das display:none überschreibt,
+     das [hidden] nur aus dem UA-Stylesheet mitbringt. */
+  .assistant-dialog[hidden] { display: none; }
   .assistant-dialog:not([hidden]) {
     animation: asst-in 260ms var(--ease-drawer, cubic-bezier(0.32, 0.72, 0, 1)) both;
   }
@@ -281,6 +284,7 @@ const waSales = whatsappUrl('sales');
     border-top: 1px solid var(--md-border);
   }
 
+  .asst-ctrl[hidden] { display: none; }
   .asst-ctrl {
     display: flex;
     align-items: center;
