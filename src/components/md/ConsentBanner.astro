@@ -36,15 +36,17 @@ import { SITE } from '../../config/site';
       </label>
     </div>
 
+    <!-- Reihenfolge im DOM = visuelle Reihenfolge = Tab-Reihenfolge.
+         Ablehnen und Akzeptieren stehen gleich groß nebeneinander. -->
     <div class="consent-actions">
       <button type="button" id="consent-reject" class="md-btn md-btn-outline">
         Nur notwendige
       </button>
-      <button type="button" id="consent-save" class="md-btn md-btn-outline">
-        Auswahl speichern
-      </button>
       <button type="button" id="consent-accept-all" class="md-btn md-btn-primary">
         Alle akzeptieren
+      </button>
+      <button type="button" id="consent-save" class="md-btn md-btn-outline consent-save">
+        Auswahl speichern
       </button>
     </div>
   </div>
@@ -138,21 +140,21 @@ import { SITE } from '../../config/site';
 <style>
   #consent-banner {
     position: fixed;
-    bottom: 1.5rem;
-    left: 1rem;
-    right: 1rem;
-    max-width: 640px;
-    max-height: calc(100dvh - 2rem); /* nie über den Viewport hinaus (kleine/quer gehaltene Geräte) */
+    bottom: 1.25rem;
+    left: 1.25rem;
+    /* Dezent in der Ecke statt mittig über dem Inhalt */
+    right: auto;
+    width: min(360px, calc(100vw - 2.5rem));
+    max-height: calc(100dvh - 2.5rem); /* nie über den Viewport hinaus */
     overflow-y: auto;
-    margin-inline: auto;
     background: var(--md-surface);
     border: 1px solid var(--md-border);
     border-radius: 12px;
-    box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
-    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.1);
+    padding: 1.05rem 1.15rem;
     z-index: 9000;
     font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.84rem;
   }
   #consent-banner:not([hidden]) {
     animation: consent-in 300ms var(--ease-drawer, cubic-bezier(0.32, 0.72, 0, 1)) both;
@@ -167,27 +169,28 @@ import { SITE } from '../../config/site';
 
   .consent-title {
     font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.98rem;
     color: var(--md-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
   }
 
   .consent-desc {
     color: var(--md-muted);
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-    font-size: 0.875rem;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+    font-size: 0.8rem;
   }
   .consent-desc a { color: var(--md-cta); text-decoration: underline; }
 
   .consent-categories {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    padding: 0.65rem 0.75rem;
     background: var(--md-bg);
     border-radius: 8px;
+    font-size: 0.8rem;
   }
 
   .consent-category {
@@ -204,15 +207,20 @@ import { SITE } from '../../config/site';
   .consent-cat-name { font-weight: 500; color: var(--md-primary); }
   .consent-cat-note { font-size: 0.78rem; color: var(--md-subtle); }
 
+  /* Ablehnen und Akzeptieren teilen sich exakt gleich breit die erste Zeile —
+     Ablehnen darf nicht unauffälliger sein als Akzeptieren (DSGVO). */
   .consent-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
   }
   .consent-actions .md-btn {
-    font-size: 0.85rem;
-    padding: 0.55rem 1rem;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 0.5rem 0.6rem;
     min-height: 44px; /* Touch-Target — diese Buttons muss jeder Besucher treffen */
   }
+  /* Neutrale Zwischenoption, nur relevant wenn oben etwas angehakt wurde */
+  .consent-actions .consent-save { grid-column: 1 / -1; }
 </style>
