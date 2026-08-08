@@ -178,6 +178,8 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] Eine Akzentfarbe (Cobalt), eine Grau-Familie, eine Radius-Skala — konsistent über ALLE Sektionen.
 - [ ] Kein zentriertes 08/15-Hero, keine drei gleichen Feature-Cards als Standard. Asymmetrie/Split nutzen, wo passend.
 - [ ] Großzügiger Whitespace (`py-24`+ Gefühl), Sektionen atmen.
+- [ ] **Reflow bei 200 % und 400 % Zoom prüfen** (`zoom.mjs`; 400 % entspricht 320px effektiver Breite, das ist der WCAG-1.4.10-Prüffall). Die Seite darf nicht horizontal scrollen **und kein Inhalt verloren gehen** — beides prüfen, denn ein `overflow: hidden` verhindert das Scrollen und schneidet den Überstand still ab.
+- [ ] **Grid-Spalten als `minmax(0, 1fr)`, wo ein Kind nicht schmaler kann** (Badges, lange Wörter, Bilder). Das Minimum von `1fr` ist `min-content`, die Spalte wächst dann über ihren Anteil. Aber: Nicht pauschal ersetzen — von 89 `1fr`-Rastern der Seite war genau **eines** betroffen (Testimonials, C61). Erst messen (`grids.mjs`), dann ändern.
 - [ ] **Breite Inhalte (Tabellen, Diagramme, Code) in eine scrollbare Region wickeln** — `overflow-x: auto` auf einem Wrapper mit `tabindex="0"`, `role="region"` und Label, plus `min-width` auf dem Inhalt, damit er nicht zerquetscht wird. **Nicht** `display: block` auf die `<table>` selbst: das nimmt ihr für Screenreader die Tabellenrolle. Bei Markdown-Inhalten löst ein rehype-Plugin das global (siehe `astro.config.mjs`).
 - [ ] Cards nur, wenn Elevation echte Hierarchie kommuniziert; sonst Border/Spacing.
 - [ ] `min-height: 100dvh` statt `100vh` für Full-Height (iOS-Safari).
