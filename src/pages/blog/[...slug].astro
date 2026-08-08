@@ -233,10 +233,22 @@ const breadcrumbSchema = {
   }
   .article-body :global(h2 + p),
   .article-body :global(h3 + p) { margin-top: 0; }
+  /* Wrapper kommt aus dem rehype-Plugin in astro.config.mjs */
+  .article-body :global(.table-scroll) {
+    overflow-x: auto;
+    margin: 0 0 1.75rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .article-body :global(.table-scroll:focus-visible) {
+    outline: 2px solid var(--md-cta);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
   .article-body :global(table) {
     width: 100%;
+    min-width: 30rem; /* darf schmaler nicht zerquetscht werden — dann lieber scrollen */
     border-collapse: collapse;
-    margin: 0 0 1.75rem;
+    margin: 0;
     font-size: 0.95rem;
   }
   .article-body :global(th),
