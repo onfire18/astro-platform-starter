@@ -181,8 +181,11 @@ import { SITE, whatsappUrl } from '../../config/site';
     gap: 0.5rem;
     padding-block: 0.2rem;
   }
-  /* Telefon/WhatsApp/Mail sind echte Aktionen → volles Touch-Target */
-  .footer-contact a { min-height: 44px; }
+  /* Alle Footer-Links sind Touch-Targets — die Seitennavigation genauso
+     wie Telefon/WhatsApp/Mail (C29 hatte nur letztere erfasst). */
+  .footer-contact a,
+  nav a,
+  .consent-revoke-btn { min-height: 44px; }
   nav a svg, .footer-contact a svg {
     transition: transform 200ms var(--ease-out), color 150ms var(--ease-out);
     flex-shrink: 0;
