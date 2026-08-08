@@ -186,7 +186,11 @@ const breadcrumbSchema = {
 
   /* Article body typography */
   .article-body {
-    max-width: 720px;
+    /* 720px ergaben gemessene 80 Zeichen pro Zeile — die obere
+       WCAG-1.4.8-Grenze und für Langtexte unbequem; 620px ergeben ~69.
+       Nicht in ch rechnen: Outfits "0" ist breit, 68ch wurden hier 856px
+       (= 95 Zeichen), also das Gegenteil der Absicht. */
+    max-width: 620px;
     margin: clamp(2.5rem, 5vw, 4rem) auto 0;
     font-size: 1.075rem;
     line-height: 1.8;
@@ -269,7 +273,7 @@ const breadcrumbSchema = {
 
   /* CTA box */
   .article-cta {
-    max-width: 720px;
+    max-width: 620px; /* bündig mit der Textspalte */
     margin: 3.5rem auto 0;
     background: linear-gradient(160deg, #1455A8 0%, #0E3D7A 100%);
     border-radius: 16px;
