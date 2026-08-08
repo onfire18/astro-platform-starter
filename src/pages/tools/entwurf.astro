@@ -1,6 +1,12 @@
 ---
 export const prerender = false;
 
+// Selbstgehostet wie der Rest der Seite. Vorher hing hier als einziger Ort
+// ein <link> auf fonts.googleapis.com — jeder Aufruf schickte die IP des
+// Besuchers an Google, ohne Einwilligung und am Consent-Banner vorbei.
+// Kursiv wird auf dieser Seite nicht verwendet, deshalb reicht wght.
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/plus-jakarta-sans';
 import { COOKIE_NAME, getPin, istAngemeldet } from '../../lib/entwurf-auth';
 
 // Der PIN wird ausschließlich serverseitig geprüft (src/lib/entwurf-auth.ts).
@@ -18,8 +24,6 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Entwurf-Generator · MediaDrift Intern</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
   <style>
     :root {
       --bg: #EFF2F7; --surface: #fff; --primary: #0B1828; --secondary: #1B3254;
@@ -29,8 +33,8 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.65; min-height: 100dvh; }
-    h1, h2, h3, .logo-text { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.02em; }
+    body { font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.65; min-height: 100dvh; }
+    h1, h2, h3, .logo-text { font-family: 'Outfit Variable', 'Outfit', system-ui, sans-serif; letter-spacing: -0.02em; }
     a { color: var(--cta); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
