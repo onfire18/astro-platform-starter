@@ -1,8 +1,14 @@
 ---
 export const prerender = false;
 
-// Einfacher PIN-Schutz — gesetzt via ENV ENTWURF_PIN (default: "mediadrift")
-const ENV_PIN = import.meta.env.ENTWURF_PIN || process.env.ENTWURF_PIN || 'mediadrift';
+import { COOKIE_NAME, getPin, istAngemeldet } from '../../lib/entwurf-auth';
+
+// Der PIN wird ausschließlich serverseitig geprüft (src/lib/entwurf-auth.ts).
+// Vorher stand er über define:vars im ausgelieferten HTML — "Ansicht anzeigen"
+// genügte, um ihn zu lesen. Auch der frühere Default "mediadrift" ist weg:
+// ohne gesetzte ENTWURF_PIN gibt es keinen Zugang statt eines bekannten.
+const pinKonfiguriert = !!getPin();
+const angemeldet = istAngemeldet(Astro.cookies.get(COOKIE_NAME)?.value);
 const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY);
 ---
 <!DOCTYPE html>
@@ -46,7 +52,10 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
     .pin-card p { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
     .pin-input { width: 100%; padding: .8rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-size: 1.05rem; text-align: center; letter-spacing: .15em; font-family: inherit; }
     .pin-input:focus { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(20,85,168,.12); }
-    .pin-err { color: var(--err); font-size: 0.85rem; margin-top: .5rem; min-height: 1.2em; }
+    /* `.pin-card p` (0,1,1) schlug `.pin-err` (0,1,0) — die Fehlermeldung kam
+       im Grau der Hilfetexte statt in Rot und las sich wie ein Hinweis.
+       Gemessen: rgb(72,97,114) statt rgb(220,38,38). */
+    .pin-card .pin-err { color: var(--err); font-size: 0.85rem; margin-top: .5rem; min-height: 1.2em; }
 
     /* ── Main app ── */
     #app { display: none; }
@@ -153,10 +162,16 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
       <span class="logo-text">MediaDrift</span>
     </div>
     <h2>Internes Tool</h2>
-    <p>Bitte PIN eingeben, um den Entwurf-Generator zu nutzen.</p>
-    <input id="pinInput" class="pin-input" type="password" placeholder="PIN" aria-label="PIN eingeben" autocomplete="current-password" />
-    <p class="pin-err" id="pinErr" role="alert" aria-live="assertive">&nbsp;</p>
-    <button class="btn btn-primary" id="pinBtn" style="margin-top:.5rem">Anmelden</button>
+    {pinKonfiguriert ? (
+      <>
+        <p>Bitte PIN eingeben, um den Entwurf-Generator zu nutzen.</p>
+        <input id="pinInput" class="pin-input" type="password" placeholder="PIN" aria-label="PIN eingeben" autocomplete="current-password" />
+        <p class="pin-err" id="pinErr" role="alert" aria-live="assertive">&nbsp;</p>
+        <button class="btn btn-primary" id="pinBtn" style="margin-top:.5rem">Anmelden</button>
+      </>
+    ) : (
+      <p class="pin-err" role="alert">Kein Zugang konfiguriert. <code>ENTWURF_PIN</code> als Umgebungsvariable setzen.</p>
+    )}
   </div>
 </div>
 
@@ -236,17 +251,14 @@ const hasServerKey = !!(import.meta.env.ANTHROPIC_API_KEY || process.env.ANTHROP
   <footer>MediaDrift · Internes Verkaufstool · Entwürfe sind unverbindliche Vorschläge</footer>
 </div>
 
-<script is:inline define:vars={{ correctPin: ENV_PIN, hasServerKey }}>
-// ── PIN-Schutz ──────────────────────────────────────────────────────────────
-const STORAGE_KEY = 'md_entwurf_auth';
+<script is:inline define:vars={{ angemeldet, hasServerKey }}>
+// ── Anmeldung ───────────────────────────────────────────────────────────────
+// Der PIN steht nicht mehr in diesem Skript. Geprüft wird in
+// /api/entwurf-auth; die Sitzung hängt an einem HttpOnly-Cookie, das
+// JavaScript weder lesen noch fälschen kann. `angemeldet` kommt vom Server
+// und steuert hier nur noch, welcher Bildschirm sichtbar ist — die
+// eigentliche Sperre sitzt in /api/entwurf.
 const HISTORY_KEY = 'md_entwurf_history';
-
-function isAuthed() {
-  return sessionStorage.getItem(STORAGE_KEY) === 'ok';
-}
-function setAuthed() {
-  sessionStorage.setItem(STORAGE_KEY, 'ok');
-}
 
 const pinScreen = document.getElementById('pinScreen');
 const app       = document.getElementById('app');
@@ -257,27 +269,41 @@ function showApp() {
   renderHistory();
 }
 
-if (isAuthed()) {
+if (angemeldet) {
   showApp();
 } else {
   const pinInput = document.getElementById('pinInput');
   const pinBtn   = document.getElementById('pinBtn');
   const pinErr   = document.getElementById('pinErr');
 
-  function tryPin() {
-    if (pinInput.value === correctPin) {
-      setAuthed();
-      showApp();
-    } else {
-      pinErr.textContent = 'Falscher PIN. Bitte erneut versuchen.';
+  if (pinInput) {
+    const tryPin = async () => {
+      pinBtn.disabled = true;
+      pinErr.textContent = ' ';
+      try {
+        const res = await fetch('/api/entwurf-auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: pinInput.value }),
+        });
+        if (res.ok) {
+          showApp();
+          return;
+        }
+        const d = await res.json().catch(() => ({}));
+        pinErr.textContent = d.message || 'Falscher PIN. Bitte erneut versuchen.';
+      } catch {
+        pinErr.textContent = 'Anmeldung fehlgeschlagen. Verbindung prüfen.';
+      }
+      pinBtn.disabled = false;
       pinInput.value = '';
       pinInput.focus();
-    }
-  }
+    };
 
-  pinBtn.addEventListener('click', tryPin);
-  pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryPin(); });
-  pinInput.focus();
+    pinBtn.addEventListener('click', tryPin);
+    pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryPin(); });
+    pinInput.focus();
+  }
 }
 
 // ── Verlauf ──────────────────────────────────────────────────────────────────

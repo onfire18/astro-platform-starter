@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 // @ts-ignore
 import { scrapeWebsite, generateEntwurf, detectCompanyName, makeSlug, normalizeUrl } from '../../lib/entwurf-core.mjs';
+import { COOKIE_NAME, istAngemeldet } from '../../lib/entwurf-auth';
 
 export const prerender = false;
 
@@ -13,7 +14,14 @@ export const prerender = false;
  *   event: done      → { html, filename, meta }
  *   event: error     → { message: string }
  */
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, cookies }) => {
+  // Diese Route holt eine beliebige fremde URL ab und ruft danach die
+  // Anthropic-API auf Rechnung des Betreibers. Sie war ungeschützt: der
+  // PIN-Schirm der Seite lief rein im Browser und wurde hier nie geprüft.
+  if (!istAngemeldet(cookies.get(COOKIE_NAME)?.value)) {
+    return jsonErr('Nicht angemeldet.', 401);
+  }
+
   let body: { url?: string; companyName?: string; industry?: string; apiKey?: string };
   try {
     body = await request.json();
