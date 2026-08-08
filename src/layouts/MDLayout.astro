@@ -4,6 +4,11 @@
 // das Latin-Subset nach.
 import '@fontsource-variable/outfit';
 import '@fontsource-variable/plus-jakarta-sans';
+// Nur das Latin-Subset vorladen. Gemessen wird auf allen Seiten ausschließlich
+// dieses geladen — Deutsch braucht kein latin-ext, und ein Preload, den der
+// Browser dann nicht verwendet, wäre reine Verschwendung.
+import outfitLatin from '@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url';
+import jakartaLatin from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
 import '../styles/mediadrift.css';
 import { SITE } from '../config/site';
 import MDNav from '../components/md/Nav.astro';
@@ -62,6 +67,13 @@ const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${SITE.url}${ogImage}`} />
+
+    <!-- Schriften vorladen. Ohne diese Zeilen entdeckt der Browser sie erst
+         beim Parsen des Stylesheets: gemessen startete die CSS bei 163ms, die
+         Schriften erst bei 891ms. Bis dahin steht alles in system-ui, und der
+         Wechsel verschiebt das Layout, weil Outfit rund 9 % schmaler baut. -->
+    <link rel="preload" as="font" type="font/woff2" href={outfitLatin} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={jakartaLatin} crossorigin="anonymous" />
 
     <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon-md.svg" />
