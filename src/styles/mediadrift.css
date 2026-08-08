@@ -41,9 +41,10 @@ svg {
   height: auto;
 }
 
-/* Font imports (self-hosted via fontsource) */
-@import '@fontsource-variable/outfit';
-@import '@fontsource-variable/plus-jakarta-sans';
+/* Die Fonts werden in MDLayout.astro per JS-Import geladen.
+   CSS-@import mit nacktem Paketnamen löst Vite NICHT auf — die
+   Schriften fehlten dadurch komplett im Build (alles lief auf
+   system-ui). Nicht hierher zurückverlegen. */
 
 /* Reset für MediaDrift-Seiten */
 .md-page {

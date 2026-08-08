@@ -1,4 +1,9 @@
 ---
+// Die Pakete liefern nur index.css (kein latin.css). Die enthaltenen
+// @font-face tragen unicode-range, der Browser lädt also ohnehin nur
+// das Latin-Subset nach.
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/plus-jakarta-sans';
 import '../styles/mediadrift.css';
 import { SITE } from '../config/site';
 import MDNav from '../components/md/Nav.astro';
