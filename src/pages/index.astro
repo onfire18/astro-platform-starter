@@ -1672,17 +1672,22 @@ const faqSchema = {
 
   /* ---- Testimonials ---- */
   .testimonials-section { background: var(--md-surface); }
+  /* minmax(0, 1fr) statt 1fr: Das Minimum von 1fr ist min-content, eine
+     Spalte darf also über ihren Anteil hinauswachsen, wenn ein Kind nicht
+     schmaler kann (hier das Branchen-Badge). Bei 200% Zoom wuchs Spalte 2
+     dadurch auf 346px statt 284px und wurde von .md-page abgeschnitten —
+     sichtbarer Textverlust, WCAG 1.4.10. */
   .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
     margin-top: 2.5rem;
   }
   @media (max-width: 900px) {
-    .testimonials-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .testimonials-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   }
   @media (min-width: 560px) and (max-width: 900px) {
-    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   .testimonial-card {
     background: var(--md-bg);
