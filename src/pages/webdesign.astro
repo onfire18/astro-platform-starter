@@ -478,6 +478,9 @@ const waUrl = whatsappUrl('customer');
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--md-primary);
+    /* Die UA-Margin `1em` addiert sich zum `gap` der Karte — siehe
+       ueber-uns.astro, dort dieselbe Stelle. */
+    margin: 0;
   }
 
   .service-card p {

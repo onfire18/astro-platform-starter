@@ -317,6 +317,12 @@ const waUrl = whatsappUrl('customer');
     font-weight: 600;
     color: var(--md-primary);
     text-wrap: balance;
+    /* Ohne diese Zeile gilt die Browser-Voreinstellung `margin-block: 1em`
+       (hier 17px). Sie addiert sich zum `gap: 0.5rem` der Karte, statt es
+       zu ersetzen — gemessen 29px über und 25px unter der Überschrift statt
+       der gewollten 12/8. Der Titel stand damit fast gleich weit von Ikon
+       und Text entfernt und gehörte optisch zu keinem von beiden. */
+    margin: 0;
   }
 
   .value-card p {
