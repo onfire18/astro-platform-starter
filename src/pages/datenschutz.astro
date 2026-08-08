@@ -8,7 +8,11 @@ import { SITE } from '../config/site';
   description="Datenschutzerklärung von MediaDrift gemäß DSGVO"
 >
   <div class="legal-page md-container">
-    <h1 class="legal-title">Datenschutzerklärung</h1>
+    {/* Weiches Trennzeichen (U+00AD): unsichtbar, verändert den Wortlaut nicht
+        und wird beim Kopieren weggelassen — legt aber die Trennstelle fest,
+        falls das Wort umbrechen muss. Ohne es trennt der Browser mangels
+        Trennwörterbuch nach "Datenschutzerklä". */}
+    <h1 class="legal-title">Daten&shy;schutz&shy;erklärung</h1>
 
     <div class="legal-notice">
       <strong>Hinweis:</strong> [RECHTLICH PRÜFEN] – Diese Datenschutzerklärung ist ein Entwurf und muss
@@ -186,6 +190,13 @@ import { SITE } from '../config/site';
     color: var(--md-primary);
     margin-bottom: 2rem;
     font-weight: 700;
+    /* "Datenschutzerklärung" ist ein einziges Wort: bei 400 % Zoom (320px
+       Viewport) 316px breit in einer 264px-Spalte. Das überstehende Stück
+       schnitt .md-page (overflow-x: hidden) weg — gemessen fehlte das "g".
+       break-word garantiert den Umbruch, hyphens setzt ihn mit Bindestrich,
+       wo das Trennwörterbuch vorhanden ist. WCAG 1.4.10. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .legal-notice {

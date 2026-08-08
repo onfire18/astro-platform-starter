@@ -8,7 +8,8 @@ import { SITE } from '../config/site';
   description="Allgemeine Geschäftsbedingungen von MediaDrift – Entwurf"
 >
   <div class="legal-page md-container">
-    <h1 class="legal-title">Allgemeine Geschäftsbedingungen (AGB)</h1>
+    {/* &shy; = unsichtbare Trennstelle, siehe datenschutz.astro */}
+    <h1 class="legal-title">Allgemeine Geschäfts&shy;bedingungen (AGB)</h1>
 
     <div class="draft-warning" role="alert">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -171,6 +172,11 @@ import { SITE } from '../config/site';
     color: var(--md-primary);
     margin-bottom: 1.5rem;
     font-weight: 700;
+    /* "Geschäftsbedingungen" passt bei 400 % Zoom nicht in die 264px-Spalte
+       und wurde von .md-page (overflow-x: hidden) beschnitten. Siehe
+       datenschutz.astro — WCAG 1.4.10. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .draft-warning {

@@ -103,6 +103,11 @@ import { SITE } from '../config/site';
     color: var(--md-primary);
     margin-bottom: 2.5rem;
     font-weight: 700;
+    /* "Impressum" passt zwar (264 von 264px), aber die drei Rechtsseiten
+       teilen sich diese Klasse — sie hier auseinanderlaufen zu lassen wäre
+       die Falle für den nächsten Titel. Siehe datenschutz.astro. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .legal-section {
