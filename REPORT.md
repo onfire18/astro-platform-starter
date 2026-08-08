@@ -85,6 +85,14 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C37 | `f9faab4` | autoflowki-Referenzbild 157 KB PNG → 39 KB WebP — Bild-Budget der Seite damit komplett eingehalten |
 | C38 | `87c43cf` | Assistant-Flow-Copy: Kernversprechen („Entwurf am nächsten Tag") im Neue-Website-Schritt, Vertriebs-Schritt in Du-Form/„0 auf 100"-Ton |
 | C39 | `83f4909` | webdesign Service-Icons korrigiert: „UI/UX Design" zeigte eine Uhr, „Betreuung" ein Balkendiagramm → Stift/Rettungsring im Bestandsstil |
+| C40 | `d784d2a` | Report-Meilenstein (C32–C39) |
+| C41 | `3c178fe` | FAQ-Politur: Antworten faden sanft ein, `name`-Attribut macht die Accordions exklusiv (eine offene Frage schließt die vorige) |
+| C42 | `ecb0214` | Audit-Runde (Rechtsseiten, Vertriebs-Timeline: sauber) + **Blog-Keyword-Kannibalisierung dokumentiert** (siehe Backlog Punkt 0 — User-Entscheidung) |
+| C43 | `a92882e` | Mobile-Menü schließt jetzt beim Klick auf einen Link (Anker-Ziele scrollten vorher unter dem offenen Menü weg), Burger auf 44px, aria-State in einer `closeMenu()` zusammengeführt |
+| C44 | `4d7ac59` | entwurf-Tool: ehrlicher Fehlerstatus (grünes Häkchen erschien bisher auch nach Fehlschlägen) + ein defektes SSE-Event bricht nicht mehr den ganzen Stream ab |
+| C45 | `423d17d` | **REGRESSION GEFIXT — vom User im Live-Preview entdeckt:** Der Assistent-Dialog stand auf jeder Seite offen. Ursache war mein `display: flex` aus C19, das das `display:none` von `[hidden]` (nur UA-Stylesheet) überschrieb. Dieselbe Falle steckte in den Zurück/Neu-starten-Buttons. Beide mit expliziter `[hidden]{display:none}`-Regel behoben, alle 5 Seiten gegengeprüft |
+| C46 | `c87a7c5` | Cookie-Banner deutlich zurückhaltender: 640px mittig über dem Hero (17 % Viewport) → 360px unten links (10 %), kompaktere Typo, weicherer Schatten. **Dark Pattern vermieden:** durch das schmalere Layout wäre „Alle akzeptieren" volle Breite geworden, „Nur notwendige" nur halbe — beide stehen jetzt exakt gleich breit nebeneinander. Wortlaut und Logik unangetastet, alle drei Buttons einzeln getestet |
+| C47 | `bbccd08` | Branchen-Bilder 5,10 MB → 261 KB WebP (handwerk 1626→69 KB, gastronomie 1343→65, immobilien 1156→63, coaching 813→48, kanzlei 283→14). `withoutEnlargement`, da kanzlei nativ nur 656px breit ist; Textschärfe bei q82 in 2×-Ansicht geprüft |
 
 **Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
@@ -95,15 +103,23 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 1. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User)
 2. **Blog-Inhalte**: weitere Artikel wären inzwischen SEO-wirksamer als weitere Code-Politur
 3. **ueber-uns** frisches Mobile-Audit (Werte-Karten, Kontakt-Card)
-4. **Performance-Pass**: Font-Subsetting/`font-display`, LCP der Hero-Screenshots prüfen
-5. **Frische Gesamt-Audits** der schon bearbeiteten Seiten (jede Runde findet erfahrungsgemäß noch echte Kleinigkeiten)
+4. **Font-Pass**: `font-display` / Subsetting der beiden Variable Fonts prüfen (Bild-Budget ist abgeschlossen, Fonts sind der verbleibende Ladeposten)
+5. **Frische Gesamt-Audits** der schon bearbeiteten Seiten — ab jetzt mit Screenshot-Kontrolle, nicht nur Code-Review (siehe C45)
 
 ---
 
-## Zusammenfassung (Stand C40)
+## Zusammenfassung (Stand C48)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 40 Iterationen (laufend)
-- **54 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
-- **Wichtigste Funde:** C21 (Bewerbungsformular akzeptierte leere Submissions als Erfolg) · C25–C27/C35/C37 (~10,7 MB Bildgewicht entfernt, Startseiten-Hero −95 %) · C31 (iOS-Fokus-Zoom auf allen Formularen) · C33 (Blog-Index −71 % durch Pagination)
-- **Kein PR** erstellt (wie gewünscht) · **Branch:** `claude/website-deployment-security-dpw830`
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 48 Iterationen (laufend)
+- **62 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Wichtigste Funde:**
+  - C45 — Assistent-Dialog stand auf jeder Seite offen (Regression aus C19, vom User im Live-Preview entdeckt)
+  - C21 — Bewerbungsformular akzeptierte leere Submissions als Erfolg
+  - C25–C27/C35/C37/C47 — **~16 MB Bildgewicht entfernt**, Bild-Budget der Website damit abgeschlossen
+  - C31 — iOS-Fokus-Zoom auf allen Formularen · C33 — Blog-Index −71 % durch Pagination
+- **Live-Preview:** https://deploy-preview-2--endearing-cranachan-3bdba4.netlify.app (PR #2, baut bei jedem Push neu)
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
+
+### Prozess-Lehre aus C45
+
+Der auffälligste Fehler dieser Phase war im Code unsichtbar und im Bild sofort erkennbar. Seitdem gilt: **sichtbare Änderungen werden per Screenshot geprüft, nicht nur gelesen.** Die Prüfskripte liegen im Scratchpad (`hidden.mjs` findet `[hidden]`-Elemente, die trotzdem rendern).

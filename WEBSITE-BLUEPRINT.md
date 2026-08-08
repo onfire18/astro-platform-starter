@@ -202,6 +202,7 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] Dialoge: Escape schließt, Fokus-Management, `aria-expanded` am Trigger, Eintritts-Animation mit `prefers-reduced-motion`-Guard.
 - [ ] Tabs: WAI-ARIA-Pattern komplett — `role="tab(list/panel)"`, `aria-selected`, Pfeiltasten **und Roving-Tabindex** (nur aktiver Tab `tabindex=0`).
 - [ ] Live aktualisierte Bereiche (Logs, Statusmeldungen): `aria-live` / `role="log"` / `role="alert"`.
+- [ ] **`[hidden]`-Falle:** Sobald eine Klasse ein `display` setzt (`flex`, `grid`, `block`), überschreibt das die `display: none`, die `[hidden]` nur aus dem UA-Stylesheet mitbringt — das Element bleibt sichtbar. Immer eine explizite Regel ergänzen: `.komponente[hidden] { display: none; }`. Betrifft Dialoge, Panels, Steuerelemente, Erfolgs-/Fehlermeldungen.
 
 ### 7.4 Performance
 - [ ] `loading="lazy"` + `decoding="async"` auf allen Below-the-fold-Bildern; LCP-Bild `eager` + **`fetchpriority="high"`**.
@@ -223,6 +224,11 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] Keine Lorem Ipsum, keine Platzhalter-`[TAGS]`, keine `John Doe`.
 - [ ] Echte/realistische Zahlen, keine `99.99 %`.
 - [ ] Aktive Sprache, keine AI-Floskeln (§6.1).
+
+### 7.7 Verifikation vor dem Ship
+- [ ] **Sichtbare Änderungen im Bild prüfen, nicht nur im Code.** Dev-Server starten, Screenshot rendern (Desktop + Mobil) und *ansehen*. Grund: Der gravierendste Fehler dieses Projekts (ein permanent offener Dialog über dem Hero, C45) war im Code unauffällig und im Screenshot sofort sichtbar.
+- [ ] Nach Layout-Arbeit gegenprüfen, dass kein `[hidden]`-Element rendert und keine Option optisch bevorzugt wurde, die neutral bleiben muss (Consent).
+- [ ] Nach Bild-Konvertierung: Zielbild in 2× ansehen — Screenshots mit UI-Text vertragen weniger Kompression als Fotos.
 
 ---
 
