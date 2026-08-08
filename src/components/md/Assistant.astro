@@ -127,6 +127,17 @@ const waSales = whatsappUrl('sales');
       bottom: calc(4.4rem + env(safe-area-inset-bottom, 0px));
     }
   }
+  /* Mobil schwebt der Trigger dauerhaft über dem Text. Als reines
+     Icon (44px) verdeckt er nur noch einen Bruchteil davon. */
+  @media (max-width: 700px) {
+    .assistant-trigger {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      justify-content: center;
+    }
+    .assistant-trigger span { display: none; }
+  }
 
   .assistant-trigger {
     display: flex;

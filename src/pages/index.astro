@@ -44,8 +44,8 @@ const faqSchema = {
       <div class="hero-text animate-fadeinup">
         <span class="hero-label">Webdesign &amp; Entwicklung · München</span>
         <h1 class="hero-h1">
-          Websites, die nicht<br />nur gut aussehen.<br />
-          <span class="hero-highlight">Sondern Kunden<br />gewinnen.</span>
+          Websites, die nicht <br class="hero-br" />nur gut aussehen. <br class="hero-br" />
+          <span class="hero-highlight">Sondern Kunden <br class="hero-br" />gewinnen.</span>
         </h1>
         <p class="hero-sub">
           Wir entwickeln digitale Auftritte für Unternehmen, die professioneller auftreten,
@@ -1255,7 +1255,10 @@ const faqSchema = {
       align-items: center;
     }
     .hero-inner { align-self: flex-start; margin-top: auto; }
-    .hero-h1 { font-size: clamp(2.4rem, 10.5vw, 3.2rem); }
+    /* Die harten Umbrüche sind fürs Desktop-Layout gesetzt; auf schmalen
+       Screens zerreißen sie die Zeilen ("nicht" allein). Fließen lassen. */
+    .hero-br { display: none; }
+    .hero-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); text-wrap: balance; }
     .hero-trust-micro {
       display: flex;
       flex-wrap: wrap;
@@ -1842,6 +1845,10 @@ const faqSchema = {
     padding: 2rem;
     border-radius: 13px 13px 0 0;
     transition: background 280ms var(--ease-out), transform 280ms var(--ease-out);
+  }
+  /* Einspaltig sind 160px Farbfläche um ein 44px-Icon reine Leerlauf-Scrollzeit */
+  @media (max-width: 700px) {
+    .service-header { min-height: 92px; padding: 1.1rem; }
   }
   /* Color variants per service */
   .sh-blue   { background: linear-gradient(135deg, #F0F9FF 0%, #DBEAFE 100%); }
