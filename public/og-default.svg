@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080C14"/>
+      <stop offset="60%" stop-color="#0C1828"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="85%" cy="15%" r="55%">
+      <stop offset="0%" stop-color="#0369A1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0369A1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <text x="80" y="260" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#F1F5F9" letter-spacing="-2">MediaDrift</text>
+  <text x="80" y="340" font-family="Arial, sans-serif" font-size="32" fill="#60A5FA">Webdesign &amp; Entwicklung · München</text>
+  <text x="80" y="410" font-family="Arial, sans-serif" font-size="28" fill="#94A3B8">Websites, die nicht nur gut aussehen.</text>
+  <text x="80" y="450" font-family="Arial, sans-serif" font-size="28" fill="#94A3B8">Sondern Kunden gewinnen.</text>
+  <text x="80" y="560" font-family="Arial, sans-serif" font-size="22" fill="#475569">mediadrift.de</text>
+</svg>

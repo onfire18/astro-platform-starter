@@ -1,0 +1,188 @@
+---
+// Die Pakete liefern nur index.css (kein latin.css). Die enthaltenen
+// @font-face tragen unicode-range, der Browser lädt also ohnehin nur
+// das Latin-Subset nach.
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/plus-jakarta-sans';
+// Nur das Latin-Subset vorladen. Gemessen wird auf allen Seiten ausschließlich
+// dieses geladen — Deutsch braucht kein latin-ext, und ein Preload, den der
+// Browser dann nicht verwendet, wäre reine Verschwendung.
+import outfitLatin from '@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url';
+import jakartaLatin from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
+import '../styles/mediadrift.css';
+import { SITE } from '../config/site';
+import MDNav from '../components/md/Nav.astro';
+import MDFooter from '../components/md/Footer.astro';
+import ConsentBanner from '../components/md/ConsentBanner.astro';
+import Assistant from '../components/md/Assistant.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  canonical?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = 'Individuelle Unternehmenswebsites für Unternehmen, die professioneller auftreten, mehr Vertrauen schaffen und online neue Kunden gewinnen möchten.',
+  ogImage = '/images/og/home.jpg',
+  ogType = 'website',
+  canonical,
+  noIndex = false,
+} = Astro.props;
+
+const pageTitle = `${title} | ${SITE.name}`;
+const canonicalUrl = canonical ?? `${SITE.url}${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${SITE.url}${ogImage}`} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={SITE.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE.url}${ogImage}`} />
+
+    <!-- Schriften vorladen. Ohne diese Zeilen entdeckt der Browser sie erst
+         beim Parsen des Stylesheets: gemessen startete die CSS bei 163ms, die
+         Schriften erst bei 891ms. Bis dahin steht alles in system-ui, und der
+         Wechsel verschiebt das Layout, weil Outfit rund 9 % schmaler baut. -->
+    <link rel="preload" as="font" type="font/woff2" href={outfitLatin} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={jakartaLatin} crossorigin="anonymous" />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-md.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": SITE.name,
+      "url": SITE.url,
+      "inLanguage": "de-DE"
+    })} />
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": SITE.contact.company,
+      "description": "Individuelle Unternehmenswebsites – Strategie, Design, Entwicklung, SEO und Google-Marketing.",
+      "url": SITE.url,
+      "telephone": SITE.contact.phone,
+      "email": SITE.contact.email,
+      "logo": `${SITE.url}/favicon-md.svg`,
+      "image": `${SITE.url}/images/og/home.jpg`,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": SITE.contact.street,
+        "addressLocality": "München",
+        "postalCode": "81539",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "München" },
+        { "@type": "State", "name": "Bayern" },
+        { "@type": "Country", "name": "Deutschland" }
+      ],
+      "priceRange": "€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    })} />
+  </head>
+  <body class="md-page">
+    <MDNav />
+    <main id="main-content">
+      <slot />
+    </main>
+    <MDFooter />
+    <ConsentBanner />
+    <Assistant />
+
+    <script>
+      // ---- Global scroll reveal (all MediaDrift pages) ----
+      (function () {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const selectors = [
+          '.md-section .md-label',
+          '.md-section > .md-container > h2',
+          '.md-card',
+          '[class*="-card"]',
+          '.md-section li',
+          '.process-step',
+          '.about-photo',
+          '.about-text',
+          '.md-faq details',
+          '.contact-form',
+          'form.v-form',
+          '.v-step',
+          '.v-req-item',
+          '.v-support-item',
+          '.v-expect-card',
+        ];
+
+        // Collect targets, but never anything inside a hero (those animate on load)
+        const all = document.querySelectorAll(selectors.join(','));
+        const targets = Array.from(all).filter(
+          (el) => !el.closest('.hero') && !el.closest('.v-hero')
+        ) as HTMLElement[];
+
+        if (reduce || !('IntersectionObserver' in window)) {
+          targets.forEach((el) => el.classList.add('reveal', 'reveal-in'));
+          return;
+        }
+
+        targets.forEach((el, i) => {
+          el.classList.add('reveal');
+          el.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
+        });
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-in');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+
+        targets.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
