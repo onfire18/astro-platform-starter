@@ -233,6 +233,14 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] **Sichtbare Änderungen im Bild prüfen, nicht nur im Code.** Dev-Server starten, Screenshot rendern (Desktop + Mobil) und *ansehen*. Grund: Der gravierendste Fehler dieses Projekts (ein permanent offener Dialog über dem Hero, C45) war im Code unauffällig und im Screenshot sofort sichtbar.
 - [ ] Nach Layout-Arbeit gegenprüfen, dass kein `[hidden]`-Element rendert und keine Option optisch bevorzugt wurde, die neutral bleiben muss (Consent).
 - [ ] Nach Bild-Konvertierung: Zielbild in 2× ansehen — Screenshots mit UI-Text vertragen weniger Kompression als Fotos.
+- [ ] **Tab-Reihenfolge durchlaufen** (`fokus.mjs`): Der Skip-Link muss die **erste** Station sein — steht er hinter der Navigation, hat man sie zum Erreichen bereits durchgetabbt und er ist wirkungslos (WCAG 2.4.1).
+
+**Vier Messfallen, die schon Fehlalarme erzeugt haben** — erst ausschließen, bevor etwas „repariert" wird:
+
+1. **Fokus-Indikatoren erst nach Ablauf der Transition messen.** `.v-input` blendet seinen Rahmen über 160 ms ein; nach 45 ms gemessen ergab das 2,95:1 (scheinbarer Verstoß), nach 400 ms die tatsächlichen 4,99:1.
+2. **Die Astro-Dev-Toolbar taucht nur im Dev-Server auf** und meldet sich als fokussierbares, unsichtbares Element ohne Fokusring. Im Build existiert sie nicht — aus Messungen ausschließen.
+3. **„Rücksprünge" in der Fokusreihenfolge sind bei mehrspaltigen Layouts normal** (Textspalte vor Bildspalte, Footer-Spalte für Spalte). Erst die x-Koordinate ansehen: Wechselt sie auf eine neue Spalte, ist die Reihenfolge korrekt.
+4. **Kontrast gegen Verläufe** siehe §7.3 — CSS-Elternkette liefert dort weiß-auf-weiß.
 
 ---
 
