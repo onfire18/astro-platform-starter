@@ -178,6 +178,7 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] Eine Akzentfarbe (Cobalt), eine Grau-Familie, eine Radius-Skala — konsistent über ALLE Sektionen.
 - [ ] Kein zentriertes 08/15-Hero, keine drei gleichen Feature-Cards als Standard. Asymmetrie/Split nutzen, wo passend.
 - [ ] Großzügiger Whitespace (`py-24`+ Gefühl), Sektionen atmen.
+- [ ] **Breite Inhalte (Tabellen, Diagramme, Code) in eine scrollbare Region wickeln** — `overflow-x: auto` auf einem Wrapper mit `tabindex="0"`, `role="region"` und Label, plus `min-width` auf dem Inhalt, damit er nicht zerquetscht wird. **Nicht** `display: block` auf die `<table>` selbst: das nimmt ihr für Screenreader die Tabellenrolle. Bei Markdown-Inhalten löst ein rehype-Plugin das global (siehe `astro.config.mjs`).
 - [ ] Cards nur, wenn Elevation echte Hierarchie kommuniziert; sonst Border/Spacing.
 - [ ] `min-height: 100dvh` statt `100vh` für Full-Height (iOS-Safari).
 - [ ] CSS Grid statt Flex-Prozent-Mathe.
@@ -203,8 +204,11 @@ Diese Kriterien stammen aus den Projekt-Skills (`design-taste-frontend`, `redesi
 - [ ] Tabs: WAI-ARIA-Pattern komplett — `role="tab(list/panel)"`, `aria-selected`, Pfeiltasten **und Roving-Tabindex** (nur aktiver Tab `tabindex=0`).
 - [ ] Live aktualisierte Bereiche (Logs, Statusmeldungen): `aria-live` / `role="log"` / `role="alert"`.
 - [ ] **`[hidden]`-Falle:** Sobald eine Klasse ein `display` setzt (`flex`, `grid`, `block`), überschreibt das die `display: none`, die `[hidden]` nur aus dem UA-Stylesheet mitbringt — das Element bleibt sichtbar. Immer eine explizite Regel ergänzen: `.komponente[hidden] { display: none; }`. Betrifft Dialoge, Panels, Steuerelemente, Erfolgs-/Fehlermeldungen.
+- [ ] **Touch-Targets messen, nicht schätzen** (`tap.mjs`): ≥44px für echte Aktionen. Vorher die *effektive* Tap-Fläche prüfen (`cb.mjs`) — eine 16px-Checkbox in einem großen `<label>` ist bereits in Ordnung und braucht keinen Eingriff.
+- [ ] **Kontrast auf Verläufen per Pixelmessung** (`px2.mjs`: Text auf `transparent` setzen, dessen Box screenshotten, dominante Pixelfarbe als Hintergrund). Den Hintergrund aus der CSS-Elternkette zu lesen liefert auf `linear-gradient`-Flächen „transparent" → weiß-auf-weiß → Fehlalarm 1.0.
 
 ### 7.4 Performance
+- [ ] **Schriften per JS-Import im Layout einbinden** (`import '@fontsource-variable/outfit'` im Frontmatter), **nie per CSS-`@import` mit Paketnamen** — Vite löst nackte Paketspezifizierer in CSS nicht auf, die Regel tut dann stillschweigend nichts. Nach jeder Font-Änderung mit `fonts2.mjs` gegenmessen: Textbreite unter der echten Familie muss von der unter einem Phantasienamen abweichen, sonst läuft alles auf System-Fallback.
 - [ ] `loading="lazy"` + `decoding="async"` auf allen Below-the-fold-Bildern; LCP-Bild `eager` + **`fetchpriority="high"`**.
 - [ ] `width`/`height` auf `<img>` (CLS vermeiden).
 - [ ] **Bild-Budget: Fotos/Screenshots als WebP, Zielbreite ≈ 2× Anzeigebreite, q80–85. Nichts über ~250 KB ausliefern** (PNG-Screenshots sind oft 10–20× zu groß). Echte Dateigrößen messen, nicht schätzen.

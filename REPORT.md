@@ -93,6 +93,14 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C45 | `423d17d` | **REGRESSION GEFIXT — vom User im Live-Preview entdeckt:** Der Assistent-Dialog stand auf jeder Seite offen. Ursache war mein `display: flex` aus C19, das das `display:none` von `[hidden]` (nur UA-Stylesheet) überschrieb. Dieselbe Falle steckte in den Zurück/Neu-starten-Buttons. Beide mit expliziter `[hidden]{display:none}`-Regel behoben, alle 5 Seiten gegengeprüft |
 | C46 | `c87a7c5` | Cookie-Banner deutlich zurückhaltender: 640px mittig über dem Hero (17 % Viewport) → 360px unten links (10 %), kompaktere Typo, weicherer Schatten. **Dark Pattern vermieden:** durch das schmalere Layout wäre „Alle akzeptieren" volle Breite geworden, „Nur notwendige" nur halbe — beide stehen jetzt exakt gleich breit nebeneinander. Wortlaut und Logik unangetastet, alle drei Buttons einzeln getestet |
 | C47 | `bbccd08` | Branchen-Bilder 5,10 MB → 261 KB WebP (handwerk 1626→69 KB, gastronomie 1343→65, immobilien 1156→63, coaching 813→48, kanzlei 283→14). `withoutEnlargement`, da kanzlei nativ nur 656px breit ist; Textschärfe bei q82 in 2×-Ansicht geprüft |
+| C48 | `1e056f6` | Report-Meilenstein (C40–C47) + zwei Blueprint-Regeln (`[hidden]`-Falle, Screenshot-Pflicht) |
+| C49 | `e75075c` | Mobil-Spacing Startseite: Hero-Umbrüche fließen unter 900px (waren fürs Desktop gesetzt und zerrissen „nicht" allein auf eine Zeile), Karten-Header 160→92px einspaltig, Assistent-Trigger mobil Icon-only. **Falle:** Das Ausblenden der `<br>` verschluckte das Leerzeichen → „nichtnur gut" und „Kundengewinnen." lief über den Rand; nur im Screenshot sichtbar |
+| C50 | `0e1d87d` | vertrieb mobil: Das Badge „Antwortet in < 24 Std." ist breiter als sein −14px-Versatz und verdeckte die Bildunterschrift „Paul · Foto folgt"; fließt jetzt darunter. Platzhalter 320→230px **per aspect-ratio** — der erste Versuch kappte die Höhe, worauf `object-fit: cover` die Unterschrift wegschnitt |
+| C51 | `5d003ea` | **GRÖSSTER FUND: Die Markenschriften wurden nie geladen.** `@import '@fontsource-variable/outfit'` in der CSS — Vite löst nackte Paketnamen in CSS-`@import` nicht auf, also 0 Fontdateien im Build, 0 `@font-face` zur Laufzeit, alles rendete in system-ui. Bewiesen per Textbreitenmessung: identische 1105px unter Outfit, Jakarta und einem Phantasienamen; nach Umzug ins Layout-Frontmatter 945px bzw. 1029px |
+| C52 | `b75dc6b` | Touch-Targets gemessen statt geschätzt: Mobil-Menü (Hauptnavigation!) 31→48px, Footer-Seiten/Rechtliches-Links 31→44px (C29 hatte nur die Kontaktspalte erfasst), Consent-Kategorie-Zeilen 22→44px (durch meine C46-Verkleinerung entstanden). Bewusst NICHT angefasst: Datenschutz-Checkboxen (Label liefert schon 276×84) und Fließtext-Links (WCAG 2.5.8-Ausnahme) |
+| C53 | `ae14cf3` | Footer-Kontrast auf jeder Seite unter AA: Spaltenüberschriften und Copyright 2,56, Tagline/Adresse 4,10 → jetzt 5,20 bzw. 5,79 bei erhaltener Abstufung (Links bleiben 7,72) |
+| C54 | `786612c` | Hero-Float-Cards: „DSGVO-konform" 3,10→4,72, grüner Chip 3,00→4,57, Kartenlabels 2,41→5,14. Gleichzeitig die sechs Gradient-Verdachtsfälle aus C53 **per Pixelmessung als Fehlalarm widerlegt** (6,73–16,36) — CSS-Kette liefert auf Verläufen weiß-auf-weiß |
+| C55 | `8cdd9e1` | Blog-Tabellen: 480px breite Vergleichstabelle in 334px Spalte. rehype-Plugin wickelt jede Markdown-Tabelle in eine scrollbare Region mit `tabindex=0`/`role=region` (kein `display:block` auf der Tabelle — das nimmt Screenreadern die Tabellenrolle). Alle 176 Artikel vorher durchsucht: genau eine Tabelle >2 Spalten |
 
 **Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
@@ -108,18 +116,26 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 
 ---
 
-## Zusammenfassung (Stand C48)
+## Zusammenfassung (Stand C56)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 48 Iterationen (laufend)
-- **62 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 56 Iterationen (laufend)
+- **70 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
 - **Wichtigste Funde:**
+  - **C51 — die Markenschriften wurden nie geladen.** Die ganze Typografie des Design-Systems lief auf System-Fallback
   - C45 — Assistent-Dialog stand auf jeder Seite offen (Regression aus C19, vom User im Live-Preview entdeckt)
   - C21 — Bewerbungsformular akzeptierte leere Submissions als Erfolg
-  - C25–C27/C35/C37/C47 — **~16 MB Bildgewicht entfernt**, Bild-Budget der Website damit abgeschlossen
-  - C31 — iOS-Fokus-Zoom auf allen Formularen · C33 — Blog-Index −71 % durch Pagination
+  - C25–C27/C35/C37/C47 — **~16 MB Bildgewicht entfernt**, Bild-Budget abgeschlossen
+  - C52/C53/C54 — Touch-Targets und Kontrast site-weit gemessen und auf AA gebracht
+  - C31 — iOS-Fokus-Zoom auf allen Formularen · C33 — Blog-Index −71 % durch Pagination · C55 — Blog-Tabellen brachen aus dem Layout
 - **Live-Preview:** https://deploy-preview-2--endearing-cranachan-3bdba4.netlify.app (PR #2, baut bei jedem Push neu)
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
 
-### Prozess-Lehre aus C45
+### Prozess-Lehre: messen statt annehmen
 
-Der auffälligste Fehler dieser Phase war im Code unsichtbar und im Bild sofort erkennbar. Seitdem gilt: **sichtbare Änderungen werden per Screenshot geprüft, nicht nur gelesen.** Die Prüfskripte liegen im Scratchpad (`hidden.mjs` findet `[hidden]`-Elemente, die trotzdem rendern).
+Die gravierendsten Fehler dieses Projekts waren im Code unauffällig und wurden erst durch Messung oder Screenshot sichtbar — der offene Dialog (C45), die nie geladenen Schriften (C51), die 31px-Navigation (C52). Deshalb gilt:
+
+1. **Sichtbare Änderungen werden angesehen**, nicht nur gelesen.
+2. **Wirkung wird gemessen**, nicht angenommen (Schriften über Textbreite, Kontrast über Pixel, Touch-Targets über Geometrie).
+3. **Vor jedem Fix wird geprüft, ob überhaupt ein Problem vorliegt.** Zweimal war die Antwort nein: C52 (Checkbox-Label lieferte längst 276×84) und C54 (Gradient-„Verstöße" waren Messartefakte).
+
+Die Prüfskripte liegen im Scratchpad unter `pw/`: `fonts2.mjs` (Schrift wirklich aktiv?), `tap.mjs` (Touch-Targets), `cb.mjs` (effektive Tap-Fläche inkl. Label), `px2.mjs` (Kontrast per Pixel), `hidden.mjs` (`[hidden]`-Elemente, die trotzdem rendern), `scan.mjs`/`overflow.mjs` (Layout-Überlauf).
