@@ -1782,6 +1782,23 @@ const waSales = whatsappUrl('sales');
     white-space: nowrap;
   }
   .v-paul-badge svg { color: var(--md-cta); flex-shrink: 0; }
+  @media (max-width: 700px) {
+    /* Einspaltig füllte das 320x360-Bild fast den ganzen Screen. Proportional
+       verkleinern statt Höhe kappen — sonst schneidet object-fit:cover die
+       Bildunterschrift ("Foto folgt") unten weg. */
+    .v-paul-img, .v-paul-placeholder {
+      max-width: 230px;
+      height: auto;
+      aspect-ratio: 320 / 360;
+    }
+    /* Das Badge ist breiter als sein negativer Versatz und ragte ins Bild,
+       genau über die Bildunterschrift. Mobil fließt es darunter. */
+    .v-paul-badge {
+      position: static;
+      width: fit-content;
+      margin: 0.8rem 0 0; /* linksbündig wie Bild und Fließtext daneben */
+    }
+  }
   .v-paul-text { max-width: 56ch; }
   .v-paul-p {
     color: var(--md-muted);
