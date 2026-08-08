@@ -101,25 +101,40 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
 | C53 | `ae14cf3` | Footer-Kontrast auf jeder Seite unter AA: Spaltenüberschriften und Copyright 2,56, Tagline/Adresse 4,10 → jetzt 5,20 bzw. 5,79 bei erhaltener Abstufung (Links bleiben 7,72) |
 | C54 | `786612c` | Hero-Float-Cards: „DSGVO-konform" 3,10→4,72, grüner Chip 3,00→4,57, Kartenlabels 2,41→5,14. Gleichzeitig die sechs Gradient-Verdachtsfälle aus C53 **per Pixelmessung als Fehlalarm widerlegt** (6,73–16,36) — CSS-Kette liefert auf Verläufen weiß-auf-weiß |
 | C55 | `8cdd9e1` | Blog-Tabellen: 480px breite Vergleichstabelle in 334px Spalte. rehype-Plugin wickelt jede Markdown-Tabelle in eine scrollbare Region mit `tabindex=0`/`role=region` (kein `display:block` auf der Tabelle — das nimmt Screenreadern die Tabellenrolle). Alle 176 Artikel vorher durchsucht: genau eine Tabelle >2 Spalten |
+| C56 | `353d7b9` | Report-Meilenstein C48–C55 + drei Messregeln dokumentiert |
+| C57 | `40eb12d` | Blog-Artikel liefen mit 80 Zeichen pro Zeile am oberen Rand von WCAG 1.4.8; Textspalte 720→620px = 68 Zeichen. **Die `ch`-Falle:** der erste Versuch mit `68ch` ergab 856px = 95 Zeichen, also das Gegenteil — `ch` ist die Breite der Ziffer „0", bei Outfit deutlich breiter als ein Durchschnittszeichen. Zeilenlängen seither nur in px |
+| C58 | `391f5a0` | Startseiten-About-Spalte lief mit 86 Zeichen pro Zeile; `max-width: 650px` → 72. Die anderen geprüften Spalten lagen bei 71–78 Zeichen und blieben unverändert |
+| C59 | `ef95b61` | Der Skip-Link stand hinter der Navigation, die er überspringen sollte: gemessen Tab-Station 10 statt 1 — wer ihn erreichte, hatte die Nav längst durchgetabbt. Vor `<header>` verschoben, WCAG 2.4.1 |
+| C60 | `db7ac48` | Fokusreihenfolge site-weit geprüft: **sauber, keine Änderung.** Dafür vier Messfallen dokumentiert, die alle zunächst als Verstoß aussahen — Fokusringe während der Transition gemessen (45ms → 2,95:1, real 4,99:1), die Astro-Dev-Toolbar als unsichtbare Tab-Station, „Rücksprünge" die bei mehrspaltigen Layouts korrekt sind, und Doppelgänger aus Desktop-Nav + Mobilmenü |
+| C61 | `e35f3fc` | Testimonials verloren bei 200 % Zoom Text: `1fr` hat als Minimum `min-content` und kann über seinen Anteil wachsen, Spalte 2 wuchs auf 346 statt 284px und wurde von `overflow: hidden` still abgeschnitten. `minmax(0, 1fr)` — WCAG 1.4.10 |
+| C62 | `443794f` | Grid-Audit nach C61: site-weit 89 `1fr`-Raster, **kein weiterer Defekt.** Bei 200 % läuft keines über; die zwei 4px-Überstände auf /vertrieb bei 400 % führen nachweislich zu keinem Inhaltsverlust (Textzelle `scrollWidth 162 === clientWidth 162`). Statt pauschal zu ersetzen: Regel dokumentiert |
+| C63 | `e55d1ec` | Rechtsseiten-Titel verloren Zeichen: „Datenschutzerklärung" ist ein einziges Wort, 316px breit in 264px Spalte — im Screenshot fehlte das „g". **Nicht erst bei 400 % Zoom, sondern schon ab 360px Viewport**, also auf gängigen Android-Telefonen. `overflow-wrap: break-word` + weiches Trennzeichen `&shy;` an der korrekten Stelle (`hyphens: auto` läuft ohne Trennwörterbuch ins Leere). Zugleich die Messung repariert: „kein horizontales Scrollen" beweist nichts, solange `.md-page` ein `overflow-x: hidden` trägt |
 
 **Geprüft, bewusst NICHT geändert:** Rechtstexte mit `[RECHTLICH PRÜFEN]`-Markern (Anwalts-Entscheidung), Consent-Banner-Escape-Verhalten (DSGVO-Semantik), Sitemap (bereits vollständig), Assistant-Dialog-ARIA (bereits korrekt inkl. Escape + Focus-Management).
 
 ## Verbleibende Empfehlungen (Backlog für weitere Durchgänge)
 
-0. **[USER-ENTSCHEIDUNG] Blog: Keyword-Kannibalisierung auflösen.** `website-fuer-handwerksbetrieb.md` und `website-fuer-handwerksbetriebe.md` zielen auf dasselbe Haupt-Keyword (fast identische Titel/Keywords) — Google wertet das als konkurrierende Seiten. Ebenso überschneiden sich `website-fuer-steuerberater.md` und `website-fuer-steuerberaterkanzlei.md` (die übrigen 4 Steuerberater-Varianten haben eigene Winkel und sind ok). Empfehlung: je Paar den schwächeren Artikel löschen oder per Redirect/Canonical auf den stärkeren zeigen — Auswahl bitte durch den User.
+0. **[USER-ENTSCHEIDUNG — DRINGENDSTER PUNKT] Fünf mutmaßlich erfundene Kundenstimmen.** Auf der Startseite stehen drei (Raphael M. „Rechtsanwalt, München", Sandra K. „Inhaberin, Haushaltsauflösung", Thomas B. „Fliesenleger, Bayern"), jeweils mit einer Fünf-Sterne-Bewertung; auf `/vertrieb` zwei weitere (Thomas K. München, Sarah M.) mit konkreten Zahlen („280 € auf dem Konto"). Falls diese Personen und Bewertungen nicht real sind, ist das nach **UWG Anhang Nr. 23b** (Angabe unwahrer Bewertungen/Empfehlungen) eine abmahnfähige geschäftliche Handlung — unabhängig davon, wie plausibel die Aussagen klingen. Der Sternedurchschnitt ist dabei der heikelste Teil, weil er eine Bewertungsangabe im engeren Sinn ist.
+   **Empfehlung:** Für ein Unternehmen ohne Referenzen ist die ehrliche Variante ohnehin die stärkere — statt erfundener Stimmen ein Abschnitt im Sinne von „Du wärst einer der Ersten" mit dem, was tatsächlich zusagbar ist (Entwurf am nächsten Tag, feste Preise, Ansprechpartner statt Agentur). Das ist rechtlich unangreifbar und für Erstkunden glaubwürdiger als fünf anonyme Initialen.
+   **Nicht eigenmächtig umgesetzt**, weil es eine Inhalts- und Geschäftsentscheidung ist: Sind die Stimmen echt, muss nichts geändert werden — dann fehlt nur die Einwilligung zur Namensnennung.
 
-1. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User)
-2. **Blog-Inhalte**: weitere Artikel wären inzwischen SEO-wirksamer als weitere Code-Politur
-3. **ueber-uns** frisches Mobile-Audit (Werte-Karten, Kontakt-Card)
-4. **Font-Pass**: `font-display` / Subsetting der beiden Variable Fonts prüfen (Bild-Budget ist abgeschlossen, Fonts sind der verbleibende Ladeposten)
-5. **Frische Gesamt-Audits** der schon bearbeiteten Seiten — ab jetzt mit Screenshot-Kontrolle, nicht nur Code-Review (siehe C45)
+1. **[USER-ENTSCHEIDUNG] Blog: Keyword-Kannibalisierung auflösen.** `website-fuer-handwerksbetrieb.md` und `website-fuer-handwerksbetriebe.md` zielen auf dasselbe Haupt-Keyword (fast identische Titel/Keywords) — Google wertet das als konkurrierende Seiten. Ebenso überschneiden sich `website-fuer-steuerberater.md` und `website-fuer-steuerberaterkanzlei.md` (die übrigen 4 Steuerberater-Varianten haben eigene Winkel und sind ok). Empfehlung: je Paar den schwächeren Artikel löschen oder per Redirect/Canonical auf den stärkeren zeigen — Auswahl bitte durch den User.
+
+2. **[USER-ENTSCHEIDUNG] Neun Starter-Demo-Seiten** (`/blobs`, `/edge`, `/image-cdn`, `/revalidation`, `/api`, `/crm`, `/instagram`, `/invoice`, `/seite`) stammen aus der Netlify-Vorlage, sind nirgends verlinkt und per robots.txt gesperrt. Sie schaden also nicht — sie zu löschen wäre trotzdem eine Inhaltsentscheidung.
+3. **Echte Fotos** statt Platzhalter: `/images/paul-portrait.jpg`, `/images/partner-1.jpg`, `/images/partner-2.jpg` (braucht echte Aufnahmen vom User; Konzept liegt vor)
+4. **Blog-Inhalte**: weitere Artikel wären inzwischen SEO-wirksamer als weitere Code-Politur
+5. **ueber-uns** frisches Mobile-Audit (Werte-Karten, Kontakt-Card) — mehrfach verschoben
+6. **`/tools/entwurf`** mobil visuell prüfen (bisher nur gemessen, nicht angesehen)
+7. **`.draft-warning` auf `/agb`** steht bei 320px in zwei sehr schmalen Spalten — kein Textverlust, aber gequetscht; messen, ob sie umbrechen sollte
+8. **Font-Pass**: `font-display` / Subsetting der beiden Variable Fonts prüfen (Bild-Budget ist abgeschlossen, Fonts sind der verbleibende Ladeposten)
+9. **Frische Gesamt-Audits** der schon bearbeiteten Seiten — ab jetzt mit Screenshot-Kontrolle, nicht nur Code-Review (siehe C45)
 
 ---
 
-## Zusammenfassung (Stand C56)
+## Zusammenfassung (Stand C64)
 
-- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 56 Iterationen (laufend)
-- **70 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
+- **Phase A:** 6 Iterationen (Vertrieb „0 auf 100") · **Phase B:** 8 Iterationen (Site-Audit) · **Phase C:** 64 Iterationen (laufend)
+- **78 Loop-Commits**, alle gebaut (0 Build-Fehler), alle gepusht
 - **Wichtigste Funde:**
   - **C51 — die Markenschriften wurden nie geladen.** Die ganze Typografie des Design-Systems lief auf System-Fallback
   - C45 — Assistent-Dialog stand auf jeder Seite offen (Regression aus C19, vom User im Live-Preview entdeckt)
@@ -127,6 +142,8 @@ Selbst-neustartender Loop, ein echter Verbesserungsschritt pro Durchgang. Stoppt
   - C25–C27/C35/C37/C47 — **~16 MB Bildgewicht entfernt**, Bild-Budget abgeschlossen
   - C52/C53/C54 — Touch-Targets und Kontrast site-weit gemessen und auf AA gebracht
   - C31 — iOS-Fokus-Zoom auf allen Formularen · C33 — Blog-Index −71 % durch Pagination · C55 — Blog-Tabellen brachen aus dem Layout
+  - C57/C58 — Zeilenlängen auf ≤72 Zeichen · C59 — Skip-Link von Tab-Station 10 auf 1
+  - **C61/C63 — zweimal ging Text verloren, ohne dass die Seite scrollte.** Beide Male schnitt ein `overflow: hidden` still ab: einmal eine `1fr`-Grid-Spalte bei 200 % Zoom, einmal ein deutsches Kompositum im Seitentitel — letzteres schon ab 360px Viewport, also auf normalen Telefonen
 - **Live-Preview:** https://deploy-preview-2--endearing-cranachan-3bdba4.netlify.app (PR #2, baut bei jedem Push neu)
 - **Dokumente:** `WEBSITE-BLUEPRINT.md` (Übergabe-Spezifikation), dieses `REPORT.md` (Logbuch)
 
@@ -136,6 +153,7 @@ Die gravierendsten Fehler dieses Projekts waren im Code unauffällig und wurden 
 
 1. **Sichtbare Änderungen werden angesehen**, nicht nur gelesen.
 2. **Wirkung wird gemessen**, nicht angenommen (Schriften über Textbreite, Kontrast über Pixel, Touch-Targets über Geometrie).
-3. **Vor jedem Fix wird geprüft, ob überhaupt ein Problem vorliegt.** Zweimal war die Antwort nein: C52 (Checkbox-Label lieferte längst 276×84) und C54 (Gradient-„Verstöße" waren Messartefakte).
+3. **Vor jedem Fix wird geprüft, ob überhaupt ein Problem vorliegt.** Sechs Durchgänge endeten deshalb bewusst ohne Code-Änderung: C52 (Checkbox-Label lieferte längst 276×84), C54 (Gradient-„Verstöße" waren Messartefakte), C57 (Rechtsseiten sauber), C58 (71–78-Zeichen-Spalten), C59/C60 (Fokusreihenfolge korrekt) und C62 (89 Grids, kein Defekt).
+4. **Die Messgröße selbst muss stimmen.** Dreimal maß das Skript etwas anderes als gedacht und meldete Unsinn: `ch` ist nicht ein Zeichen, sondern die Breite der „0" (C57); Fokusringe mitten in der Transition gemessen sind zu blass (C60); und „die Seite scrollt nicht horizontal" beweist nichts, solange ein `overflow: hidden` genau dieses Scrollen unterdrückt und den Überstand wegschneidet (C63).
 
-Die Prüfskripte liegen im Scratchpad unter `pw/`: `fonts2.mjs` (Schrift wirklich aktiv?), `tap.mjs` (Touch-Targets), `cb.mjs` (effektive Tap-Fläche inkl. Label), `px2.mjs` (Kontrast per Pixel), `hidden.mjs` (`[hidden]`-Elemente, die trotzdem rendern), `scan.mjs`/`overflow.mjs` (Layout-Überlauf).
+Die Prüfskripte liegen im Scratchpad unter `pw/`: `fonts2.mjs` (Schrift wirklich aktiv?), `tap.mjs` (Touch-Targets), `cb.mjs` (effektive Tap-Fläche inkl. Label), `px2.mjs` (Kontrast per Pixel), `hidden.mjs` (`[hidden]`-Elemente, die trotzdem rendern), `scan.mjs`/`overflow.mjs` (Layout-Überlauf), `typo2.mjs` (Zeilenlänge in px), `fokus2.mjs`/`skip.mjs` (Tab-Reihenfolge), `zoom3.mjs` (Reflow bei 200 %/400 %), `grids.mjs` (Grid-Spalten), **`clip.mjs`** (abgeschnittener Text site-weit — die Prüfung, die C63 fand).
