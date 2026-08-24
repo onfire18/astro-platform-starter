@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MeinExpress – TikTok Outro (3 Sekunden)</title>
+<style>
+  @font-face {
+    font-family: 'Anton';
+    src: url(__FONT_ANTON__) format('woff2');
+    font-weight: 400; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(__FONT_MONT__) format('woff2');
+    font-weight: 100 900; font-style: normal; font-display: block;
+  }
+
+  :root {
+    --blue: #1B54D6;
+    --blue-deep: #0A2A7A;
+    --blue-light: #4B8DF8;
+    --orange: #F5A020;
+    --orange-deep: #E8761A;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: #000;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* transparente Variante (?alpha=1): auch das html-Element muss transparent sein,
+     sonst faerbt es die Aufnahme ein */
+  html.alpha, body.alpha { background: transparent; }
+  body.alpha .bg, body.alpha .vignette { display: none; }
+
+  /* 1080 x 1920 design canvas, scaled to whatever it is opened in */
+  .stage {
+    position: relative;
+    width: 1080px; height: 1920px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    transform-origin: center center;
+    animation: stage-drift 3s linear forwards;
+  }
+  @keyframes stage-drift { from { transform: scale(1); } to { transform: scale(1.035); } }
+
+  /* ---------- background ---------- */
+  .bg { position: absolute; inset: 0; background: linear-gradient(175deg, #0B1734 0%, #060C1C 45%, #01030A 100%); }
+  .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 55% at 50% 34%, rgba(37,104,235,.42) 0%, rgba(12,32,80,.18) 45%, transparent 72%),
+      radial-gradient(85% 40% at 50% 78%, rgba(245,160,32,.16) 0%, transparent 70%);
+  }
+  .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(82% 66% at 50% 46%, transparent 55%, rgba(0,0,0,.42) 100%);
+  }
+
+  /* ---------- speed streaks ---------- */
+  .streaks { position: absolute; inset: 0; overflow: hidden; }
+  .streak {
+    position: absolute; left: -45%; height: 6px; width: 60%;
+    border-radius: 999px; filter: blur(3px); opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(75,141,248,.0) 5%, rgba(120,180,255,.85) 55%, rgba(255,255,255,.95) 92%, transparent);
+    animation: streak-fly 1.5s linear infinite;
+  }
+  .streak.o { background: linear-gradient(90deg, transparent, rgba(245,160,32,0) 5%, rgba(245,160,32,.9) 55%, rgba(255,214,140,.95) 92%, transparent); }
+  .streak.s1 { top: 560px;  width: 55%; animation-duration: 1.30s; animation-delay: -.05s; }
+  .streak.s2 { top: 640px;  width: 78%; height: 8px; animation-duration: 1.05s; animation-delay: -.35s; }
+  .streak.s3 { top: 726px;  width: 45%; height: 5px; animation-duration: 1.55s; animation-delay: -.75s; }
+  .streak.s4 { top: 818px;  width: 68%; height: 7px; animation-duration: 1.20s; animation-delay: -.55s; }
+  .streak.s5 { top: 905px;  width: 52%; height: 5px; animation-duration: 1.45s; animation-delay: -.95s; }
+  .streak.s6 { top: 480px;  width: 40%; height: 4px; animation-duration: 1.65s; animation-delay: -1.15s; }
+  @keyframes streak-fly {
+    0%   { transform: translateX(0);    opacity: 0; }
+    18%  { opacity: .55; }
+    70%  { opacity: .35; }
+    100% { transform: translateX(230%);  opacity: 0; }
+  }
+
+  /* ---------- content ---------- */
+  .content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0; padding: 0 70px 150px;
+    text-align: center;
+  }
+
+  .logo-wrap {
+    position: relative; width: 900px; height: 528px;
+    display: flex; align-items: center; justify-content: center;
+    animation: logo-in .62s cubic-bezier(.16,.9,.24,1) both;
+  }
+  .logo-wrap img { width: 100%; height: auto; display: block; filter: drop-shadow(0 26px 60px rgba(0,0,0,.65)); }
+  @keyframes logo-in {
+    0%   { opacity: 0; transform: translateX(-260px) scale(1.07); filter: blur(14px); }
+    55%  { opacity: 1; }
+    100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+  }
+  /* shine sweep over the logo */
+  .logo-wrap::after {
+    content: ''; position: absolute; top: -6%; bottom: -6%; width: 40%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,.5), transparent);
+    filter: blur(12px); mix-blend-mode: screen; opacity: 0;
+    animation: shine 1.05s cubic-bezier(.4,0,.3,1) .34s both;
+  }
+  @keyframes shine {
+    0%   { left: -45%; opacity: 0; }
+    12%  { opacity: .9; }
+    75%  { opacity: .55; }
+    100% { left: 105%; opacity: 0; }
+  }
+
+  .headline { margin-top: 48px; display: flex; flex-direction: column; gap: 6px; }
+  .headline .line {
+    font-family: 'Anton', 'Montserrat', system-ui, sans-serif;
+    font-size: 104px; line-height: 1.06; letter-spacing: 1.5px;
+    color: #fff; text-transform: uppercase;
+    text-shadow: 0 8px 34px rgba(2,10,32,.85), 0 2px 0 rgba(0,0,0,.35);
+    transform-origin: 50% 100%;
+  }
+  .headline .line span.hi {
+    color: #FFB233;
+    text-shadow: 0 0 42px rgba(245,160,32,.55), 0 8px 30px rgba(0,0,0,.6);
+  }
+  .headline .l1 { animation: line-in .55s cubic-bezier(.18,.85,.28,1) .46s both; }
+  .headline .l2 { animation: line-in .55s cubic-bezier(.18,.85,.28,1) .60s both; font-size: 92px; }
+  @keyframes line-in {
+    0%   { opacity: 0; transform: translateY(52px) scale(.94); filter: blur(9px); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+
+  .cta {
+    margin-top: 54px; position: relative;
+    display: inline-flex; align-items: center; gap: 26px;
+    padding: 34px 70px; border-radius: 999px;
+    background: linear-gradient(96deg, var(--orange) 0%, #FFC24D 48%, var(--orange-deep) 100%);
+    box-shadow: 0 26px 60px rgba(245,160,32,.30), inset 0 2px 0 rgba(255,255,255,.5);
+    animation: cta-pop .52s cubic-bezier(.2,1.5,.35,1) .96s both;
+  }
+  .cta .txt {
+    font-family: 'Montserrat', system-ui, sans-serif; font-weight: 900;
+    font-size: 62px; letter-spacing: 1px; color: #0B1B3F; text-transform: uppercase; white-space: nowrap;
+  }
+  .cta .arrow { width: 62px; height: 62px; flex: 0 0 auto; animation: arrow-nudge 1.1s ease-in-out infinite; }
+  .cta .arrow svg { width: 100%; height: 100%; display: block; }
+  @keyframes arrow-nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(12px); } }
+  @keyframes cta-pop {
+    0%   { opacity: 0; transform: translateY(34px) scale(.82); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .cta::before {
+    content: ''; position: absolute; inset: -6px; border-radius: 999px;
+    background: linear-gradient(96deg, rgba(245,160,32,.55), rgba(255,214,120,.55));
+    filter: blur(26px); z-index: -1;
+    animation: cta-glow 1.6s ease-in-out infinite;
+  }
+  @keyframes cta-glow { 0%,100% { opacity: .35; transform: scale(1); } 50% { opacity: .85; transform: scale(1.045); } }
+
+  .site {
+    margin-top: 46px; position: relative;
+    font-family: 'Montserrat', system-ui, sans-serif; font-weight: 800;
+    font-size: 66px; letter-spacing: 2px; color: #fff;
+    text-shadow: 0 6px 30px rgba(27,84,214,.75);
+    animation: site-in .5s cubic-bezier(.2,.9,.3,1) 1.24s both;
+  }
+  @keyframes site-in {
+    0%   { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  .site .rule {
+    position: absolute; left: 0; right: 0; bottom: -22px; height: 7px; border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue-light), #fff 45%, var(--orange));
+    transform-origin: 0 50%;
+    animation: rule-swipe .55s cubic-bezier(.2,.9,.25,1) 1.40s both;
+    box-shadow: 0 0 26px rgba(120,180,255,.8);
+  }
+  @keyframes rule-swipe { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+
+  .kicker {
+    margin-top: 62px;
+    font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700;
+    font-size: 30px; letter-spacing: 5px; text-transform: uppercase; white-space: nowrap;
+    color: rgba(255,255,255,.85); text-shadow: 0 4px 20px rgba(0,0,0,.7);
+    animation: site-in .5s ease-out 1.62s both;
+  }
+
+  /* browser preview only: scale the 1080x1920 canvas down to the window */
+  @media (max-width: 1080px), (max-height: 1920px) {
+    .stage { zoom: var(--fit, 1); }
+  }
+</style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="bg"></div>
+    <div class="streaks">
+      <i class="streak s1"></i><i class="streak s2 o"></i><i class="streak s3"></i>
+      <i class="streak s4 o"></i><i class="streak s5"></i><i class="streak s6"></i>
+    </div>
+    <div class="content">
+      <div class="logo-wrap"><img src="__LOGO__" alt="Mein Express" /></div>
+
+      <div class="headline">
+        <div class="line l1">Jetzt Transporte</div>
+        <div class="line l2">auf &amp; nach <span class="hi">Mallorca</span></div>
+      </div>
+
+      <div class="cta">
+        <span class="txt">Jetzt buchen</span>
+        <span class="arrow" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none"><path d="M8 32h44M34 14l18 18-18 18" stroke="#0B1B3F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+
+      <div class="site">mein-express.com<i class="rule"></i></div>
+
+      <div class="kicker">Mallorca &nbsp;·&nbsp; Deutschland &nbsp;·&nbsp; Express</div>
+    </div>
+    <div class="vignette"></div>
+  </div>
+
+<script>
+  // total length of the outro in seconds
+  window.OUTRO_DURATION = 3;
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('alpha') === '1') {
+    document.body.classList.add('alpha');
+    document.documentElement.classList.add('alpha');
+  }
+
+  // fit the 1080x1920 canvas into the window for preview (has no effect on rendering)
+  function fit() {
+    const s = Math.min(innerWidth / 1080, innerHeight / 1920);
+    document.documentElement.style.setProperty('--fit', s < 1 ? s : 1);
+  }
+  addEventListener('resize', fit); fit();
+
+  // seek every animation to an exact point in time – used by render.mjs
+  window.seek = (t) => {
+    for (const a of document.getAnimations()) {
+      a.pause();
+      a.currentTime = t * 1000;
+    }
+  };
+  window.replay = () => {
+    for (const a of document.getAnimations()) { a.cancel(); a.play(); }
+  };
+  // loop the preview so it is easy to watch in the browser
+  if (!params.has('still')) {
+    document.addEventListener('click', () => window.replay());
+    setInterval(() => window.replay(), (window.OUTRO_DURATION + 0.6) * 1000);
+  }
+  document.fonts.ready.then(() => { document.body.dataset.ready = '1'; });
+</script>
+</body>
+</html>
