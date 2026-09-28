@@ -56,7 +56,7 @@ input[type=range]{padding:0;accent-color:var(--accent)}
 
 /* Orte-Ranking */
 .towns{display:flex;flex-direction:column;gap:10px}
-.town{display:grid;grid-template-columns:44px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1.4fr);gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.town{display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,1.7fr) minmax(0,1.2fr);gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .rank{font:800 1.5rem/1 var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
 .town.top .rank{color:var(--accent)}
 .tname{display:flex;flex-direction:column;gap:5px;min-width:0}
@@ -67,9 +67,13 @@ input[type=range]{padding:0;accent-color:var(--accent)}
 .ln.S6{background:#00975F}.ln.S7{background:#943126}.ln.S8{background:#1b1b1b;color:#F7D117;box-shadow:inset 0 0 0 1px #F7D117}
 .ln.U6{background:#0065AE}.ln.RE,.ln.RB,.ln.BRB{background:#6B7672}.ln.ICE{background:#fff;color:#C8102E;box-shadow:inset 0 0 0 1px #C8102E}
 .mins{font:.8rem var(--mono);color:var(--muted)}
-.facts{display:grid;grid-template-columns:repeat(3,auto);gap:4px 14px;font-variant-numeric:tabular-nums}
-.facts dt{font:600 .68rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.facts dd{margin:0;font:600 .95rem var(--mono)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;font-variant-numeric:tabular-nums}
+.fact{display:flex;flex-direction:column;gap:3px}
+.facts dt{font:600 .66rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);white-space:nowrap}
+.facts dd{margin:0;font:600 .95rem var(--mono);white-space:nowrap}
+.fact.total dd{font-size:1.05rem;font-weight:700}
+.over{color:var(--bad)}
+.sub{display:block;font:400 .78rem var(--mono);color:var(--muted)}
 .dots{display:inline-flex;gap:3px;vertical-align:middle}
 .dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
 .dots i.on{background:var(--warn)}
@@ -90,7 +94,7 @@ input[type=range]{padding:0;accent-color:var(--accent)}
 .checkform .wide{grid-column:span 2}
 @media (max-width:480px){.checkform .wide{grid-column:auto}}
 .tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:720px;font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;min-width:880px;font-variant-numeric:tabular-nums}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
 th{font:600 .7rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--sunk)}
 tr:last-child td{border-bottom:0}
@@ -162,6 +166,9 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
       <label for="radius">Suchradius um den Ort <span class="val" id="radiusv">5 km</span>
         <input id="radius" type="range" min="2" max="15" step="1" value="5">
       </label>
+      <label for="ref">Vergleichsgröße für Gesamtmiete <span class="val" id="refv">50 m²</span>
+        <input id="ref" type="range" min="25" max="70" step="5" value="50">
+      </label>
       <label>Schwerpunkt
         <select id="focus">
           <option value="balanced">Ausgewogen</option>
@@ -177,7 +184,7 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
     <div class="sechead">
       <span class="eyebrow">Schritt 2</span>
       <h2 id="h-towns">Beste Orte für dieses Budget</h2>
-      <p>„≈ m²“ zeigt, wie groß die Wohnung beim Höchstbudget im Schnitt ist. Die Links öffnen die Suche mit euren Filtern, neueste Anzeigen oben. Bei ImmoScout24 kann man die Suche danach als Suchauftrag mit Push speichern.</p>
+      <p>„Gesamt“ zeigt die übliche Monatsmiete für eine Wohnung in der Vergleichsgröße, kalt und warm (inkl. ca. 3,20 €/m² Nebenkosten). Rot heißt: über Budget. „≈ m² fürs Budget“ zeigt, wie groß die Wohnung beim Höchstbudget im Schnitt ist. Die Links öffnen die Suche mit euren Filtern, neueste Anzeigen oben. Bei ImmoScout24 kann man die Suche danach als Suchauftrag mit Push speichern.</p>
     </div>
     <div class="towns" id="towns"></div>
     <button class="btn ghost more" id="more" type="button">Alle Orte zeigen</button>
@@ -187,7 +194,7 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
     <div class="sechead">
       <span class="eyebrow">Schritt 3</span>
       <h2 id="h-check">Anzeigen-Check</h2>
-      <p>Anzeige eintragen und bewerten lassen. Der Score kombiniert Preis pro m² im Vergleich zum Ort, wie frisch die Anzeige ist und wie groß die Konkurrenz dort ist. Die Liste bleibt in diesem Browser gespeichert.</p>
+      <p>Anzeige eintragen und bewerten lassen. Die Tabelle zeigt Gesamtmiete und Preis pro m², jeweils kalt und warm. Fett ist der Wert aus der Anzeige, „≈“ ist mit ca. 3,20 €/m² Nebenkosten geschätzt. Der Score kombiniert Preis pro m² im Vergleich zum Ort, wie frisch die Anzeige ist und wie groß die Konkurrenz dort ist. Die Liste bleibt in diesem Browser gespeichert.</p>
     </div>
     <form class="panel checkform" id="checkform">
       <label class="wide">Ort
@@ -204,7 +211,7 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
     </form>
     <div class="tablebox">
       <table>
-        <thead><tr><th>Score</th><th>Ort</th><th>Miete</th><th>m²</th><th>€/m² kalt</th><th>Online seit</th><th>Einschätzung</th><th></th></tr></thead>
+        <thead><tr><th>Score</th><th>Ort</th><th>Gesamt kalt</th><th>Gesamt warm</th><th>m²</th><th>€/m² kalt</th><th>€/m² warm</th><th>Online seit</th><th>Einschätzung</th><th></th></tr></thead>
         <tbody id="list"></tbody>
       </table>
     </div>
@@ -314,6 +321,7 @@ const TOWNS=[
 const NK=3.2, KEY="wohnungsradar-v1";
 const $=id=>document.getElementById(id);
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const de=(n,d)=>n.toFixed(d).replace(".",",");
 const eur=n=>Math.round(n).toLocaleString("de-DE")+" €";
 const store={get(k,d){try{const v=localStorage.getItem(KEY+k);return v?JSON.parse(v):d}catch(e){return d}},
              set(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch(e){}}};
@@ -322,7 +330,7 @@ let mode=store.get("mode","kalt"), showAll=false;
 
 function crit(){
   return {pmin:+$("pmin").value||0,pmax:+$("pmax").value||0,smin:+$("smin").value||0,smax:+$("smax").value||0,
-    maxmin:+$("maxmin").value,radius:+$("radius").value,focus:$("focus").value,warm:mode==="warm"};
+    maxmin:+$("maxmin").value,ref:+$("ref").value,radius:+$("radius").value,focus:$("focus").value,warm:mode==="warm"};
 }
 const shortName=n=>n.replace(/\s*\(.*\)/,"").replace(/ a\. d\. .*| b\. .*| i\. OB| a\. .*| am .*/,"").trim();
 
@@ -367,8 +375,11 @@ function renderTowns(){
       <div class="tname"><strong>${t.name}</strong>
         <div class="lines">${lineBadges(t.lines)}<span class="mins">${t.min?t.min+" min":"–"} · ${t.kreis}</span></div></div>
       <dl class="facts">
-        <dt>€/m² kalt</dt><dt>≈ m²</dt><dt>Konkurrenz</dt>
-        <dd>${t.rent.toFixed(1).replace(".",",")}</dd><dd>${Math.round(t.size)}</dd><dd>${dots(t.comp)}</dd>
+        <div class="fact total"><dt>Gesamt kalt · ${c.ref} m²</dt><dd class="${t.rent*c.ref>c.pmax&&!c.warm?"over":""}">${eur(t.rent*c.ref)}</dd></div>
+        <div class="fact total"><dt>Gesamt warm</dt><dd class="${(t.rent+NK)*c.ref>c.pmax&&c.warm?"over":""}">${eur((t.rent+NK)*c.ref)}</dd></div>
+        <div class="fact"><dt>€/m² kalt · warm</dt><dd>${de(t.rent,1)} · ${de(t.rent+NK,1)}</dd></div>
+        <div class="fact"><dt>≈ m² fürs Budget</dt><dd>${Math.round(t.size)}</dd></div>
+        <div class="fact"><dt>Konkurrenz</dt><dd>${dots(t.comp)}</dd></div>
       </dl>
       <div class="links">${links(t,c).map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join("")}</div>
     </article>`).join("") || '<p class="empty">Kein Ort passt zu dieser Fahrzeit. Fahrzeit erhöhen.</p>';
@@ -376,7 +387,7 @@ function renderTowns(){
   $("more").textContent=showAll?"Nur Top 12 zeigen":"Alle "+r.length+" Orte zeigen";
   $("summary").innerHTML=[eur(c.pmin)+"–"+eur(c.pmax)+" "+(c.warm?"warm":"kalt"),c.smin+"–"+c.smax+" m²","≤ "+c.maxmin+" min zum Hbf","Radius "+c.radius+" km","Neueste zuerst"]
     .map(x=>'<span class="chip">'+x+"</span>").join("");
-  $("maxminv").textContent=c.maxmin+" min"; $("radiusv").textContent=c.radius+" km";
+  $("maxminv").textContent=c.maxmin+" min"; $("refv").textContent=c.ref+" m²"; $("radiusv").textContent=c.radius+" km";
 }
 
 // Anzeigen-Check
@@ -402,7 +413,8 @@ function evaluate(it){
   if(it.size<c.smin||it.size>c.smax) flags.push(["warn","Größe außerhalb"]);
   let v=score>=75?["good","Sofort anfragen"]:score>=60?["good","Gut"]:score>=45?["warn","Prüfen"]:["bad","Eher nicht"];
   if(flags.some(f=>f[0]==="bad")) v=["bad","Vorsicht"];
-  return {pm2,score,flags,v};
+  const warm=it.type==="warm"?it.price:it.price+NK*it.size;
+  return {pm2,kalt,warm,score,flags,v};
 }
 function ageText(h){return h<24?h+" Std.":Math.round(h/24)+" Tg."}
 function renderList(){
@@ -411,13 +423,15 @@ function renderList(){
     <tr>
       <td><span class="score">${e.score}</span></td>
       <td>${it.url?`<a href="${encodeURI(it.url)}" target="_blank" rel="noopener">${it.town}</a>`:it.town}${it.ex?' <span class="pill ex">Beispiel</span>':""}</td>
-      <td class="num">${eur(it.price)} ${it.type}</td>
+      <td class="num">${it.type==="kalt"?"<b>"+eur(e.kalt)+"</b>":"≈ "+eur(e.kalt)}</td>
+      <td class="num">${it.type==="warm"?"<b>"+eur(e.warm)+"</b>":"≈ "+eur(e.warm)}</td>
       <td class="num">${it.size}</td>
-      <td class="num">${e.pm2.toFixed(2).replace(".",",")}</td>
+      <td class="num">${de(e.pm2,2)}</td>
+      <td class="num">${de(e.warm/it.size,2)}</td>
       <td class="num">${ageText(it.age)}</td>
       <td><span class="pill ${e.v[0]}">${e.v[1]}</span>${e.flags.length?'<div class="flags">'+e.flags.map(f=>`<span class="pill ${f[0]}">${f[1]}</span>`).join("")+"</div>":""}</td>
       <td><button class="x" type="button" data-del="${i}" aria-label="Eintrag löschen">×</button></td>
-    </tr>`).join(""):'<tr><td colspan="8" class="empty">Noch keine Anzeigen eingetragen.</td></tr>';
+    </tr>`).join(""):'<tr><td colspan="10" class="empty">Noch keine Anzeigen eingetragen.</td></tr>';
 }
 $("list").addEventListener("click",e=>{const b=e.target.closest("[data-del]");if(!b)return;items.splice(+b.dataset.del,1);store.set("items",items);renderList();});
 $("c-town").innerHTML=TOWNS.map(t=>`<option>${t.name}</option>`).join("")+'<option value="__other">Anderer Ort (Richtwert 15 €/m²)</option>';
@@ -467,7 +481,7 @@ $("copy").addEventListener("click",()=>{
 // Steuerung
 function setMode(m){mode=m;store.set("mode",m);$("mode-kalt").setAttribute("aria-pressed",m==="kalt");$("mode-warm").setAttribute("aria-pressed",m==="warm");renderTowns();renderList();}
 $("mode-kalt").onclick=()=>setMode("kalt");$("mode-warm").onclick=()=>setMode("warm");
-["pmin","pmax","smin","smax","maxmin","radius","focus"].forEach(id=>$(id).addEventListener("input",()=>{renderTowns();renderList();}));
+["pmin","pmax","smin","smax","maxmin","radius","ref","focus"].forEach(id=>$(id).addEventListener("input",()=>{renderTowns();renderList();}));
 $("more").onclick=()=>{showAll=!showAll;renderTowns();};
 
 setMode(mode);renderLetter();
