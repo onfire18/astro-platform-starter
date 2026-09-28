@@ -24,6 +24,7 @@
   --accent:#4FC2A6;--accent-soft:#173A33;--on-accent:#06201A;
   --good:#6DD68C;--good-soft:#16321F;--warn:#F0B454;--warn-soft:#3A2B10;--bad:#FF8A80;--bad-soft:#3D1A17;}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--paper);color:var(--ink);font:16px/1.5 var(--body)}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:40px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
@@ -37,6 +38,7 @@ header{display:flex;flex-direction:column;gap:14px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font:600 .8rem/1 var(--mono);padding:7px 10px;border-radius:999px;background:var(--sunk);color:var(--ink);font-variant-numeric:tabular-nums}
 section{display:flex;flex-direction:column;gap:16px}
+section.tw{gap:14px}
 .sechead{display:flex;flex-direction:column;gap:6px}
 .sechead p{color:var(--muted);max-width:68ch}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
@@ -122,17 +124,96 @@ ul.check input{width:auto;margin-top:4px;accent-color:var(--accent)}
 ol.tips{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;max-width:75ch}
 ol.tips b{font-weight:700}
 footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid var(--line);padding-top:16px}
+/* Hero + Karte */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px}
+.hero .txt{display:flex;flex-direction:column;gap:14px}
+@media (max-width:820px){.hero{grid-template-columns:minmax(0,1fr);padding:20px}}
+.map{width:100%;height:auto;display:block}
+.map .ring{fill:none;stroke:var(--line);stroke-dasharray:3 5}
+.map .ringlbl{fill:var(--muted);font:500 10px var(--mono)}
+.map .dot{cursor:pointer;stroke:var(--surface);stroke-width:2}
+.map .dot:hover,.map .dot:focus{stroke:var(--ink)}
+.map .lbl{fill:var(--ink);font:700 11px var(--display);paint-order:stroke;stroke:var(--surface);stroke-width:3px}
+.map .muc{fill:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font:.78rem var(--mono);color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* Top 3 hervorgehoben */
+.featured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.featured{grid-template-columns:minmax(0,1fr)}}
+.featured .town{display:flex;flex-direction:column;align-items:stretch;gap:14px;padding:18px;border-width:1.5px;border-color:var(--accent)}
+.featured .town .rank{display:flex;align-items:center;gap:8px;font-size:1rem;color:var(--accent)}
+.featured .town .rank::after{content:"Empfehlung";font:600 .68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--accent-soft);padding:4px 7px;border-radius:999px}
+.featured .town .tname strong{font-size:1.35rem}
+.featured .links{justify-content:flex-start}
+.town{scroll-margin-top:24px;transition:box-shadow .3s}
+.town.flash{box-shadow:0 0 0 3px var(--accent)}
+
+/* Anzeigen als Karten mit Fotos */
+.drop{grid-column:1/-1;display:flex;flex-direction:column;gap:10px;border:1.5px dashed var(--line);border-radius:10px;padding:14px;background:var(--paper)}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop .row{margin:0}
+.pending{display:flex;gap:8px;flex-wrap:wrap}
+.pending figure{margin:0;position:relative;width:78px;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--sunk)}
+.pending img{width:100%;height:100%;object-fit:cover;display:block}
+.pending button{position:absolute;top:2px;right:2px;border:0;border-radius:50%;width:22px;height:22px;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;line-height:1}
+.filebtn{position:relative;overflow:hidden;display:inline-flex}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.gallery{position:relative;background:var(--sunk)}
+.gallery .main{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;border:0;padding:0;background:none}
+.gallery .main img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery .nophoto{aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.9rem;text-align:center;padding:16px}
+.badge{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:var(--surface);color:var(--ink);font:800 1.3rem/1 var(--display);box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.badge small{font:600 .55rem var(--mono);letter-spacing:.08em;color:var(--muted);margin-top:3px}
+.gallery .verdict{position:absolute;top:10px;right:10px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.gallery .exlbl{position:absolute;bottom:8px;right:8px;font:600 .66rem var(--mono);background:rgba(0,0,0,.55);color:#fff;padding:3px 6px;border-radius:4px}
+.thumbs{display:flex;gap:6px;padding:8px 12px 0}
+.thumbs button{border:2px solid transparent;border-radius:6px;padding:0;overflow:hidden;width:56px;aspect-ratio:4/3;cursor:pointer;background:var(--sunk)}
+.thumbs button[aria-current="true"]{border-color:var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.cbody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.ctitle{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ctitle strong{font:700 1.15rem var(--display)}
+.ctitle span{font:.78rem var(--mono);color:var(--muted);white-space:nowrap}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-variant-numeric:tabular-nums}
+.price{background:var(--paper);border-radius:10px;padding:10px 12px}
+.price dt{font:600 .64rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.price dd{margin:2px 0 0;font:700 1.35rem var(--display)}
+.price dd.est{color:var(--muted);font-weight:600}
+.price .pm{display:block;font:500 .8rem var(--mono);color:var(--muted);margin-top:2px}
+.cmeta{display:flex;flex-wrap:wrap;gap:6px}
+.cactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.cactions a,.cactions .filebtn,.cactions button{font:600 .82rem var(--body);text-decoration:none;border-radius:8px;padding:8px 12px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.cactions a{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.cactions .del{margin-left:auto;color:var(--muted)}
+.cactions .del.confirm{color:var(--bad);border-color:var(--bad)}
+.lightbox{position:fixed;inset:0;background:rgba(8,12,11,.88);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.lightbox img{max-width:100%;max-height:88vh;border-radius:8px}
+.lightbox button{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;font:700 1rem var(--body);border:0;border-radius:8px;padding:8px 12px;background:#fff;color:#111;cursor:pointer}
+.warnmsg{color:var(--bad);font-size:.9rem}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <header>
-    <span class="eyebrow">Mietwohnung · München &amp; Umland · max. 60 min Bahn</span>
-    <h1>Wohnungsradar München</h1>
-    <p class="lead">Findet die Orte, in denen man für 600–900 € die meiste Wohnung bei der geringsten Konkurrenz bekommt, und öffnet die passenden Suchen direkt nach „neueste zuerst“ sortiert.</p>
-    <div class="chips" id="summary"></div>
+  <header class="hero">
+    <div class="txt">
+      <span class="eyebrow">Mietwohnung · München &amp; Umland · max. 60 min Bahn</span>
+      <h1>Wohnungsradar München</h1>
+      <p class="lead">Findet die Orte, in denen man für 600–900 € die meiste Wohnung bei der geringsten Konkurrenz bekommt, und öffnet die passenden Suchen direkt nach „neueste zuerst“ sortiert.</p>
+      <div class="chips" id="summary"></div>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>Top 3</span>
+        <span><i style="background:var(--good)"></i>wenig Konkurrenz</span>
+        <span><i style="background:var(--warn)"></i>mittel</span>
+        <span><i style="background:var(--bad)"></i>hoch</span>
+      </div>
+    </div>
+    <svg class="map" id="map" viewBox="0 0 560 470" role="img" aria-label="Karte der Orte rund um München"></svg>
   </header>
 
   <section aria-labelledby="h-filter">
@@ -180,12 +261,13 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
     </div>
   </section>
 
-  <section aria-labelledby="h-towns">
+  <section class="tw" aria-labelledby="h-towns">
     <div class="sechead">
       <span class="eyebrow">Schritt 2</span>
       <h2 id="h-towns">Beste Orte für dieses Budget</h2>
       <p>„Gesamt“ zeigt die übliche Monatsmiete für eine Wohnung in der Vergleichsgröße, kalt und warm (inkl. ca. 3,20 €/m² Nebenkosten). Rot heißt: über Budget. „≈ m² fürs Budget“ zeigt, wie groß die Wohnung beim Höchstbudget im Schnitt ist. Die Links öffnen die Suche mit euren Filtern, neueste Anzeigen oben. Bei ImmoScout24 kann man die Suche danach als Suchauftrag mit Push speichern.</p>
     </div>
+    <div class="featured" id="featured"></div>
     <div class="towns" id="towns"></div>
     <button class="btn ghost more" id="more" type="button">Alle Orte zeigen</button>
   </section>
@@ -194,7 +276,7 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
     <div class="sechead">
       <span class="eyebrow">Schritt 3</span>
       <h2 id="h-check">Anzeigen-Check</h2>
-      <p>Anzeige eintragen und bewerten lassen. Die Tabelle zeigt Gesamtmiete und Preis pro m², jeweils kalt und warm. Fett ist der Wert aus der Anzeige, „≈“ ist mit ca. 3,20 €/m² Nebenkosten geschätzt. Der Score kombiniert Preis pro m² im Vergleich zum Ort, wie frisch die Anzeige ist und wie groß die Konkurrenz dort ist. Die Liste bleibt in diesem Browser gespeichert.</p>
+      <p>Anzeige eintragen, bis zu 4 Innenfotos dazu (Wohnzimmer, Küche, Bad, Schlafzimmer) und bewerten lassen. Fotos per Auswahl, Drag &amp; Drop oder Einfügen (Strg+V bzw. am Handy „Einsetzen“) aus einem Screenshot. Der Score kombiniert Preis pro m² im Vergleich zum Ort, wie frisch die Anzeige ist und die Konkurrenz. Grau = mit ca. 3,20 €/m² Nebenkosten geschätzt. Alles bleibt nur in diesem Browser gespeichert.</p>
     </div>
     <form class="panel checkform" id="checkform">
       <label class="wide">Ort
@@ -207,14 +289,17 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
       <label>Fläche (m²)<input id="c-size" type="number" min="5" required value="48"></label>
       <label>Online seit (Std.)<input id="c-age" type="number" min="0" required value="5"></label>
       <label class="wide">Link zur Anzeige <small>optional</small><input id="c-url" type="url" placeholder="https://…"></label>
+      <div class="drop" id="drop">
+        <div class="row">
+          <span class="btn ghost small filebtn">Innenfotos wählen<input id="c-photos" type="file" accept="image/*" multiple aria-label="Innenfotos wählen"></span>
+          <span class="note">max. 4 · oder hierher ziehen · oder einfügen</span>
+        </div>
+        <div class="pending" id="pending"></div>
+      </div>
       <button class="btn" type="submit">Bewerten &amp; speichern</button>
+      <p class="warnmsg" id="storewarn" hidden>Der Speicher im Browser ist voll. Alte Anzeigen löschen oder weniger Fotos verwenden.</p>
     </form>
-    <div class="tablebox">
-      <table>
-        <thead><tr><th>Score</th><th>Ort</th><th>Gesamt kalt</th><th>Gesamt warm</th><th>m²</th><th>€/m² kalt</th><th>€/m² warm</th><th>Online seit</th><th>Einschätzung</th><th></th></tr></thead>
-        <tbody id="list"></tbody>
-      </table>
-    </div>
+    <div class="cards" id="list"></div>
   </section>
 
   <section aria-labelledby="h-apply">
@@ -260,6 +345,8 @@ footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid v
       <li><b>ImmoScout24 MieterPlus</b> für 1–2 Monate kann sich lohnen: Manche Anzeigen sind damit früher sichtbar, und die Schufa-Auskunft ist enthalten.</li>
     </ol>
   </section>
+
+  <div class="lightbox" id="lightbox" hidden><img id="lbimg" alt="Foto groß"><button type="button" id="lbclose">Schließen ✕</button></div>
 
   <footer>
     Mietpreise sind geschätzte Richtwerte für Neuvermietungen (kalt, Stand 2025/26), Fahrzeiten ungefähre schnellste Bahnverbindung zum Hauptbahnhof, Konkurrenz eine Einschätzung aus Nachfrage, Pendlerlage und Hochschulnähe. Sie dienen dem Vergleich der Orte untereinander. Die tatsächlichen Preise stehen in den Anzeigen.
@@ -367,10 +454,8 @@ function dots(n){
 }
 const lineBadges=ls=>ls.map(l=>'<span class="ln '+l+'">'+l+"</span>").join("");
 
-function renderTowns(){
-  const c=crit(), r=rank(c), list=showAll?r:r.slice(0,12);
-  $("towns").innerHTML=list.map((t,i)=>`
-    <article class="town${i<3?" top":""}">
+function townCard(t,i,c){ return `
+    <article class="town${i<3?" top":""}" id="town-${i}">
       <div class="rank">${i+1}</div>
       <div class="tname"><strong>${t.name}</strong>
         <div class="lines">${lineBadges(t.lines)}<span class="mins">${t.min?t.min+" min":"–"} · ${t.kreis}</span></div></div>
@@ -382,7 +467,12 @@ function renderTowns(){
         <div class="fact"><dt>Konkurrenz</dt><dd>${dots(t.comp)}</dd></div>
       </dl>
       <div class="links">${links(t,c).map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join("")}</div>
-    </article>`).join("") || '<p class="empty">Kein Ort passt zu dieser Fahrzeit. Fahrzeit erhöhen.</p>';
+    </article>`;}
+function renderTowns(){
+  const c=crit(), r=rank(c), list=showAll?r:r.slice(0,12);
+  $("featured").innerHTML=list.slice(0,3).map((t,i)=>townCard(t,i,c)).join("");
+  $("towns").innerHTML=list.slice(3).map((t,i)=>townCard(t,i+3,c)).join("") || (list.length?"":'<p class="empty">Kein Ort passt zu dieser Fahrzeit. Fahrzeit erhöhen.</p>');
+  renderMap(r);
   $("more").hidden=r.length<=12;
   $("more").textContent=showAll?"Nur Top 12 zeigen":"Alle "+r.length+" Orte zeigen";
   $("summary").innerHTML=[eur(c.pmin)+"–"+eur(c.pmax)+" "+(c.warm?"warm":"kalt"),c.smin+"–"+c.smax+" m²","≤ "+c.maxmin+" min zum Hbf","Radius "+c.radius+" km","Neueste zuerst"]
@@ -390,13 +480,67 @@ function renderTowns(){
   $("maxminv").textContent=c.maxmin+" min"; $("refv").textContent=c.ref+" m²"; $("radiusv").textContent=c.radius+" km";
 }
 
+// Karte: Position aus Koordinaten, Ringe = Luftlinie
+const MAP={lng0:10.55,lng1:12.75,lat0:48.86,lat1:47.66,W:560,H:470};
+const px=(lat,lng)=>[ (lng-MAP.lng0)/(MAP.lng1-MAP.lng0)*MAP.W, (MAP.lat0-lat)/(MAP.lat0-MAP.lat1)*MAP.H ];
+function renderMap(r){
+  const [mx,my]=px(48.140,11.558), kmPx=MAP.H/((MAP.lat0-MAP.lat1)*111);
+  let g="";
+  [20,40,60].forEach(km=>{g+=`<circle class="ring" cx="${mx}" cy="${my}" r="${km*kmPx}"/><text class="ringlbl" x="${mx+4}" y="${my-km*kmPx-4}">${km} km</text>`;});
+  const idx=new Map(r.map((t,i)=>[t.name,i]));
+  const col=t=>idx.get(t.name)<3?"var(--accent)":t.comp<=2?"var(--good)":t.comp>=4?"var(--bad)":"var(--warn)";
+  const sorted=TOWNS.filter(t=>t.min>0).slice().sort((a,b)=>(idx.get(b.name)??99)-(idx.get(a.name)??99));
+  sorted.forEach(t=>{
+    const [x,y]=px(t.lat,t.lng), i=idx.get(t.name), on=i!==undefined, top=on&&i<3;
+    g+=`<circle class="dot" tabindex="0" data-i="${on?i:""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${top?9:on?6:4}" fill="${on?col(t):"var(--line)"}"><title>${on?(i+1)+". ":""}${t.name} · ${t.min} min</title></circle>`;
+    const right=x>MAP.W-110;
+    if(on&&i<6) g+=`<text class="lbl" text-anchor="${right?"end":"start"}" x="${(x+(right?-1:1)*(top?12:9)).toFixed(1)}" y="${(y+4).toFixed(1)}">${top?(i+1)+" · ":""}${shortName(t.name)}</text>`;
+  });
+  g+=`<rect class="muc" x="${mx-7}" y="${my-7}" width="14" height="14" rx="3"/><text class="lbl" x="${mx+11}" y="${my+4}">München Hbf</text>`;
+  $("map").innerHTML=g;
+}
+function jumpTo(i){
+  if(i==="")return;
+  if(+i>=12&&!showAll){showAll=true;renderTowns();}
+  const el=$("town-"+i); if(!el)return;
+  el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"center"});
+  el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),1400);
+}
+$("map").addEventListener("click",e=>{const d=e.target.closest(".dot");if(d)jumpTo(d.dataset.i);});
+$("map").addEventListener("keydown",e=>{if(e.key==="Enter"){const d=e.target.closest(".dot");if(d)jumpTo(d.dataset.i);}});
+
+// Beispielbilder (gezeichnet, keine echten Fotos)
+function roomSVG(kind,h){
+  const wall=["#E9E1D3","#DCE6E4","#E6E0EA","#EDE6DA"][h%4], floor=["#B8946A","#A7896B","#9C8F84","#C2A27C"][h%4];
+  let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="${wall}"/>`;
+  if(kind==="bad"){
+    s+=`<rect width="400" height="300" fill="#EEF3F4"/>`;
+    for(let x=0;x<400;x+=40)for(let y=0;y<300;y+=40)s+=`<rect x="${x+1}" y="${y+1}" width="38" height="38" fill="#E1EAEC"/>`;
+    s+=`<rect x="40" y="180" width="200" height="70" rx="18" fill="#fff" stroke="#C9D5D8" stroke-width="3"/><rect x="270" y="60" width="80" height="100" rx="8" fill="#CFE3EA" stroke="#fff" stroke-width="6"/><rect x="280" y="170" width="60" height="80" fill="#fff"/><rect x="0" y="250" width="400" height="50" fill="#B9C6C9"/>`;
+  }else{
+    s+=`<rect y="220" width="400" height="80" fill="${floor}"/><rect x="250" y="40" width="110" height="120" fill="#CFE6F2" stroke="#fff" stroke-width="8"/><line x1="305" y1="40" x2="305" y2="160" stroke="#fff" stroke-width="6"/>`;
+    if(kind==="wohn") s+=`<rect x="40" y="160" width="170" height="60" rx="10" fill="#5E7A74"/><rect x="40" y="135" width="170" height="40" rx="10" fill="#6E8C85"/><rect x="60" y="230" width="120" height="10" rx="4" fill="#8A6A4A"/><circle cx="385" cy="195" r="0"/><rect x="232" y="180" width="18" height="40" fill="#9C6B3F"/><circle cx="241" cy="165" r="22" fill="#4E8A5B"/>`;
+    if(kind==="kueche") s+=`<rect x="20" y="150" width="210" height="70" fill="#F6F4EF" stroke="#D6D0C4" stroke-width="2"/><rect x="20" y="142" width="210" height="10" fill="#6F6A62"/><rect x="20" y="50" width="210" height="60" fill="#F6F4EF" stroke="#D6D0C4" stroke-width="2"/><rect x="90" y="160" width="60" height="50" fill="#2F3432"/><line x1="125" y1="50" x2="125" y2="110" stroke="#D6D0C4" stroke-width="2"/>`;
+    if(kind==="schlaf") s+=`<rect x="30" y="150" width="200" height="70" rx="8" fill="#fff"/><rect x="30" y="120" width="30" height="100" fill="#8A6A4A"/><rect x="70" y="140" width="60" height="22" rx="8" fill="#DCE3F0"/><rect x="100" y="168" width="130" height="52" fill="#9FB3CF"/>`;
+  }
+  s+=`</svg>`;
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(s);
+}
+const exPhotos=(h,kinds)=>kinds.map(k=>roomSVG(k,h));
+
 // Anzeigen-Check
 const EX=[
-  {town:"Kaufering",price:720,type:"kalt",size:52,age:3,url:"",ex:true},
-  {town:"Dachau",price:890,type:"warm",size:41,age:30,url:"",ex:true},
-  {town:"Germering",price:650,type:"kalt",size:68,age:2,url:"",ex:true}
+  {id:"ex1",town:"Kaufering",price:720,type:"kalt",size:52,age:3,url:"",ex:true,photos:exPhotos(0,["wohn","kueche","bad"])},
+  {id:"ex2",town:"Dachau",price:890,type:"warm",size:41,age:30,url:"",ex:true,photos:exPhotos(1,["wohn","bad"])},
+  {id:"ex3",town:"Germering",price:650,type:"kalt",size:68,age:2,url:"",ex:true,photos:exPhotos(2,["schlaf","kueche","wohn","bad"])}
 ];
-let items=store.get("items",EX);
+let items=store.get("items",null);
+if(!items||(items.length&&items.every(x=>x.ex))) items=EX; else items=items.map((x,i)=>({id:x.id||"i"+Date.now()+i,photos:[],...x}));
+const active={};
+function saveItems(){
+  try{localStorage.setItem(KEY+"items",JSON.stringify(items.filter(x=>!x.ex)));$("storewarn").hidden=true;return true}
+  catch(e){$("storewarn").hidden=false;return false}
+}
 
 function evaluate(it){
   const t=TOWNS.find(x=>x.name===it.town)||{rent:15,comp:3};
@@ -417,32 +561,100 @@ function evaluate(it){
   return {pm2,kalt,warm,score,flags,v};
 }
 function ageText(h){return h<24?h+" Std.":Math.round(h/24)+" Tg."}
+let armed=null;
 function renderList(){
-  const rows=items.map((it,i)=>({it,i,e:evaluate(it)})).sort((a,b)=>b.e.score-a.e.score);
-  $("list").innerHTML=rows.length?rows.map(({it,i,e})=>`
-    <tr>
-      <td><span class="score">${e.score}</span></td>
-      <td>${it.url?`<a href="${encodeURI(it.url)}" target="_blank" rel="noopener">${it.town}</a>`:it.town}${it.ex?' <span class="pill ex">Beispiel</span>':""}</td>
-      <td class="num">${it.type==="kalt"?"<b>"+eur(e.kalt)+"</b>":"≈ "+eur(e.kalt)}</td>
-      <td class="num">${it.type==="warm"?"<b>"+eur(e.warm)+"</b>":"≈ "+eur(e.warm)}</td>
-      <td class="num">${it.size}</td>
-      <td class="num">${de(e.pm2,2)}</td>
-      <td class="num">${de(e.warm/it.size,2)}</td>
-      <td class="num">${ageText(it.age)}</td>
-      <td><span class="pill ${e.v[0]}">${e.v[1]}</span>${e.flags.length?'<div class="flags">'+e.flags.map(f=>`<span class="pill ${f[0]}">${f[1]}</span>`).join("")+"</div>":""}</td>
-      <td><button class="x" type="button" data-del="${i}" aria-label="Eintrag löschen">×</button></td>
-    </tr>`).join(""):'<tr><td colspan="10" class="empty">Noch keine Anzeigen eingetragen.</td></tr>';
+  const key=e=>e.score-(e.v[1]==="Vorsicht"?1000:0);
+  const rows=items.map(it=>({it,e:evaluate(it)})).sort((a,b)=>key(b.e)-key(a.e));
+  $("list").innerHTML=rows.length?rows.map(({it,e})=>{
+    const t=TOWNS.find(x=>x.name===it.town), ph=it.photos||[], a=Math.min(active[it.id]||0,Math.max(0,ph.length-1));
+    const gal=ph.length?`<button class="main" type="button" data-zoom="${it.id}" aria-label="Foto vergrößern"><img src="${ph[a]}" alt="Innenfoto ${a+1} von ${ph.length}" loading="lazy"></button>${it.ex?'<span class="exlbl">Beispielbild</span>':""}`
+      :`<div class="nophoto">Noch keine Innenfotos<label class="btn ghost small filebtn">Fotos hinzufügen<input type="file" accept="image/*" multiple data-add="${it.id}"></label></div>`;
+    return `<article class="card">
+      <div class="gallery">${gal}
+        <div class="badge">${e.score}<small>SCORE</small></div>
+        <span class="pill ${e.v[0]} verdict">${e.v[1]}</span>
+      </div>
+      ${ph.length>1?`<div class="thumbs">${ph.map((p,j)=>`<button type="button" data-id="${it.id}" data-j="${j}" aria-current="${j===a}" aria-label="Foto ${j+1}"><img src="${p}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
+      <div class="cbody">
+        <div class="ctitle"><strong>${it.town}</strong><span>${it.size} m² · vor ${ageText(it.age)}</span></div>
+        ${t?`<div class="lines">${lineBadges(t.lines)}<span class="mins">${t.min} min zum Hbf</span>${it.ex?' <span class="pill ex">Beispiel</span>':""}</div>`:(it.ex?'<span class="pill ex">Beispiel</span>':"")}
+        <dl class="prices">
+          <div class="price"><dt>Gesamt kalt</dt><dd class="${it.type==="kalt"?"":"est"}">${it.type==="kalt"?"":"≈ "}${eur(e.kalt)}</dd><span class="pm">${de(e.pm2,2)} €/m²</span></div>
+          <div class="price"><dt>Gesamt warm</dt><dd class="${it.type==="warm"?"":"est"}">${it.type==="warm"?"":"≈ "}${eur(e.warm)}</dd><span class="pm">${de(e.warm/it.size,2)} €/m²</span></div>
+        </dl>
+        ${e.flags.length?'<div class="cmeta">'+e.flags.map(f=>`<span class="pill ${f[0]}">${f[1]}</span>`).join("")+"</div>":""}
+        <div class="cactions">
+          ${it.url?`<a href="${encodeURI(it.url)}" target="_blank" rel="noopener">Zur Anzeige ↗</a>`:""}
+          ${ph.length&&ph.length<4?`<label class="filebtn">+ Fotos<input type="file" accept="image/*" multiple data-add="${it.id}"></label>`:""}
+          <button type="button" class="del${armed===it.id?" confirm":""}" data-del="${it.id}">${armed===it.id?"Wirklich löschen?":"Löschen"}</button>
+        </div>
+      </div>
+    </article>`}).join(""):'<p class="empty">Noch keine Anzeigen eingetragen.</p>';
 }
-$("list").addEventListener("click",e=>{const b=e.target.closest("[data-del]");if(!b)return;items.splice(+b.dataset.del,1);store.set("items",items);renderList();});
+$("list").addEventListener("click",e=>{
+  const d=e.target.closest("[data-del]");
+  if(d){const id=d.dataset.del; if(armed===id){items=items.filter(x=>x.id!==id);armed=null;saveItems();} else armed=id; renderList(); return;}
+  const th=e.target.closest("[data-j]");
+  if(th){active[th.dataset.id]=+th.dataset.j;renderList();return;}
+  const z=e.target.closest("[data-zoom]");
+  if(z){$("lbimg").src=z.querySelector("img").src;$("lightbox").hidden=false;$("lbclose").focus();}
+});
+$("list").addEventListener("change",async e=>{
+  const inp=e.target.closest("[data-add]"); if(!inp)return;
+  const it=items.find(x=>x.id===inp.dataset.add); if(!it)return;
+  const imgs=await readFiles([...inp.files],4-(it.photos||[]).length);
+  if(it.ex){it.ex=false;it.photos=[];}
+  it.photos=[...(it.photos||[]),...imgs].slice(0,4);
+  if(!saveItems()) it.photos=it.photos.slice(0,-imgs.length);
+  renderList();
+});
+const closeLb=()=>{$("lightbox").hidden=true;$("lbimg").removeAttribute("src");};
+$("lbclose").onclick=closeLb;
+$("lightbox").addEventListener("click",e=>{if(e.target.id==="lightbox")closeLb();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("lightbox").hidden)closeLb();});
+
+// Fotos verkleinern (max. 720 px, JPEG), damit der Browser-Speicher reicht
+function shrink(file){
+  return new Promise(res=>{
+    const url=URL.createObjectURL(file), img=new Image();
+    img.onload=()=>{const k=Math.min(1,720/Math.max(img.width,img.height)), cv=document.createElement("canvas");
+      cv.width=Math.round(img.width*k);cv.height=Math.round(img.height*k);
+      cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);URL.revokeObjectURL(url);res(cv.toDataURL("image/jpeg",.72));};
+    img.onerror=()=>{URL.revokeObjectURL(url);res(null);};
+    img.src=url;
+  });
+}
+async function readFiles(files,max){
+  const out=[];
+  for(const f of files.filter(f=>f.type.startsWith("image/")).slice(0,Math.max(0,max))){const d=await shrink(f);if(d)out.push(d);}
+  return out;
+}
+let pending=[];
+function renderPending(){
+  $("pending").innerHTML=pending.map((p,i)=>`<figure><img src="${p}" alt="Foto ${i+1}"><button type="button" data-rm="${i}" aria-label="Foto entfernen">×</button></figure>`).join("");
+}
+async function addPending(files){pending=[...pending,...await readFiles(files,4-pending.length)].slice(0,4);renderPending();}
+$("pending").addEventListener("click",e=>{const b=e.target.closest("[data-rm]");if(b){pending.splice(+b.dataset.rm,1);renderPending();}});
+$("c-photos").addEventListener("change",e=>{addPending([...e.target.files]);e.target.value="";});
+const drop=$("drop");
+["dragenter","dragover"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("over");}));
+["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("over");}));
+drop.addEventListener("drop",e=>addPending([...e.dataTransfer.files]));
+document.addEventListener("paste",e=>{
+  const files=[...(e.clipboardData?.files||[])].filter(f=>f.type.startsWith("image/"));
+  if(files.length){e.preventDefault();addPending(files);drop.scrollIntoView({block:"nearest"});}
+});
 $("c-town").innerHTML=TOWNS.map(t=>`<option>${t.name}</option>`).join("")+'<option value="__other">Anderer Ort (Richtwert 15 €/m²)</option>';
 $("c-town").value="Fürstenfeldbruck";
 $("checkform").addEventListener("submit",e=>{
   e.preventDefault();
   items=items.filter(x=>!x.ex);
   const url=$("c-url").value.trim();
-  items.push({town:$("c-town").value==="__other"?"Anderer Ort":$("c-town").value,price:+$("c-price").value,type:$("c-type").value,
-    size:+$("c-size").value,age:+$("c-age").value,url:/^https?:\/\//.test(url)?url:""});
-  store.set("items",items);$("c-url").value="";renderList();
+  items.push({id:"i"+Date.now(),town:$("c-town").value==="__other"?"Anderer Ort":$("c-town").value,price:+$("c-price").value,type:$("c-type").value,
+    size:+$("c-size").value,age:+$("c-age").value,url:/^https?:\/\//.test(url)?url:"",photos:pending});
+  if(saveItems()){pending=[];renderPending();$("c-url").value="";}
+  else items.pop();
+  renderList();
 });
 
 // Anschreiben
