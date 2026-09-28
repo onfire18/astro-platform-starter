@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wohnungsradar München</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F2F5F4;--surface:#FFFFFF;--sunk:#E7ECEA;--ink:#15201D;--muted:#5A6A65;--line:#D3DCD9;
+  --accent:#0E6A5A;--accent-soft:#D7EDE7;--on-accent:#FFFFFF;
+  --good:#1D7A3A;--good-soft:#DDF1E2;--warn:#9A5B00;--warn-soft:#FBEBD0;--bad:#B0261D;--bad-soft:#F8DEDB;
+  --display:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --body:"Source Sans 3",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--paper:#0E1513;--surface:#16201D;--sunk:#1C2825;--ink:#E3ECE9;--muted:#95A6A0;--line:#2B3A36;
+  --accent:#4FC2A6;--accent-soft:#173A33;--on-accent:#06201A;
+  --good:#6DD68C;--good-soft:#16321F;--warn:#F0B454;--warn-soft:#3A2B10;--bad:#FF8A80;--bad-soft:#3D1A17;}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--paper:#0E1513;--surface:#16201D;--sunk:#1C2825;--ink:#E3ECE9;--muted:#95A6A0;--line:#2B3A36;
+  --accent:#4FC2A6;--accent-soft:#173A33;--on-accent:#06201A;
+  --good:#6DD68C;--good-soft:#16321F;--warn:#F0B454;--warn-soft:#3A2B10;--bad:#FF8A80;--bad-soft:#3D1A17;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:16px/1.5 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.45rem;font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted);max-width:62ch;font-size:1.05rem}
+.eyebrow{font:600 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 .8rem/1 var(--mono);padding:7px 10px;border-radius:999px;background:var(--sunk);color:var(--ink);font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:16px}
+.sechead{display:flex;flex-direction:column;gap:6px}
+.sechead p{color:var(--muted);max-width:68ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.92rem}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=range]{padding:0;accent-color:var(--accent)}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--paper);color:var(--muted);font:600 .9rem var(--body);padding:9px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.val{font:600 .9rem var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.btn{font:700 .92rem var(--body);border:0;border-radius:8px;padding:10px 16px;background:var(--accent);color:var(--on-accent);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.btn.small{padding:6px 10px;font-size:.82rem}
+
+/* Orte-Ranking */
+.towns{display:flex;flex-direction:column;gap:10px}
+.town{display:grid;grid-template-columns:44px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1.4fr);gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.rank{font:800 1.5rem/1 var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.town.top .rank{color:var(--accent)}
+.tname{display:flex;flex-direction:column;gap:5px;min-width:0}
+.tname strong{font:700 1.08rem var(--display)}
+.lines{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.ln{font:700 .7rem/1 var(--mono);padding:4px 6px;border-radius:4px;color:#fff;background:#5f6b68}
+.ln.S1{background:#16BAE7}.ln.S2{background:#76B82A}.ln.S3{background:#951B81}.ln.S4{background:#E30613}
+.ln.S6{background:#00975F}.ln.S7{background:#943126}.ln.S8{background:#1b1b1b;color:#F7D117;box-shadow:inset 0 0 0 1px #F7D117}
+.ln.U6{background:#0065AE}.ln.RE,.ln.RB,.ln.BRB{background:#6B7672}.ln.ICE{background:#fff;color:#C8102E;box-shadow:inset 0 0 0 1px #C8102E}
+.mins{font:.8rem var(--mono);color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:4px 14px;font-variant-numeric:tabular-nums}
+.facts dt{font:600 .68rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.facts dd{margin:0;font:600 .95rem var(--mono)}
+.dots{display:inline-flex;gap:3px;vertical-align:middle}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--warn)}
+.dots.low i.on{background:var(--good)}
+.dots.high i.on{background:var(--bad)}
+.links{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.links a{font:600 .82rem var(--body);text-decoration:none;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:6px;white-space:nowrap}
+.links a:hover{background:var(--accent);color:var(--on-accent)}
+.more{align-self:flex-start}
+@media (max-width:760px){
+  .town{grid-template-columns:36px minmax(0,1fr);}
+  .facts,.links{grid-column:2}
+  .links{justify-content:flex-start}
+}
+
+/* Anzeigen-Check */
+.checkform{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end}
+.checkform .wide{grid-column:span 2}
+@media (max-width:480px){.checkform .wide{grid-column:auto}}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font:600 .7rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-size:.9rem}
+.score{font:800 1.25rem var(--display)}
+.pill{display:inline-block;font:700 .75rem/1 var(--body);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.ex{background:var(--sunk);color:var(--muted)}
+.flags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.x{border:0;background:none;color:var(--muted);cursor:pointer;font-size:1.1rem;padding:4px 8px}
+.empty{padding:18px;color:var(--muted)}
+
+/* Bewerbung */
+.two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.letterfields{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}
+textarea{min-height:300px;font:.95rem/1.5 var(--body);resize:vertical}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.note{color:var(--muted);font-size:.88rem}
+ul.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.check label{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400}
+ul.check input{width:auto;margin-top:4px;accent-color:var(--accent)}
+ol.tips{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;max-width:75ch}
+ol.tips b{font-weight:700}
+footer{color:var(--muted);font-size:.85rem;max-width:80ch;border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Mietwohnung · München &amp; Umland · max. 60 min Bahn</span>
+    <h1>Wohnungsradar München</h1>
+    <p class="lead">Findet die Orte, in denen man für 600–900 € die meiste Wohnung bei der geringsten Konkurrenz bekommt, und öffnet die passenden Suchen direkt nach „neueste zuerst“ sortiert.</p>
+    <div class="chips" id="summary"></div>
+  </header>
+
+  <section aria-labelledby="h-filter">
+    <div class="sechead">
+      <span class="eyebrow">Schritt 1</span>
+      <h2 id="h-filter">Suchkriterien</h2>
+    </div>
+    <div class="panel controls">
+      <label>Miete von / bis (€)
+        <div style="display:flex;gap:8px">
+          <input id="pmin" type="number" min="200" step="50" value="600" aria-label="Miete minimal">
+          <input id="pmax" type="number" min="300" step="50" value="900" aria-label="Miete maximal">
+        </div>
+      </label>
+      <label>Größe von / bis (m²)
+        <div style="display:flex;gap:8px">
+          <input id="smin" type="number" min="10" step="5" value="25" aria-label="Fläche minimal">
+          <input id="smax" type="number" min="15" step="5" value="70" aria-label="Fläche maximal">
+        </div>
+      </label>
+      <label>Budget bezieht sich auf
+        <div class="seg" role="group" aria-label="Kalt oder Warm">
+          <button type="button" id="mode-kalt" aria-pressed="true">Kaltmiete</button>
+          <button type="button" id="mode-warm" aria-pressed="false">Warmmiete</button>
+        </div>
+        <small>Warm: rechnet ca. 3,20 €/m² Nebenkosten ab</small>
+      </label>
+      <label for="maxmin">Max. Fahrzeit zum Hbf <span class="val" id="maxminv">60 min</span>
+        <input id="maxmin" type="range" min="15" max="60" step="5" value="60">
+      </label>
+      <label for="radius">Suchradius um den Ort <span class="val" id="radiusv">5 km</span>
+        <input id="radius" type="range" min="2" max="15" step="1" value="5">
+      </label>
+      <label>Schwerpunkt
+        <select id="focus">
+          <option value="balanced">Ausgewogen</option>
+          <option value="comp">Wenig Konkurrenz zuerst</option>
+          <option value="size">Meiste m² fürs Geld</option>
+          <option value="near">Kurze Fahrzeit</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-towns">
+    <div class="sechead">
+      <span class="eyebrow">Schritt 2</span>
+      <h2 id="h-towns">Beste Orte für dieses Budget</h2>
+      <p>„≈ m²“ zeigt, wie groß die Wohnung beim Höchstbudget im Schnitt ist. Die Links öffnen die Suche mit euren Filtern, neueste Anzeigen oben. Bei ImmoScout24 kann man die Suche danach als Suchauftrag mit Push speichern.</p>
+    </div>
+    <div class="towns" id="towns"></div>
+    <button class="btn ghost more" id="more" type="button">Alle Orte zeigen</button>
+  </section>
+
+  <section aria-labelledby="h-check">
+    <div class="sechead">
+      <span class="eyebrow">Schritt 3</span>
+      <h2 id="h-check">Anzeigen-Check</h2>
+      <p>Anzeige eintragen und bewerten lassen. Der Score kombiniert Preis pro m² im Vergleich zum Ort, wie frisch die Anzeige ist und wie groß die Konkurrenz dort ist. Die Liste bleibt in diesem Browser gespeichert.</p>
+    </div>
+    <form class="panel checkform" id="checkform">
+      <label class="wide">Ort
+        <select id="c-town"></select>
+      </label>
+      <label>Miete (€)<input id="c-price" type="number" min="1" required value="780"></label>
+      <label>Art
+        <select id="c-type"><option value="kalt">kalt</option><option value="warm">warm</option></select>
+      </label>
+      <label>Fläche (m²)<input id="c-size" type="number" min="5" required value="48"></label>
+      <label>Online seit (Std.)<input id="c-age" type="number" min="0" required value="5"></label>
+      <label class="wide">Link zur Anzeige <small>optional</small><input id="c-url" type="url" placeholder="https://…"></label>
+      <button class="btn" type="submit">Bewerten &amp; speichern</button>
+    </form>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Score</th><th>Ort</th><th>Miete</th><th>m²</th><th>€/m² kalt</th><th>Online seit</th><th>Einschätzung</th><th></th></tr></thead>
+        <tbody id="list"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-apply">
+    <div class="sechead">
+      <span class="eyebrow">Schritt 4</span>
+      <h2 id="h-apply">Schneller anfragen als die anderen</h2>
+      <p>Bei guten Anzeigen entscheidet oft die erste Stunde. Anschreiben einmal ausfüllen, dann nur noch kopieren und einfügen.</p>
+    </div>
+    <div class="two">
+      <div class="panel">
+        <div class="letterfields">
+          <label>Name<input id="l-name" value="Max Mustermann"></label>
+          <label>Alter<input id="l-age" value="52"></label>
+          <label>Beruf / Arbeitgeber<input id="l-job" value="Techniker, unbefristet angestellt"></label>
+          <label>Netto-Einkommen (€)<input id="l-income" value="3.200"></label>
+          <label>Einzug ab<input id="l-move" value="sofort bzw. nach Absprache"></label>
+          <label>Telefon<input id="l-phone" value="0170 1234567"></label>
+        </div>
+        <textarea id="letter" aria-label="Anschreiben"></textarea>
+        <div class="row">
+          <button class="btn" id="copy" type="button">Anschreiben kopieren</button>
+          <span class="note" id="copynote" aria-live="polite">Beispieldaten ersetzen. Der Text lässt sich danach noch frei bearbeiten.</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 style="margin-bottom:12px">Bewerbungsmappe (als eine PDF)</h3>
+        <ul class="check" id="docs"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-tips">
+    <div class="sechead">
+      <span class="eyebrow">Strategie</span>
+      <h2 id="h-tips">So steigen die Chancen</h2>
+    </div>
+    <ol class="tips">
+      <li><b>Suchaufträge mit Push anlegen</b> für die Top-5-Orte auf ImmoScout24 und Kleinanzeigen. Wer innerhalb von 30–60 Minuten schreibt, landet unter den ersten Anfragen; danach schließen viele Vermieter das Postfach.</li>
+      <li><b>Kleinanzeigen und private Vermieter bevorzugen.</b> Dort gibt es keine Makler-Massenbesichtigungen, und ein persönliches, freundliches Anschreiben zählt mehr.</li>
+      <li><b>Orte an Regionalbahn-Linien</b> (Kaufering, Buchloe, Mering, Geltendorf, Mühldorf) sind oft schneller am Hbf als S-Bahn-Endhaltestellen, haben aber deutlich weniger Bewerber.</li>
+      <li><b>Anzeigen unter ca. 55 % des örtlichen m²-Preises</b> sind häufig Betrug. Nie vor der Besichtigung Geld überweisen oder Ausweisdaten an unbekannte Adressen schicken.</li>
+      <li><b>Genossenschaften und kommunale Vermieter</b> (z. B. Münchner Wohnen, Wohnungsbaugenossenschaften im Landkreis, Wohnungsämter der Städte) haben Wartelisten. Einmal eintragen kostet nichts und läuft parallel.</li>
+      <li><b>ImmoScout24 MieterPlus</b> für 1–2 Monate kann sich lohnen: Manche Anzeigen sind damit früher sichtbar, und die Schufa-Auskunft ist enthalten.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Mietpreise sind geschätzte Richtwerte für Neuvermietungen (kalt, Stand 2025/26), Fahrzeiten ungefähre schnellste Bahnverbindung zum Hauptbahnhof, Konkurrenz eine Einschätzung aus Nachfrage, Pendlerlage und Hochschulnähe. Sie dienen dem Vergleich der Orte untereinander. Die tatsächlichen Preise stehen in den Anzeigen.
+  </footer>
+</div>
+
+<script>
+(function(){
+// name, lat, lng, lines, min zum Hbf, €/m² kalt, Konkurrenz 1-5, Landkreis
+const TOWNS=[
+ ["München (Stadt)",48.140,11.558,["U6","S1","S8"],0,23,5,"Stadt München"],
+ ["Garching b. München",48.249,11.651,["U6"],30,19,4,"Lkr. München"],
+ ["Unterschleißheim",48.281,11.577,["S1"],25,18.5,4,"Lkr. München"],
+ ["Neufahrn b. Freising",48.316,11.664,["S1"],30,16.5,3,"Lkr. Freising"],
+ ["Eching",48.300,11.621,["S1"],30,16.5,3,"Lkr. Freising"],
+ ["Freising",48.403,11.749,["S1","RE"],25,16.5,4,"Lkr. Freising"],
+ ["Moosburg a. d. Isar",48.469,11.936,["RE","S1"],38,13.5,2,"Lkr. Freising"],
+ ["Landshut",48.537,12.152,["RE"],45,12.5,3,"Stadt Landshut"],
+ ["Erding",48.306,11.907,["S2"],45,16,3,"Lkr. Erding"],
+ ["Markt Schwaben",48.190,11.868,["S2"],25,15.5,3,"Lkr. Ebersberg"],
+ ["Dorfen",48.271,12.160,["RE"],45,12.5,2,"Lkr. Erding"],
+ ["Mühldorf a. Inn",48.247,12.522,["RE"],60,10.5,1,"Lkr. Mühldorf"],
+ ["Haar",48.109,11.729,["S4"],20,18,4,"Lkr. München"],
+ ["Kirchseeon",48.071,11.886,["S4"],35,15,2,"Lkr. Ebersberg"],
+ ["Grafing b. München",48.045,11.968,["S4","RE"],30,15,3,"Lkr. Ebersberg"],
+ ["Ebersberg",48.077,11.970,["S4"],40,15.5,3,"Lkr. Ebersberg"],
+ ["Ottobrunn",48.064,11.665,["S7"],25,18,4,"Lkr. München"],
+ ["Taufkirchen",48.049,11.617,["S3"],25,17.5,4,"Lkr. München"],
+ ["Holzkirchen",47.886,11.699,["S3","BRB"],35,16,3,"Lkr. Miesbach"],
+ ["Rosenheim",47.857,12.128,["RE"],40,13.5,3,"Stadt Rosenheim"],
+ ["Bad Aibling",47.864,12.010,["RB"],55,13,2,"Lkr. Rosenheim"],
+ ["Wolfratshausen",47.913,11.422,["S7"],45,15.5,3,"Lkr. Bad Tölz-Wolfratshausen"],
+ ["Geretsried",47.857,11.480,["S7"],55,14.5,2,"Lkr. Bad Tölz-Wolfratshausen"],
+ ["Bad Tölz",47.760,11.557,["BRB"],55,14,2,"Lkr. Bad Tölz-Wolfratshausen"],
+ ["Penzberg",47.753,11.378,["RB"],55,13,2,"Lkr. Weilheim-Schongau"],
+ ["Weilheim i. OB",47.840,11.142,["RB"],45,13,2,"Lkr. Weilheim-Schongau"],
+ ["Starnberg",47.999,11.340,["S6"],30,19.5,4,"Lkr. Starnberg"],
+ ["Tutzing",47.909,11.280,["S6","RB"],40,17,3,"Lkr. Starnberg"],
+ ["Herrsching a. Ammersee",47.999,11.172,["S8"],50,16.5,3,"Lkr. Starnberg"],
+ ["Gilching",48.108,11.294,["S8"],35,16.5,3,"Lkr. Starnberg"],
+ ["Germering",48.133,11.368,["S8"],20,17.5,4,"Lkr. Fürstenfeldbruck"],
+ ["Fürstenfeldbruck",48.178,11.255,["S4"],30,15.5,3,"Lkr. Fürstenfeldbruck"],
+ ["Olching",48.207,11.331,["S3"],25,16,3,"Lkr. Fürstenfeldbruck"],
+ ["Maisach",48.218,11.260,["S3"],30,15,2,"Lkr. Fürstenfeldbruck"],
+ ["Mammendorf",48.209,11.167,["S3"],40,14,2,"Lkr. Fürstenfeldbruck"],
+ ["Geltendorf",48.117,11.032,["S4","RB"],45,13.5,1,"Lkr. Landsberg"],
+ ["Kaufering",48.089,10.869,["RB"],45,12,1,"Lkr. Landsberg"],
+ ["Landsberg am Lech",48.048,10.883,["RB"],60,12.5,2,"Lkr. Landsberg"],
+ ["Buchloe",48.036,10.720,["RE"],45,11.5,1,"Lkr. Ostallgäu"],
+ ["Dachau",48.260,11.434,["S2","RB"],20,16.5,4,"Lkr. Dachau"],
+ ["Petershausen",48.410,11.470,["S2","RB"],40,14,2,"Lkr. Dachau"],
+ ["Pfaffenhofen a. d. Ilm",48.530,11.508,["RB"],35,13,2,"Lkr. Pfaffenhofen"],
+ ["Ingolstadt",48.766,11.426,["ICE","RE"],40,12.5,3,"Stadt Ingolstadt"],
+ ["Augsburg",48.366,10.894,["ICE","RE"],40,12.5,3,"Stadt Augsburg"],
+ ["Friedberg (Bay.)",48.356,10.985,["RB"],50,12.5,2,"Lkr. Aichach-Friedberg"],
+ ["Mering",48.266,10.984,["RB"],40,12,1,"Lkr. Aichach-Friedberg"]
+].map(t=>({name:t[0],lat:t[1],lng:t[2],lines:t[3],min:t[4],rent:t[5],comp:t[6],kreis:t[7]}));
+
+const NK=3.2, KEY="wohnungsradar-v1";
+const $=id=>document.getElementById(id);
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const eur=n=>Math.round(n).toLocaleString("de-DE")+" €";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+k);return v?JSON.parse(v):d}catch(e){return d}},
+             set(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch(e){}}};
+
+let mode=store.get("mode","kalt"), showAll=false;
+
+function crit(){
+  return {pmin:+$("pmin").value||0,pmax:+$("pmax").value||0,smin:+$("smin").value||0,smax:+$("smax").value||0,
+    maxmin:+$("maxmin").value,radius:+$("radius").value,focus:$("focus").value,warm:mode==="warm"};
+}
+const shortName=n=>n.replace(/\s*\(.*\)/,"").replace(/ a\. d\. .*| b\. .*| i\. OB| a\. .*| am .*/,"").trim();
+
+function links(t,c){
+  const q=shortName(t.name);
+  // Kaltmiete-Grenzen für Portale, die nur kalt filtern
+  const kmin=c.warm?Math.max(0,Math.round(c.pmin-NK*c.smin)) : c.pmin;
+  const kmax=c.warm?Math.round(c.pmax-NK*((c.smin+c.smax)/2)) : c.pmax;
+  const is24="https://www.immobilienscout24.de/Suche/radius/wohnung-mieten?centerofsearchaddress="+encodeURIComponent(q)+"%3B%3B%3B%3B%3B"
+    +"&geocoordinates="+t.lat.toFixed(4)+"%3B"+t.lng.toFixed(4)+"%3B"+c.radius.toFixed(1)
+    +"&price="+c.pmin.toFixed(1)+"-"+c.pmax.toFixed(1)+"&livingspace="+c.smin.toFixed(1)+"-"+c.smax.toFixed(1)
+    +(c.warm?"&pricetype=calculatedtotalrent":"&pricetype=rentpermonth")+"&sorting=2";
+  const slug=q.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const ka="https://www.kleinanzeigen.de/s-wohnung-mieten/preis:"+kmin+":"+kmax+"/"+slug+"/k0c203";
+  const g=site=>"https://www.google.com/search?tbs=qdr:w&q="+encodeURIComponent("Wohnung mieten "+q+" site:"+site);
+  return [["ImmoScout24",is24],["Kleinanzeigen",ka],["Immowelt",g("immowelt.de")],["Private",g("ohne-makler.net")]];
+}
+
+function rank(c){
+  const w={balanced:[.4,.4,.2],comp:[.25,.6,.15],size:[.6,.25,.15],near:[.3,.3,.4]}[c.focus];
+  return TOWNS.filter(t=>t.min<=c.maxmin).map(t=>{
+    const size=c.pmax/(t.rent+(c.warm?NK:0));
+    const sS=clamp((size-c.smin)/Math.max(1,(c.smax-c.smin)));
+    const sC=(5-t.comp)/4, sT=1-t.min/60;
+    return {...t,size,score:w[0]*sS+w[1]*sC+w[2]*sT};
+  }).sort((a,b)=>b.score-a.score);
+}
+
+function dots(n){
+  const cls=n<=2?"low":n>=4?"high":"";
+  let s='<span class="dots '+cls+'" aria-label="Konkurrenz '+n+' von 5">';
+  for(let i=1;i<=5;i++)s+='<i class="'+(i<=n?"on":"")+'"></i>';
+  return s+"</span>";
+}
+const lineBadges=ls=>ls.map(l=>'<span class="ln '+l+'">'+l+"</span>").join("");
+
+function renderTowns(){
+  const c=crit(), r=rank(c), list=showAll?r:r.slice(0,12);
+  $("towns").innerHTML=list.map((t,i)=>`
+    <article class="town${i<3?" top":""}">
+      <div class="rank">${i+1}</div>
+      <div class="tname"><strong>${t.name}</strong>
+        <div class="lines">${lineBadges(t.lines)}<span class="mins">${t.min?t.min+" min":"–"} · ${t.kreis}</span></div></div>
+      <dl class="facts">
+        <dt>€/m² kalt</dt><dt>≈ m²</dt><dt>Konkurrenz</dt>
+        <dd>${t.rent.toFixed(1).replace(".",",")}</dd><dd>${Math.round(t.size)}</dd><dd>${dots(t.comp)}</dd>
+      </dl>
+      <div class="links">${links(t,c).map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join("")}</div>
+    </article>`).join("") || '<p class="empty">Kein Ort passt zu dieser Fahrzeit. Fahrzeit erhöhen.</p>';
+  $("more").hidden=r.length<=12;
+  $("more").textContent=showAll?"Nur Top 12 zeigen":"Alle "+r.length+" Orte zeigen";
+  $("summary").innerHTML=[eur(c.pmin)+"–"+eur(c.pmax)+" "+(c.warm?"warm":"kalt"),c.smin+"–"+c.smax+" m²","≤ "+c.maxmin+" min zum Hbf","Radius "+c.radius+" km","Neueste zuerst"]
+    .map(x=>'<span class="chip">'+x+"</span>").join("");
+  $("maxminv").textContent=c.maxmin+" min"; $("radiusv").textContent=c.radius+" km";
+}
+
+// Anzeigen-Check
+const EX=[
+  {town:"Kaufering",price:720,type:"kalt",size:52,age:3,url:"",ex:true},
+  {town:"Dachau",price:890,type:"warm",size:41,age:30,url:"",ex:true},
+  {town:"Germering",price:650,type:"kalt",size:68,age:2,url:"",ex:true}
+];
+let items=store.get("items",EX);
+
+function evaluate(it){
+  const t=TOWNS.find(x=>x.name===it.town)||{rent:15,comp:3};
+  const kalt=it.type==="warm"?it.price-NK*it.size:it.price;
+  const pm2=kalt/it.size;
+  const value=clamp(.5+(t.rent-pm2)/t.rent*2.5);
+  const fresh=it.age<=6?1:it.age<=24?.8:it.age<=48?.55:it.age<=96?.3:.1;
+  const comp=(5-t.comp)/4;
+  const score=Math.round(100*(.4*value+.35*fresh+.25*comp));
+  const c=crit(), flags=[];
+  if(pm2<t.rent*.55) flags.push(["bad","Betrugsverdacht: viel zu billig"]);
+  const budgetPrice=c.warm?(it.type==="warm"?it.price:it.price+NK*it.size):(it.type==="kalt"?it.price:kalt);
+  if(budgetPrice>c.pmax) flags.push(["warn","über Budget"]);
+  if(it.size<c.smin||it.size>c.smax) flags.push(["warn","Größe außerhalb"]);
+  let v=score>=75?["good","Sofort anfragen"]:score>=60?["good","Gut"]:score>=45?["warn","Prüfen"]:["bad","Eher nicht"];
+  if(flags.some(f=>f[0]==="bad")) v=["bad","Vorsicht"];
+  return {pm2,score,flags,v};
+}
+function ageText(h){return h<24?h+" Std.":Math.round(h/24)+" Tg."}
+function renderList(){
+  const rows=items.map((it,i)=>({it,i,e:evaluate(it)})).sort((a,b)=>b.e.score-a.e.score);
+  $("list").innerHTML=rows.length?rows.map(({it,i,e})=>`
+    <tr>
+      <td><span class="score">${e.score}</span></td>
+      <td>${it.url?`<a href="${encodeURI(it.url)}" target="_blank" rel="noopener">${it.town}</a>`:it.town}${it.ex?' <span class="pill ex">Beispiel</span>':""}</td>
+      <td class="num">${eur(it.price)} ${it.type}</td>
+      <td class="num">${it.size}</td>
+      <td class="num">${e.pm2.toFixed(2).replace(".",",")}</td>
+      <td class="num">${ageText(it.age)}</td>
+      <td><span class="pill ${e.v[0]}">${e.v[1]}</span>${e.flags.length?'<div class="flags">'+e.flags.map(f=>`<span class="pill ${f[0]}">${f[1]}</span>`).join("")+"</div>":""}</td>
+      <td><button class="x" type="button" data-del="${i}" aria-label="Eintrag löschen">×</button></td>
+    </tr>`).join(""):'<tr><td colspan="8" class="empty">Noch keine Anzeigen eingetragen.</td></tr>';
+}
+$("list").addEventListener("click",e=>{const b=e.target.closest("[data-del]");if(!b)return;items.splice(+b.dataset.del,1);store.set("items",items);renderList();});
+$("c-town").innerHTML=TOWNS.map(t=>`<option>${t.name}</option>`).join("")+'<option value="__other">Anderer Ort (Richtwert 15 €/m²)</option>';
+$("c-town").value="Fürstenfeldbruck";
+$("checkform").addEventListener("submit",e=>{
+  e.preventDefault();
+  items=items.filter(x=>!x.ex);
+  const url=$("c-url").value.trim();
+  items.push({town:$("c-town").value==="__other"?"Anderer Ort":$("c-town").value,price:+$("c-price").value,type:$("c-type").value,
+    size:+$("c-size").value,age:+$("c-age").value,url:/^https?:\/\//.test(url)?url:""});
+  store.set("items",items);$("c-url").value="";renderList();
+});
+
+// Anschreiben
+const DOCS=["Mieterselbstauskunft (ausgefüllt, unterschrieben)","SCHUFA-BonitätsCheck (nicht älter als 3 Monate)","Letzte 3 Gehaltsabrechnungen","Mietschuldenfreiheitsbescheinigung vom jetzigen Vermieter","Kopie Personalausweis (Vorder- und Rückseite)","Arbeitsvertrag oder Bescheinigung vom Arbeitgeber","Kurzes Anschreiben mit Foto (optional, wirkt persönlicher)"];
+const done=store.get("docs",{});
+$("docs").innerHTML=DOCS.map((d,i)=>`<li><label><input type="checkbox" id="doc${i}" ${done[i]?"checked":""}> <span>${d}</span></label></li>`).join("");
+$("docs").addEventListener("change",e=>{const m=e.target.id.match(/doc(\d+)/);if(m){done[m[1]]=e.target.checked;store.set("docs",done);}});
+const LF=["name","age","job","income","move","phone"];
+const saved=store.get("letter",null);
+if(saved) LF.forEach(k=>{if(saved[k]!=null)$("l-"+k).value=saved[k]});
+function renderLetter(){
+  const v={};LF.forEach(k=>v[k]=$("l-"+k).value.trim());
+  store.set("letter",v);
+  $("letter").value=`Sehr geehrte Damen und Herren,
+
+mit großem Interesse habe ich Ihre Anzeige gelesen und würde die Wohnung sehr gerne besichtigen.
+
+Kurz zu mir: Ich heiße ${v.name}, bin ${v.age} Jahre alt und arbeite als ${v.job}. Mein monatliches Nettoeinkommen beträgt ${v.income} €, die Miete ist damit sicher tragbar. Ich lebe allein, bin Nichtraucher und habe keine Haustiere. Mir ist ein ruhiges, gepflegtes Wohnumfeld und ein gutes Verhältnis zu Vermieter und Nachbarn wichtig.
+
+Ein Einzug wäre ${v.move} möglich. Eine vollständige Bewerbungsmappe (Selbstauskunft, SCHUFA, Gehaltsnachweise, Mietschuldenfreiheitsbescheinigung) kann ich Ihnen sofort zusenden.
+
+Für einen Besichtigungstermin bin ich flexibel und telefonisch unter ${v.phone} erreichbar.
+
+Ich freue mich auf Ihre Rückmeldung.
+
+Mit freundlichen Grüßen
+${v.name}`;
+}
+LF.forEach(k=>$("l-"+k).addEventListener("input",renderLetter));
+$("copy").addEventListener("click",()=>{
+  const ta=$("letter");
+  const fb=()=>{ta.focus();ta.select();$("copynote").textContent="Text markiert. Mit Strg+C bzw. „Kopieren“ übernehmen.";};
+  try{navigator.clipboard.writeText(ta.value).then(()=>{$("copynote").textContent="Kopiert.";},fb);}catch(e){fb();}
+});
+
+// Steuerung
+function setMode(m){mode=m;store.set("mode",m);$("mode-kalt").setAttribute("aria-pressed",m==="kalt");$("mode-warm").setAttribute("aria-pressed",m==="warm");renderTowns();renderList();}
+$("mode-kalt").onclick=()=>setMode("kalt");$("mode-warm").onclick=()=>setMode("warm");
+["pmin","pmax","smin","smax","maxmin","radius","focus"].forEach(id=>$(id).addEventListener("input",()=>{renderTowns();renderList();}));
+$("more").onclick=()=>{showAll=!showAll;renderTowns();};
+
+setMode(mode);renderLetter();
+})();
+</script>
+</body>
+</html>
